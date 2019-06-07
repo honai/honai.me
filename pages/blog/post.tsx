@@ -1,8 +1,8 @@
-/* eslint-disable @typescript-eslint/camelcase */
 import { NextFC } from 'next'
+import { Post } from '../../types'
 import contentful from '../../modules/contentful'
 
-const Post: NextFC<PostInitialProps> = ({ post }: PostInitialProps): JSX.Element => {
+const PostPage: NextFC<PostInitialProps> = ({ post }: PostInitialProps): JSX.Element => {
   if (!post) {
     return <div>残念</div>
   }
@@ -19,24 +19,11 @@ const Post: NextFC<PostInitialProps> = ({ post }: PostInitialProps): JSX.Element
   )
 }
 
-interface Post {
-  sys: {
-    id: string
-    createdAt: string
-    updatedAt: string
-  }
-  fields: {
-    slug: string
-    title: string
-    content: string
-  }
-}
-
 interface PostInitialProps {
   post?: Post
 }
 
-Post.getInitialProps = async ({ query }): Promise<PostInitialProps> => {
+PostPage.getInitialProps = async ({ query }): Promise<PostInitialProps> => {
   let post: Post
   if (!query.slug) {
     return {}
@@ -44,6 +31,7 @@ Post.getInitialProps = async ({ query }): Promise<PostInitialProps> => {
   try {
     const response = await contentful.getEntries({
       'fields.slug': query.slug,
+      // eslint-disable-next-line @typescript-eslint/camelcase
       content_type: 'blogPost'
     })
     post = response.items[0]
@@ -54,4 +42,4 @@ Post.getInitialProps = async ({ query }): Promise<PostInitialProps> => {
   return { post: post }
 }
 
-export default Post
+export default PostPage
