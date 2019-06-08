@@ -18,7 +18,7 @@ export function incement(): Action {
   }
 }
 
-export default function counter(state: CounterState = initialState, action: Action): State {
+export default function counter(state: CounterState = initialState, action: Action): CounterState {
   switch (action.type) {
     case INCREMENT:
       return {
