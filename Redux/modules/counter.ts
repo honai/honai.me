@@ -1,4 +1,4 @@
-interface State {
+export interface CounterState {
   count: number
 }
 
@@ -6,7 +6,7 @@ interface Action {
   type: string
 }
 
-const initialState: State = {
+const initialState: CounterState = {
   count: 0
 }
 
@@ -18,7 +18,7 @@ export function incement(): Action {
   }
 }
 
-export default function counter(state: State = initialState, action: Action): State {
+export default function counter(state: CounterState = initialState, action: Action): State {
   switch (action.type) {
     case INCREMENT:
       return {

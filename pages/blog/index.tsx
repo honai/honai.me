@@ -1,46 +1,33 @@
 import { NextFC } from 'next'
 import Link from 'next/link'
-import { Post } from '../../types'
-import contentful from '../../api/contentful'
 import { useEffect, useState } from 'react'
+import { Post } from '../../api/contentful'
+import { useSelector, useDispatch } from 'react-redux'
+import { RootState } from '../../Redux'
+import { fetchPosts } from '../../Redux/modules/posts'
 
 const Index: NextFC = (): JSX.Element => {
-  const postsInit: Post[] = []
-  const [posts, setPosts] = useState(postsInit)
-  useEffect((): void => {
-    contentful
-      .getEntries({
-        // eslint-disable-next-line @typescript-eslint/camelcase
-        content_type: 'blogPost'
-      })
-      .then(
-        (response: GetEntries): void => {
-          setPosts(response.items)
-        }
-      )
-  }, [0])
-
+  const posts = useSelector((state: RootState): Post[] => state.posts.posts)
+  const dispatch = useDispatch()
   return (
-    <ul>
-      {posts.length === 0 ? <li>読み込み中</li> : false}
-      {posts.map(
-        (post): JSX.Element => (
-          <li key={post.sys.id}>
-            <Link
-              href={`/blog/post?slug=${post.fields.slug}`}
-              as={`/blog/post/${post.fields.slug}`}
-            >
-              <a>{post.fields.title}</a>
-            </Link>
-          </li>
-        )
-      )}
-    </ul>
+    <>
+      <ul>
+        {posts.map(
+          (post): JSX.Element => (
+            <li key={post.sys.id}>
+              <Link
+                href={`/blog/post?slug=${post.fields.slug}`}
+                as={`/blog/post/${post.fields.slug}`}
+              >
+                <a>{post.fields.title}</a>
+              </Link>
+            </li>
+          )
+        )}
+      </ul>
+      <button onClick={() => dispatch(fetchPosts())}>読み込み</button>
+    </>
   )
-}
-
-interface GetEntries {
-  items: Post[]
 }
 
 export default Index

@@ -6,3 +6,29 @@ const contentful = contentfulSdk.createClient({
 })
 
 export default contentful
+
+export function getBlogPosts(limit: number, skip: number) {
+  return contentful.getEntries({
+    // eslint-disable-next-line @typescript-eslint/camelcase
+    content_type: 'blogPosts',
+    limit: limit,
+    skip: skip
+  })
+}
+
+export interface GetEntries {
+  items: Post[]
+}
+
+export interface Post {
+  sys: {
+    id: string
+    createdAt: string
+    updatedAt: string
+  }
+  fields: {
+    slug: string
+    title: string
+    content: string
+  }
+}

@@ -1,15 +1,16 @@
-import { createStore as reduxCreateStore, combineReducers, Store } from 'redux'
-import counter from './modules/counter'
+import { createStore as reduxCreateStore, combineReducers, Store, applyMiddleware } from 'redux'
+import { composeWithDevTools } from 'redux-devtools-extension'
+import thunk from 'redux-thunk'
+import counter, { CounterState } from './modules/counter'
+import posts, { PostsState } from './modules/posts'
 
-const rootReducer = combineReducers({ counter })
+const rootReducer = combineReducers({ counter, posts })
 
 export default function createStore(): Store {
-  if (typeof window !== 'undefined' && process.env.NODE_ENV !== 'production') {
-    return reduxCreateStore(
-      rootReducer,
-      window.__REDUX_DEVTOOLS_EXTENSION__ && window.__REDUX_DEVTOOLS_EXTENSION__()
-    )
-  } else {
-    return reduxCreateStore(rootReducer)
-  }
+  return reduxCreateStore(rootReducer, composeWithDevTools(applyMiddleware(thunk)))
+}
+
+export interface RootState {
+  posts: PostsState
+  counter: CounterState
 }
