@@ -1,6 +1,6 @@
 import { NextFC } from 'next'
-import { Post } from '../../types'
-import contentful from '../../modules/contentful'
+import { Post } from '../../Redux/modules/posts'
+import contentful from '../../api/contentful'
 
 const PostPage: NextFC<PostInitialProps> = ({ post }: PostInitialProps): JSX.Element => {
   if (!post) {
