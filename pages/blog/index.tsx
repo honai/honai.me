@@ -1,6 +1,5 @@
 import { NextFC } from 'next'
 import Link from 'next/link'
-import { useEffect, useState } from 'react'
 import { Post } from '../../api/contentful'
 import { useSelector, useDispatch } from 'react-redux'
 import { RootState } from '../../Redux'
