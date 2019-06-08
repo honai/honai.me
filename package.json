@@ -2,7 +2,7 @@
   "name": "nextjs-typescript-boilerplate",
   "version": "1.0.0",
   "main": "index.js",
-  "license": "MIT",
+  "license": "UNLICENSED",
   "repository": "github:honai/nextjs-typescript-boilerplate",
   "scripts": {
     "dev": "next",
