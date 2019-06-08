@@ -1,7 +1,7 @@
 import { NextFC } from 'next'
 import Link from 'next/link'
 import { Post } from '../../types'
-import contentful from '../../modules/contentful'
+import contentful from '../../api/contentful'
 import { useEffect, useState } from 'react'
 
 const Index: NextFC = (): JSX.Element => {
