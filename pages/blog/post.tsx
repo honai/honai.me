@@ -1,5 +1,5 @@
 import { NextFC } from 'next'
-import { Post } from '../../Redux/modules/posts'
+import { Post } from '../../api/contentful'
 import contentful from '../../api/contentful'
 
 const PostPage: NextFC<PostInitialProps> = ({ post }: PostInitialProps): JSX.Element => {
@@ -8,7 +8,7 @@ const PostPage: NextFC<PostInitialProps> = ({ post }: PostInitialProps): JSX.Ele
   }
   const {
     fields: { title, content },
-    sys: { updatedAt, createdAt }
+    sys: { createdAt }
   } = post
   return (
     <main>
