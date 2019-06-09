@@ -1,0 +1,16 @@
+{
+  "version": 2,
+  "builds": [{ "src": "next.config.js", "use": "@now/next" }],
+  "regions": ["hnd1"],
+  "routes": [
+    {
+      "src": "/blog/post/(?<slug>[\\S]+)$",
+      "dest": "/blog/post?slug=$slug"
+    },
+    {
+      "src": "/post/(?<slug>[\\S]+)",
+      "status": 301,
+      "headers": { "Location": "https://honai.me/blog/post/$slug" }
+    }
+  ]
+}
