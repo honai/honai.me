@@ -1,23 +1,18 @@
-import { NextFC } from 'next'
-import { withRouter, WithRouterProps, SingletonRouter } from 'next/router'
+import { withRouter } from 'next/router'
 import { RootState } from 'Redux'
 import { useSelector } from 'react-redux'
 import { Post, getBlogPostBySlug } from '../../api/contentful'
+import { NextPageProps, NextPage } from '../../types'
 
 interface Query {
   slug: string
 }
-
-interface PageProps extends WithRouterProps<Query> {
+interface InitialProps {
   post?: Post
-  router: SingletonRouter<Query> & CostomRouterProps
 }
-
-interface CostomRouterProps {
-  query: Query
-}
-
-const PostPage: NextFC<PageProps, {}> = (props: PageProps): JSX.Element => {
+const PostPage: NextPage<InitialProps, Query> = (
+  props: NextPageProps<InitialProps, Query>
+): JSX.Element => {
   let post: Post | undefined = undefined
   if (props.post) {
     post = props.post
@@ -45,7 +40,7 @@ const PostPage: NextFC<PageProps, {}> = (props: PageProps): JSX.Element => {
   )
 }
 
-PostPage.getInitialProps = async ({ query, res }) => {
+PostPage.getInitialProps = async ({ query, res }): Promise<InitialProps> => {
   if (!res) {
     return {}
   }
@@ -53,6 +48,7 @@ PostPage.getInitialProps = async ({ query, res }) => {
   if (post === null) {
     res.statusCode = 404
     res.end('404 not found')
+    return {}
   }
   return { post: post }
 }
