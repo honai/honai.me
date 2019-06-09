@@ -1,10 +1,36 @@
 import { NextFC } from 'next'
-import { Post } from '../../api/contentful'
-import contentful from '../../api/contentful'
+import { withRouter, WithRouterProps, SingletonRouter } from 'next/router'
+import { RootState } from 'Redux'
+import { useSelector } from 'react-redux'
+import { Post, getBlogPostBySlug } from '../../api/contentful'
 
-const PostPage: NextFC<PostInitialProps> = ({ post }: PostInitialProps): JSX.Element => {
+interface Query {
+  slug: string
+}
+
+interface PageProps extends WithRouterProps<Query> {
+  post?: Post
+  router: SingletonRouter<Query> & CostomRouterProps
+}
+
+interface CostomRouterProps {
+  query: Query
+}
+
+const PostPage: NextFC<PageProps, {}> = (props: PageProps): JSX.Element => {
+  let post: Post | undefined = undefined
+  if (props.post) {
+    post = props.post
+  } else if (props.router.query.slug) {
+    post = useSelector(
+      (state: RootState): Post | undefined =>
+        state.posts.posts.find(
+          (post: Post): boolean => post.fields.slug === props.router.query.slug
+        )
+    )
+  }
   if (!post) {
-    return <div>残念</div>
+    return <div>NOT FOUND</div>
   }
   const {
     fields: { title, content },
@@ -19,27 +45,16 @@ const PostPage: NextFC<PostInitialProps> = ({ post }: PostInitialProps): JSX.Ele
   )
 }
 
-interface PostInitialProps {
-  post?: Post
-}
-
-PostPage.getInitialProps = async ({ query }): Promise<PostInitialProps> => {
-  let post: Post
-  if (!query.slug) {
+PostPage.getInitialProps = async ({ query, res }) => {
+  if (!res) {
     return {}
   }
-  try {
-    const response = await contentful.getEntries({
-      'fields.slug': query.slug,
-      // eslint-disable-next-line @typescript-eslint/camelcase
-      content_type: 'blogPost'
-    })
-    post = response.items[0]
-  } catch (e) {
-    console.log(e)
-    return {}
+  const post = await getBlogPostBySlug(query.slug)
+  if (post === null) {
+    res.statusCode = 404
+    res.end('404 not found')
   }
   return { post: post }
 }
 
-export default PostPage
+export default withRouter(PostPage)

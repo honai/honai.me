@@ -1,4 +1,4 @@
-import contentful, { Post, PostFields } from '../../api/contentful'
+import { Post, getBlogPosts } from '../../api/contentful'
 import { ThunkAction } from 'redux-thunk'
 import { RootState } from 'Redux'
 import { Action } from 'redux'
@@ -36,18 +36,11 @@ export function fetchPosts(): ThunkAction<void, RootState, undefined, Action> {
     if (state.isAllFetched) {
       return
     }
-    contentful
-      .getEntries<PostFields>({
-        // eslint-disable-next-line @typescript-eslint/camelcase
-        content_type: 'blogPost',
-        limit: FETCH_LIMIT,
-        skip: state.posts.length
-      })
-      .then(
-        (response): void => {
-          dispatch(addPosts(response.items))
-        }
-      )
+    getBlogPosts(FETCH_LIMIT, state.posts.length).then(
+      (response): void => {
+        dispatch(addPosts(response.items))
+      }
+    )
   }
 }
 
