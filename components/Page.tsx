@@ -1,11 +1,11 @@
 import Head from 'next/head'
+import { JsxChildren } from '../types'
 
 interface Props {
   title?: string
-  children: JSX.Element[] | JSX.Element
 }
 
-const Page = ({ title, children }: Props): JSX.Element => {
+const Page = ({ title, children }: Props & JsxChildren): JSX.Element => {
   return (
     <>
       <Head>
