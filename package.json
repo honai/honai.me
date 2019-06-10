@@ -14,6 +14,7 @@
     "@types/next": "^8.0.5",
     "@types/next-redux-wrapper": "^2.0.2",
     "@types/react": "^16.8.18",
+    "@types/styled-jsx": "^2.2.8",
     "@zeit/next-typescript": "^1.1.1",
     "contentful": "^7.6.0",
     "next": "^8.1.0",
