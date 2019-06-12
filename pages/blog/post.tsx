@@ -3,6 +3,10 @@ import { RootState } from 'Redux'
 import { useSelector } from 'react-redux'
 import { Post, getBlogPostBySlug } from '../../api/contentful'
 import { NextPageProps, NextPage } from '../../types'
+import Page from '../../components/Page'
+import Header from '../../components/Header'
+import Footer from '../../components/Footer'
+import Main from '../../components/Main'
 
 interface Query {
   slug: string
@@ -21,19 +25,12 @@ const PostPage: NextPage<InitialProps, Query> = (
   } else if (slug) {
     post = posts.find((post): boolean => post.fields.slug === slug)
   }
-  if (post === undefined) {
-    return <div>NOT FOUND</div>
-  }
-  const {
-    fields: { title, content },
-    sys: { createdAt }
-  } = post
   return (
-    <main>
-      <h1>{title}</h1>
-      <div>投稿: {createdAt}</div>
-      <p>{content}</p>
-    </main>
+    <Page>
+      <Header />
+      <Main>{post ? <h1>{post.fields.title}</h1> : <div>not found</div>}</Main>
+      <Footer />
+    </Page>
   )
 }
 
