@@ -11,6 +11,7 @@
   },
   "dependencies": {
     "@babel/core": "^7.4.5",
+    "@iktakahiro/markdown-it-katex": "^3.1.0",
     "@types/katex": "^0.10.1",
     "@types/markdown-it": "^0.0.7",
     "@types/next": "^8.0.5",

@@ -1,7 +1,27 @@
 import markdownIt from 'markdown-it'
+import mk from '@iktakahiro/markdown-it-katex'
 import { primaryColor } from './theme'
 
-const md = new markdownIt()
+const md = new markdownIt({ html: true })
+
+// https://github.com/markdown-it/markdown-it/blob/master/docs/architecture.md#renderer
+var defaultRender =
+  md.renderer.rules.link_open ||
+  function(tokens, idx, options, env, self): string {
+    return self.renderToken(tokens, idx, options)
+  }
+// eslint-disable-next-line @typescript-eslint/camelcase
+md.renderer.rules.link_open = function(tokens, idx, options, env, self): void {
+  var aIndex = tokens[idx].attrIndex('target')
+  if (aIndex < 0) {
+    tokens[idx].attrPush(['target', '_blank'])
+  } else {
+    tokens[idx].attrs[aIndex][1] = '_blank'
+  }
+  return defaultRender(tokens, idx, options, env, self)
+}
+
+md.use(mk, { throwOnError: false, errorColor: ' #cc0000' })
 
 const PostBody = ({ content }: { content: string }): JSX.Element => {
   const contentHtml = md.render(content)

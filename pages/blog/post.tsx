@@ -1,4 +1,5 @@
 import { withRouter } from 'next/router'
+import Head from 'next/head'
 import { RootState } from 'Redux'
 import { useSelector } from 'react-redux'
 import { Post, getBlogPostBySlug } from '../../api/contentful'
@@ -28,6 +29,9 @@ const PostPage: NextPage<InitialProps, Query> = (
   }
   return (
     <Page>
+      <Head>
+        <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/katex@0.10.1/dist/katex.css" />
+      </Head>
       <Header />
       <Main>{post ? <PostContainer post={post} /> : <div>not found</div>}</Main>
       <Footer />
@@ -39,13 +43,13 @@ PostPage.getInitialProps = async ({ query, res }): Promise<InitialProps> => {
   if (!res) {
     return {}
   }
-  const post = await getBlogPostBySlug(query.slug)
-  if (post === null) {
+  if (!query.slug) {
     res.statusCode = 404
     res.end('404 not found')
     return {}
   }
-  return { post: post }
+  const post = await getBlogPostBySlug(query.slug)
+  return { post: post || undefined }
 }
 
 export default withRouter(PostPage)
