@@ -28,7 +28,7 @@ function addPosts(posts: Post[]): PostsAction {
   }
 }
 
-const FETCH_LIMIT = 2
+const FETCH_LIMIT = 10
 
 export function fetchPosts(): ThunkAction<void, RootState, undefined, Action> {
   return function(dispatch, getState): void {
