@@ -7,6 +7,8 @@ import Skills from '../components/Skills'
 import Works from '../components/Works'
 import { getMyWorks, WorkEntry } from '../api/contentful'
 import { NextPage } from 'types'
+import Accounts from '../components/Accounts'
+import Footer from '../components/Footer'
 
 interface InitialProps {
   works: WorkEntry[]
@@ -28,7 +30,12 @@ const Index: NextPage<InitialProps> = ({ works }: InitialProps): JSX.Element => 
           <Works worksData={works} />
         </Section>
         <Section title="オンラインアカウント" />
+        <Section title="作ったもの" />
+        <Section title="オンラインアカウント">
+          <Accounts />
+        </Section>
       </Main>
+      <Footer />
     </Page>
   )
 }
