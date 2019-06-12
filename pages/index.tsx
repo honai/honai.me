@@ -1,4 +1,3 @@
-import { NextFC } from 'next'
 import Page from '../components/Page'
 import Header from '../components/Header'
 import Main from '../components/Main'
@@ -6,9 +5,14 @@ import Hero from '../components/Hero'
 import Section from '../components/Section'
 import Skills from '../components/Skills'
 import Works from '../components/Works'
-import { getMyWorks } from '../api/contentful'
+import { getMyWorks, WorkEntry } from '../api/contentful'
+import { NextPage } from 'types'
 
-const Index: NextFC = ({ works }): JSX.Element => {
+interface InitialProps {
+  works: WorkEntry[]
+}
+
+const Index: NextPage<InitialProps> = ({ works }: InitialProps): JSX.Element => {
   return (
     <Page>
       <Hero />
@@ -29,7 +33,7 @@ const Index: NextFC = ({ works }): JSX.Element => {
   )
 }
 
-Index.getInitialProps = async () => {
+Index.getInitialProps = async (): Promise<InitialProps> => {
   const response = await getMyWorks()
   return {
     works: response.items
