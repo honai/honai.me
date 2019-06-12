@@ -5,6 +5,7 @@ import Main from '../components/Main'
 import Hero from '../components/Hero'
 import Section from '../components/Section'
 import Skills from '../components/Skills'
+import Accounts from '../components/Accounts';
 
 const Index: NextFC = (): JSX.Element => {
   return (
@@ -19,7 +20,9 @@ const Index: NextFC = (): JSX.Element => {
           <Skills />
         </Section>
         <Section title="作ったもの" />
-        <Section title="オンラインアカウント" />
+        <Section title="オンラインアカウント">
+          <Accounts />
+        </Section>
       </Main>
     </Page>
   )
