@@ -1,20 +1,27 @@
 import { NextFC } from 'next'
-import { useSelector, useDispatch } from 'react-redux'
-import Link from 'next/link'
+import Page from '../components/Page'
+import Header from '../components/Header'
+import Main from '../components/Main'
+import Hero from '../components/Hero'
+import Section from '../components/Section'
+import Skills from '../components/Skills'
 
 const Index: NextFC = (): JSX.Element => {
-  const count = useSelector(state => state.counter.count)
-  const dispatch = useDispatch()
   return (
-    <div>
-      <h1>Hello TS</h1>
-      <p>Count: {count}</p>
-      <button onClick={() => dispatch({ type: 'INCREMENT' })}>ADD</button>
-      <br />
-      <Link href="/blog">
-        <a>BLOG</a>
-      </Link>
-    </div>
+    <Page>
+      <Hero />
+      <Header />
+      <Main>
+        <Section title="自己紹介">
+          <p>京都大学工学部電気電子工学科3回生。</p>
+        </Section>
+        <Section title="スキル">
+          <Skills />
+        </Section>
+        <Section title="作ったもの" />
+        <Section title="オンラインアカウント" />
+      </Main>
+    </Page>
   )
 }
 

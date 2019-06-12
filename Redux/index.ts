@@ -7,7 +7,11 @@ import posts, { PostsState } from './modules/posts'
 const rootReducer = combineReducers({ counter, posts })
 
 export default function createStore(): Store {
-  return reduxCreateStore(rootReducer, composeWithDevTools(applyMiddleware(thunk)))
+  if (process.env.NODE_ENV === 'production') {
+    return reduxCreateStore(rootReducer, applyMiddleware(thunk))
+  } else {
+    return reduxCreateStore(rootReducer, composeWithDevTools(applyMiddleware(thunk)))
+  }
 }
 
 export interface RootState {

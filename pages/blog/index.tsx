@@ -1,9 +1,11 @@
 import { NextFC } from 'next'
 import Link from 'next/link'
-import { Post } from '../../api/contentful'
+import { Action } from 'redux'
 import { useSelector, useDispatch } from 'react-redux'
+import { Post } from '../../api/contentful'
 import { RootState } from '../../Redux'
 import { fetchPosts } from '../../Redux/modules/posts'
+import { ThunkAction } from 'redux-thunk'
 
 const Index: NextFC = (): JSX.Element => {
   const posts = useSelector((state: RootState): Post[] => state.posts.posts)
@@ -24,7 +26,11 @@ const Index: NextFC = (): JSX.Element => {
           )
         )}
       </ul>
-      <button onClick={() => dispatch(fetchPosts())}>読み込み</button>
+      <button
+        onClick={(): ThunkAction<void, RootState, undefined, Action> => dispatch(fetchPosts())}
+      >
+        読み込み
+      </button>
     </>
   )
 }

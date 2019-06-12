@@ -1,14 +1,35 @@
-import { NextFC } from 'next'
-import { Post } from '../../Redux/modules/posts'
-import contentful from '../../api/contentful'
+import { withRouter } from 'next/router'
+import { RootState } from 'Redux'
+import { useSelector } from 'react-redux'
+import { Post, getBlogPostBySlug } from '../../api/contentful'
+import { NextPageProps, NextPage } from '../../types'
 
-const PostPage: NextFC<PostInitialProps> = ({ post }: PostInitialProps): JSX.Element => {
+interface Query {
+  slug: string
+}
+interface InitialProps {
+  post?: Post
+}
+const PostPage: NextPage<InitialProps, Query> = (
+  props: NextPageProps<InitialProps, Query>
+): JSX.Element => {
+  let post: Post | undefined = undefined
+  if (props.post) {
+    post = props.post
+  } else if (props.router.query.slug) {
+    post = useSelector(
+      (state: RootState): Post | undefined =>
+        state.posts.posts.find(
+          (post: Post): boolean => post.fields.slug === props.router.query.slug
+        )
+    )
+  }
   if (!post) {
-    return <div>残念</div>
+    return <div>NOT FOUND</div>
   }
   const {
     fields: { title, content },
-    sys: { updatedAt, createdAt }
+    sys: { createdAt }
   } = post
   return (
     <main>
@@ -19,27 +40,17 @@ const PostPage: NextFC<PostInitialProps> = ({ post }: PostInitialProps): JSX.Ele
   )
 }
 
-interface PostInitialProps {
-  post?: Post
-}
-
-PostPage.getInitialProps = async ({ query }): Promise<PostInitialProps> => {
-  let post: Post
-  if (!query.slug) {
+PostPage.getInitialProps = async ({ query, res }): Promise<InitialProps> => {
+  if (!res) {
     return {}
   }
-  try {
-    const response = await contentful.getEntries({
-      'fields.slug': query.slug,
-      // eslint-disable-next-line @typescript-eslint/camelcase
-      content_type: 'blogPost'
-    })
-    post = response.items[0]
-  } catch (e) {
-    console.log(e)
+  const post = await getBlogPostBySlug(query.slug)
+  if (post === null) {
+    res.statusCode = 404
+    res.end('404 not found')
     return {}
   }
   return { post: post }
 }
 
-export default PostPage
+export default withRouter(PostPage)
