@@ -11,6 +11,8 @@
   },
   "dependencies": {
     "@babel/core": "^7.4.5",
+    "@iktakahiro/markdown-it-katex": "^3.1.0",
+    "@types/katex": "^0.10.1",
     "@types/markdown-it": "^0.0.7",
     "@types/next": "^8.0.5",
     "@types/next-redux-wrapper": "^2.0.2",
@@ -19,7 +21,9 @@
     "@types/styled-jsx": "^2.2.8",
     "@zeit/next-typescript": "^1.1.1",
     "contentful": "^7.6.0",
+    "katex": "^0.10.2",
     "markdown-it": "^8.4.2",
+    "markdown-it-katex": "https://github.com/TobiasWalle/markdown-it-katex.git",
     "next": "^8.1.0",
     "next-redux-wrapper": "^3.0.0-alpha.3",
     "react": "^16.8.6",
