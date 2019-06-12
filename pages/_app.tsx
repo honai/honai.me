@@ -3,7 +3,7 @@ import App, { Container } from 'next/app'
 import { Provider } from 'react-redux'
 import { Store } from 'redux'
 import withRedux from 'next-redux-wrapper'
-import createStore from '../Redux'
+import createStore from '../store'
 
 interface MyAppProps {
   store: Store

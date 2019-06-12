@@ -1,11 +1,11 @@
 import { NextFC } from 'next'
 import { useSelector, useDispatch } from 'react-redux'
 import { Post } from '../../api/contentful'
-import { RootState } from '../../Redux'
+import { RootState } from '../../store'
 import Page from '../../components/Page'
 import Header from '../../components/Header'
 import Footer from '../../components/Footer'
-import { fetchPosts } from '../../Redux/modules/posts'
+import { fetchPosts } from '../../store/modules/posts'
 import Main from '../../components/Main'
 import PostsList from '../../components/PostsList'
 

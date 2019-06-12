@@ -1,6 +1,6 @@
 import { Post, getBlogPosts } from '../../api/contentful'
 import { ThunkAction } from 'redux-thunk'
-import { RootState } from 'Redux'
+import { RootState } from '../../store'
 import { Action } from 'redux'
 
 export interface PostsState {

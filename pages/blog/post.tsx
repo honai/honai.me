@@ -1,5 +1,5 @@
 import { withRouter } from 'next/router'
-import { RootState } from 'Redux'
+import { RootState } from '../../store'
 import { useSelector } from 'react-redux'
 import { Post, getBlogPostBySlug } from '../../api/contentful'
 import { NextPageProps, NextPage } from '../../types'
