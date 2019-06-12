@@ -33,6 +33,7 @@ const PostPreview = ({ post }: PreviewProps): JSX.Element => {
       <style jsx>{`
         a {
           text-decoration: unset;
+          color: unset;
         }
         a:hover h2,
         a:hover .date {
