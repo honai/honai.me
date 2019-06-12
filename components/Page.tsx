@@ -4,7 +4,7 @@ interface Props {
   title?: string
 }
 
-const Page: React.FC<React.Props<{}>> = ({
+const Page: React.FC<React.Props<{}> & Props> = ({
   title,
   children
 }: React.Props<{}> & Props): JSX.Element => {
