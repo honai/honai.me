@@ -1,8 +1,12 @@
+import markdownIt from 'markdown-it'
 import { WorkEntry } from '../api/contentful'
+
+const md = new markdownIt({ breaks: true })
 
 const Work = (work: WorkEntry): JSX.Element => {
   const { title, url, description } = work.fields
   const heroUrl = work.fields.hero.fields.file.url
+  const descriptionHtml = md.renderInline(description)
   return (
     <li>
       <a className="image" href={work.fields.url}>
@@ -12,7 +16,7 @@ const Work = (work: WorkEntry): JSX.Element => {
         <a className="title reset" href={url}>
           <h3 className="century-gothic">{title}</h3>
         </a>
-        <p className="description" dangerouslySetInnerHTML={{ __html: description }} />
+        <p className="description" dangerouslySetInnerHTML={{ __html: descriptionHtml }} />
       </div>
       <style jsx>
         {`
