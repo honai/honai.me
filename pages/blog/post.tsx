@@ -7,6 +7,7 @@ import Page from '../../components/Page'
 import Header from '../../components/Header'
 import Footer from '../../components/Footer'
 import Main from '../../components/Main'
+import PostContainer from '../../components/PostContainer'
 
 interface Query {
   slug: string
@@ -28,7 +29,7 @@ const PostPage: NextPage<InitialProps, Query> = (
   return (
     <Page>
       <Header />
-      <Main>{post ? <h1>{post.fields.title}</h1> : <div>not found</div>}</Main>
+      <Main>{post ? <PostContainer post={post} /> : <div>not found</div>}</Main>
       <Footer />
     </Page>
   )

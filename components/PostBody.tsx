@@ -1,0 +1,96 @@
+import markdownIt from 'markdown-it'
+import { primaryColor } from './theme'
+
+const md = new markdownIt()
+
+const PostBody = ({ content }: { content: string }): JSX.Element => {
+  const contentHtml = md.render(content)
+  return (
+    <>
+      <article dangerouslySetInnerHTML={{ __html: contentHtml }} />
+      <style jsx>
+        {`
+          article {
+            padding: 0 10px;
+          }
+          article :global(*) {
+            max-width: 100%;
+          }
+          article :global(h1) {
+            border-bottom: 1px solid rgba(0, 0, 0, 0.2);
+          }
+          article :global(h2) {
+            line-height: 1;
+            display: flex;
+            align-items: center;
+            margin: 2rem 0 1.5rem;
+          }
+          article :global(h2::before) {
+            content: '';
+            display: inline-block;
+            background-color: ${primaryColor};
+            height: 25px;
+            width: 5px;
+            border-radius: 3px;
+            margin-right: 15px;
+          }
+          article :global(h2::after) {
+            content: '';
+            display: inline-block;
+            border-bottom: 1px dashed;
+            border-color: rgba(0, 0, 0, 0.2);
+            flex: 1 1 auto;
+            margin-left: 10px;
+          }
+          article :global(img) {
+            display: inline-block;
+            max-width: calc(100% - 10px);
+            max-height: 50vh;
+            margin: 5px;
+            box-shadow: 0 1px 3px rgba(0, 0, 0, 0.3);
+          }
+          article :global(blockquote) {
+            background-color: ${primaryColor}11;
+            padding: 1px 10px;
+            border-radius: 0 3px 3px 0;
+            border-left: 3px solid ${primaryColor}DD;
+            padding-left: 20px;
+          }
+          article :global(code),
+          article :global(pre) {
+            font-family: SFMono-Regular, Consolas, Liberation Mono, Menlo, Courier, monospace;
+            font-size: 0.85rem;
+            background-color: ${primaryColor}11;
+            border-radius: 3px;
+          }
+          article :global(code) {
+            padding: 0.2em 0.4em;
+          }
+          article :global(pre) {
+            padding: 16px;
+            overflow-x: auto;
+          }
+          article :global(pre code) {
+            background-color: transparent;
+          }
+          article :global(table) {
+            border-collapse: collapse;
+            width: 100%;
+          }
+          article :global(table th),
+          article :global(table td) {
+            padding: 0.5rem;
+            vertical-align: top;
+            border-top: 1px solid #dee2e6;
+          }
+          article :global(table thead th) {
+            vertical-align: bottom;
+            border-bottom: 2px solid #dee2e6;
+          }
+        `}
+      </style>
+    </>
+  )
+}
+
+export default PostBody
