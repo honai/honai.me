@@ -13,18 +13,15 @@ interface InitialProps {
 const PostPage: NextPage<InitialProps, Query> = (
   props: NextPageProps<InitialProps, Query>
 ): JSX.Element => {
-  let post: Post | undefined = undefined
+  const slug = props.router.query.slug
+  const posts = useSelector((state: RootState): Post[] => state.posts.posts)
+  let post: Post | undefined
   if (props.post) {
     post = props.post
-  } else if (props.router.query.slug) {
-    post = useSelector(
-      (state: RootState): Post | undefined =>
-        state.posts.posts.find(
-          (post: Post): boolean => post.fields.slug === props.router.query.slug
-        )
-    )
+  } else if (slug) {
+    post = posts.find((post): boolean => post.fields.slug === slug)
   }
-  if (!post) {
+  if (post === undefined) {
     return <div>NOT FOUND</div>
   }
   const {
