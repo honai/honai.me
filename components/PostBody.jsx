@@ -1,5 +1,5 @@
 import markdownIt from 'markdown-it'
-import mk from '@iktakahiro/markdown-it-katex'
+import mk from 'markdown-it-katex'
 import { primaryColor } from './theme'
 
 const md = new markdownIt({ html: true })
@@ -7,11 +7,11 @@ const md = new markdownIt({ html: true })
 // https://github.com/markdown-it/markdown-it/blob/master/docs/architecture.md#renderer
 var defaultRender =
   md.renderer.rules.link_open ||
-  function(tokens, idx, options, env, self): string {
+  function(tokens, idx, options, env, self) {
     return self.renderToken(tokens, idx, options)
   }
 // eslint-disable-next-line @typescript-eslint/camelcase
-md.renderer.rules.link_open = function(tokens, idx, options, env, self): void {
+md.renderer.rules.link_open = function(tokens, idx, options, env, self) {
   var aIndex = tokens[idx].attrIndex('target')
   if (aIndex < 0) {
     tokens[idx].attrPush(['target', '_blank'])
@@ -23,7 +23,7 @@ md.renderer.rules.link_open = function(tokens, idx, options, env, self): void {
 
 md.use(mk, { throwOnError: false, errorColor: ' #cc0000' })
 
-const PostBody = ({ content }: { content: string }): JSX.Element => {
+const PostBody = ({ content }) => {
   const contentHtml = md.render(content)
   return (
     <>
