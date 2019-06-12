@@ -6,8 +6,9 @@ import Hero from '../components/Hero'
 import Section from '../components/Section'
 import Skills from '../components/Skills'
 import Works from '../components/Works'
+import { getMyWorks } from '../api/contentful'
 
-const Index: NextFC = (): JSX.Element => {
+const Index: NextFC = ({ works }): JSX.Element => {
   return (
     <Page>
       <Hero />
@@ -20,12 +21,19 @@ const Index: NextFC = (): JSX.Element => {
           <Skills />
         </Section>
         <Section title="作ったもの">
-          <Works />
+          <Works worksData={works} />
         </Section>
         <Section title="オンラインアカウント" />
       </Main>
     </Page>
   )
+}
+
+Index.getInitialProps = async () => {
+  const response = await getMyWorks()
+  return {
+    works: response.items
+  }
 }
 
 export default Index
