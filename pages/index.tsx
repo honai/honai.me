@@ -5,7 +5,8 @@ import Main from '../components/Main'
 import Hero from '../components/Hero'
 import Section from '../components/Section'
 import Skills from '../components/Skills'
-import Accounts from '../components/Accounts';
+import Accounts from '../components/Accounts'
+import Footer from '../components/Footer'
 
 const Index: NextFC = (): JSX.Element => {
   return (
@@ -24,6 +25,7 @@ const Index: NextFC = (): JSX.Element => {
           <Accounts />
         </Section>
       </Main>
+      <Footer />
     </Page>
   )
 }
