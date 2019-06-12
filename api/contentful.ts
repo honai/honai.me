@@ -1,5 +1,5 @@
 /* eslint-disable @typescript-eslint/camelcase */
-import { createClient, Entry, EntryCollection } from 'contentful'
+import { createClient, Entry, EntryCollection, Asset } from 'contentful'
 
 const contentful = createClient({
   space: process.env.CTF_SPACE_ID,
@@ -31,4 +31,20 @@ export async function getBlogPostBySlug(slug: string): Promise<Post | null> {
   })
   console.log(response)
   return response.total === 1 ? response.items[0] : null
+}
+
+interface WorksFields {
+  title: string
+  hero: Asset
+  url: string
+  description: string
+}
+
+export type WorkEntry = Entry<WorksFields>
+
+export async function getMyWorks(): Promise<EntryCollection<WorksFields>> {
+  const works = await contentful.getEntries<WorksFields>({
+    content_type: 'work'
+  })
+  return works
 }
