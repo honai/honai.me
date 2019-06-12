@@ -29,8 +29,6 @@ const Index: NextPage<InitialProps> = ({ works }: InitialProps): JSX.Element => 
         <Section title="作ったもの">
           <Works worksData={works} />
         </Section>
-        <Section title="オンラインアカウント" />
-        <Section title="作ったもの" />
         <Section title="オンラインアカウント">
           <Accounts />
         </Section>
