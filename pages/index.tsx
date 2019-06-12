@@ -5,6 +5,7 @@ import Main from '../components/Main'
 import Hero from '../components/Hero'
 import Section from '../components/Section'
 import Skills from '../components/Skills'
+import Footer from '../components/Footer'
 
 const Index: NextFC = (): JSX.Element => {
   return (
@@ -21,6 +22,7 @@ const Index: NextFC = (): JSX.Element => {
         <Section title="作ったもの" />
         <Section title="オンラインアカウント" />
       </Main>
+      <Footer />
     </Page>
   )
 }
