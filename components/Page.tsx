@@ -1,6 +1,4 @@
 import Head from 'next/head'
-import { JsxChildren } from '../types'
-import { NextFC } from 'next'
 
 interface Props {
   title?: string

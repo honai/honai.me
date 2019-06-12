@@ -14,7 +14,3 @@ export type NextPage<IP = {}, Q = {}> = NextFC<
   IP,
   NextContext<Q & DefaultQuery>
 >
-
-export interface JsxChildren {
-  children: JSX.Element[] | JSX.Element
-}

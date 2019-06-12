@@ -1,5 +1,3 @@
-import { JsxChildren } from '../types'
-
 const Main = ({ children }: React.Props<{}>): JSX.Element => {
   return (
     <main>
