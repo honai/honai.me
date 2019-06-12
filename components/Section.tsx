@@ -1,11 +1,10 @@
 import { primaryColor } from './theme'
-import { JsxChildren } from '../types'
 
 interface Props {
   title?: string
 }
 
-const Section = ({ title, children }: Props & JsxChildren): JSX.Element => {
+const Section = ({ title, children }: React.Props<{}> & Props): JSX.Element => {
   return (
     <section>
       {title && <h2>{title}</h2>}

@@ -5,7 +5,7 @@ interface SkillProps {
   svg: string
 }
 
-const Skill: React.FC<SkillProps> = ({ title, svg }: SkillProps): JSX.Element => {
+const Skill = ({ title, svg }: SkillProps): JSX.Element => {
   return (
     <li>
       <figure dangerouslySetInnerHTML={{ __html: svg }} />
@@ -22,7 +22,7 @@ const Skill: React.FC<SkillProps> = ({ title, svg }: SkillProps): JSX.Element =>
   )
 }
 
-const Skills: React.FC = (): JSX.Element => {
+const Skills = (): JSX.Element => {
   return (
     <>
       <ul className="reset">

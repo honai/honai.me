@@ -1,4 +1,4 @@
-const Hero: React.FC = (): JSX.Element => {
+const Hero = (): JSX.Element => {
   return (
     <div className="hero">
       <div className="icon">

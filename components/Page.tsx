@@ -1,11 +1,15 @@
 import Head from 'next/head'
 import { JsxChildren } from '../types'
+import { NextFC } from 'next'
 
 interface Props {
   title?: string
 }
 
-const Page = ({ title, children }: Props & JsxChildren): JSX.Element => {
+const Page: React.FC<React.Props<{}>> = ({
+  title,
+  children
+}: React.Props<{}> & Props): JSX.Element => {
   return (
     <>
       <Head>
