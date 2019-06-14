@@ -6,7 +6,7 @@ import Section from '../components/Section'
 import Skills from '../components/Skills'
 import Works from '../components/Works'
 import { getMyWorks, WorkEntry } from '../api/contentful'
-import { NextPage } from 'types'
+import { NextPage } from '../types'
 import Accounts from '../components/Accounts'
 import Footer from '../components/Footer'
 

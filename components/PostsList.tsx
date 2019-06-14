@@ -1,4 +1,4 @@
-import { Post } from 'api/contentful'
+import { Post } from '../api/contentful'
 import PostPreview from './PostPreview'
 
 interface PostListProps {
