@@ -14,6 +14,8 @@ export interface PostFields {
   slug: string
   title: string
   content: string
+  customPublishedAt: string
+  customUpdatedAt: string
 }
 
 export function getBlogPosts(limit: number, skip: number): Promise<EntryCollection<PostFields>> {

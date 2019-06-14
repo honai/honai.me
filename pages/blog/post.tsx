@@ -28,12 +28,13 @@ const PostPage: NextPage<InitialProps, Query> = (
     post = posts.find((post): boolean => post.fields.slug === slug)
   }
   return (
-    <Page>
+    <Page title={post ? post.fields.title : 'NOT FOUND'}>
       <Head>
+        <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet" />
         <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/katex@0.10.1/dist/katex.css" />
       </Head>
       <Header />
-      <Main>{post ? <PostContainer post={post} /> : <div>not found</div>}</Main>
+      {post ? <PostContainer post={post} /> : <Main>NOT FOUND</Main>}
       <Footer />
     </Page>
   )

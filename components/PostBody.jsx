@@ -1,6 +1,7 @@
 import markdownIt from 'markdown-it'
 import mk from 'markdown-it-katex'
 import { primaryColor } from './theme'
+import Main from './Main'
 
 const md = new markdownIt({ html: true })
 
@@ -18,6 +19,7 @@ md.renderer.rules.link_open = function(tokens, idx, options, env, self) {
   } else {
     tokens[idx].attrs[aIndex][1] = '_blank'
   }
+  tokens[idx].attrPush(['rel', 'noopener noreferrer'])
   return defaultRender(tokens, idx, options, env, self)
 }
 
@@ -26,7 +28,7 @@ md.use(mk, { throwOnError: false, errorColor: ' #cc0000' })
 const PostBody = ({ content }) => {
   const contentHtml = md.render(content)
   return (
-    <>
+    <Main>
       <article dangerouslySetInnerHTML={{ __html: contentHtml }} />
       <style jsx>
         {`
@@ -109,7 +111,7 @@ const PostBody = ({ content }) => {
           }
         `}
       </style>
-    </>
+    </Main>
   )
 }
 
