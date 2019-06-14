@@ -3,6 +3,11 @@
   "name": "portfolio",
   "alias": "honai.me",
   "builds": [{ "src": "next.config.js", "use": "@now/next" }],
+  "build": {
+    "env": {
+      "CTF_ACCESSTOKEN": "@contentful-delivery"
+    }
+  },
   "regions": ["hnd1"],
   "routes": [
     {
