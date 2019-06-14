@@ -18,6 +18,7 @@ md.renderer.rules.link_open = function(tokens, idx, options, env, self) {
   } else {
     tokens[idx].attrs[aIndex][1] = '_blank'
   }
+  tokens[idx].attrPush(['rel', 'noopener noreferrer'])
   return defaultRender(tokens, idx, options, env, self)
 }
 
