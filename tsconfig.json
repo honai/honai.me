@@ -2,7 +2,6 @@
   "compilerOptions": {
     "allowJs": true,
     "allowSyntheticDefaultImports": true,
-    "baseUrl": "./",
     "jsx": "preserve",
     "lib": ["dom", "es2017"],
     "module": "esnext",
@@ -10,9 +9,6 @@
     "noEmit": true,
     "noUnusedLocals": true,
     "noUnusedParameters": true,
-    "paths": {
-      "react-redux": ["types/react-redux"]
-    },
     "preserveConstEnums": true,
     "removeComments": false,
     "skipLibCheck": true,
