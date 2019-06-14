@@ -33,7 +33,7 @@ const PostPage: NextPage<InitialProps, Query> = (
         <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/katex@0.10.1/dist/katex.css" />
       </Head>
       <Header />
-      <Main>{post ? <PostContainer post={post} /> : <div>not found</div>}</Main>
+      {post ? <PostContainer post={post} /> : <Main>NOT FOUND</Main>}
       <Footer />
     </Page>
   )
