@@ -1,4 +1,4 @@
-# Portfolio (version 5?)
+# Portfolio
 
 TypeScript, Next.js, Redux, Contentful
 
