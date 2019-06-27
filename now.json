@@ -1,7 +1,6 @@
 {
   "version": 2,
   "name": "portfolio",
-  "alias": "honai.me",
   "builds": [{ "src": "next.config.js", "use": "@now/next" }],
   "build": {
     "env": {
