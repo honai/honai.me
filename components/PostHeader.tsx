@@ -49,7 +49,7 @@ const PostHeader = (props: PostHeaderProps): JSX.Element => (
       .dates {
         color: #777;
         display: flex;
-        justify-content: end;
+        justify-content: flex-end;
         padding: 5px 10px 0;
       }
     `}</style>
