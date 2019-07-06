@@ -1,11 +1,20 @@
 {
   "version": 2,
   "name": "portfolio",
-  "builds": [{ "src": "next.config.js", "use": "@now/next" }],
+  "builds": [
+    { "src": "next.config.js", "use": "@now/next" },
+    { "src": "api/atom.ts", "use": "@now/node" },
+    { "src": "api/rss.ts", "use": "@now/node" }
+  ],
   "build": {
     "env": {
+      "CTF_SPACE_ID": "7q1ibtbymdj9",
       "CTF_ACCESSTOKEN": "@contentful-delivery"
     }
+  },
+  "env": {
+    "CTF_SPACE_ID": "7q1ibtbymdj9",
+    "CTF_ACCESSTOKEN": "@contentful-delivery"
   },
   "regions": ["hnd1"],
   "alias": ["honai.me"],
@@ -13,6 +22,14 @@
     {
       "src": "/blog/post/(?<slug>[\\S]+)$",
       "dest": "/blog/post?slug=$slug"
+    },
+    {
+      "src": "/feed",
+      "dest": "/api/atom.ts"
+    },
+    {
+      "src": "/rss",
+      "dest": "/api/rss.ts"
     },
     {
       "src": "/post/(?<slug>[\\S]+)",

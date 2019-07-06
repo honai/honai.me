@@ -26,6 +26,12 @@ export function getBlogPosts(limit: number, skip: number): Promise<EntryCollecti
   })
 }
 
+export function getAllBlogPosts(): Promise<EntryCollection<PostFields>> {
+  return contentful.getEntries<PostFields>({
+    content_type: 'blogPost'
+  })
+}
+
 export async function getBlogPostBySlug(slug: string): Promise<Post | null> {
   const response = await contentful.getEntries<PostFields>({
     content_type: 'blogPost',

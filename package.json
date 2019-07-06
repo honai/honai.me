@@ -21,6 +21,7 @@
     "@types/styled-jsx": "^2.2.8",
     "@zeit/next-typescript": "^1.1.1",
     "contentful": "^7.6.0",
+    "feed": "^4.0.0",
     "katex": "^0.10.2",
     "markdown-it": "^8.4.2",
     "markdown-it-katex": "https://github.com/TobiasWalle/markdown-it-katex.git",

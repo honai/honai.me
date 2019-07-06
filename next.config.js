@@ -4,7 +4,7 @@ const ForkTsCheckerWebpackPlugin = require('fork-ts-checker-webpack-plugin')
 
 module.exports = withTypescript({
   env: {
-    CTF_SPACE_ID: '7q1ibtbymdj9',
+    CTF_SPACE_ID: process.env.CTF_SPACE_ID,
     CTF_ACCESSTOKEN: process.env.CTF_ACCESSTOKEN
   },
   webpack(config, options) {
