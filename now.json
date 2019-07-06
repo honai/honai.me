@@ -1,7 +1,10 @@
 {
   "version": 2,
   "name": "portfolio",
-  "builds": [{ "src": "next.config.js", "use": "@now/next" }],
+  "builds": [
+    { "src": "next.config.js", "use": "@now/next" },
+    { "src": "api/feed.ts", "use": "@now/node" }
+  ],
   "build": {
     "env": {
       "CTF_ACCESSTOKEN": "@contentful-delivery"
@@ -13,6 +16,10 @@
     {
       "src": "/blog/post/(?<slug>[\\S]+)$",
       "dest": "/blog/post?slug=$slug"
+    },
+    {
+      "src": "/feed",
+      "dest": "/api/feed.ts"
     },
     {
       "src": "/post/(?<slug>[\\S]+)",
