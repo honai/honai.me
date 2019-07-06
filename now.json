@@ -7,10 +7,12 @@
   ],
   "build": {
     "env": {
+      "CTF_SPACE_ID": "7q1ibtbymdj9",
       "CTF_ACCESSTOKEN": "@contentful-delivery"
     }
   },
   "env": {
+    "CTF_SPACE_ID": "7q1ibtbymdj9",
     "CTF_ACCESSTOKEN": "@contentful-delivery"
   },
   "regions": ["hnd1"],
