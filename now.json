@@ -8,6 +8,7 @@
     }
   },
   "regions": ["hnd1"],
+  "alias": ["honai.me"],
   "routes": [
     {
       "src": "/blog/post/(?<slug>[\\S]+)$",
