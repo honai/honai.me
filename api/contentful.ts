@@ -31,7 +31,6 @@ export async function getBlogPostBySlug(slug: string): Promise<Post | null> {
     content_type: 'blogPost',
     'fields.slug': slug
   })
-  console.log(response)
   return response.total === 1 ? response.items[0] : null
 }
 
