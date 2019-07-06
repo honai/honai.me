@@ -3,12 +3,15 @@
   "name": "portfolio",
   "builds": [
     { "src": "next.config.js", "use": "@now/next" },
-    { "src": "api/feed.ts", "use": "@now/node" }
+    { "src": "api/atom.ts", "use": "@now/node" }
   ],
   "build": {
     "env": {
       "CTF_ACCESSTOKEN": "@contentful-delivery"
     }
+  },
+  "env": {
+    "CTF_ACCESSTOKEN": "@contentful-delivery"
   },
   "regions": ["hnd1"],
   "alias": ["honai.me"],
@@ -19,7 +22,11 @@
     },
     {
       "src": "/feed",
-      "dest": "/api/feed.ts"
+      "dest": "/api/atom.ts"
+    },
+    {
+      "src": "/rss",
+      "dest": "/api/rss.ts"
     },
     {
       "src": "/post/(?<slug>[\\S]+)",
