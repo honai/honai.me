@@ -46,7 +46,7 @@ function contentfulItemsToFeedOptions(items: Post[]): FeedItem[] {
 
 function generateFeed(items: Post[]): Feed {
   const itemOptions = contentfulItemsToFeedOptions(items)
-  const feed = newFeed(itemOptions.slice(-1)[0].date)
+  const feed = newFeed(itemOptions[0].date)
   itemOptions.forEach(
     (option): void => {
       feed.addItem(option)
