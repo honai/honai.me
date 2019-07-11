@@ -1,3 +1,4 @@
+import { useInView } from 'react-intersection-observer'
 import Page from '../components/Page'
 import Header from '../components/Header'
 import Main from '../components/Main'
@@ -15,10 +16,13 @@ interface InitialProps {
 }
 
 const Index: NextPage<InitialProps> = ({ works }: InitialProps): JSX.Element => {
+  const [heroWrap, heroInview] = useInView()
   return (
     <Page>
-      <Hero />
-      <Header />
+      <div ref={heroWrap}>
+        <Hero />
+      </div>
+      <Header isToppage isHeroInview={heroInview} />
       <Main>
         <Section title="自己紹介">
           <p>京都大学工学部電気電子工学科3回生。</p>
