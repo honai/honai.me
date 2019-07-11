@@ -36,11 +36,11 @@ const Index: NextPage<InitialProps> = ({ works }: InitialProps): JSX.Element => 
         <Section title="プロフィール">
           <Profile />
         </Section>
-        <Section title="スキル">
-          <Skills />
-        </Section>
         <Section title="作ったもの">
           <Works worksData={works} />
+        </Section>
+        <Section title="スキル">
+          <Skills />
         </Section>
       </Main>
       <Footer />
