@@ -16,12 +16,9 @@ const Section = ({ title, children }: React.Props<{}> & Props): JSX.Element => {
           font-size: 1.5rem;
         }
         h2::before {
-          content: '';
-          display: block;
-          height: 1.5rem;
-          border-radius: 2px;
-          width: 4px;
-          background-color: ${primaryColor};
+          color: ${primaryColor};
+          opacity: 0.75;
+          content: '#';
           margin-right: 10px;
         }
         h2::after {

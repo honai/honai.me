@@ -26,11 +26,12 @@ const Work = (work: WorkEntry): JSX.Element => {
           }
           li {
             display: grid;
-            padding-bottom: 3rem;
+            margin: 1rem 0 3rem;
           }
           .image {
             justify-self: center;
             max-width: 300px;
+            width: 90%;
           }
           .image img {
             border-radius: 10px;

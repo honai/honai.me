@@ -51,7 +51,8 @@ export type WorkEntry = Entry<WorksFields>
 
 export async function getMyWorks(): Promise<EntryCollection<WorksFields>> {
   const works = await contentful.getEntries<WorksFields>({
-    content_type: 'work'
+    content_type: 'work',
+    order: 'sys.createdAt'
   })
   return works
 }
