@@ -8,9 +8,9 @@ import Skills from '../components/Skills'
 import Works from '../components/Works'
 import { getMyWorks, WorkEntry } from '../api/contentful'
 import { NextPage } from '../types'
-import Accounts from '../components/Accounts'
 import Footer from '../components/Footer'
 import { useEffect, useState } from 'react'
+import Profile from '../components/Profile'
 
 interface InitialProps {
   works: WorkEntry[]
@@ -33,17 +33,14 @@ const Index: NextPage<InitialProps> = ({ works }: InitialProps): JSX.Element => 
       </div>
       <Header isToppage isHeroInview={inviewTimeout || heroInview} />
       <Main>
-        <Section title="自己紹介">
-          <p>京都大学工学部電気電子工学科3回生。</p>
+        <Section title="プロフィール">
+          <Profile />
         </Section>
         <Section title="スキル">
           <Skills />
         </Section>
         <Section title="作ったもの">
           <Works worksData={works} />
-        </Section>
-        <Section title="オンラインアカウント">
-          <Accounts />
         </Section>
       </Main>
       <Footer />
