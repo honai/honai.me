@@ -1,4 +1,3 @@
-import { NextFC } from 'next'
 import { useSelector, useDispatch } from 'react-redux'
 import { Post } from '../../api/contentful'
 import { RootState } from '../../store'
@@ -9,7 +8,7 @@ import { fetchPosts } from '../../store/modules/posts'
 import Main from '../../components/Main'
 import PostsList from '../../components/PostsList'
 
-const Index: NextFC = (): JSX.Element => {
+const Index = (): JSX.Element => {
   const posts = useSelector((state: RootState): Post[] => state.posts.posts)
   const dispatch = useDispatch()
   if (posts.length === 0) {
