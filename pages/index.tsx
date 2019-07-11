@@ -10,6 +10,7 @@ import { getMyWorks, WorkEntry } from '../api/contentful'
 import { NextPage } from '../types'
 import Accounts from '../components/Accounts'
 import Footer from '../components/Footer'
+import { useEffect, useState } from 'react'
 
 interface InitialProps {
   works: WorkEntry[]
@@ -17,12 +18,20 @@ interface InitialProps {
 
 const Index: NextPage<InitialProps> = ({ works }: InitialProps): JSX.Element => {
   const [heroWrap, heroInview] = useInView()
+  const [inviewTimeout, setInviewTimeout] = useState(true)
+  useEffect(
+    (): void => {
+      setTimeout((): void => {
+        setInviewTimeout(false)
+      }, 100)
+    }
+  )
   return (
     <Page>
       <div ref={heroWrap}>
         <Hero />
       </div>
-      <Header isToppage isHeroInview={heroInview} />
+      <Header isToppage isHeroInview={inviewTimeout || heroInview} />
       <Main>
         <Section title="自己紹介">
           <p>京都大学工学部電気電子工学科3回生。</p>
