@@ -5,11 +5,11 @@ import { primaryColor } from '../components/theme'
 const NormalTitle = (): JSX.Element => (
   <>
     <Link href="/">
-      <a className="site-title">honai.me</a>
+      <a className="reset">honai.me</a>
     </Link>
     <style jsx>
       {`
-        .site-title {
+        a {
           font-size: 1.2rem;
           color: rgba(255, 255, 255, 0.8);
           padding: 0 10px;
