@@ -26,7 +26,7 @@ interface ToppageTitleProps {
 const ToppageTitle = ({ isHeroInview }: ToppageTitleProps): JSX.Element => (
   <>
     <Link href="/">
-      <a>
+      <a className="reset">
         <img src="/static/profile.png" alt="アイコン" height="100%" />
         <span>Honai Ueoka</span>
       </a>
@@ -57,12 +57,12 @@ const Header = ({ isToppage, isHeroInview }: HeaderProps): JSX.Element => (
       <ul>
         <li>
           <Link href="/">
-            <a>Home</a>
+            <a className="reset">Home</a>
           </Link>
         </li>
         <li>
           <Link href="/blog">
-            <a>Blog</a>
+            <a className="reset">Blog</a>
           </Link>
         </li>
       </ul>
@@ -98,10 +98,6 @@ const Header = ({ isToppage, isHeroInview }: HeaderProps): JSX.Element => (
       nav a {
         display: block;
         padding: calc((36px - 1rem) / 2) 20px;
-      }
-      :global(a) {
-        color: inherit;
-        text-decoration: none;
       }
     `}</style>
   </header>
