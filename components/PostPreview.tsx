@@ -1,7 +1,8 @@
-import Link, { LinkProps } from 'next/link'
+import Link from 'next/link'
 import moment from 'moment'
 import { primaryColor } from './theme'
 import { Post } from '../api/contentful'
+import { PropsWithChildren } from 'react'
 
 moment.locale('ja')
 
@@ -9,7 +10,7 @@ interface PostLinkProps {
   slug: string
 }
 
-const PostLink = ({ children, slug }: LinkProps & PostLinkProps): JSX.Element => (
+const PostLink = ({ children, slug }: PropsWithChildren<PostLinkProps>): JSX.Element => (
   <Link href={`/blog/post?slug=${slug}`} as={`/blog/post/${slug}`}>
     {children}
   </Link>

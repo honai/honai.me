@@ -1,3 +1,4 @@
+import { ServerResponse } from 'http'
 import { withRouter } from 'next/router'
 import { RootState } from '../../store'
 import Head from 'next/head'
@@ -40,7 +41,12 @@ const PostPage: NextPage<InitialProps, Query> = (
   )
 }
 
-PostPage.getInitialProps = async ({ query, res }): Promise<InitialProps> => {
+interface GetInitialPropsParams {
+  query: Query
+  res: ServerResponse
+}
+
+PostPage.getInitialProps = async ({ query, res }: GetInitialPropsParams): Promise<InitialProps> => {
   if (!res) {
     return {}
   }
