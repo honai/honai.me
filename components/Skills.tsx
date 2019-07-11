@@ -9,10 +9,11 @@ const Skill = ({ title, svg }: SkillProps): JSX.Element => {
   return (
     <li>
       <figure dangerouslySetInnerHTML={{ __html: svg }} />
-      <h3>{title}</h3>
+      <div className="title">{title}</div>
       <style jsx>{`
-        h3 {
+        .title {
           text-align: center;
+          font-size: 0.9rem;
         }
         figure {
           margin: 0;
@@ -36,15 +37,11 @@ const Skills = (): JSX.Element => {
         {`
           ul {
             display: grid;
-            grid-template-columns: repeat(auto-fit, 100px);
+            grid-template-columns: repeat(auto-fit, 75px);
             justify-content: space-around;
-            grid-column-gap: 30px;
+            grid-column-gap: 20px;
+            grid-row-gap: 10px;
             padding: 10px;
-          }
-          @media screen and (min-width: 600px) {
-            ul {
-              grid-template-columns: repeat(auto-fit, 120px);
-            }
           }
         `}
       </style>

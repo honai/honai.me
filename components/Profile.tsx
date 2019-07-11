@@ -19,7 +19,7 @@ const HistoryItem: React.FC<HistoryItemProps> = ({
         }
         span {
           display: inline-block;
-          width: 8rem;
+          width: 9rem;
         }
         @media screen and (min-width: 576px) {
           br {
