@@ -22,7 +22,8 @@ export function getBlogPosts(limit: number, skip: number): Promise<EntryCollecti
   return contentful.getEntries<PostFields>({
     content_type: 'blogPost',
     limit: limit,
-    skip: skip
+    skip: skip,
+    order: 'sys.createdAt'
   })
 }
 
