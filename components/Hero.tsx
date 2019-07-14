@@ -6,7 +6,7 @@ const Hero = (): JSX.Element => {
       </div>
       <div className="titles">
         <h1 className="century-gothic">Honai Ueoka</h1>
-        <div className="subtitle century-gothic">Student at Kyoto University.</div>
+        <div className="subtitle century-gothic">Welcome to my portfolio.</div>
       </div>
       <style jsx>{`
         .hero {
