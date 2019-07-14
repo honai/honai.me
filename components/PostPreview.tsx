@@ -21,14 +21,14 @@ interface PreviewProps {
 }
 
 const PostPreview = ({ post }: PreviewProps): JSX.Element => {
-  const { slug, title } = post.fields
+  const { slug, title, customPublishedAt } = post.fields
   const { createdAt } = post.sys
   return (
     <section>
       <PostLink slug={slug}>
         <a>
           <h2>{title}</h2>
-          <div className="date">{moment(createdAt).format('ll')}</div>
+          <div className="date">{moment(customPublishedAt || createdAt).format('ll')}</div>
         </a>
       </PostLink>
       <style jsx>{`
