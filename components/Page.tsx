@@ -12,20 +12,6 @@ const Page: React.FC<React.Props<{}> & Props> = ({
     <>
       <Head>
         <title>{title || 'honai.me'}</title>
-        <script
-          async
-          src={`https://www.googletagmanager.com/gtag/js?id=${process.env.GA_TRACKING_ID}`}
-        />
-        <script
-          dangerouslySetInnerHTML={{
-            __html: `
-                    window.dataLayer = window.dataLayer || [];
-                    function gtag(){dataLayer.push(arguments);}
-                    gtag('js', new Date());
-                    gtag('config', '${process.env.GA_TRACKING_ID}');
-                  `
-          }}
-        />
         <link rel="stylesheet" href="https://use.typekit.net/bdo3rru.css" />
       </Head>
       <style jsx global>
