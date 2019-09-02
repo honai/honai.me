@@ -1,5 +1,5 @@
 import { useSelector, useDispatch } from 'react-redux'
-import { Post } from '../../api/contentful'
+import { Post } from '../../lib/contentful'
 import { RootState } from '../../store'
 import Page from '../../components/Page'
 import Header from '../../components/Header'

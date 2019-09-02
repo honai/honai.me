@@ -1,5 +1,5 @@
 import PostBody from './PostBody'
-import { Post } from '../api/contentful'
+import { Post } from '../lib/contentful'
 import PostHeader from './PostHeader'
 
 const PostContainer = ({ post }: { post: Post }): JSX.Element => {

@@ -1,5 +1,5 @@
 import markdownIt from 'markdown-it'
-import { WorkEntry } from '../api/contentful'
+import { WorkEntry } from '../lib/contentful'
 
 const md = new markdownIt({ breaks: true })
 

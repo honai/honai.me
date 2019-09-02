@@ -1,4 +1,4 @@
-import { Post, getBlogPosts } from '../../api/contentful'
+import { Post, getBlogPosts } from '../../lib/contentful'
 import { ThunkAction } from 'redux-thunk'
 import { RootState } from '../../store'
 import { Action } from 'redux'

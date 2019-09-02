@@ -1,7 +1,7 @@
 import Link from 'next/link'
 import moment from 'moment'
 import { primaryColor } from './theme'
-import { Post } from '../api/contentful'
+import { Post } from '../lib/contentful'
 import { PropsWithChildren } from 'react'
 
 moment.locale('ja')
