@@ -2,9 +2,7 @@
   "version": 2,
   "name": "portfolio",
   "builds": [
-    { "src": "next.config.js", "use": "@now/next" },
-    { "src": "api/atom.ts", "use": "@now/node" },
-    { "src": "api/rss.ts", "use": "@now/node" }
+    { "src": "next.config.js", "use": "@now/next" }
   ],
   "build": {
     "env": {
