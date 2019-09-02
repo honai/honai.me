@@ -19,7 +19,7 @@ const Index = (): JSX.Element => {
       <Header />
       <Main>
         <h1 className="century-gothic">Blog Posts</h1>
-        <PostsList posts={posts.reverse()} />
+        <PostsList posts={posts} />
       </Main>
       <Footer />
       <style jsx>
