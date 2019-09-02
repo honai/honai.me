@@ -11,7 +11,7 @@ interface PostLinkProps {
 }
 
 const PostLink = ({ children, slug }: PropsWithChildren<PostLinkProps>): JSX.Element => (
-  <Link href={`/blog/post?slug=${slug}`} as={`/blog/post/${slug}`}>
+  <Link href={`/blog/post/[slug]`} as={`/blog/post/${slug}`}>
     {children}
   </Link>
 )

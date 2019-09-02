@@ -15,10 +15,6 @@
   "regions": ["hnd1"],
   "routes": [
     {
-      "src": "/blog/post/(?<slug>[\\S]+)$",
-      "dest": "/blog/post?slug=$slug"
-    },
-    {
       "src": "/feed",
       "dest": "/api/atom.ts"
     },
