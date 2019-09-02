@@ -25,11 +25,11 @@
     },
     {
       "src": "/feed",
-      "dest": "/api/atom.ts"
+      "dest": "/api/atom"
     },
     {
       "src": "/rss",
-      "dest": "/api/rss.ts"
+      "dest": "/api/rss"
     },
     {
       "src": "/post/(?<slug>[\\S]+)",
