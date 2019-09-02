@@ -1,8 +1,8 @@
 import { createStore as reduxCreateStore, combineReducers, Store, applyMiddleware } from 'redux'
 import { composeWithDevTools } from 'redux-devtools-extension'
 import thunk from 'redux-thunk'
-import counter, { CounterState } from './modules/counter'
-import posts, { PostsState } from './modules/posts'
+import counter, { CounterState } from 'src/store/modules/counter'
+import posts, { PostsState } from 'src/store/modules/posts'
 
 const rootReducer = combineReducers({ counter, posts })
 

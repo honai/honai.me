@@ -2,7 +2,7 @@
 import { Feed } from 'feed'
 import markdownIt from 'markdown-it'
 import { Item as FeedItem } from 'feed/lib/typings'
-import { Post } from './contentful'
+import { Post } from 'src/lib/contentful'
 
 const md = new markdownIt({ html: true })
 
@@ -27,13 +27,11 @@ function newFeed(date: Date): Feed {
 }
 
 function contentfulItemsToFeedOptions(items: Post[]): FeedItem[] {
-  const sortedItems = items.sort(
-    (a, b): number => {
-      const dateA = Date.parse(a.fields.customPublishedAt || a.sys.createdAt)
-      const dateB = Date.parse(b.fields.customPublishedAt || b.sys.createdAt)
-      return dateB - dateA
-    }
-  )
+  const sortedItems = items.sort((a, b): number => {
+    const dateA = Date.parse(a.fields.customPublishedAt || a.sys.createdAt)
+    const dateB = Date.parse(b.fields.customPublishedAt || b.sys.createdAt)
+    return dateB - dateA
+  })
   return sortedItems.map(
     (item): FeedItem => ({
       title: item.fields.title,
@@ -47,11 +45,9 @@ function contentfulItemsToFeedOptions(items: Post[]): FeedItem[] {
 function generateFeed(items: Post[]): Feed {
   const itemOptions = contentfulItemsToFeedOptions(items)
   const feed = newFeed(itemOptions[0].date)
-  itemOptions.forEach(
-    (option): void => {
-      feed.addItem(option)
-    }
-  )
+  itemOptions.forEach((option): void => {
+    feed.addItem(option)
+  })
   return feed
 }
 

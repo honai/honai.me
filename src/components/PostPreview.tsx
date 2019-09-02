@@ -1,7 +1,7 @@
 import Link from 'next/link'
 import moment from 'moment'
-import { primaryColor } from './theme'
-import { Post } from '../api/contentful'
+import { primaryColor } from 'src/components/theme'
+import { Post } from 'src/lib/contentful'
 import { PropsWithChildren } from 'react'
 
 moment.locale('ja')
@@ -11,7 +11,7 @@ interface PostLinkProps {
 }
 
 const PostLink = ({ children, slug }: PropsWithChildren<PostLinkProps>): JSX.Element => (
-  <Link href={`/blog/post?slug=${slug}`} as={`/blog/post/${slug}`}>
+  <Link href={`/blog/post/[slug]`} as={`/blog/post/${slug}`}>
     {children}
   </Link>
 )

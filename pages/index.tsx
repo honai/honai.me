@@ -1,16 +1,16 @@
 import { useInView } from 'react-intersection-observer'
-import Page from '../components/Page'
-import Header from '../components/Header'
-import Main from '../components/Main'
-import Hero from '../components/Hero'
-import Section from '../components/Section'
-import Skills from '../components/Skills'
-import Works from '../components/Works'
-import { getMyWorks, WorkEntry } from '../api/contentful'
-import { NextPage } from '../types'
-import Footer from '../components/Footer'
+import Page from 'src/components/Page'
+import Header from 'src/components/Header'
+import Main from 'src/components/Main'
+import Hero from 'src/components/Hero'
+import Section from 'src/components/Section'
+import Skills from 'src/components/Skills'
+import Works from 'src/components/Works'
+import { getMyWorks, WorkEntry } from 'src/lib/contentful'
+import { NextPage } from 'src/types'
+import Footer from 'src/components/Footer'
 import { useEffect, useState } from 'react'
-import Profile from '../components/Profile'
+import Profile from 'src/components/Profile'
 
 interface InitialProps {
   works: WorkEntry[]
@@ -19,13 +19,11 @@ interface InitialProps {
 const Index: NextPage<InitialProps> = ({ works }: InitialProps): JSX.Element => {
   const [heroWrap, heroInview] = useInView()
   const [inviewTimeout, setInviewTimeout] = useState(true)
-  useEffect(
-    (): void => {
-      setTimeout((): void => {
-        setInviewTimeout(false)
-      }, 100)
-    }
-  )
+  useEffect((): void => {
+    setTimeout((): void => {
+      setInviewTimeout(false)
+    }, 100)
+  })
   return (
     <Page>
       <div ref={heroWrap}>

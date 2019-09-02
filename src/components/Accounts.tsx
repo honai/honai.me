@@ -1,4 +1,4 @@
-import accountsData, { AccountType } from '../resources/accounts'
+import accountsData, { AccountType } from 'src/resources/accounts'
 
 const Account = (account: AccountType): JSX.Element => (
   <a href={account.url} target="_blank" className="reset" rel="noopener noreferrer">

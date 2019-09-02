@@ -1,6 +1,6 @@
 import Link from 'next/link'
 
-import { primaryColor } from '../components/theme'
+import { primaryColor } from 'src/components/theme'
 
 const NormalTitle = (): JSX.Element => (
   <>

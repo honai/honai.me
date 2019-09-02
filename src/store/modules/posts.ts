@@ -1,6 +1,6 @@
-import { Post, getBlogPosts } from '../../api/contentful'
+import { Post, getBlogPosts } from 'src/lib/contentful'
 import { ThunkAction } from 'redux-thunk'
-import { RootState } from '../../store'
+import { RootState } from '..'
 import { Action } from 'redux'
 
 export interface PostsState {
@@ -36,11 +36,9 @@ export function fetchPosts(): ThunkAction<void, RootState, undefined, Action> {
     if (state.isAllFetched) {
       return
     }
-    getBlogPosts(FETCH_LIMIT, state.posts.length).then(
-      (response): void => {
-        dispatch(addPosts(response.items))
-      }
-    )
+    getBlogPosts(FETCH_LIMIT, state.posts.length).then((response): void => {
+      dispatch(addPosts(response.items))
+    })
   }
 }
 

@@ -1,4 +1,4 @@
-import { primaryColor } from './theme'
+import { primaryColor } from 'src/components/theme'
 
 interface Props {
   title?: string

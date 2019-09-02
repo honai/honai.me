@@ -1,15 +1,15 @@
 import { ServerResponse } from 'http'
 import { withRouter } from 'next/router'
-import { RootState } from '../../store'
+import { RootState } from 'src/store'
 import Head from 'next/head'
 import { useSelector } from 'react-redux'
-import { Post, getBlogPostBySlug } from '../../api/contentful'
-import { NextPageProps, NextPage } from '../../types'
-import Page from '../../components/Page'
-import Header from '../../components/Header'
-import Footer from '../../components/Footer'
-import Main from '../../components/Main'
-import PostContainer from '../../components/PostContainer'
+import { Post, getBlogPostBySlug } from 'src/lib/contentful'
+import { NextPageProps, NextPage } from 'src/types'
+import Page from 'src/components/Page'
+import Header from 'src/components/Header'
+import Footer from 'src/components/Footer'
+import Main from 'src/components/Main'
+import PostContainer from 'src/components/PostContainer'
 
 interface Query {
   slug: string

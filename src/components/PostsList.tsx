@@ -1,5 +1,5 @@
-import { Post } from '../api/contentful'
-import PostPreview from './PostPreview'
+import { Post } from 'src/lib/contentful'
+import PostPreview from 'src/components/PostPreview'
 
 interface PostListProps {
   posts: Post[]
