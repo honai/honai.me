@@ -19,13 +19,11 @@ interface InitialProps {
 const Index: NextPage<InitialProps> = ({ works }: InitialProps): JSX.Element => {
   const [heroWrap, heroInview] = useInView()
   const [inviewTimeout, setInviewTimeout] = useState(true)
-  useEffect(
-    (): void => {
-      setTimeout((): void => {
-        setInviewTimeout(false)
-      }, 100)
-    }
-  )
+  useEffect((): void => {
+    setTimeout((): void => {
+      setInviewTimeout(false)
+    }, 100)
+  })
   return (
     <Page>
       <div ref={heroWrap}>

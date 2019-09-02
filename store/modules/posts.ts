@@ -36,11 +36,9 @@ export function fetchPosts(): ThunkAction<void, RootState, undefined, Action> {
     if (state.isAllFetched) {
       return
     }
-    getBlogPosts(FETCH_LIMIT, state.posts.length).then(
-      (response): void => {
-        dispatch(addPosts(response.items))
-      }
-    )
+    getBlogPosts(FETCH_LIMIT, state.posts.length).then((response): void => {
+      dispatch(addPosts(response.items))
+    })
   }
 }
 
