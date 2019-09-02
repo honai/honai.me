@@ -2,7 +2,7 @@
 import { Feed } from 'feed'
 import markdownIt from 'markdown-it'
 import { Item as FeedItem } from 'feed/lib/typings'
-import { Post } from './contentful'
+import { Post } from 'src/lib/contentful'
 
 const md = new markdownIt({ html: true })
 

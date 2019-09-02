@@ -1,6 +1,6 @@
 import { ServerResponse, ClientRequest } from 'http'
-import generateFeed from '../../lib/feeder'
-import { getAllBlogPosts } from '../../lib/contentful'
+import generateFeed from 'src/lib/feeder'
+import { getAllBlogPosts } from 'src/lib/contentful'
 
 export default (_req: ClientRequest, res: ServerResponse): void => {
   getAllBlogPosts().then((ctfRes): void => {

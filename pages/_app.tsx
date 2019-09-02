@@ -4,7 +4,7 @@ import Router from 'next/router'
 import { Provider } from 'react-redux'
 import { Store } from 'redux'
 import withRedux from 'next-redux-wrapper'
-import createStore from '../store'
+import createStore from 'src/store'
 
 interface MyAppProps {
   store: Store

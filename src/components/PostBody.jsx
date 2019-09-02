@@ -1,7 +1,7 @@
 import markdownIt from 'markdown-it'
 import mk from 'markdown-it-katex'
-import { primaryColor } from './theme'
-import Main from './Main'
+import { primaryColor } from 'src/components/theme'
+import Main from 'src/components/Main'
 
 const md = new markdownIt({ html: true })
 

@@ -1,4 +1,4 @@
-import Accounts from './Accounts'
+import Accounts from 'src/components/Accounts'
 import { PropsWithChildren } from 'react'
 
 interface HistoryItemProps {

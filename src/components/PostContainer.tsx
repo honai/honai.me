@@ -1,6 +1,6 @@
-import PostBody from './PostBody'
-import { Post } from '../lib/contentful'
-import PostHeader from './PostHeader'
+import PostBody from 'src/components/PostBody'
+import { Post } from 'src/lib/contentful'
+import PostHeader from 'src/components/PostHeader'
 
 const PostContainer = ({ post }: { post: Post }): JSX.Element => {
   const headerProps = {

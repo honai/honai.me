@@ -1,4 +1,4 @@
-import { Time } from '../atoms/Time'
+import { Time } from 'src/atoms/Time'
 
 interface PostHeaderProps {
   title: string

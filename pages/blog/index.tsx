@@ -1,12 +1,12 @@
 import { useSelector, useDispatch } from 'react-redux'
-import { Post } from '../../lib/contentful'
-import { RootState } from '../../store'
-import Page from '../../components/Page'
-import Header from '../../components/Header'
-import Footer from '../../components/Footer'
-import { fetchPosts } from '../../store/modules/posts'
-import Main from '../../components/Main'
-import PostsList from '../../components/PostsList'
+import { Post } from 'src/lib/contentful'
+import { RootState } from 'src/store'
+import Page from 'src/components/Page'
+import Header from 'src/components/Header'
+import Footer from 'src/components/Footer'
+import { fetchPosts } from 'src/store/modules/posts'
+import Main from 'src/components/Main'
+import PostsList from 'src/components/PostsList'
 
 const Index = (): JSX.Element => {
   const posts = useSelector((state: RootState): Post[] => state.posts.posts)

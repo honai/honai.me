@@ -1,4 +1,4 @@
-import skillData from '../resources/skills'
+import skillData from 'src/resources/skills'
 
 interface SkillProps {
   title: string
