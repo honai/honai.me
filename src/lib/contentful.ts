@@ -16,6 +16,7 @@ export interface PostFields {
   content: string
   customPublishedAt: string
   customUpdatedAt: string
+  ogpImage: Asset
 }
 
 export function getBlogPosts(limit: number, skip: number): Promise<EntryCollection<PostFields>> {
