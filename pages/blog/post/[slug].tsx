@@ -1,3 +1,4 @@
+/* eslint-disable @typescript-eslint/no-non-null-assertion */
 import { ServerResponse } from 'http'
 import { withRouter } from 'next/router'
 import { RootState } from 'src/store'
@@ -10,6 +11,7 @@ import Header from 'src/components/Header'
 import Footer from 'src/components/Footer'
 import Main from 'src/components/Main'
 import PostContainer from 'src/components/PostContainer'
+import { TwitterCardTags, OgTags } from 'src/components/Head'
 
 interface Query {
   slug: string
@@ -29,6 +31,12 @@ const PostPage: NextPage<InitialProps, Query> = (
     post = posts.find((post): boolean => post.fields.slug === slug)
   }
 
+  const ogp = {
+    url: `https://honai.me/${props.router.asPath}`,
+    title: post!.fields.title,
+    image: post!.fields.ogpImage ? post!.fields.ogpImage.fields.file.url : ''
+  }
+
   return (
     <Page title={post ? post.fields.title : 'NOT FOUND'}>
       <Head>
@@ -36,6 +44,8 @@ const PostPage: NextPage<InitialProps, Query> = (
         <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/katex@0.10.1/dist/katex.css" />
         <script async src="https://platform.twitter.com/widgets.js" charSet="utf-8"></script>
       </Head>
+      <OgTags {...ogp} />
+      <TwitterCardTags {...ogp} largeCard={!!ogp.image} />
       <Header />
       {post ? <PostContainer post={post} /> : <Main>NOT FOUND</Main>}
       <Footer />
@@ -58,6 +68,11 @@ PostPage.getInitialProps = async ({ query, res }: GetInitialPropsParams): Promis
     return {}
   }
   const post = await getBlogPostBySlug(query.slug)
+  if (!post) {
+    res.statusCode = 404
+    res.end('404 not found')
+    return {}
+  }
   return { post: post || undefined }
 }
 
