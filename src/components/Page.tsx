@@ -23,7 +23,7 @@ const Page: React.FC<React.Props<{}> & Props> = ({
           }
           html {
             font-family: sans-serif;
-            line-height: 1.75;
+            line-height: 2;
             -webkit-text-size-adjust: 100%;
           }
           body {

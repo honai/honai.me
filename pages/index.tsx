@@ -11,6 +11,7 @@ import { NextPage } from 'src/types'
 import Footer from 'src/components/Footer'
 import { useEffect, useState } from 'react'
 import Profile from 'src/components/Profile'
+import { OgTags, TwitterCardTags } from 'src/components/Head'
 
 interface InitialProps {
   works: WorkEntry[]
@@ -19,6 +20,12 @@ interface InitialProps {
 const Index: NextPage<InitialProps> = ({ works }: InitialProps): JSX.Element => {
   const [heroWrap, heroInview] = useInView()
   const [inviewTimeout, setInviewTimeout] = useState(true)
+  const ogp = {
+    url: 'https://honai.me',
+    title: 'honai.me',
+    description: "Honai Ueoka's portfolio site.",
+    image: 'https://honai.me/static/profile.png'
+  }
   useEffect((): void => {
     setTimeout((): void => {
       setInviewTimeout(false)
@@ -26,6 +33,8 @@ const Index: NextPage<InitialProps> = ({ works }: InitialProps): JSX.Element => 
   })
   return (
     <Page>
+      <OgTags {...ogp} />
+      <TwitterCardTags {...ogp} />
       <div ref={heroWrap}>
         <Hero />
       </div>

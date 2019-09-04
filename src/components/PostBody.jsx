@@ -35,6 +35,11 @@ const PostBody = ({ content }) => {
           article {
             padding: 0 10px;
           }
+          @media screen and (min-width: 992px) {
+            article {
+              font-size: 18px;
+            }
+          }
           article :global(*) {
             max-width: 100%;
           }
@@ -42,14 +47,13 @@ const PostBody = ({ content }) => {
             border-bottom: 1px solid rgba(0, 0, 0, 0.2);
           }
           article :global(h2) {
-            line-height: 1;
+            line-height: 1.5;
             display: flex;
             align-items: center;
             margin: 2rem 0 1.5rem;
           }
           article :global(h2::before) {
             content: '';
-            display: inline-block;
             background-color: ${primaryColor};
             height: 25px;
             width: 5px;
@@ -58,7 +62,6 @@ const PostBody = ({ content }) => {
           }
           article :global(h2::after) {
             content: '';
-            display: inline-block;
             border-bottom: 1px dashed;
             border-color: rgba(0, 0, 0, 0.2);
             flex: 1 1 auto;
