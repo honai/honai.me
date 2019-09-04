@@ -28,11 +28,13 @@ const PostPage: NextPage<InitialProps, Query> = (
   } else if (slug) {
     post = posts.find((post): boolean => post.fields.slug === slug)
   }
+
   return (
     <Page title={post ? post.fields.title : 'NOT FOUND'}>
       <Head>
         <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet" />
         <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/katex@0.10.1/dist/katex.css" />
+        <script async src="https://platform.twitter.com/widgets.js" charSet="utf-8"></script>
       </Head>
       <Header />
       {post ? <PostContainer post={post} /> : <Main>NOT FOUND</Main>}
