@@ -34,7 +34,7 @@ const PostPage: NextPage<InitialProps, Query> = (
   const ogp = {
     url: `https://honai.me/${props.router.asPath}`,
     title: post!.fields.title,
-    image: post!.fields.ogpImage ? post!.fields.ogpImage.fields.file.url : ''
+    image: post!.fields.ogpImageUrl || 'https://honai.me/static/profile.png'
   }
 
   return (
@@ -45,7 +45,7 @@ const PostPage: NextPage<InitialProps, Query> = (
         <script async src="https://platform.twitter.com/widgets.js" charSet="utf-8"></script>
       </Head>
       <OgTags {...ogp} />
-      <TwitterCardTags {...ogp} largeCard={!!ogp.image} />
+      <TwitterCardTags {...ogp} largeCard={!!post!.fields.ogpImageUrl} />
       <Header />
       {post ? <PostContainer post={post} /> : <Main>NOT FOUND</Main>}
       <Footer />
