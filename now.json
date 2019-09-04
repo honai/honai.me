@@ -6,7 +6,8 @@
   ],
   "build": {
     "env": {
-      "CTF_ACCESSTOKEN": "@contentful-delivery"
+      "CTF_ACCESSTOKEN": "@contentful-delivery",
+      "CTF_HOST": "cdn.contentful.com"
     }
   },
   "env": {

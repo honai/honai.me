@@ -3,6 +3,7 @@ declare namespace NodeJS {
     readonly NODE_ENV: 'development' | 'production' | 'test'
     readonly CTF_SPACE_ID: string
     readonly CTF_ACCESSTOKEN: string
+    readonly CTF_HOST: string
     readonly FB_ID: string
   }
 }
