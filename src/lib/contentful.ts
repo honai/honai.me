@@ -3,7 +3,8 @@ import { createClient, Entry, EntryCollection, Asset } from 'contentful'
 
 const contentful = createClient({
   space: process.env.CTF_SPACE_ID,
-  accessToken: process.env.CTF_ACCESSTOKEN
+  accessToken: process.env.CTF_ACCESSTOKEN,
+  host: process.env.CTF_HOST
 })
 
 export default contentful

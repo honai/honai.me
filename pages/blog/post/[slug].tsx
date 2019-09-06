@@ -1,5 +1,6 @@
 /* eslint-disable @typescript-eslint/no-non-null-assertion */
 import { ServerResponse } from 'http'
+import { useEffect } from 'react'
 import { withRouter } from 'next/router'
 import { RootState } from 'src/store'
 import Head from 'next/head'
@@ -12,6 +13,16 @@ import Footer from 'src/components/Footer'
 import Main from 'src/components/Main'
 import PostContainer from 'src/components/PostContainer'
 import { TwitterCardTags, OgTags } from 'src/components/Head'
+
+interface Window {
+  twttr: {
+    widgets: {
+      load(): void
+    }
+  }
+}
+
+declare var window: Window
 
 interface Query {
   slug: string
@@ -36,6 +47,12 @@ const PostPage: NextPage<InitialProps, Query> = (
     title: post!.fields.title,
     image: post!.fields.ogpImageUrl || 'https://honai.me/static/profile.png'
   }
+
+  useEffect((): void => {
+    if (window.twttr) {
+      window.twttr.widgets.load()
+    }
+  }, [slug])
 
   return (
     <Page title={post ? post.fields.title : 'NOT FOUND'}>
@@ -73,7 +90,7 @@ PostPage.getInitialProps = async ({ query, res }: GetInitialPropsParams): Promis
     res.end('404 not found')
     return {}
   }
-  return { post: post || undefined }
+  return { post: post }
 }
 
 export default withRouter(PostPage)
