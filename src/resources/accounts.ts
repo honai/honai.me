@@ -17,7 +17,7 @@ export interface AccountType {
 const accounts: AccountType[] = [
   {
     serviceName: 'Twitter',
-    url: 'https://twitter.com/honai_uk',
+    url: 'https://twitter.com/_honai',
     userName: '@_honai',
     svg: twitterLogo
   },
