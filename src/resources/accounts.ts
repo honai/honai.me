@@ -18,7 +18,7 @@ const accounts: AccountType[] = [
   {
     serviceName: 'Twitter',
     url: 'https://twitter.com/honai_uk',
-    userName: '@honai_uk',
+    userName: '@_honai',
     svg: twitterLogo
   },
   {
