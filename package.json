@@ -1,0 +1,12 @@
+{
+  "name": "portfolio",
+  "version": "1.0.0",
+  "main": "index.js",
+  "repository": "git@github.com:honai/portfolio.git",
+  "author": "honai",
+  "license": "UNLICENSED",
+  "private": true,
+  "devDependencies": {
+    "@static/charge": "^1.5.0"
+  }
+}
