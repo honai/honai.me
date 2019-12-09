@@ -6,6 +6,10 @@
   "author": "honai",
   "license": "UNLICENSED",
   "private": true,
+  "scripts": {
+    "start": "charge serve src",
+    "build": "charge build src dist"
+  },
   "devDependencies": {
     "@static/charge": "^1.5.0"
   }
