@@ -1,0 +1,32 @@
+{
+  "version": 2,
+  "name": "portfolio",
+  "builds": [
+    { "src": "next.config.js", "use": "@now/next" }
+  ],
+  "build": {
+    "env": {
+      "CTF_ACCESSTOKEN": "@contentful-delivery",
+      "CTF_HOST": "cdn.contentful.com"
+    }
+  },
+  "env": {
+    "CTF_ACCESSTOKEN": "@contentful-delivery"
+  },
+  "regions": ["hnd1"],
+  "routes": [
+    {
+      "src": "/feed",
+      "dest": "/api/atom"
+    },
+    {
+      "src": "/rss",
+      "dest": "/api/rss"
+    },
+    {
+      "src": "/post/(?<slug>[\\S]+)",
+      "status": 301,
+      "headers": { "Location": "https://honai.me/blog/post/$slug" }
+    }
+  ]
+}
