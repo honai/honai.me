@@ -7,11 +7,15 @@
   "license": "UNLICENSED",
   "private": true,
   "scripts": {
-    "start": "charge serve src",
-    "build": "charge build src dist"
+    "start": "charge serve source",
+    "build": "charge build source target"
   },
   "devDependencies": {
     "@static/charge": "^1.5.0",
     "prettier": "^1.19.1"
+  },
+  "dependencies": {
+    "@emotion/core": "^10.0.22",
+    "@emotion/styled": "^10.0.23"
   }
 }
