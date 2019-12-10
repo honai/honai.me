@@ -8,7 +8,7 @@
   "private": true,
   "scripts": {
     "start": "charge serve source",
-    "build": "charge build source target"
+    "build": "charge build source public"
   },
   "devDependencies": {
     "@static/charge": "^1.5.0",
