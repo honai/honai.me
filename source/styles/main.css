@@ -1,0 +1,17 @@
+@import './reset.css';
+.century-gothic {
+  font-family: 'Menlo', 'Monaco', 'Consolas', monospace;
+  font-weight: 400;
+}
+:root {
+  --primary-color: #02545a;
+}
+body {
+  color: #333;
+}
+main {
+  width: 100%;
+  max-width: 960px;
+  margin: 0 auto;
+  padding: 10px;
+}
