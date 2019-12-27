@@ -3,6 +3,6 @@
     { "source": "/blog/(.*)", "destination": "https://blog.honai.me/$1" },
     { "source": "/blog", "destination": "https://blog.honai.me" },
     { "source": "/rss", "destination": "https://blog.honai.me/rss.xml" },
-    { "source": "/(.*)", "destination": "/", "statusCode": 307 }
+    { "source": "/(.+)", "destination": "/", "statusCode": 307 }
   ]
 }
