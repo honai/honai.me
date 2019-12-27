@@ -1,0 +1,147 @@
+-
+  var meta = {
+    siteUrl: 'https://honai.me',
+    title: "Honai's Portfolio",
+    description: "Honai Ueoka's portfolio website",
+    ogpImageUrl: 'https://honai.me/i.png'
+  }
+  var history = [
+    { period: '2017.4', text: '京都大学入学' },
+    { period: '2017.5 - 2018.12', text: '京都大学11月祭事務局' },
+    { period: '2019.3', text: '' },
+    { period: '2019.8', text: '' },
+    { period: '2019.4 - 現在', text: 'CAMPHOR- 運営' }
+  ]
+
+doctype html
+html(lang='ja')
+  head
+    meta(charset='UTF-8')
+    meta(name='viewport' content='width=device-width, initial-scale=1.0')
+    title= meta.title
+    <link rel="icon" href="/favicon.ico" />
+
+    meta(property='og:url')
+    meta(name='description' content=meta.description)
+    meta(property='og:url' content=meta.siteUrl)
+    meta(property='og:title' content=meta.title)
+    meta(property='og:description' content=meta.description)
+    meta(property='og:image' content=meta.ogpImageUrl)
+    meta(property='fb:app_id' content='1144529745735811')
+    meta(property='og:locale' content='ja_JP')
+    meta(name='twitter:card' content='summary')
+    meta(name='twitter:title' content=meta.sieUrl)
+    meta(name='twitter:description' content=meta.description)
+    meta(name='twitter:image' content=meta.ogpImageUrl)
+    meta(name='twitter:image:alt' content='profile icon')
+
+    link(rel='stylesheet' href='https://use.typekit.net/bdo3rru.css')
+    link(rel='stylesheet' href='./styles/critical.scss')
+    link(rel='stylesheet' href='./styles/other.scss')
+
+  body
+    header.site-header
+      .icon
+        img.img(src='./i.png' alt='profile icon')
+      .titles
+        h1.title Honai Ueoka
+        p.subtitle Welcome to my portfolio.
+
+    main
+      section
+        h2.heading-first Profile
+        p 京都大学工学部3回生。Webエンジニア志望。大学では電気の勉強をしています。
+        h3.heading-second 経歴
+
+        mixin history(period)
+          li.history-item
+            span.period= period
+            span.description
+              block
+
+        ol.history-list
+          +history('2017.4')
+            | 京都大学に入学
+          +history('2017.5 - 2018.12')
+            | 京都大学11月祭事務局
+          +history('2019.3')
+            | CyberAgent Web Frontend Challenge 参加
+          +history('2019.8')
+            | OPENREC Webフロントチームでの就業型インターン
+          +history('2019.4 - 現在')
+            | CAMPHOR- 運営メンバー
+
+        h3.heading-second オンラインアカウント
+          ul.sns-list
+            li.item
+              a(href='https://github.com/honai')
+                include:svgo svg/github.svg
+            li.item
+              a(href='https://twitter.com/_honai')
+                include:svgo svg/twitter.svg
+
+      section
+        h2.heading-first Works
+
+        mixin work(title, url, image)
+          li.project-item
+            a.image(href=url)
+              img(src=`images/${image}` alt=`screenshot of ${title}`)
+            a.title(href=url)
+              h3= title
+            .description
+              block
+
+        ul.project-list
+          +work('ExcElm', 'https://excelm.now.sh', 'excelm.png')
+            p CSVを手軽に編集できるスプレッドシートアプリです。Elmで書きました。
+              br
+              br
+              a(href='https://qiita.com/honai/items/061b024839f1d174436e') ElmでミニExcelを作ろう - Qiita
+              | &ensp;
+              a(href='https://github.com/honai/exelm') GitHub
+
+          +work('VS Code Shortcuts Wallpaper',
+            'https://honai.github.io/vscode-shortcuts-wallpaper',
+            'vscode-shortcut.png')
+            p Visual Studio Codeのショートカットキー一覧をHTML/CSSでつくりました。
+              br
+              br
+              a(href='https://github.com/honai/vscode-shortcuts/wallpaper') GitHub
+
+          +work('GridPics', 'https://honai.github.io/wfc-photo', 'gridpics.jpg')
+            p サイバーエージェントの短期インターン「Web Frontend Challenge」の課題として。Reactを使用。
+              br
+              br
+              a(href='https://github.com/honai/wfc-photo') GitHub
+
+      section
+        h2.heading-first Skills
+
+        mixin skill(title)
+          li.skill-item
+            block
+            h3= title
+
+
+        ul.skill-list
+          +skill('HTML')
+            include:svgo svg/html.svg
+          +skill('CSS')
+            include:svgo svg/css.svg
+          +skill('JavaScript')
+            include:svgo svg/javascript.svg
+          +skill('TypeScript')
+            include:svgo svg/typescript.svg
+          +skill('React')
+            include:svgo svg/react.svg
+          +skill('Elm')
+            include:svgo svg/elm.svg
+          +skill('PHP')
+            include:svgo svg/php.svg
+          +skill('MySql')
+            include:svgo svg/mysql.svg
+          +skill('Git')
+            include:svgo svg/git.svg
+
+    footer.site-footer &copy; 2020 Honai Ueoka
