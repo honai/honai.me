@@ -1,0 +1,7 @@
+{
+  "redirects": [
+    { "source": "/blog/(.*)", "destination": "https://blog.honai.me/$1" },
+    { "source": "/blog", "destination": "https://blog.honai.me" },
+    { "source": "/rss", "destination": "https://blog.honai.me/rss.xml" }
+  ]
+}
