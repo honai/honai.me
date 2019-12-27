@@ -1,0 +1,45 @@
+.site-header {
+  align-items: center;
+  background-color: $primary-color;
+  color: #fff;
+  display: flex;
+  flex-flow: row nowrap;
+  justify-content: center;
+  padding: 10px;
+  text-align: center;
+
+  & > .icon {
+    flex: 0 1 80px;
+  }
+  & > .icon > .img {
+    border-radius: 50%;
+  }
+
+  & > .titles {
+    line-height: 2;
+    padding-left: 20px;
+    white-space: nowrap;
+  }
+  
+  & > .titles > .title {
+    @extend %century-gothic;
+    border-bottom: 1px solid rgba(255, 255, 255, 0.5);
+    font-size: 2rem;
+    margin: 0 0 0.5rem;
+  }
+
+  & > .titles > .subtitle {
+    @extend %century-gothic;
+    margin: 0 0 0.5rem;
+  }
+
+  @media screen and (min-width: $bp-s) {
+    & > .titles > .title {
+      font-size: 2.5rem;
+    }
+
+    & > .icon {
+      flex: 0 1 90px;
+    }
+  }
+}

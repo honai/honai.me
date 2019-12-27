@@ -1,0 +1,23 @@
+.skill-list {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, 96px);
+  justify-content: space-around;
+  grid-column-gap: 20px;
+  grid-row-gap: 10px;
+}
+
+.skill-item {
+  display: flex;
+  flex-flow: column nowrap;
+  align-items: center;
+
+  > svg {
+    width: 60px;
+    height: 60px;
+  }
+
+  > .title {
+    text-align: center;
+    margin: 5px;
+  }
+}
