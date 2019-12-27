@@ -7,7 +7,7 @@
   "license": "UNLICENSED",
   "private": true,
   "scripts": {
-    "build": "parcel build src/index.pug --no-source-maps",
+    "build": "parcel build src/index.pug src/favicon.ico src/i.png --out-dir public --no-source-maps",
     "dev": "parcel src/index.pug"
   },
   "devDependencies": {
