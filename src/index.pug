@@ -3,7 +3,7 @@
     siteUrl: 'https://honai.me',
     title: "Honai's Portfolio",
     description: "Honai Ueoka's portfolio website",
-    ogpImageUrl: 'https://honai.me/images/profile.png'
+    ogpImageUrl: 'https://honai.me/i.png'
   }
   var history = [
     { period: '2017.4', text: '京都大学入学' },
@@ -18,8 +18,9 @@ html(lang='ja')
   head
     meta(charset='UTF-8')
     meta(name='viewport' content='width=device-width, initial-scale=1.0')
-    title
-      = meta.title
+    title= meta.title
+    <link rel="icon" href="/favicon.ico" />
+
     meta(property='og:url')
     meta(name='description' content=meta.description)
     meta(property='og:url' content=meta.siteUrl)
@@ -41,7 +42,7 @@ html(lang='ja')
   body
     header.site-header
       .icon
-        img.img(src='/images/profile.png' alt='profile icon')
+        img.img(src='./i.png' alt='profile icon')
       .titles
         h1.title Honai Ueoka
         p.subtitle Welcome to my portfolio.
