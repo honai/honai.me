@@ -5,13 +5,6 @@
     description: "Honai Ueoka's portfolio website",
     ogpImageUrl: 'https://honai.me/i.png'
   }
-  var history = [
-    { period: '2017.4', text: '京都大学入学' },
-    { period: '2017.5 - 2018.12', text: '京都大学11月祭事務局' },
-    { period: '2019.3', text: '' },
-    { period: '2019.8', text: '' },
-    { period: '2019.4 - 現在', text: 'CAMPHOR- 運営' }
-  ]
 
 doctype html
 html(lang='ja')
@@ -19,7 +12,7 @@ html(lang='ja')
     meta(charset='UTF-8')
     meta(name='viewport' content='width=device-width, initial-scale=1.0')
     title= meta.title
-    <link rel="icon" href="/favicon.ico" />
+    link(rel="icon" href="/favicon.ico")
 
     meta(property='og:url')
     meta(name='description' content=meta.description)
