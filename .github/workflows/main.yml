@@ -46,4 +46,4 @@ jobs:
 
       - name: Azure Sync
         run: |
-          az storage blob sync --container $AZURE_STORAGE_CONTAINER --source public
+          az storage blob sync --container $AZURE_STORAGE_CONTAINER --source public --auth-mode login
