@@ -28,8 +28,7 @@ jobs:
     needs: [build]
     runs-on: ubuntu-latest
     env:
-      AZURE_STORAGE_ACCOUNT: honai
-      AZURE_STORAGE_CONTAINER: \$web
+      AZURE_STORAGE_CONNECTION_STRING: ${{ secrets.azure_storage_connection_string }}
     steps:
       - uses: actions/checkout@v2
 
@@ -46,4 +45,4 @@ jobs:
 
       - name: Azure Sync
         run: |
-          az storage blob sync --container $AZURE_STORAGE_CONTAINER --source public --auth-mode login
+          az storage blob sync --container $AZURE_STORAGE_CONTAINER --source public
