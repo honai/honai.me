@@ -44,4 +44,4 @@ jobs:
       - name: Upload to storage
         uses: azure/CLI@v1
         with:
-          inlineScript: az storage blob sync -c public -d $web
+          inlineScript: az storage blob sync -c public -d \$web
