@@ -29,6 +29,7 @@ jobs:
     runs-on: ubuntu-latest
     env:
       AZURE_STORAGE_CONNECTION_STRING: ${{ secrets.azure_storage_connection_string }}
+      AZURE_STORAGE_CONTAINER: $web
     steps:
       - uses: actions/checkout@v2
 
