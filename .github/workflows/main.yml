@@ -1,0 +1,44 @@
+# This is a basic workflow to help you get started with Actions
+
+name: Build and Deploy to Azure Static Website
+
+# Controls when the action will run. Triggers the workflow on push or pull request
+# events but only for the master branch
+on:
+  push:
+    branches: [ master ]
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v2
+      - uses: actions/setup-node@v1
+        with:
+          node-version: '12'
+      - run: npm install
+      - run: npm run build
+      - name: Upload result for build
+        uses: actions/upload-artifact@v2
+        with:
+          name: public
+          path: public
+
+  deploy:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Azure Login
+        uses: azure/login@v1
+        with:
+          creds: ${{ secrets.AZURE_CREDENTIALS }}
+
+      - name: Download build result
+        uses: actions/download-artifact@v2
+        with:
+          name: public
+          path: public
+
+      - name: Upload to storage
+        uses: azure/CLI@v1
+        with:
+          inlineScript: az sync -c public -d $web
