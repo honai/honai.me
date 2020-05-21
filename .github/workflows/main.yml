@@ -47,4 +47,4 @@ jobs:
       - name: Upload to storage
         uses: azure/CLI@v1
         with:
-          inlineScript: az storage blob sync --container $AZURE_STORAGE_CONTAINER --source public
+          inlineScript: az storage blob sync --container $AZURE_STORAGE_CONTAINER --source public --account-name $AZURE_STORAGE_ACCOUNT
