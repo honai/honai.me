@@ -29,7 +29,7 @@ jobs:
     runs-on: ubuntu-latest
     env:
       AZURE_STORAGE_ACCOUNT: honai
-      AZURE_STORAGE_CONTAINER: $web
+      AZURE_STORAGE_CONTAINER: \$web
     steps:
       - name: Azure Login
         uses: azure/login@v1
