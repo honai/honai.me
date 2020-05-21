@@ -48,5 +48,4 @@ jobs:
         uses: azure/CLI@v1
         with:
           inlineScript: |
-            az account show
-            az storage blob sync --container {{ env.AZURE_STORAGE_CONTAINER }} --source public --account-name {{ env.AZURE_STORAGE_ACCOUNT }}
+            az storage blob sync --container ${{ env.AZURE_STORAGE_CONTAINER }} --source public --account-name ${{ env.AZURE_STORAGE_ACCOUNT }}
