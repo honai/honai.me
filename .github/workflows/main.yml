@@ -31,11 +31,6 @@ jobs:
       AZURE_STORAGE_ACCOUNT: honai
       AZURE_STORAGE_CONTAINER: \$web
     steps:
-      - name: Azure Login
-        uses: azure/login@v1
-        with:
-          creds: ${{ secrets.AZURE_CREDENTIALS }}
-
       - uses: actions/checkout@v2
 
       - name: Download build result
@@ -44,8 +39,11 @@ jobs:
           name: public
           path: public
 
-      - name: Upload to storage
-        uses: azure/CLI@v1
+      - name: Azure Login
+        uses: azure/login@v1
         with:
-          inlineScript: |
-            az storage blob sync --container ${{ env.AZURE_STORAGE_CONTAINER }} --source public --account-name ${{ env.AZURE_STORAGE_ACCOUNT }}
+          creds: ${{ secrets.AZURE_CREDENTIALS }}
+
+      - name: Azure Sync
+        run: |
+          az storage blob sync --container $AZURE_STORAGE_CONTAINER --source public
