@@ -4,6 +4,7 @@ on:
   push:
     branches:
       - master
+      - migrate-to-firebase
 
 jobs:
   build:
