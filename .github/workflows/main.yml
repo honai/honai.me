@@ -20,4 +20,4 @@ jobs:
           npm run build
       - name: Deploy to Firebase Hosting
         run: |
-          npx firebase --token {{ secrets.FIREBASE_CLI_TOKEN }} deploy
+          npx firebase-tools --token {{ secrets.FIREBASE_CLI_TOKEN }} deploy
