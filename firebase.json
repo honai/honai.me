@@ -1,0 +1,22 @@
+{
+  "hosting": {
+    "public": "public",
+    "ignore": [
+      "firebase.json",
+      "**/.*",
+      "**/node_modules/**"
+    ],
+    "redirects": [
+      {
+        "source": "/blog/:post*",
+        "destination": "https://blog.honai.me/:post",
+        "type": 308
+      },
+      {
+        "source": "/blog",
+        "destination": "https://blog.honai.me/",
+        "type": 308
+      }
+    ]
+  }
+}
