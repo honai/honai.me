@@ -111,33 +111,4 @@ html(lang='ja')
               br
               a(href='https://github.com/honai/wfc-photo') GitHub
 
-      section
-        h2.heading-first Skills
-
-        mixin skill(title)
-          li.skill-item
-            block
-            h3= title
-
-
-        ul.skill-list
-          +skill('HTML')
-            include:svgo svg/html.svg
-          +skill('CSS')
-            include:svgo svg/css.svg
-          +skill('JavaScript')
-            include:svgo svg/javascript.svg
-          +skill('TypeScript')
-            include:svgo svg/typescript.svg
-          +skill('React')
-            include:svgo svg/react.svg
-          +skill('Elm')
-            include:svgo svg/elm.svg
-          +skill('PHP')
-            include:svgo svg/php.svg
-          +skill('MySql')
-            include:svgo svg/mysql.svg
-          +skill('Git')
-            include:svgo svg/git.svg
-
     footer.site-footer &copy; 2020 Honai Ueoka
