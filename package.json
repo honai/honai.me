@@ -3,7 +3,7 @@
   "version": "1.0.0",
   "main": "index.js",
   "repository": "git@github.com:honai/portfolio.git",
-  "author": "honai <29170100+honai@users.noreply.github.com>",
+  "author": "Honai Ueoka",
   "license": "UNLICENSED",
   "private": true,
   "scripts": {
