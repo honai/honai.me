@@ -7,14 +7,13 @@
   "license": "UNLICENSED",
   "private": true,
   "scripts": {
-    "build": "parcel build src/index.pug src/favicon.ico src/i.png --out-dir public --no-source-maps",
-    "dev": "parcel src/index.pug"
+    "build": "eleventy",
+    "dev": "eleventy --serve",
+    "sass": "sass src/styles/critical.scss:_site/styles/critical.css src/styles/other.scss:_site/styles/other.css"
   },
   "devDependencies": {
-    "jstransformer-svgo": "^1.2.0",
-    "parcel-bundler": "^1.12.4",
-    "pug": "^2.0.4",
-    "sass": "^1.24.0"
+    "@11ty/eleventy": "^0.11.1",
+    "sass": "^1.32.0"
   },
   "dependencies": {}
 }
