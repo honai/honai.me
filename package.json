@@ -4,7 +4,7 @@
   "main": "index.js",
   "repository": "git@github.com:honai/honai.git",
   "author": "Honai Ueoka",
-  "license": "UNLICENSED",
+  "license": "MIT",
   "private": true,
   "scripts": {
     "build": "eleventy",
