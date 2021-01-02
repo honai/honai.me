@@ -1,18 +1,19 @@
 {
-  "name": "portfolio",
+  "name": "honai",
   "version": "1.0.0",
   "main": "index.js",
-  "repository": "git@github.com:honai/portfolio.git",
+  "repository": "git@github.com:honai/honai.git",
   "author": "Honai Ueoka",
   "license": "UNLICENSED",
   "private": true,
   "scripts": {
     "build": "eleventy",
-    "dev": "eleventy --serve",
-    "sass": "sass src/styles/critical.scss:_site/styles/critical.css src/styles/other.scss:_site/styles/other.css"
+    "clean": "rimraf _site",
+    "dev": "eleventy --serve"
   },
   "devDependencies": {
     "@11ty/eleventy": "^0.11.1",
+    "rimraf": "^3.0.2",
     "sass": "^1.32.0"
   },
   "dependencies": {}
