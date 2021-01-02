@@ -1,0 +1,10 @@
+---
+title: Honai's Blog
+description: 
+layout: base.ejs
+---
+<ul>
+  <% for (const post of collections.posts) { %>
+    <li><a href="<%= post.url.slice(0, -1) %>"><%= post.data.title %></a></li>
+  <% } %>
+</ul>

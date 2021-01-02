@@ -1,0 +1,28 @@
+<%
+  const siteDomain = 'https://www.honai.me'
+  const completeUrl = siteDomain + page.url.slice(0, -1)
+  const locale = lang.replace('-', '_')
+%>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+<link rel="canonical" href="<%= completeUrl %>">
+<title><%= title %></title>
+<meta name="description" content="<%= description %>">
+
+<meta property="og:url" content="<%= completeUrl %>">
+<meta property="og:title" content="<%= title %>">
+<meta property="og:description" content="<%= description %>">
+<meta property="og:image" content="<%= og_image_url %>">
+<meta property="fb:app_id" content="1144529745735811">
+<meta property="og:locale" content="<%= locale %>">
+
+<meta name="twitter:card" content="<%= large_card ? 'summary_large_image' : 'summary' %>">
+<meta name="twitter:title" content="<%= title %>">
+<meta name="twitter:description" content="<% description %>">
+<meta name="twitter:image" content="<%= og_image_url %>">
+<meta name="twitter:image:alt" content="<%= og_image_alt %>">
+
+<link rel="icon" href="/favicon.ico">
+<link rel="stylesheet" href="https://use.typekit.net/bdo3rru.css">
+<link rel="stylesheet" href="./style.css">
