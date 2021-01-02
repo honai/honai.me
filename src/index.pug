@@ -3,7 +3,7 @@
     siteUrl: 'https://honai.me',
     title: "Honai's Portfolio",
     description: "Honai Ueoka's portfolio website",
-    ogpImageUrl: 'https://honai.me/i.png'
+    ogpImageUrl: 'https://honai.me/images/profile.png'
   }
 
 doctype html
@@ -29,13 +29,12 @@ html(lang='ja')
     meta(name='twitter:image:alt' content='profile icon')
 
     link(rel='stylesheet' href='https://use.typekit.net/bdo3rru.css')
-    link(rel='stylesheet' href='./styles/critical.scss')
-    link(rel='stylesheet' href='./styles/other.scss')
+    link(rel='stylesheet' href='./style.css')
 
   body
     header.site-header
       .icon
-        img.img(src='./i.png' alt='profile icon')
+        img.img(src='images/profile.png' alt='profile icon')
       .titles
         h1.title Honai Ueoka
         p.subtitle Welcome to my portfolio.
@@ -68,10 +67,10 @@ html(lang='ja')
           ul.sns-list
             li.item
               a(href='https://github.com/honai' aria-label='GitHub')
-                include:svgo svg/github.svg
+                img(src="images/github.svg", alt="GitHub Icon")
             li.item
               a(href='https://twitter.com/_honai' aria-label='GitHub')
-                include:svgo svg/twitter.svg
+                img(src="images/twitter.svg", alt="Twitter Icon")
 
       section
         h2.heading-first Works

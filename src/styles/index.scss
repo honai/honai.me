@@ -1,4 +1,4 @@
-@import "./reset.css";
+@import "./reset.scss";
 
 $bp-s: 576px;
 $primary-color: #02545a;
@@ -6,9 +6,6 @@ $primary-color: #02545a;
   font-family: century-gothic, sans-serif;
   font-weight: 400;
 }
-
-@import "./components/history-list.scss";
-@import "./components/site-header.scss";
 
 body {
   color: #333;
@@ -88,3 +85,9 @@ body {
       "image desc";
   }
 }
+
+@import "./components/history-list.scss";
+@import "./components/site-header.scss";
+@import "./components/sns-list.scss";
+@import "./components/skill-list.scss";
+@import "./components/site-footer.scss";
