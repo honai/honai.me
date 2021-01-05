@@ -70,7 +70,7 @@
     vertical-align: bottom;
     border-bottom: 2px solid #dee2e6;
   }
-  > :not(pre) > code[class='language-text'] {
+  :not(pre) > code[class='language-text'] {
     background-color: #eee;
     color: unset;
   }
