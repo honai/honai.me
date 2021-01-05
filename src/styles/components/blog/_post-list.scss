@@ -1,0 +1,36 @@
+.post-list-layout {
+  width: 100%;
+  max-width: 720px;
+  margin: 0 auto 20px;
+  > .post-list-pagination {
+    margin: 20px auto;
+  }
+}
+
+.post-list-title {
+  text-align: center;
+  padding: 48px 0;
+}
+
+.post-list-ul {
+  display: flex;
+  flex-flow: column;
+  gap: 36px;
+  color: rgba(0, 0, 0, 0.3);
+}
+
+.post-list-item {
+  .link {
+    display: block;
+    text-decoration: none;
+    color: #333;
+  }
+  .link:visited {
+    color: #666;
+  }
+}
+
+.post-list-pagination {
+  display: flex;
+  justify-content: space-between;
+}

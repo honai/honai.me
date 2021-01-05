@@ -2,15 +2,51 @@
 title: Honai's Blog
 description: 記事一覧
 layout: base.ejs
+pagination:
+  data: collections.posts
+  size: 10
+  reverse: true
 ---
 <div class="body-layout">
   <%- include('/header') %>
-  <div class="grow">
-    <ul>
-      <% for (const post of collections.posts) { %>
-        <li><a href="<%= post.url.slice(0, -1) %>"><%= post.data.title %></a></li>
+  <div class="grow post-list-layout">
+    <h1 class="post-list-title century-gothic">Honai's Blog</h1>
+    <ul class="post-list-ul">
+      <% for (const post of pagination.items) { %>
+        <% const href = post.url.slice(0, -1) %>
+        <li class="post-list-item">
+          <h2>
+            <a href="<%= href %>" class="link"><%= post.data.title %></a>
+          </h2>
+          <div>
+            <time datetime="<%= post.date %>" class="post-publish-date"><%= post.date %></time>
+          </div>
+        </li>
       <% } %>
     </ul>
+    <div class="post-list-pagination">
+      <% const { next: nextHref, previous: prevHref } = pagination.href %>
+      <div>
+        <% if (prevHref) { %>
+          <a href="<%= prevHref.slice(0, -1) %>">&lt; Previous</a>
+        <% } %>
+      </div>
+      <div>
+        <%= pagination.pageNumber + 1 %> of <%= pagination.pages.length %>
+      </div>
+      <div>
+        <% if (nextHref) { %>
+          <a href="<%= nextHref.slice(0, -1) %>">Next &gt;</a>
+        <% } %>
+      </div>
+    </div>
   </div>
   <%- include('/footer') %>
 </div>
+<script>
+  const publishDateEls = document.getElementsByClassName('post-publish-date')
+  for (const el of publishDateEls) {
+    const date = new Date(el.getAttribute('datetime'))
+    el.textContent = date.toLocaleDateString()
+  }
+</script>
