@@ -1,0 +1,18 @@
+@use "reset.scss";
+@use "components/blog";
+
+:root {
+  --primary-color: #02545a;
+}
+
+.century-gothic {
+  font-family: century-gothic, sans-serif;
+  font-style: normal;
+  font-weight: 400;
+  font-display: swap;
+}
+
+._reset-a {
+  text-decoration: none !important;
+  color: unset !important;
+}

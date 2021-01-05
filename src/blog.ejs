@@ -1,10 +1,16 @@
 ---
 title: Honai's Blog
-description: 
+description: 記事一覧
 layout: base.ejs
 ---
-<ul>
-  <% for (const post of collections.posts) { %>
-    <li><a href="<%= post.url.slice(0, -1) %>"><%= post.data.title %></a></li>
-  <% } %>
-</ul>
+<div class="body-layout">
+  <%- include('/header') %>
+  <div class="grow">
+    <ul>
+      <% for (const post of collections.posts) { %>
+        <li><a href="<%= post.url.slice(0, -1) %>"><%= post.data.title %></a></li>
+      <% } %>
+    </ul>
+  </div>
+  <%- include('/footer') %>
+</div>

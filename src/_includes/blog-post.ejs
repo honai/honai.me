@@ -1,7 +1,30 @@
 ---
 layout: base.ejs
 ---
-
-<h1><%= page.filePathStem %></h1>
-<h1><%= title %></h1>
-<main><%- content %></main>
+<div class="body-layout">
+  <%- include('header') %>
+  <div class="grow">
+    <h1 class="post-title"><%= title %></h1>
+    <div class="post-content">
+      <div class="century-gothic post-date">
+        <time id="published-time" datetime="<%= date %>"><%= date %></time>
+        <% if (updated) { %>
+          (Updated at <time id="updated-time" datetime="<%= updated %>"><%= updated %></time>)
+        <% } %>
+      </div>
+      <main class="post-markdown">
+        <%- content %>
+      </main>
+    </div>
+  </div>
+  <%- include('footer') %>
+</div>
+<script>
+  const publishedTimeEl = document.getElementById('published-time')
+  const updatedTimeEl = document.getElementById('updated-time')
+  for (const el of [publishedTimeEl, updatedTimeEl]) {
+    if (!el) continue
+    const date = new Date(el.getAttribute('datetime'))
+    el.textContent = date.toLocaleDateString()
+  }
+</script>

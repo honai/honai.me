@@ -6,6 +6,7 @@ module.exports = (eleventyConfig) => {
   eleventyConfig.addFilter('sass', (code) => {
     return sass.renderSync({ data: code, outputStyle: 'compressed' }).css.toString()
   })
+  eleventyConfig.addWatchTarget('src/styles')
   return {
     dir: {
       input: 'src',

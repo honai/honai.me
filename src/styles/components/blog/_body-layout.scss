@@ -1,0 +1,8 @@
+.body-layout {
+  display: flex;
+  flex-flow: column nowrap;
+  min-height: 100vh;
+  > .grow {
+    flex: 1 0 auto;
+  }
+}
