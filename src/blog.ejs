@@ -15,12 +15,17 @@ pagination:
       <% for (const post of pagination.items) { %>
         <% const href = post.url.slice(0, -1) %>
         <li class="post-list-item">
-          <h2>
-            <a href="<%= href %>" class="link"><%= post.data.title %></a>
-          </h2>
-          <div>
+          <div class="date">
             <time datetime="<%= post.date %>" class="post-publish-date"><%= post.date %></time>
           </div>
+          <h2 class="title">
+            <a href="<%= href %>" class="link _reset-a"><%= post.data.title %></a>
+          </h2>
+          <p class="description">
+            <%= post.data.description %>
+            ...
+            <a href="<%= href %>" class="_reset-a more">この記事を読む</a>
+          </p>
         </li>
       <% } %>
     </ul>

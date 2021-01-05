@@ -1,7 +1,8 @@
 .post-list-layout {
   width: 100%;
   max-width: 720px;
-  margin: 0 auto 20px;
+  margin: 0 auto;
+  padding: 0 20px 20px;
   > .post-list-pagination {
     margin: 20px auto;
   }
@@ -16,17 +17,23 @@
   display: flex;
   flex-flow: column;
   gap: 36px;
-  color: rgba(0, 0, 0, 0.3);
 }
 
 .post-list-item {
-  .link {
+  > .date {
+    color: rgba(0, 0, 0, 0.75);
+  }
+  > .title {
+    font-size: 1.25rem;
+    border-bottom: 1px solid var(--primary-color);
+    color: var(--primary-color);
+  }
+  > .title > .link {
     display: block;
     text-decoration: none;
-    color: #333;
   }
-  .link:visited {
-    color: #666;
+  > .description > .more {
+    text-decoration: underline;
   }
 }
 
