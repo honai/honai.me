@@ -1,0 +1,130 @@
+---
+title: Honai Ueoka
+url: https://www.honai.me/
+---
+<!DOCTYPE html>
+<html lang="ja">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title><%= title %></title>
+  <link rel="canonical" href="<%= url %>>">
+  <link rel="icon" href="/favicon.ico">
+  <meta property="og:url" content="<%= url %>">
+  <meta property="og:title" content="<%= title %>">
+  <meta property="og:image" content="https://www.honai.me/images/profile.png">
+  <meta property="og:locale" content="ja_JP">
+  <meta property="fb:app_id" content="1144529745735811">
+  <link rel="stylesheet" href="https://use.typekit.net/bdo3rru.css">
+  <link rel="stylesheet" href="/style.css">
+</head>
+
+<body class="body-layout">
+  <header class="site-header">
+    <h1 class="title">Honai Ueoka</h1>
+  </header>
+  <main class="main-content">
+    <section class="main-section">
+      <h2 class="heading">About</h2>
+      <div class="content">
+        <div class="profile-section">
+          <img src="/images/profile.png" alt="honaiのアイコン" class="icon">
+          <div class="name">
+            <div class="ja">上岡 輔乃</div>
+            <div class="en">Honai Ueoka</div>
+          </div>
+        </div>
+      </div>
+      <div class="content">
+        <p>
+          京都大学大学院 情報学研究科 通信情報システム専攻
+          / 修士課程（2023年3月修了予定） / CAMPHOR- 運営メンバー
+        </p>
+      </div>
+      <div class="content">
+        <ul class="social-links _reset-ul">
+          <% for (const L of profile.links) { %>
+            <li class="item">
+              <a href="<%= L.url %>" class="link _reset-a">
+                <img src="<%= L.icon %>" alt="<%= L.alt %>" class="icon">
+                <span class="text"><%= L.text %></span>
+              </a>
+            </li>
+          <% } %>
+        </ul>
+      </div>
+    </section>
+
+    <section class="main-section">
+      <h2 class="heading">Education</h2>
+      <% for (const E of profile.education) { %>
+        <div class="content">
+          <div class="education-item">
+            <div class="period"><%= E.period %></div>
+            <div class="desc"><%= E.title %></div>
+          </div>
+        </div>
+      <% } %>
+    </section>
+
+    <section class="main-section">
+      <h2 class="heading">Internships / Employments</h2>
+      <% for (const E of profile.jobs) { %>
+        <div class="content">
+          <div class="education-item">
+            <div class="period"><%= E.period %></div>
+            <div class="desc"><%= E.title %></div>
+          </div>
+        </div>
+      <% } %>
+    </section>
+
+    <section class="main-section">
+      <h2 class="heading">Publications</h2>
+      <div class="content">
+        <details>
+          <em>Honai Ueoka</em>, Yugo Murawaki and Sadao Kurohashi.
+          <br>
+          <summary>Frustratingly Easy Edit-based Linguistic Steganography with a Masked Language Model.</summary>
+          In Proceedings of the 2021 Conference of the North American Chapter of the Association for Computational Linguistics: Human Language Technologies (NAACL-HLT 2021), pp. ???-???, online, June 2021. (to appear). (short paper).
+        </details>
+      </div>
+      <div class="content">
+        <details>
+          Akiko Aizawa, Frederic Bergeron, Junjie Chen, Fei Cheng, Katsuhiko Hayashi, Kentaro Inui, Hiroyoshi Ito, Daisuke Kawahara, Masaru Kitsuregawa, Hirokazu Kiyomaru, Masaki Kobayashi, Takashi Kodama, Sadao Kurohashi, Qianying Liu, Masaki Matsubara, Yusuke Miyao, Atsuyuki Morishima, Yugo Murawaki, Kazumasa Omura, Haiyue Song, Eiichiro Sumita, Shinji Suzuki, Ribeka Tanaka, Yu Tanaka, Masashi Toyoda, Nobuhiro Ueda, <em>Honai Ueoka</em>, Masao Utiyama, Ying Zhong.
+          <br>
+          <summary>A System for Worldwide COVID-19 Information Aggregation.</summary>
+          Workshop on NLP for COVID-19 (Part 2) at EMNLP 2020, online, November 2020. (workshop)
+          <a href="https://www.aclweb.org/anthology/2020.nlpcovid19-2.13/">paper</a>
+        </details>
+      </div>
+    </section>
+
+    <section class="main-section">
+      <h2 class="heading">Presentations</h2>
+      <div class="content">
+        <ul class="_reset-ul slide-list">
+          <% for (const s of slides) { %>
+            <li class="slide-item">
+              <a href="<%= s.url %>" class="link _reset-a">
+                <div
+                  class="thumb"
+                  style="background-image: url(/images/slide_thumb/<%= s.thumb %>);"
+                ></div>
+                <div class="texts">
+                  <div class="title"><%= s.title %></div>
+                  <div class="subtitle"><%= s.subtitle %></div>
+                  <div class="date"><%= s.date %></div>
+                </div>
+              </a>
+            </li>
+          <% } %>
+        </ul>
+      </div>
+    </section>
+
+  </main>
+</body>
+
+</html>
