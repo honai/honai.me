@@ -2,14 +2,14 @@
   {
     "title": "IPv6と日本のインターネット",
     "subtitle": "CAMPHOR- DAY 2021",
-    "link": "https://speakerdeck.com/honai/ipv6-internet-in-japan",
+    "url": "https://speakerdeck.com/honai/ipv6-internet-in-japan",
     "thumb": "ipv6.jpg",
     "date": "2021/03/27"
   },
   {
     "title": "入門HTTP",
     "subtitle": "CAMPHOR- DAY 2020",
-    "link": "https://speakerdeck.com/honai/ru-men-http-camphor-day-2020",
+    "url": "https://speakerdeck.com/honai/ru-men-http-camphor-day-2020",
     "thumb": "http.jpg",
     "date": "2020/03/29"
   }
