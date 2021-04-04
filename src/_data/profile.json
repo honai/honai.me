@@ -1,0 +1,41 @@
+{
+  "links": [
+    {
+      "url": "https://github.com/honai",
+      "text": "github.com/honai",
+      "alt": "GitHubのアイコン",
+      "icon": "/images/github.svg"
+    },
+    {
+      "url": "https://twitter.com/_honai",
+      "text": "twitter.com/_honai",
+      "alt": "Twitterのアイコン",
+      "icon": "/images/twitter.svg"
+    }
+  ],
+  "education": [
+    {
+      "period": "2021.4 -",
+      "title": "京都大学大学院 情報学研究科 通信情報システム専攻 大木研究室（知的通信網分野）"
+    },
+    {
+      "period": "2020.4 - 2021.3",
+      "title": "京都大学 工学部 電気電子工学科 黒橋研究室（言語メディア分野）"
+    },
+    {
+      "period": "2017.4 - 2021.3",
+      "title": "京都大学 工学部 電気電子工学科"
+    }
+  ],
+  "jobs": [
+    {
+      "period": "2021.3～",
+      "title": "ピクシブ株式会社"
+    },
+    {
+      "period": "2019.8",
+      "title": "株式会社サイバーエージェント（インターン）"
+    }
+  ],
+  "publications": ["TODO"]
+}
