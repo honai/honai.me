@@ -1,6 +1,6 @@
 ---
-baseUrl: https://www.honai.me/
 title: Honai Ueoka
+url: https://www.honai.me/
 ---
 <!DOCTYPE html>
 <html lang="ja">
@@ -9,8 +9,9 @@ title: Honai Ueoka
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title><%= title %></title>
+  <link rel="canonical" href="<%= url %>>">
   <link rel="icon" href="/favicon.ico">
-  <meta property="og:url" content="<%= baseUrl %>">
+  <meta property="og:url" content="<%= url %>">
   <meta property="og:title" content="<%= title %>">
   <meta property="og:image" content="https://www.honai.me/images/profile.png">
   <meta property="og:locale" content="ja_JP">
@@ -23,9 +24,6 @@ title: Honai Ueoka
   <header class="site-header">
     <h1 class="title">Honai Ueoka</h1>
   </header>
-  <!-- <aside>
-    TBD
-  </aside> -->
   <main class="main-content">
     <section class="main-section">
       <h2 class="heading">About</h2>
@@ -127,10 +125,6 @@ title: Honai Ueoka
     </section>
 
   </main>
-  <!-- <script src="//cdnjs.cloudflare.com/ajax/libs/waterfall.js/1.0.2/waterfall.min.js"></script>
-  <script>
-    waterfall('.main-content')
-  </script> -->
 </body>
 
 </html>
