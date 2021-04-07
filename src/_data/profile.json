@@ -11,6 +11,12 @@
       "text": "twitter.com/_honai",
       "alt": "Twitterのアイコン",
       "icon": "/images/twitter.svg"
+    },
+    {
+      "url": "https://www.facebook.com/honai.ueoka/",
+      "text": "facebook.com/honai.ueoka",
+      "alt": "Facebookのアイコン",
+      "icon": "/images/facebook.svg"
     }
   ],
   "education": [
