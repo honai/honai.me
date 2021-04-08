@@ -7,11 +7,11 @@
   margin: 0;
   padding: 30px 10px;
 }
-
 .post-content {
   max-width: 900px;
   margin: 0 auto;
   padding: 10px;
+  line-height: 1.75;
 }
 
 .post-date {
@@ -27,7 +27,7 @@
     line-height: 1.5;
     display: flex;
     align-items: center;
-    margin: 2rem 0 1.5rem;
+    margin: 3.2rem 0 2.4rem;
   }
   > h2::before {
     content: '';
@@ -43,6 +43,9 @@
     border-color: rgba(0, 0, 0, 0.2);
     flex: 1 1 auto;
     margin-left: 10px;
+  }
+  p {
+    margin: 1.6rem 0;
   }
   img {
     box-shadow: 0 1px 3px rgba(0, 0, 0, 0.3);
@@ -62,7 +65,7 @@
   }
   > table th,
   > table td {
-    padding: 0.5rem;
+    padding: 0.8rem;
     vertical-align: top;
     border-top: 1px solid #dee2e6;
   }

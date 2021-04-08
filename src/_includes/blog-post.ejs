@@ -12,12 +12,15 @@ externalStyleSheets:
   <div class="grow">
     <h1 class="post-title"><%= title %></h1>
     <div class="post-content">
+      <div>
+        <a href="/blog">&lt; 記事一覧</a>
+      </div>
       <div class="century-gothic post-date">
         <time id="published-time" datetime="<%= date %>"><%= date %></time>
         <% if (updated) { %>
           (Updated at <time id="updated-time" datetime="<%= updated %>"><%= updated %></time>)
         <% } %>
-      </div>
+      </div>  
       <main class="post-markdown">
         <%- content %>
       </main>

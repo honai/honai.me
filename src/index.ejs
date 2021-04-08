@@ -26,11 +26,10 @@ description: Honai Ueokaのポートフォリオサイトです。
 </head>
 
 <body class="body-layout">
-  <header class="site-header">
-    <h1 class="title">honai.me</h1>
-  </header>
+  <%- include('/header') %>
   <main class="main-content">
-    <section class="main-section">
+    <a href="/blog">BLOG</a>
+    <section class="simple-card">
       <h2 class="heading">About</h2>
       <div class="content">
         <div class="profile-section">
@@ -61,7 +60,7 @@ description: Honai Ueokaのポートフォリオサイトです。
       </div>
     </section>
 
-    <section class="main-section">
+    <section class="simple-card">
       <h2 class="heading">Education</h2>
       <% for (const E of profile.education) { %>
         <div class="content">
@@ -73,7 +72,7 @@ description: Honai Ueokaのポートフォリオサイトです。
       <% } %>
     </section>
 
-    <section class="main-section">
+    <section class="simple-card">
       <h2 class="heading">Internships / Employments</h2>
       <% for (const E of profile.jobs) { %>
         <div class="content">
@@ -85,28 +84,26 @@ description: Honai Ueokaのポートフォリオサイトです。
       <% } %>
     </section>
 
-    <section class="main-section">
+    <section class="simple-card">
       <h2 class="heading">Publications</h2>
       <div class="content">
-        <details>
-          <em>Honai Ueoka</em>, Yugo Murawaki and Sadao Kurohashi.
-          <br>
-          <summary>Frustratingly Easy Edit-based Linguistic Steganography with a Masked Language Model.</summary>
-          In Proceedings of the 2021 Conference of the North American Chapter of the Association for Computational Linguistics: Human Language Technologies (NAACL-HLT 2021), pp. ???-???, online, June 2021. (to appear). (short paper).
-        </details>
+        <em>Honai Ueoka</em>, Yugo Murawaki and Sadao Kurohashi.
+        <br>
+        Frustratingly Easy Edit-based Linguistic Steganography with a Masked Language Model.
+        <br>
+        In Proceedings of the 2021 Conference of the North American Chapter of the Association for Computational Linguistics: Human Language Technologies (NAACL-HLT 2021), pp. ???-???, online, June 2021. (to appear). (short paper).
       </div>
       <div class="content">
-        <details>
-          Akiko Aizawa, Frederic Bergeron, Junjie Chen, Fei Cheng, Katsuhiko Hayashi, Kentaro Inui, Hiroyoshi Ito, Daisuke Kawahara, Masaru Kitsuregawa, Hirokazu Kiyomaru, Masaki Kobayashi, Takashi Kodama, Sadao Kurohashi, Qianying Liu, Masaki Matsubara, Yusuke Miyao, Atsuyuki Morishima, Yugo Murawaki, Kazumasa Omura, Haiyue Song, Eiichiro Sumita, Shinji Suzuki, Ribeka Tanaka, Yu Tanaka, Masashi Toyoda, Nobuhiro Ueda, <em>Honai Ueoka</em>, Masao Utiyama, Ying Zhong.
-          <br>
-          <summary>A System for Worldwide COVID-19 Information Aggregation.</summary>
-          Workshop on NLP for COVID-19 (Part 2) at EMNLP 2020, online, November 2020. (workshop)
-          <a href="https://www.aclweb.org/anthology/2020.nlpcovid19-2.13/">paper</a>
-        </details>
+        Akiko Aizawa, Frederic Bergeron, Junjie Chen, Fei Cheng, Katsuhiko Hayashi, Kentaro Inui, Hiroyoshi Ito, Daisuke Kawahara, Masaru Kitsuregawa, Hirokazu Kiyomaru, Masaki Kobayashi, Takashi Kodama, Sadao Kurohashi, Qianying Liu, Masaki Matsubara, Yusuke Miyao, Atsuyuki Morishima, Yugo Murawaki, Kazumasa Omura, Haiyue Song, Eiichiro Sumita, Shinji Suzuki, Ribeka Tanaka, Yu Tanaka, Masashi Toyoda, Nobuhiro Ueda, <em>Honai Ueoka</em>, Masao Utiyama, Ying Zhong.
+        <br>
+        A System for Worldwide COVID-19 Information Aggregation.
+        <br>
+        Workshop on NLP for COVID-19 (Part 2) at EMNLP 2020, online, November 2020. (workshop)
+        <a href="https://www.aclweb.org/anthology/2020.nlpcovid19-2.13/">paper</a>
       </div>
     </section>
 
-    <section class="main-section">
+    <section class="simple-card">
       <h2 class="heading">Presentations</h2>
       <div class="content">
         <ul class="_reset-ul slide-list">

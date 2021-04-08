@@ -1,5 +1,9 @@
-@use "reset.scss";
-@use "components/blog";
+@use 'variables' as v;
+@use 'reset';
+@use 'components/blog-footer';
+@use 'components/post-page';
+@use 'components/post-list';
+@use 'components/site-header';
 
 :root {
   --primary-color: #02545a;
@@ -12,7 +16,11 @@
   font-display: swap;
 }
 
-._reset-a {
-  text-decoration: none;
-  color: unset;
+.body-layout {
+  display: flex;
+  flex-flow: column nowrap;
+  min-height: 100vh;
+  > .grow {
+    flex: 1 0 auto;
+  }
 }
