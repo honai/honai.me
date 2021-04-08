@@ -8,7 +8,7 @@ class Style {
   }
   render(data) {
     return sass.renderSync({
-      file: `${__dirname}/styles/index.scss`,
+      file: `${__dirname}/index.scss`,
       outputStyle: 'compressed',
     }).css
   }
