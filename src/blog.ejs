@@ -1,0 +1,58 @@
+---
+title: Honai's Blog
+description: 記事一覧
+layout: base.ejs
+og_image_url: https://www.honai.me/images/profile.png
+pagination:
+  data: collections.posts
+  size: 10
+  reverse: true
+---
+<div class="body-layout">
+  <%- include('/header') %>
+  <div class="grow post-list-layout">
+    <h1 class="post-list-title century-gothic">Honai's Blog</h1>
+    <ul class="post-list-ul">
+      <% for (const post of pagination.items) { %>
+        <% const href = post.url.slice(0, -1) %>
+        <li class="post-list-item">
+          <div class="date">
+            <time datetime="<%= post.date %>" class="post-publish-date"><%= post.date %></time>
+          </div>
+          <h2 class="title">
+            <a href="<%= href %>" class="link _reset-a"><%= post.data.title %></a>
+          </h2>
+          <p class="description">
+            <%= post.data.description %>
+            ...
+            <a href="<%= href %>" class="_reset-a more">この記事を読む</a>
+          </p>
+        </li>
+      <% } %>
+    </ul>
+    <div class="post-list-pagination">
+      <% const { next: nextHref, previous: prevHref } = pagination.href %>
+      <div>
+        <% if (prevHref) { %>
+          <a href="<%= prevHref.slice(0, -1) %>">&lt; Previous</a>
+        <% } %>
+      </div>
+      <div>
+        <%= pagination.pageNumber + 1 %> of <%= pagination.pages.length %>
+      </div>
+      <div>
+        <% if (nextHref) { %>
+          <a href="<%= nextHref.slice(0, -1) %>">Next &gt;</a>
+        <% } %>
+      </div>
+    </div>
+  </div>
+  <%- include('/footer') %>
+</div>
+<script>
+  const publishDateEls = document.getElementsByClassName('post-publish-date')
+  for (const el of publishDateEls) {
+    const date = new Date(el.getAttribute('datetime'))
+    el.textContent = date.toLocaleDateString()
+  }
+</script>

@@ -1,59 +1,6 @@
-$break-sm: 576px;
-$break-md: 768px;
-$break-lg: 992px;
-
-*, *::before, *::after {
-  box-sizing: border-box;
-}
-
-// reset
-html {
-  font-size: 62.5%;
-  font-family: sans-serif;
-}
-body {
-  font-size: 1.6rem;
-  margin: 0;
-  line-height: 1.5;
-}
-h1,h2,h3,h4,h5,h6 {
-  margin: 0;
-  font-weight: unset;
-}
-p, ul, ol {
-  margin: 0;
-}
-img {
-  max-width: 100%;
-}
-
-// weak helpers
-._rounded {
-  border-radius: 50%;
-}
-._reset-ul {
-  padding-left: 0;
-  list-style: none;
-}
-._reset-a {
-  color: unset;
-  text-decoration-line: unset;
-}
-
-// theme
-:root {
-  --color-primary: #02454a;
-  --color-text: #333;
-  --color-text-secondary: #666;
-  --color-bg: rgba(250, 250, 250);
-  --color-fg: #fff;
-  --color-border: rgb(219, 219, 219);
-  --len-radius: 4px;
-  --font-family-century: century-gothic, sans-serif;
-  --font-weight-century: 400;
-}
-
-// components
+@use 'variables' as v;
+@use 'reset';
+@use 'components/site-header';
 
 .body-layout {
   background-color: var(--color-bg);
@@ -61,35 +8,16 @@ img {
   // padding-top: 5.4rem;
 }
 
-.site-header {
-  // position: fixed;
-  // top: 0;
-  // right: 0;
-  // left: 0;
-  // z-index: 100;
-  height: 5.4rem;
-  background-color: var(--color-fg);
-  border-bottom: 1px solid var(--color-border);
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  > .title {
-    font-family: var(--font-family-century);
-    font-weight: var(--font-weight-century);
-    font-size: 2.4rem;
-  }
-}
-
 .main-content {
   padding: 1rem;
   max-width: 720px;
   margin: 0 auto;
-  > .main-section {
+  > .simple-card {
     margin: 3rem 0;
   }
 }
 
-.main-section {
+.simple-card {
   background-color: var(--color-fg);
   color: var(--color-text);
   border: 1px solid var(--color-border);
@@ -145,8 +73,8 @@ img {
       margin-right: 1rem;
     }
     > .text {
-      font-size: 1.4rem;
       color: var(--color-text-secondary);
+      font-family: var(--font-family-century);
     }
   }
 }
@@ -159,7 +87,7 @@ img {
 }
 
 .slide-list {
-  @media screen and (min-width: $break-sm) {
+  @media screen and (min-width: v.$break-sm) {
     display: flex;
     justify-content: space-between;
     > .slide-item {

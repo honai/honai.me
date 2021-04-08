@@ -1,0 +1,23 @@
+---
+large_card: false
+lang: ja
+externalStyleSheets: []
+---
+<!DOCTYPE html>
+<html lang="<%= lang %>">
+<head>
+  <%- include('seo') %>
+  <link rel="stylesheet" href="https://use.typekit.net/bdo3rru.css" media="print" onload="this.media='all'">
+  <link rel="stylesheet" href="/blog.css">
+  <% for (const css of externalStyleSheets) { %>
+    <link rel="stylesheet" href="<%= css.href %>" integrity="<%= css.integrity %>" crossorigin="anonymous"
+      <% if (css.async) { %>
+        media="print" onload="this.media='all'"
+      <% } %>
+    >
+  <% } %>
+</head>
+<body>
+  <%- content %>
+</body>
+</html>

@@ -2,7 +2,7 @@
   "name": "honai",
   "version": "1.0.0",
   "main": "index.js",
-  "repository": "git@github.com:honai/honai.git",
+  "repository": "git@github.com:honai/honai.me.git",
   "author": "Honai Ueoka",
   "license": "MIT",
   "private": true,
@@ -13,6 +13,10 @@
   },
   "devDependencies": {
     "@11ty/eleventy": "^0.11.1",
+    "@11ty/eleventy-plugin-syntaxhighlight": "^3.0.4",
+    "@iktakahiro/markdown-it-katex": "^4.0.1",
+    "feed": "^4.2.1",
+    "markdown-it": "^12.0.4",
     "rimraf": "^3.0.2",
     "sass": "^1.32.8"
   },

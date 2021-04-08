@@ -1,0 +1,7 @@
+{
+  "tags": ["posts"],
+  "layout": "blog-post.ejs",
+  "plugins": [],
+  "updated": false,
+  "og_image_url": "https://honai.me/images/profile.png"
+}
