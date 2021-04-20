@@ -1,6 +1,7 @@
 {
   "redirects": [
-    { "source": "/rss", "destination": "https://www.honai.me/blog/rss.xml" }
+    { "source": "/rss", "destination": "https://www.honai.me/blog/rss.xml" },
+    { "source": "/blog/post/:slug", "destination": "/blog/2019/:slug" }
   ],
   "trailingSlash": false
 }
