@@ -2,6 +2,7 @@
 large_card: false
 lang: ja
 externalStyleSheets: []
+gtag_id: UA-137251140-3
 ---
 <!DOCTYPE html>
 <html lang="<%= lang %>">
@@ -16,6 +17,12 @@ externalStyleSheets: []
       <% } %>
     >
   <% } %>
+  <script>
+    window.ga=window.ga||function(){(ga.q=ga.q||[]).push(arguments)};ga.l=+new Date;
+    ga('create', '<%- gtag_id %>', 'auto');
+    ga('send', 'pageview');
+  </script>
+  <script async src='https://www.google-analytics.com/analytics.js'></script>
 </head>
 <body>
   <%- content %>
