@@ -1,8 +1,10 @@
 ---
 title: Honai Ueoka
-url: https://www.honai.me/
-description: Honai Ueokaのポートフォリオサイトです。
+description: Honai Ueoka's portfolio website.
 ---
+<%
+  url = "https://www.honai.me" + page.url.slice(0, -1)
+%>
 <!DOCTYPE html>
 <html lang="ja">
 
@@ -10,7 +12,7 @@ description: Honai Ueokaのポートフォリオサイトです。
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title><%= title %></title>
-  <link rel="canonical" href="<%= url %>>">
+  <link rel="canonical" href="<%= url %>">
   <link rel="icon" href="/favicon.ico">
   <meta property="og:url" content="<%= url %>">
   <meta property="og:type" content="website">
