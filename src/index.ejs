@@ -111,10 +111,11 @@ description: Honai Ueokaのポートフォリオサイトです。
           <% for (const s of slides) { %>
             <li class="slide-item">
               <a href="<%= s.url %>" class="link _reset-a">
-                <div
+                <img
+                  src="/images/slide_thumb/<%= s.thumb %>"
+                  alt="<%= s.title %>のスライドのサムネイル"
                   class="thumb"
-                  style="background-image: url(/images/slide_thumb/<%= s.thumb %>);"
-                ></div>
+                  loading="lazy">
                 <div class="texts">
                   <div class="title"><%= s.title %></div>
                   <div class="subtitle"><%= s.subtitle %></div>
