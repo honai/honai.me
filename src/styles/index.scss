@@ -8,9 +8,32 @@
   // padding-top: 5.4rem;
 }
 
+.nav-title {
+  padding: 1rem 0 0;
+  font-family: var(--font-family-century);
+  > .subtitle {
+    font-size: 1.8rem;
+    text-align: center;
+  }
+  > .title {
+    padding: 2rem 0;
+    text-align: center;
+  }
+  > .nav {
+    font-size: 1.8rem;
+    display: flex;
+    width: 120px;
+    margin: 0 auto;
+    justify-content: space-between;
+    > a {
+      color: unset;
+    }
+  }
+}
+
 .main-content {
   padding: 1rem;
-  max-width: 720px;
+  max-width: calc(720px + 2rem);
   margin: 0 auto;
   > .simple-card {
     margin: 3rem 0;
@@ -129,8 +152,23 @@
   }
 }
 
+.works-gallery {
+  padding: 0 2rem;
+  display: flex;
+  flex-flow: column nowrap;
+}
+.works-page-link {
+  text-align-last: center;
+}
+
+// 404.ejs
 .notfound-heading {
   text-align: center;
   font-size: 2.8rem;
   font-family: var(--font-family-century);
+}
+
+// works.ejs
+.work-thumb {
+  width: 100%;
 }
