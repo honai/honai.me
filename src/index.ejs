@@ -30,7 +30,9 @@ description: Honai Ueokaのポートフォリオサイトです。
   <%- include('/header') %>
   <main class="main-content">
     <section class="simple-card">
-      <h2 class="heading">About</h2>
+      <h2 class="heading" id="about">
+        <a href="#about" class="anchor">About</a>
+      </h2>
       <div class="content">
         <div class="profile-section">
           <img src="/images/me.jpg" alt="honaiの写真" class="icon">
@@ -61,7 +63,9 @@ description: Honai Ueokaのポートフォリオサイトです。
     </section>
 
     <section class="simple-card">
-      <h2 class="heading">Education</h2>
+      <h2 class="heading" id="education">
+        <a href="#education" class="anchor">Education</a>
+      </h2>
       <% for (const E of profile.education) { %>
         <div class="content">
           <div class="education-item">
@@ -73,7 +77,9 @@ description: Honai Ueokaのポートフォリオサイトです。
     </section>
 
     <section class="simple-card">
-      <h2 class="heading">Internships / Employments</h2>
+      <h2 class="heading" id="intern">
+        <a href="#intern" class="anchor">Internships / Employments</a>
+      </h2>
       <% for (const E of profile.jobs) { %>
         <div class="content">
           <div class="education-item">
@@ -85,7 +91,9 @@ description: Honai Ueokaのポートフォリオサイトです。
     </section>
 
     <section class="simple-card">
-      <h2 class="heading">Publications</h2>
+      <h2 class="heading" id="publications">
+        <a href="#publications" class="anchor">Publications</a>
+      </h2>
       <div class="content">
         Honai Ueoka, Yugo Murawaki and Sadao Kurohashi.
         <br>
@@ -105,7 +113,9 @@ description: Honai Ueokaのポートフォリオサイトです。
     </section>
 
     <section class="simple-card">
-      <h2 class="heading">Presentations</h2>
+      <h2 class="heading" id="presentations">
+        <a href="#presentations" class="anchor">Presentations</a>
+      </h2>
       <div class="content">
         <ul class="_reset-ul slide-list">
           <% for (const s of slides) { %>
@@ -129,7 +139,9 @@ description: Honai Ueokaのポートフォリオサイトです。
     </section>
 
     <section class="simple-card">
-      <h2 class="heading">Blog</h2>
+      <h2 class="heading" id="blog">
+        <a href="#blog" class="anchor">Blog</a>
+      </h2>
       <div class="content">
         <a href="/blog">Honai's Blog</a>
       </div>
