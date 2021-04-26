@@ -19,6 +19,9 @@ h1,h2,h3,h4,h5,h6 {
 p, ul, ol {
   margin: 0;
 }
+ul {
+  line-height: 2;
+}
 img {
   max-width: 100%;
 }
