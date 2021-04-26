@@ -8,6 +8,29 @@
   // padding-top: 5.4rem;
 }
 
+.nav-title {
+  padding: 1rem 0 0;
+  font-family: var(--font-family-century);
+  > .subtitle {
+    font-size: 1.8rem;
+    text-align: center;
+  }
+  > .title {
+    padding: 2rem 0;
+    text-align: center;
+  }
+  > .nav {
+    font-size: 1.8rem;
+    display: flex;
+    width: 120px;
+    margin: 0 auto;
+    justify-content: space-between;
+    > a {
+      color: unset;
+    }
+  }
+}
+
 .main-content {
   padding: 1rem;
   max-width: calc(720px + 2rem);
@@ -146,16 +169,6 @@
 }
 
 // works.ejs
-.nav-title {
-  // display: flex;
-  // align-items: center;
-  // margin-top: 2rem;
-  font-family: var(--font-family-century);
-  > .title {
-    flex: 1 0 auto;
-    text-align: center;
-  }
-}
 .work-thumb {
   width: 100%;
 }
