@@ -94,22 +94,19 @@ description: Honai Ueokaのポートフォリオサイトです。
       <h2 class="heading" id="publications">
         <a href="#publications" class="anchor">Publications</a>
       </h2>
-      <div class="content">
-        Honai Ueoka, Yugo Murawaki and Sadao Kurohashi.
-        <br>
-        Frustratingly Easy Edit-based Linguistic Steganography with a Masked Language Model.
-        <br>
-        In Proceedings of the 2021 Conference of the North American Chapter of the Association for Computational Linguistics: Human Language Technologies (NAACL-HLT 2021), pp. ???-???, online, June 2021. (to appear). (short paper).
-        <a href="https://arxiv.org/abs/2104.09833">preprint</a>
-      </div>
-      <div class="content">
-        Akiko Aizawa, Frederic Bergeron, Junjie Chen, Fei Cheng, Katsuhiko Hayashi, Kentaro Inui, Hiroyoshi Ito, Daisuke Kawahara, Masaru Kitsuregawa, Hirokazu Kiyomaru, Masaki Kobayashi, Takashi Kodama, Sadao Kurohashi, Qianying Liu, Masaki Matsubara, Yusuke Miyao, Atsuyuki Morishima, Yugo Murawaki, Kazumasa Omura, Haiyue Song, Eiichiro Sumita, Shinji Suzuki, Ribeka Tanaka, Yu Tanaka, Masashi Toyoda, Nobuhiro Ueda, <strong>Honai Ueoka</strong>, Masao Utiyama, Ying Zhong.
-        <br>
-        A System for Worldwide COVID-19 Information Aggregation.
-        <br>
-        Workshop on NLP for COVID-19 (Part 2) at EMNLP 2020, online, November 2020. (workshop)
-        <a href="https://www.aclweb.org/anthology/2020.nlpcovid19-2.13/">paper</a>
-      </div>
+      <% for (const P of profile.publications) { %>
+        <div class="content">
+          <%= P.authors %>
+          <br>
+          <strong><%= P.title %></strong>
+          <br>
+          <%= P.journal %>
+          <br>
+          <% for (const L of P.links) { %>
+            <a href="<%= L.url %>"><%= L.text %></a>&ensp;
+          <% } %>
+        </div>
+      <% } %>
     </section>
 
     <section class="simple-card">
