@@ -13,14 +13,14 @@ class Rss {
       link: `${domain}/`,
       description: 'ほないのブログです',
       id: `${domain}/`,
-      copyright: '2021 Honai Ueoka'
+      copyright: 'Honai Ueoka'
     })
     for (const post of data.collections.posts.sort((a, b) => b.date - a.date)) {
-      const url = `${domain}${post.url.slice(0, -1)}`
+      const canonicalUrl = domain + this.noextension(post.url)
       feed.addItem({
         title: post.data.title,
-        id: url,
-        link: url,
+        id: canonicalUrl,
+        link: canonicalUrl,
         date: post.date,
         description: post.data.description,
         image: post.data.og_image_url
