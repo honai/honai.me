@@ -27,7 +27,12 @@ module.exports = (eleventyConfig) => {
   // filter for no-trailing-slash
   // convert filePathStem with `/index` to standard html file name
   eleventyConfig.addFilter('dirname', (value) => value.split('/').slice(0, -1).join('/'))
-  eleventyConfig.addFilter('noextension', (value) => value.includes('.') ? value.split('.').slice(0, -1).join('.') : value)
+  eleventyConfig.addFilter('noextension', (value) => {
+    const bySlash = value.split('/')
+    const last = bySlash.slice(-1)[0]
+    const lastWoExt = last.includes('.') ? last.split('.').slice(0, -1).join('.') : last
+    return bySlash.slice(0, -1).concat([lastWoExt]).join('/')
+  })
 
   return {
     dir: {

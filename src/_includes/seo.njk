@@ -1,7 +1,8 @@
 {% set siteDomain = 'https://www.honai.me' %}
 {% set locale = 'JP' %}
 {% set username = '@_honai' %}
-{% set canonicalUrl = siteDomain + (page.url | noextension) %}
+{% set canonicalUrl = (siteDomain + page.url) | noextension %}
+{{ canonicalUrl | log }}
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 

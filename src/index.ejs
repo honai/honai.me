@@ -15,7 +15,7 @@ layout: portfolio-base
   </h2>
   <div class="content">
     <div class="profile-section">
-      <img src="/images/me.jpg" alt="honaiの写真" class="icon">
+      <img src="/images/me.jpg" alt="honaiの写真" width="72" height="72" class="icon">
       <div class="name">
         <div class="ja">上岡 輔乃</div>
         <div class="en">Honai Ueoka</div>
@@ -33,7 +33,7 @@ layout: portfolio-base
       <% for (const L of profile.links) { %>
         <li class="item">
           <a href="<%= L.url %>" class="link _reset-a">
-            <img src="<%= L.icon %>" alt="<%= L.alt %>" class="icon">
+            <img src="<%= L.icon %>" alt="<%= L.alt %>" width="24" height="24" class="icon">
             <span class="text"><%= L.text %></span>
           </a>
         </li>
@@ -101,6 +101,7 @@ layout: portfolio-base
             <img
               src="/images/slide_thumb/<%= s.thumb %>"
               alt="<%= s.title %>のスライドのサムネイル"
+              width="640" height="320"
               class="thumb"
               loading="lazy">
             <div class="texts">
@@ -129,7 +130,7 @@ layout: portfolio-base
       </a>
     </div>
     <div class="works-page-link">
-      <a href="/works">See more</a>
+      <a href="/works">See more works</a>
     </div>
   </div>
 </section>
