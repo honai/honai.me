@@ -5,26 +5,26 @@ externalStyleSheets: []
 gtag_id: UA-137251140-3
 ---
 <!DOCTYPE html>
-<html lang="<%= lang %>">
+<html lang="{{ lang }}">
 <head>
-  <%- include('seo') %>
+  {% include 'seo.njk' %}
   <link rel="stylesheet" href="https://use.typekit.net/bdo3rru.css" media="print" onload="this.media='all'">
   <link rel="stylesheet" href="/blog.css">
-  <% for (const css of externalStyleSheets) { %>
-    <link rel="stylesheet" href="<%= css.href %>" integrity="<%= css.integrity %>" crossorigin="anonymous"
-      <% if (css.async) { %>
+  {% for css in externalStyleSheets %}
+    <link rel="stylesheet" href="{{ css.href }}" integrity="{{ css.integrity }}" crossorigin="anonymous"
+      {% if css.async %}
         media="print" onload="this.media='all'"
-      <% } %>
+      {% endif %}
     >
-  <% } %>
+  {% endfor %}
   <script>
     window.ga=window.ga||function(){(ga.q=ga.q||[]).push(arguments)};ga.l=+new Date;
-    ga('create', '<%- gtag_id %>', 'auto');
+    ga('create', '{{ gtag_id }}', 'auto');
     ga('send', 'pageview');
   </script>
   <script async src='https://www.google-analytics.com/analytics.js'></script>
 </head>
 <body>
-  <%- content %>
+  {{ content | safe }}
 </body>
 </html>

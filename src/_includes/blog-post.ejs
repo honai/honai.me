@@ -1,5 +1,6 @@
 ---
-layout: blog-base.ejs
+layout: blog-base
+permalink: "{{ page.filePathStem | dirname }}.html"
 externalStyleSheets:
   - href: https://cdnjs.cloudflare.com/ajax/libs/prism/1.20.0/themes/prism-tomorrow.min.css
     integrity: sha256-xevuwyBEb2ZYh4nDhj0g3Z/rDBnM569hg9Vq6gEw/Sg=
@@ -8,7 +9,7 @@ externalStyleSheets:
     async: true
 ---
 <div class="body-layout">
-  <%- include('header') %>
+  <%- include('header.html') %>
   <div class="grow">
     <h1 class="post-title"><%= title %></h1>
     <div class="post-content">
@@ -26,7 +27,7 @@ externalStyleSheets:
       </main>
     </div>
   </div>
-  <%- include('footer') %>
+  <%- include('footer.html') %>
 </div>
 <script async src="https://platform.twitter.com/widgets.js" charset="utf-8"></script>
 <script>

@@ -1,7 +1,7 @@
 ---
 title: Honai's Blog
 description: 記事一覧
-layout: blog-base.ejs
+layout: blog-base
 og_image_url: https://www.honai.me/images/profile.png
 pagination:
   data: collections.posts
@@ -9,41 +9,40 @@ pagination:
   reverse: true
 ---
 <div class="body-layout">
-  <%- include('/header') %>
+  {% include 'header.html' %}
   <div class="grow post-list-layout">
     <h1 class="post-list-title century-gothic">Honai's Blog</h1>
     <ul class="post-list-ul">
-      <% for (const post of pagination.items) { %>
-        <% const href = post.url.slice(0, -1) %>
+      {% for post in pagination.items %}
+        {% set href = post.url | noextension %}
         <li class="post-list-item">
           <div class="date">
-            <time datetime="<%= post.date %>" class="post-publish-date"><%= post.date %></time>
+            <time datetime="{{ post.date }}" class="post-publish-date">{{ post.date }}</time>
           </div>
           <h2 class="title">
-            <a href="<%= href %>" class="link _reset-a"><%= post.data.title %></a>
+            <a href="{{ href }}" class="link _reset-a">{{ post.data.title }}</a>
           </h2>
           <p class="description">
-            <%= post.data.description %>
+            {{ post.data.description }}
             ...
-            <a href="<%= href %>" class="_reset-a more">この記事を読む</a>
+            <a href="{{ href }}" class="_reset-a more">この記事を読む</a>
           </p>
         </li>
-      <% } %>
+      {% endfor %}
     </ul>
     <div class="post-list-pagination">
-      <% const { next: nextHref, previous: prevHref } = pagination.href %>
+      {# {% const { next: nextHref, previous: prevHref } = pagination.href %} #}
+      {% set nextHref = pagination.href.next %}
       <div>
-        <% if (prevHref) { %>
-          <a href="<%= prevHref.slice(0, -1) %>">&lt; Previous</a>
-        <% } %>
+        <a href="{{ prevHref }}">&lt; Previous</a>
       </div>
       <div>
-        <%= pagination.pageNumber + 1 %> of <%= pagination.pages.length %>
+        {{ pagination.pageNumber + 1 }} of {{ pagination.pages.length }}
       </div>
       <div>
-        <% if (nextHref) { %>
-          <a href="<%= nextHref.slice(0, -1) %>">Next &gt;</a>
-        <% } %>
+        {# {% if (nextHref) { %} #}
+          <a href="{{ nextHref }}">Next &gt;</a>
+        {# {% } %} #}
       </div>
     </div>
     <!-- ブログ記事一覧下 -->
@@ -54,7 +53,7 @@ pagination:
      data-ad-format="auto"
      data-full-width-responsive="true"></ins>
   </div>
-  <%- include('/footer') %>
+  {% include 'footer.html' %}
 </div>
 <script>
   const publishDateEls = document.getElementsByClassName('post-publish-date')
