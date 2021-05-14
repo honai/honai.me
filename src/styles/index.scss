@@ -70,6 +70,7 @@
   align-items: center;
   > .icon {
     width: 7.2rem;
+    height: 7.2rem;
     border-radius: 50%;
   }
   > .name {
@@ -138,7 +139,7 @@
   > .thumb {
     border-radius: var(--len-radius) var(--len-radius) 0 0;
     width: 100%;
-    // object-fit: cover;
+    height: auto;
   }
   > .texts {
     padding: 1rem;
@@ -156,8 +157,12 @@
   padding: 0 2rem;
   display: flex;
   flex-flow: column nowrap;
+  > .thumblink {
+    margin: 0.4rem 0;
+  }
 }
 .works-page-link {
+  padding-top: 0.4rem;
   text-align-last: center;
 }
 
