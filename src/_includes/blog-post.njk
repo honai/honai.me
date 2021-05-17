@@ -9,25 +9,25 @@ externalStyleSheets:
     async: true
 ---
 <div class="body-layout">
-  <%- include('header.html') %>
+  {% include 'header.html' %}
   <div class="grow">
-    <h1 class="post-title"><%= title %></h1>
+    <h1 class="post-title">{{ title }}</h1>
     <div class="post-content">
       <div>
         <a href="/blog">&lt; 記事一覧</a>
       </div>
       <div class="century-gothic post-date">
-        <time id="published-time" datetime="<%= date %>"><%= date %></time>
-        <% if (updated) { %>
-          (Updated at <time id="updated-time" datetime="<%= updated %>"><%= updated %></time>)
-        <% } %>
+        <time id="published-time" datetime="{{ date }}">{{ date }}</time>
+        {% if updated %}
+          (Updated at <time id="updated-time" datetime="{{ updated }}">{{ updated }}</time>)
+        {% endif %}
       </div>  
       <main class="post-markdown">
-        <%- content %>
+        {{ content | safe }}
       </main>
     </div>
   </div>
-  <%- include('footer.html') %>
+  {% include 'footer.html' %}
 </div>
 <script async src="https://platform.twitter.com/widgets.js" charset="utf-8"></script>
 <script>
