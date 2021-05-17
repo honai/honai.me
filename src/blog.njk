@@ -31,18 +31,20 @@ pagination:
       {% endfor %}
     </ul>
     <div class="post-list-pagination">
-      {# {% const { next: nextHref, previous: prevHref } = pagination.href %} #}
       {% set nextHref = pagination.href.next %}
+      {% set prevHref = pagination.href.previous %}
       <div>
-        <a href="{{ prevHref }}">&lt; Previous</a>
+        {% if prevHref %}
+          <a href="{{ prevHref }}">&lt; Previous</a>
+        {% endif %}
       </div>
       <div>
         {{ pagination.pageNumber + 1 }} of {{ pagination.pages.length }}
       </div>
       <div>
-        {# {% if (nextHref) { %} #}
+        {% if nextHref %}
           <a href="{{ nextHref }}">Next &gt;</a>
-        {# {% } %} #}
+        {% endif %}
       </div>
     </div>
     <!-- ブログ記事一覧下 -->
