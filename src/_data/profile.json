@@ -3,20 +3,22 @@
     {
       "url": "https://github.com/honai",
       "text": "github.com/honai",
-      "alt": "GitHubのアイコン",
-      "icon": "/images/github.svg"
+      "icon": "svg/github.svg"
     },
     {
       "url": "https://twitter.com/_honai",
       "text": "twitter.com/_honai",
-      "alt": "Twitterのアイコン",
-      "icon": "/images/twitter.svg"
+      "icon": "svg/twitter.svg"
     },
     {
       "url": "https://www.facebook.com/honai.ueoka/",
       "text": "facebook.com/honai.ueoka",
-      "alt": "Facebookのアイコン",
-      "icon": "/images/facebook.svg"
+      "icon": "svg/facebook.svg"
+    },
+    {
+      "url": "https://www.linkedin.com/in/honai-ueoka/",
+      "text": "linkedin.com/in/honai-ueoka",
+      "icon": "svg/linkedin.svg"
     }
   ],
   "education": [
