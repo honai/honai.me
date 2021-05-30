@@ -14,11 +14,24 @@
   line-height: 1.75;
 }
 
+.post-meta {
+  display: flex;
+  justify-content: space-between;
+}
 .post-date {
   text-align: right;
 }
 
+.post-edit {
+  text-align: right;
+  font-size: small;
+  > .link {
+    color: rgba(0, 0, 0, 0.75);
+  }
+}
+
 .post-markdown {
+  padding: 2.4rem 0;
   // TODO: remove
   > h1 {
     border-bottom: 1px solid rgba(0, 0, 0, 0.2);

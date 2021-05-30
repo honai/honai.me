@@ -7,21 +7,27 @@ externalStyleSheets:
   - href: https://cdn.jsdelivr.net/npm/katex@0.12.0/dist/katex.min.css
     integrity: sha384-AfEj0r4/OFrOo5t7NnNe46zW/tFgW6x/bCJG8FqQCEo3+Aro6EYUG4+cU+KJWu/X
     async: true
+githubLinkBase: https://github.com/honai/honai.me/blob/main/
 ---
 <div class="body-layout">
   {% include 'header.html' %}
   <div class="grow">
     <h1 class="post-title">{{ title }}</h1>
     <div class="post-content">
-      <div>
-        <a href="/blog">&lt; 記事一覧</a>
+      <div class="post-meta">
+        <div>
+          <a href="/blog">&lt; 記事一覧</a>
+        </div>
+        <div class="century-gothic post-date">
+          <time id="published-time" datetime="{{ date }}">{{ date }}</time>
+          {% if updated %}
+            (Updated at <time id="updated-time" datetime="{{ updated }}">{{ updated }}</time>)
+          {% endif %}
+        </div>
       </div>
-      <div class="century-gothic post-date">
-        <time id="published-time" datetime="{{ date }}">{{ date }}</time>
-        {% if updated %}
-          (Updated at <time id="updated-time" datetime="{{ updated }}">{{ updated }}</time>)
-        {% endif %}
-      </div>  
+      <div class="post-edit">
+        <a href="{{ githubLinkBase }}{{ page.inputPath }}" class="link">この記事の編集をリクエスト (GitHub)</a>
+      </div>
       <main class="post-markdown">
         {{ content | safe }}
       </main>
