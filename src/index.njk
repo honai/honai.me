@@ -30,14 +30,14 @@ layout: portfolio-base
   </div>
   <div class="content">
     <ul class="social-links _reset-ul">
-      <% for (const L of profile.links) { %>
+      {% for L in profile.links %}
         <li class="item">
-          <a href="<%= L.url %>" class="link _reset-a">
-            <img src="<%= L.icon %>" alt="<%= L.alt %>" width="24" height="24" class="icon">
-            <span class="text"><%= L.text %></span>
+          <a href="{{ L.url }}" class="link _reset-a">
+            {% include L.icon %}
+            <span class="text">{{ L.text }}</span>
           </a>
         </li>
-      <% } %>
+      {% endfor %}
     </ul>
   </div>
 </section>
@@ -46,47 +46,47 @@ layout: portfolio-base
   <h2 class="heading" id="education">
     <a href="#education" class="anchor">Education</a>
   </h2>
-  <% for (const E of profile.education) { %>
+  {% for E in profile.education %}
     <div class="content">
       <div class="education-item">
-        <div class="period"><%= E.period %></div>
-        <div class="desc"><%= E.title %></div>
+        <div class="period">{{ E.period }}</div>
+        <div class="desc">{{ E.title }}</div>
       </div>
     </div>
-  <% } %>
+  {% endfor %}
 </section>
 
 <section class="simple-card">
   <h2 class="heading" id="intern">
     <a href="#intern" class="anchor">Internships / Employments</a>
   </h2>
-  <% for (const E of profile.jobs) { %>
+  {% for E in profile.jobs %}
     <div class="content">
       <div class="education-item">
-        <div class="period"><%= E.period %></div>
-        <div class="desc"><%= E.title %></div>
+        <div class="period">{{ E.period }}</div>
+        <div class="desc">{{ E.title }}</div>
       </div>
     </div>
-  <% } %>
+  {% endfor %}
 </section>
 
 <section class="simple-card">
   <h2 class="heading" id="publications">
     <a href="#publications" class="anchor">Publications</a>
   </h2>
-  <% for (const P of profile.publications) { %>
+  {% for P in profile.publications %}
     <div class="content">
-      <%= P.authors %>
+      {{ P.authors }}
       <br>
-      <strong><%= P.title %></strong>
+      <strong>{{ P.title }}</strong>
       <br>
-      <%= P.journal %>
+      {{ P.journal }}
       <br>
-      <% for (const L of P.links) { %>
-        <a href="<%= L.url %>"><%= L.text %></a>&ensp;
-      <% } %>
+      {% for L in P.links %}
+        <a href="{{ L.url }}">{{ L.text }}</a>&ensp;
+      {% endfor %}
     </div>
-  <% } %>
+  {% endfor %}
 </section>
 
 <section class="simple-card">
@@ -95,23 +95,23 @@ layout: portfolio-base
   </h2>
   <div class="content">
     <ul class="_reset-ul slide-list">
-      <% for (const s of slides) { %>
+      {% for s in slides %}
         <li class="slide-item">
-          <a href="<%= s.url %>" class="link _reset-a">
+          <a href="{{ s.url }}" class="link _reset-a">
             <img
-              src="/images/slide_thumb/<%= s.thumb %>"
-              alt="<%= s.title %>のスライドのサムネイル"
+              src="/images/slide_thumb/{{ s.thumb }}"
+              alt="{{ s.title }}のスライドのサムネイル"
               width="640" height="320"
               class="thumb"
               loading="lazy">
             <div class="texts">
-              <div class="title"><%= s.title %></div>
-              <div class="subtitle"><%= s.subtitle %></div>
-              <div class="date"><%= s.date %></div>
+              <div class="title">{{ s.title }}</div>
+              <div class="subtitle">{{ s.subtitle }}</div>
+              <div class="date">{{ s.date }}</div>
             </div>
           </a>
         </li>
-      <% } %>
+      {% endfor %}
     </ul>
   </div>
 </section>
