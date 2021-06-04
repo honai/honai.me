@@ -3,10 +3,4 @@ updates:
 - package-ecosystem: npm
   directory: "/"
   schedule:
-    interval: daily
-    time: "20:00"
-  open-pull-requests-limit: 10
-  ignore:
-  - dependency-name: "@11ty/eleventy"
-    versions:
-    - 0.12.1
+    interval: weekly
