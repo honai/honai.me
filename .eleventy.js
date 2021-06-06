@@ -6,7 +6,7 @@ const markdownItKatex = require('@iktakahiro/markdown-it-katex')
 const fileCopies = ['images', 'favicon.ico', 'ads.txt', 'redirects']
 
 module.exports = (eleventyConfig) => {
-  eleventyConfig.setTemplateFormats(['html', 'md', 'njk', 'pug', 'ejs', '11ty.js'])
+  eleventyConfig.setTemplateFormats(['html', 'md', 'njk', 'pug', 'ejs', '11ty.js', 'png', 'jpg'])
 
   // static file copy
   for (const f of fileCopies) {

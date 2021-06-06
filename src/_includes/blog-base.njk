@@ -8,6 +8,7 @@ gtag_id: UA-137251140-3
 <html lang="{{ lang }}">
 <head>
   {% include 'seo.njk' %}
+  <base href="{{ page.url }}">
   <link rel="stylesheet" href="https://use.typekit.net/bdo3rru.css" media="print" onload="this.media='all'">
   <link rel="stylesheet" href="/blog.css">
   {% for css in externalStyleSheets %}
