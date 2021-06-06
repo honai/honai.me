@@ -1,7 +1,9 @@
 const sass = require('sass')
 const syntaxHighlight = require("@11ty/eleventy-plugin-syntaxhighlight")
 const markdownIt = require('markdown-it')
+const markdownItAnchor = require('markdown-it-anchor')
 const markdownItKatex = require('@iktakahiro/markdown-it-katex')
+const pluginTOC = require('eleventy-plugin-nesting-toc');
 
 const fileCopies = ['images', 'favicon.ico', 'ads.txt', 'redirects']
 
@@ -21,7 +23,8 @@ module.exports = (eleventyConfig) => {
   eleventyConfig.addPlugin(syntaxHighlight)
 
   // markdown customize
-  const mdLib = markdownIt({ html: true }).use(markdownItKatex)
+  eleventyConfig.addPlugin(pluginTOC, { tags: ['h1', 'h2', 'h3'] });
+  const mdLib = markdownIt({ html: true }).use(markdownItAnchor).use(markdownItKatex)
   eleventyConfig.setLibrary('md', mdLib)
 
   return {
