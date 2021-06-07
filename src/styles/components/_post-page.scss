@@ -7,6 +7,13 @@
   margin: 0;
   padding: 30px 10px;
 }
+
+.post-toc {
+  & a.-active {
+    color: red;
+  }
+}
+
 .post-content {
   max-width: 900px;
   margin: 0 auto;
@@ -98,5 +105,25 @@
     padding: 0 1em;
     color: #6a737d;
     border-left: 0.25em solid #dfe2e5;
+  }
+}
+
+
+@media screen and (min-width: 992px) {
+  .post-body-layout {
+    display: flex;
+    justify-content: space-between;
+    > .aside {
+      order: 2;
+      flex: 0 0 30rem;
+    }
+    > .aside > .post-toc {
+      position: sticky;
+      top: 0;
+    }
+    > .post-content {
+      order: 1;
+      flex: 1 1 auto;
+    }
   }
 }

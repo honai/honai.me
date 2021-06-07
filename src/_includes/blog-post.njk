@@ -12,30 +12,38 @@ githubLinkBase: https://github.com/honai/honai.me/blob/main/
   {% include 'header.html' %}
   <div class="grow">
     <h1 class="post-title">{{ title }}</h1>
-    <div class="post-content">
-      <div class="post-meta">
-        <div>
-          <a href="/blog">&lt; 記事一覧</a>
+    <div class="post-body-layout">
+      <aside class="aside">
+        <nav id="post-toc" class="post-toc">
+          {{ content | toc | safe }}
+        </nav>
+      </aside>
+      <div class="post-content">
+        <div class="post-meta">
+          <div>
+            <a href="/blog">&lt; 記事一覧</a>
+          </div>
+          <div class="century-gothic post-date">
+            <time id="published-time" datetime="{{ date }}">{{ date }}</time>
+            {% if updated %}
+              (Updated at <time id="updated-time" datetime="{{ updated }}">{{ updated }}</time>)
+            {% endif %}
+          </div>
         </div>
-        <div class="century-gothic post-date">
-          <time id="published-time" datetime="{{ date }}">{{ date }}</time>
-          {% if updated %}
-            (Updated at <time id="updated-time" datetime="{{ updated }}">{{ updated }}</time>)
-          {% endif %}
+        <div class="post-edit">
+          <a href="{{ githubLinkBase }}{{ page.inputPath }}" class="link">この記事の編集をリクエスト (GitHub)</a>
         </div>
+        <main class="post-markdown">
+          {{ content | safe }}
+        </main>
       </div>
-      <div class="post-edit">
-        <a href="{{ githubLinkBase }}{{ page.inputPath }}" class="link">この記事の編集をリクエスト (GitHub)</a>
-      </div>
-      <main class="post-markdown">
-        {{ content | safe }}
-      </main>
     </div>
   </div>
   {% include 'footer.html' %}
 </div>
 <script async src="https://platform.twitter.com/widgets.js" charset="utf-8"></script>
 <script>
+  // 日付をブラウザ言語に合わせる
   const publishedTimeEl = document.getElementById('published-time')
   const updatedTimeEl = document.getElementById('updated-time')
   for (const el of [publishedTimeEl, updatedTimeEl]) {
@@ -43,7 +51,54 @@ githubLinkBase: https://github.com/honai/honai.me/blob/main/
     const date = new Date(el.getAttribute('datetime'))
     el.textContent = date.toLocaleDateString()
   }
+
+  // インラインコードを読みやすく
   for (const el of document.querySelectorAll('pre:not([class]), code:not([class])')) {
     el.classList.add('language-text')
   }
+
+  // TOCスクロール連動
+  const headingObserveMap = new Map()
+  const ids = []
+
+  const updateTocHighlights = (baseID, offset) => {
+    const activeClass = '-active'
+    const baseIdx = ids.indexOf(baseID)
+    const targetIdx = baseIdx + offset
+    if (targetIdx < 0 || ids.length <= targetIdx) {
+      return
+    }
+    const targetID = ids[targetIdx]
+    const removeTarget = document.querySelector(`#post-toc a.${activeClass}`)
+    if (removeTarget) removeTarget.classList.remove(activeClass)
+    document.querySelector(`#post-toc a[href='#${targetID}']`).classList.add(activeClass)
+  }
+
+  const observer = new IntersectionObserver((entries) => {
+    for (const e of entries) {
+      const { target, isIntersecting, intersectionRatio: ratio } = e
+      const { y } = e.boundingClientRect
+      const id = target.getAttribute('id')
+      const prev = headingObserveMap.get(id)
+      headingObserveMap.set(id, { ...prev, y, ratio })
+      if (prev.y === null) {
+        continue
+      }
+      const diffY = y - prev.y
+      if (isIntersecting) {
+        updateTocHighlights(id, 0)
+      } else if (!isIntersecting && diffY > 0) {
+        updateTocHighlights(id, -1)
+      }
+    }
+  }, { threshold: 0, rootMargin: `-1% 0px -99% 0px` })
+
+  const tocAnchors = document.querySelectorAll('#post-toc a')
+  tocAnchors.forEach(a => {
+    const id = a.getAttribute('href').slice(1)
+    ids.push(id)
+    headingObserveMap.set(id, { y: null })
+    observer.observe(document.getElementById(id))
+  })
+
 </script>
