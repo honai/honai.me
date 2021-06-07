@@ -23,7 +23,7 @@ module.exports = (eleventyConfig) => {
   eleventyConfig.addPlugin(syntaxHighlight)
 
   // markdown customize
-  eleventyConfig.addPlugin(pluginTOC, { tags: ['h1', 'h2', 'h3'] });
+  eleventyConfig.addPlugin(pluginTOC, { tags: ['h1', 'h2'] });
   const mdLib = markdownIt({ html: true }).use(markdownItAnchor).use(markdownItKatex)
   eleventyConfig.setLibrary('md', mdLib)
 

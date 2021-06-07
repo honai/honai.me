@@ -58,6 +58,7 @@ githubLinkBase: https://github.com/honai/honai.me/blob/main/
   }
 
   // TOCスクロール連動
+  const postTocID = 'post-toc'
   const headingObserveMap = new Map()
   const ids = []
 
@@ -69,9 +70,9 @@ githubLinkBase: https://github.com/honai/honai.me/blob/main/
       return
     }
     const targetID = ids[targetIdx]
-    const removeTarget = document.querySelector(`#post-toc a.${activeClass}`)
+    const removeTarget = document.querySelector(`#${postTocID} a.${activeClass}`)
     if (removeTarget) removeTarget.classList.remove(activeClass)
-    document.querySelector(`#post-toc a[href='#${targetID}']`).classList.add(activeClass)
+    document.querySelector(`#${postTocID} a[href='#${targetID}']`).classList.add(activeClass)
   }
 
   const observer = new IntersectionObserver((entries) => {
@@ -91,9 +92,9 @@ githubLinkBase: https://github.com/honai/honai.me/blob/main/
         updateTocHighlights(id, -1)
       }
     }
-  }, { threshold: 0, rootMargin: `-1% 0px -99% 0px` })
+  }, { threshold: 0, rootMargin: '-1% 0px -99% 0px' })
 
-  const tocAnchors = document.querySelectorAll('#post-toc a')
+  const tocAnchors = document.querySelectorAll(`#${postTocID} a`)
   tocAnchors.forEach(a => {
     const id = a.getAttribute('href').slice(1)
     ids.push(id)
