@@ -53,9 +53,9 @@
     {
       "title": "Frustratingly Easy Edit-based Linguistic Steganography with a Masked Language Model.",
       "authors": "Honai Ueoka, Yugo Murawaki and Sadao Kurohashi.",
-      "journal": "In Proceedings of the 2021 Conference of the North American Chapter of the Association for Computational Linguistics: Human Language Technologies (NAACL-HLT 2021), pp. ???-???, online, June 2021. (to appear). (short paper).",
+      "journal": "In Proceedings of the 2021 Conference of the North American Chapter of the Association for Computational Linguistics: Human Language Technologies (NAACL-HLT 2021), pp. 5486-5492, online, June 2021. (short paper).",
       "links": [
-        { "text": "preprint", "url": "https://arxiv.org/abs/2104.09833" },
+        { "text": "paper", "url": "https://www.aclweb.org/anthology/2021.naacl-main.433/" },
         { "text": "code", "url": "https://github.com/ku-nlp/steganography-with-masked-lm" }
       ]
     },
