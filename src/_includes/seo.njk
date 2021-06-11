@@ -1,7 +1,8 @@
+{# Use absolute URLs #}
 {% set siteDomain = 'https://www.honai.me' %}
 {% set locale = 'JP' %}
 {% set username = '@_honai' %}
-{% set canonicalUrl = (siteDomain + page.url) | noextension %}
+{% set canonicalUrl = siteDomain + page.url %}
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
@@ -19,4 +20,4 @@
 <meta name="twitter:card" content="{{ 'summary_large_image' if large_card else 'summary' }}">
 <meta name="twitter:site" content="{{ username }}">
 
-<link rel="icon" href="/favicon.ico">
+<link rel="icon" href="{{ siteDomain }}/favicon.ico">

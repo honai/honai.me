@@ -14,18 +14,17 @@ pagination:
     <h1 class="post-list-title century-gothic">Honai's Blog</h1>
     <ul class="post-list-ul">
       {% for post in pagination.items %}
-        {% set href = post.url | noextension %}
         <li class="post-list-item">
           <div class="date">
             <time datetime="{{ post.date }}" class="post-publish-date">{{ post.date }}</time>
           </div>
           <h2 class="title">
-            <a href="{{ href }}" class="link _reset-a">{{ post.data.title }}</a>
+            <a href="{{ post.url }}" class="link _reset-a">{{ post.data.title }}</a>
           </h2>
           <p class="description">
             {{ post.data.description }}
             ...
-            <a href="{{ href }}" class="_reset-a more">この記事を読む</a>
+            <a href="{{ post.url }}" class="_reset-a more">この記事を読む</a>
           </p>
         </li>
       {% endfor %}
