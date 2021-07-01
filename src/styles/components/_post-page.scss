@@ -38,6 +38,11 @@
   }
 }
 
+.ad-margin {
+  margin: 1rem;
+  background-color: grey;
+}
+
 @media screen and (min-width: 992px) {
   .article-layout {
     width: 100%;
@@ -45,10 +50,11 @@
     justify-content: center;
     grid-template-areas: 
       "header header"
-      "main   aside";
+      "main   aside"
+      "ad     .";
     grid-template-columns: minmax(0, 1fr) 30rem;
-    grid-template-rows: 18rem auto;
-    column-gap: 4rem;
+    grid-template-rows: 18rem auto auto;
+    gap: 2rem 4rem;
     
     > .header {
       grid-area: header;
@@ -70,11 +76,12 @@
       flex-direction: column;
       gap: 2.4rem;
     }
-  }
-}
 
-.ad-margin {
-  padding: 1rem;
+    > .ad {
+      grid-area: ad;
+      margin: 1rem;
+    }
+  }
 }
 
 @media screen and (min-width: 1200px) {
