@@ -73,8 +73,12 @@
   }
 }
 
+.ad-margin {
+  padding: 1rem;
+}
+
 @media screen and (min-width: 1200px) {
   .article-layout {
-    grid-template-columns: 86rem 30rem;
+    grid-template-columns: 84rem 30rem;
   }
 }
