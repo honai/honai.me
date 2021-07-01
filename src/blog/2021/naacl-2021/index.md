@@ -2,6 +2,7 @@
 title: オンライン国際学会に参加した
 date: 2021-07-02
 og_image_url: "https://www.honai.me/blog/2021/naacl-2021/gather-og.jpg"
+large_card: true
 description:
   6月にNAACL2021という自然言語処理系の国際学会に参加し、
   投稿した論文の発表を行いました。
