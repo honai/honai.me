@@ -23,6 +23,7 @@ description:
 > [Frustratingly Easy Edit-based Linguistic Steganography with a Masked Language Model.](https://aclanthology.org/2021.naacl-main.433/)<br>
 > In Proceedings of the 2021 Conference of the North American Chapter of the Association for Computational Linguistics: Human Language Technologies (NAACL-HLT 2021), pp. 5486-5492, online, June 2021. (short paper). 
 
+タイトルを直訳すると「マスク言語モデルによる イライラするほど簡単な言語ステガノグラフィ」です。
 この記事では論文の中身については詳しくは触れませんが、分野としては変わり種で、ステガノグラフィという、データの中に見つからないように他のデータを埋め込むような技術についての研究です。
 
 ## 時系列でふりかえり
