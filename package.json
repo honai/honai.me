@@ -1,26 +1,28 @@
 {
-  "name": "honai",
+  "name": "honai.me",
   "version": "1.0.0",
-  "main": "index.js",
-  "repository": "git@github.com:honai/honai.me.git",
+  "repository": "https://github.com/honai/honai.me.git",
   "author": "Honai Ueoka",
-  "license": "MIT",
   "private": true,
+  "type": "module",
+  "engines": {
+    "node": "14.x"
+  },
   "scripts": {
-    "build": "eleventy",
-    "clean": "rimraf _site",
-    "dev": "eleventy --serve"
+    "build": "svelte-kit build",
+    "dev": "svelte-kit dev",
+    "preview": "svelte-kit preview"
   },
   "devDependencies": {
-    "@11ty/eleventy": "^0.12.1",
-    "@11ty/eleventy-plugin-syntaxhighlight": "^3.1.1",
-    "@iktakahiro/markdown-it-katex": "^4.0.1",
-    "eleventy-plugin-nesting-toc": "^1.3.0",
-    "feed": "^4.2.2",
-    "markdown-it": "^12.0.6",
-    "markdown-it-anchor": "^7.1.0",
-    "rimraf": "^3.0.2",
-    "sass": "^1.35.1"
+    "@sveltejs/adapter-static": "^1.0.0-next.13",
+    "@sveltejs/kit": "^1.0.0-next.127",
+    "svelte": "^3.38.3"
   },
-  "dependencies": {}
+  "dependencies": {
+    "gray-matter": "^4.0.3",
+    "rehype-stringify": "^8.0.0",
+    "remark-parse": "^9.0.0",
+    "remark-rehype": "^8.1.0",
+    "unified": "^9.2.1"
+  }
 }
