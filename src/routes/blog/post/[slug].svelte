@@ -3,7 +3,7 @@
    * @type {import('@sveltejs/kit').Load}
    */
   export async function load({ page: { params }, fetch }) {
-    const url = `/blog/${params.year}/${params.slug}.json`
+    const url = `/blog/post/${params.slug}.json`
     const res = await fetch(url)
     if (res.ok) {
       const { post } = await res.json()
@@ -15,6 +15,7 @@
 </script>
 
 <script>
+  /** @type {import('$lib/posts').Post} */
   export let post
   const { title } = post.meta
 </script>

@@ -20,14 +20,14 @@ CAMPHOR- Day での発表の時は時間の関係で（~~自分の勉強不足�
 
 # 連載について
 
-- [HTTP/1.xとKeep Alive](/blog/2020/how-http-works-1-http1-keep-alive)
+- [HTTP/1.xとKeep Alive](/blog/post/how-http-works-1-http1-keep-alive)
 - **TLSとHTTP - TLSの概要**（本記事）
-- [TLSとHTTP - HTTP over TLS](/blog/2020/how-http-works-3-http-over-tls)
+- [TLSとHTTP - HTTP over TLS](/blog/post/how-http-works-3-http-over-tls)
 - HTTP/1の課題とHTTP/2
 - HTTP/2からQUICへ
 - QUICとHTTP/3
 
-この連載全体については [第1回の記事](/blog/2020/how-http-works-1-http1-keep-alive#%e9%80%a3%e8%bc%89%e3%81%ae%e6%a6%82%e8%a6%81) を参照してください。
+この連載全体については [第1回の記事](/blog/post/how-http-works-1-http1-keep-alive#%e9%80%a3%e8%bc%89%e3%81%ae%e6%a6%82%e8%a6%81) を参照してください。
 
 **本ブログ記事に掲載している画像の無断転載を禁じます。**
 

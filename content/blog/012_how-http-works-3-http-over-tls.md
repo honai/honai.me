@@ -15,14 +15,14 @@ CAMPHOR- Day 2020で発表した「入門 HTTP」を連載としてブログに�
 
 # 連載について
 
-- [HTTP/1.xとKeep Alive](/blog/2020/how-http-works-1-http1-keep-alive)
-- [TLSとHTTP - TLSの概要](/blog/2020/how-http-works-2-tls-http)
+- [HTTP/1.xとKeep Alive](/blog/post/how-http-works-1-http1-keep-alive)
+- [TLSとHTTP - TLSの概要](/blog/post/how-http-works-2-tls-http)
 - **TLSとHTTP - HTTP over TLS**（本記事）
 - HTTP/1の課題とHTTP/2
 - HTTP/2からQUICへ
 - QUICとHTTP/3
 
-この連載全体については [第1回の記事](/blog/2020/how-http-works-1-http1-keep-alive#%e9%80%a3%e8%bc%89%e3%81%ae%e6%a6%82%e8%a6%81) を参照してください。
+この連載全体については [第1回の記事](/blog/post/how-http-works-1-http1-keep-alive#%e9%80%a3%e8%bc%89%e3%81%ae%e6%a6%82%e8%a6%81) を参照してください。
 
 **本ブログ記事に掲載している画像の無断転載を禁じます。**
 
@@ -32,7 +32,7 @@ CAMPHOR- Day 2020で発表した「入門 HTTP」を連載としてブログに�
 今回はHTTP over TLSということで、TLSのハンドシェイクや、
 通常TCP上で動作するHTTPがどのようにTLS上で動作するのか解説したいと思います。
 
-前回の最後に少し紹介した [TLSの歴史](/blog/2020/how-http-works-2-tls-http#tls%e3%81%ae%e6%ad%b4%e5%8f%b2) で、
+前回の最後に少し紹介した [TLSの歴史](/blog/post/how-http-works-2-tls-http#tls%e3%81%ae%e6%ad%b4%e5%8f%b2) で、
 TLSのバージョン1.3では大きな変更が加えられたと説明しました。
 この連載ではHTTPの進化に焦点を当てていますが、TLS 1.3によってHTTPのレイヤーから見ても改善点がたくさんありましたので、
 TLS 1.2 (以前) と TLS 1.3 の違いに注目して紹介していきたいと思います。

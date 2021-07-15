@@ -14,15 +14,15 @@ CAMPHOR- Day 2020で発表した「入門 HTTP」を連載としてブログに�
 
 # 連載について
 
-- [HTTP/1.xとKeep Alive](/blog/2020/how-http-works-1-http1-keep-alive)
-- [TLSとHTTP - TLSの概要](/blog/2020/how-http-works-2-tls-http)
-- [TLSとHTTP - HTTP over TLS](/blog/2020/how-http-works-3-http-over-tls)
+- [HTTP/1.xとKeep Alive](/blog/post/how-http-works-1-http1-keep-alive)
+- [TLSとHTTP - TLSの概要](/blog/post/how-http-works-2-tls-http)
+- [TLSとHTTP - HTTP over TLS](/blog/post/how-http-works-3-http-over-tls)
 - **HTTP/1の課題とHTTP/2**（本記事）
 - HTTP/2からQUICへ
 - QUICとHTTP/3
 
 この連載全体については
-[第1回の記事](/blog/2020/how-http-works-1-http1-keep-alive#%e9%80%a3%e8%bc%89%e3%81%ae%e6%a6%82%e8%a6%81)
+[第1回の記事](/blog/post/how-http-works-1-http1-keep-alive#%e9%80%a3%e8%bc%89%e3%81%ae%e6%a6%82%e8%a6%81)
 を参照してください。
 
 **本ブログ記事に掲載している画像の無断転載を禁じます。**
@@ -36,7 +36,7 @@ HTTP/2は、プロトコルの実装面はHTTP/1.xと全く互換性がありま
 このことが逆に後方互換性の問題を起きにくくしています。
 
 HTTP/2はTLS上で利用することを前提としている面があり、
-[前回のTLSについての解説で紹介](/blog/2020/how-http-works-3-http-over-tls#alpn-application-layer-protocol-negotiation) したALPNを利用して
+[前回のTLSについての解説で紹介](/blog/post/how-http-works-3-http-over-tls#alpn-application-layer-protocol-negotiation) したALPNを利用して
 クライアント・サーバー間でネゴシエートできた場合のみHTTP/2で通信します。
 
 それでは、まずHTTP/1系の課題を見ていきましょう。

@@ -12,14 +12,14 @@
 
 # 連載について
 
-- [HTTP/1.xとKeep Alive](/blog/2020/how-http-works-1-http1-keep-alive)
-- [TLSとHTTP - TLSの概要](/blog/2020/how-http-works-2-tls-http)
-- [TLSとHTTP - HTTP over TLS](/blog/2020/how-http-works-3-http-over-tls)
-- [HTTP/1の課題とHTTP/2](/blog/2020/how-http-works-4-http2)
+- [HTTP/1.xとKeep Alive](/blog/post/how-http-works-1-http1-keep-alive)
+- [TLSとHTTP - TLSの概要](/blog/post/how-http-works-2-tls-http)
+- [TLSとHTTP - HTTP over TLS](/blog/post/how-http-works-3-http-over-tls)
+- [HTTP/1の課題とHTTP/2](/blog/post/how-http-works-4-http2)
 - **QUICとHTTP/3**（本記事）
 
 この連載全体については
-[第1回の記事](/blog/2020/how-http-works-1-http1-keep-alive#%e9%80%a3%e8%bc%89%e3%81%ae%e6%a6%82%e8%a6%81)
+[第1回の記事](/blog/post/how-http-works-1-http1-keep-alive#%e9%80%a3%e8%bc%89%e3%81%ae%e6%a6%82%e8%a6%81)
 を参照してください。
 
 **本ブログ記事に掲載している画像の無断転載を禁じます。**
@@ -30,7 +30,7 @@ HTTPの現在の正式な最新バージョンはHTTP/2ですが、次期バー�
 また、Googleなど一部のサービスやGoogle Chromeでは試験的に新しいプロトコル（QUICと呼ばれています）を導入しています。
 今回は、HTTPの次期バージョンがどういうものになろうとしているのか解説します。
 
-[前回の記事](/blog/2020/how-http-works-4-http2) では、HTTP/2の仕組みとそのメリットについて解説しました。
+[前回の記事](/blog/post/how-http-works-4-http2) では、HTTP/2の仕組みとそのメリットについて解説しました。
 今回は、まずHTTP/2のデメリットを解説し、それをいかに解決しているのかを交えながらQUICとHTTP/3がいかに解決しているのか
 
 ## HTTP/2の課題

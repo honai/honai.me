@@ -16,11 +16,11 @@
 </script>
 
 <script>
-  import Seo from "$lib/Seo.svelte"
+  import Seo from "$lib/components/Seo.svelte"
 
-  const title = "Honai's Blog"
-
+  /** @type {import("$lib/posts").PostMeta[]} */
   export let posts = []
+  const title = "Honai's Blog"
 </script>
 
 <Seo {title} />
@@ -28,7 +28,7 @@
 <h1>{title}</h1>
 <p><a href="/">Home</a></p>
 <ul>
-  {#each posts as p (p.params.slug)}
-    <li><a href={`/blog/${p.params.year}/${p.params.slug}`}>{p.title}</a></li>
+  {#each posts as p (p.slug)}
+    <li><a href={`/blog/post/${p.slug}`}>{p.title}</a></li>
   {/each}
 </ul>
