@@ -16,6 +16,15 @@
 </ol>
 
 <style>
+  ol {
+    padding: 0 0 0 2.4rem;
+  }
+  li {
+    color: var(--color-text-secondary);
+  }
+  a {
+    color: inherit;
+  }
   li > .active {
     font-weight: bold;
   }
