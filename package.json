@@ -21,6 +21,7 @@
     "svelte-preprocess": "^4.7.4"
   },
   "dependencies": {
+    "feed": "^4.2.2",
     "gray-matter": "^4.0.3",
     "mdast-util-toc": "^6.0.0",
     "rehype-raw": "^5.1.0",

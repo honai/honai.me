@@ -23,12 +23,12 @@
 
   /** @type {import('$lib/posts').Post} */
   export let post
-  const { title, date, updated, slug, description } = post.meta
+  const { title, date, updated, slug, description, ogImageUrl } = post.meta
   const path = `/blog/post/${slug}`
   const { toc, tocIDs } = post
 </script>
 
-<Seo title={`${title} | Honai's Blog`} {path} {description} ogImage={post.meta.og_image_url} />
+<Seo title={`${title} | Honai's Blog`} {path} {description} {ogImageUrl} />
 
 <article class="layout">
   <div class="header">

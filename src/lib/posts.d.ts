@@ -1,6 +1,10 @@
 export type PostMeta = {
   slug: string
   title: string
+  description: string
+  date: string
+  updated?: string
+  ogImageUrl?: string
 }
 
 export type PostToc = {
