@@ -18,11 +18,16 @@
 
 <script>
   import Seo from "$lib/components/Seo.svelte"
+  import { onMount } from "svelte"
   import PostListItem from "./_PostListItem.svelte"
 
   /** @type {import("$lib/posts").PostMeta[]} */
   export let posts = []
   const title = "Honai's Blog"
+
+  onMount(() => {
+    ;(adsbygoogle = window.adsbygoogle || []).push({})
+  })
 </script>
 
 <Seo {title} description="Latest posts from Honai's Blog" path="/blog" />

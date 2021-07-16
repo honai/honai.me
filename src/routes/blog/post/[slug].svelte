@@ -16,6 +16,7 @@
 </script>
 
 <script>
+  import { onMount } from "svelte"
   import Seo from "$lib/components/Seo.svelte"
   import ArticleHero from "./_ArticleHero.svelte"
   import PostMd from "./_PostMd.svelte"
@@ -26,6 +27,10 @@
   const { title, date, updated, slug, description, ogImageUrl } = post.meta
   const path = `/blog/post/${slug}`
   const { toc, tocIDs } = post
+
+  onMount(() => {
+    ;(adsbygoogle = window.adsbygoogle || []).push({})
+  })
 </script>
 
 <Seo title={`${title} | Honai's Blog`} {path} {description} {ogImageUrl} />
