@@ -13,22 +13,62 @@
       props: { posts },
     }
   }
+  export const hydrate = true
 </script>
 
 <script>
   import Seo from "$lib/components/Seo.svelte"
+  import Footer from "./_Footer.svelte"
+  import Header from "./_Header.svelte"
+  import PostListItem from "./_PostListItem.svelte"
 
   /** @type {import("$lib/posts").PostMeta[]} */
   export let posts = []
   const title = "Honai's Blog"
 </script>
 
-<Seo {title} />
+<Seo {title} description="Latest posts from Honai's Blog" path="/blog/" />
 
-<h1>{title}</h1>
-<p><a href="/">Home</a></p>
-<ul>
-  {#each posts as p (p.slug)}
-    <li><a href={`/blog/post/${p.slug}`}>{p.title}</a></li>
-  {/each}
-</ul>
+<Header />
+
+<div class="layout">
+  <h1>{title}</h1>
+  <ul class="post-list">
+    {#each posts as post (post.slug)}
+      <PostListItem {post} />
+    {/each}
+  </ul>
+  <!-- ブログ記事一覧下 -->
+  <ins
+    class="adsbygoogle"
+    style="display:block"
+    data-ad-client="ca-pub-9155380222623167"
+    data-ad-slot="3792188932"
+    data-ad-format="auto"
+    data-full-width-responsive="true"
+  />
+</div>
+
+<Footer />
+
+<style>
+  .layout {
+    width: 100%;
+    max-width: 720px;
+    margin: 0 auto;
+    padding: 0 20px 20px;
+  }
+  h1 {
+    text-align: center;
+    font-family: var(--font-family-century);
+    font-weight: var(--font-weight-century);
+    padding: 4.8rem 0;
+  }
+  .post-list {
+    list-style-type: none;
+    padding: 0;
+    display: flex;
+    flex-flow: column;
+    gap: 3.6rem;
+  }
+</style>

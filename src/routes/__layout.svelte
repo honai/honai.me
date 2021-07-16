@@ -3,9 +3,7 @@
 </svelte:head>
 
 <div class="layout">
-  <div class="content">
-    <slot />
-  </div>
+  <slot />
 </div>
 
 <style>
@@ -21,12 +19,8 @@
     --font-weight-century: 400;
   }
   .layout {
+    min-height: 100vh;
     background-color: var(--color-bg);
     color: var(--color-text);
-  }
-  .content {
-    padding: 1rem;
-    max-width: calc(720px + 2rem);
-    margin: 0 auto;
   }
 </style>

@@ -4,137 +4,137 @@
   import SimpleCardContent from "$lib/components/SimpleCard/Content.svelte"
   import profile from "$lib/profile"
   import Hero from "$lib/components/Hero.svelte"
+  import Layout from "./_Layout.svelte"
 </script>
 
 <Seo title="Honai Ueoka" description="Honai Ueoka's portfolio website." />
 
-<Hero />
+<Layout>
+  <Hero />
 
-<div class="card-layout">
-  <SimpleCard title="About" id="about">
-    <SimpleCardContent>
-      <div class="profile-section">
-        <img src="/images/me.jpg" alt="honaiの写真" width="72" height="72" class="icon" />
-        <div class="name">
-          <div class="ja">上岡 輔乃</div>
-          <div class="en">Honai Ueoka</div>
-        </div>
-      </div>
-    </SimpleCardContent>
-    <SimpleCardContent>
-      <p>
-        京都大学大学院 情報学研究科 通信情報システム専攻 / 修士課程（2023年3月修了予定） / CAMPHOR-
-        運営メンバー
-      </p>
-    </SimpleCardContent>
-    <SimpleCardContent>
-      <ul class="social-links _reset-ul">
-        {#each profile.links as L}
-          <li class="item">
-            <a href={L.url} class="link _reset-a">
-              <L.Icon />
-              <span class="text">{L.text}</span>
-            </a>
-          </li>
-        {/each}
-      </ul>
-    </SimpleCardContent>
-  </SimpleCard>
-
-  <SimpleCard id="education" title="Education">
-    {#each profile.education as E}
+  <div class="card-layout">
+    <SimpleCard title="About" id="about">
       <SimpleCardContent>
-        <div class="content">
-          <div class="education-item">
-            <div class="period">{E.period}</div>
-            <div class="desc">{E.title}</div>
+        <div class="profile-section">
+          <img src="/images/me.jpg" alt="honaiの写真" width="72" height="72" class="icon" />
+          <div class="name">
+            <div class="ja">上岡 輔乃</div>
+            <div class="en">Honai Ueoka</div>
           </div>
         </div>
       </SimpleCardContent>
-    {/each}
-  </SimpleCard>
-
-  <SimpleCard id="jobs" title="Internships / Employments">
-    {#each profile.jobs as E}
       <SimpleCardContent>
-        <div class="content">
-          <div class="education-item">
-            <div class="period">{E.period}</div>
-            <div class="desc">{E.title}</div>
-          </div>
-        </div>
+        <p>京都大学大学院 情報学研究科 通信情報システム専攻 / 修士課程（2023年3月修了予定） / CAMPHOR- 運営メンバー</p>
       </SimpleCardContent>
-    {/each}
-  </SimpleCard>
-
-  <SimpleCard id="publications" title="Publications">
-    {#each profile.publications as P}
       <SimpleCardContent>
-        <div class="content">
-          {P.authors}
-          <br />
-          <strong>{P.title}</strong>
-          <br />
-          {P.journal}
-          <br />
-          {#each P.links as L}
-            <a href={L.url}>{L.text}</a>&ensp;
+        <ul class="social-links _reset-ul">
+          {#each profile.links as L}
+            <li class="item">
+              <a href={L.url} class="link _reset-a">
+                <L.Icon />
+                <span class="text">{L.text}</span>
+              </a>
+            </li>
           {/each}
+        </ul>
+      </SimpleCardContent>
+    </SimpleCard>
+
+    <SimpleCard id="education" title="Education">
+      {#each profile.education as E}
+        <SimpleCardContent>
+          <div class="content">
+            <div class="education-item">
+              <div class="period">{E.period}</div>
+              <div class="desc">{E.title}</div>
+            </div>
+          </div>
+        </SimpleCardContent>
+      {/each}
+    </SimpleCard>
+
+    <SimpleCard id="jobs" title="Internships / Employments">
+      {#each profile.jobs as E}
+        <SimpleCardContent>
+          <div class="content">
+            <div class="education-item">
+              <div class="period">{E.period}</div>
+              <div class="desc">{E.title}</div>
+            </div>
+          </div>
+        </SimpleCardContent>
+      {/each}
+    </SimpleCard>
+
+    <SimpleCard id="publications" title="Publications">
+      {#each profile.publications as P}
+        <SimpleCardContent>
+          <div class="content">
+            {P.authors}
+            <br />
+            <strong>{P.title}</strong>
+            <br />
+            {P.journal}
+            <br />
+            {#each P.links as L}
+              <a href={L.url}>{L.text}</a>&ensp;
+            {/each}
+          </div>
+        </SimpleCardContent>
+      {/each}
+    </SimpleCard>
+
+    <SimpleCard id="presentations" title="Presentations">
+      <SimpleCardContent>
+        <ul class="_reset-ul slide-list">
+          {#each profile.presentations as s}
+            <li class="slide-item">
+              <a href={s.url} class="link _reset-a">
+                <img
+                  src="/images/slide_thumb/{s.thumb}"
+                  alt="{s.title}のスライドのサムネイル"
+                  width="640"
+                  height="320"
+                  class="thumb"
+                  loading="lazy"
+                />
+                <div class="texts">
+                  <div class="title">{s.title}</div>
+                  <div class="subtitle">{s.subtitle}</div>
+                  <div class="date">{s.date}</div>
+                </div>
+              </a>
+            </li>
+          {/each}
+        </ul>
+      </SimpleCardContent>
+    </SimpleCard>
+
+    <SimpleCard id="works" title="Works">
+      <SimpleCardContent>
+        <div class="works-gallery">
+          <a href="https://lotus.kuee.kyoto-u.ac.jp/NLPforCOVID-19/" class="thumblink">
+            <img
+              src="/images/covid-19-watcher.png"
+              alt="COVID-19 World Information Watcher"
+              class="thumb"
+              loading="lazy"
+            />
+          </a>
+          <a href="https://excelm.honai.me/" class="thumblink">
+            <img src="/images/excelm.png" alt="ExcElm" class="thumb" loading="lazy" />
+          </a>
         </div>
       </SimpleCardContent>
-    {/each}
-  </SimpleCard>
+    </SimpleCard>
 
-  <SimpleCard id="presentations" title="Presentations">
-    <SimpleCardContent>
-      <ul class="_reset-ul slide-list">
-        {#each profile.presentations as s}
-          <li class="slide-item">
-            <a href={s.url} class="link _reset-a">
-              <img
-                src="/images/slide_thumb/{s.thumb}"
-                alt="{s.title}のスライドのサムネイル"
-                width="640"
-                height="320"
-                class="thumb"
-                loading="lazy"
-              />
-              <div class="texts">
-                <div class="title">{s.title}</div>
-                <div class="subtitle">{s.subtitle}</div>
-                <div class="date">{s.date}</div>
-              </div>
-            </a>
-          </li>
-        {/each}
-      </ul>
-    </SimpleCardContent>
-  </SimpleCard>
-
-  <SimpleCard id="works" title="Works">
-    <SimpleCardContent>
-      <div class="works-gallery">
-        <a href="https://lotus.kuee.kyoto-u.ac.jp/NLPforCOVID-19/" class="thumblink">
-          <img
-            src="/images/covid-19-watcher.png"
-            alt="COVID-19 World Information Watcher"
-            class="thumb"
-            loading="lazy"
-          />
-        </a>
-        <a href="https://excelm.honai.me/" class="thumblink">
-          <img src="/images/excelm.png" alt="ExcElm" class="thumb" loading="lazy" />
-        </a>
-      </div>
-    </SimpleCardContent>
-  </SimpleCard>
-
-  <SimpleCard id="blog" title="Blog">
-    <SimpleCardContent>
-      <a href="/blog">Honai's Blog</a>
-    </SimpleCardContent>
-  </SimpleCard>
-</div>
+    <SimpleCard id="blog" title="Blog">
+      <SimpleCardContent>
+        <a href="/blog">Honai's Blog</a>
+      </SimpleCardContent>
+    </SimpleCard>
+  </div>
+</Layout>
 
 <style lang="scss">
   @use 'src/variables' as v;
