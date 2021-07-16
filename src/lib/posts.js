@@ -6,6 +6,7 @@ import { mdToHtmlToc } from "./md"
 const BLOG_DIR = "content/blog"
 const EXT_MD = ".md"
 
+/** @type {() => import("./posts").PostMeta[]} */
 export const listPosts = () => {
   return fs
     .readdirSync(BLOG_DIR, { withFileTypes: true })
@@ -21,6 +22,7 @@ export const listPosts = () => {
     })
 }
 
+/** @type {(slug: string) => import("./posts").Post | null} */
 export const findSinglePost = (slug) => {
   const file = fs.readdirSync(BLOG_DIR).find((f) => f.endsWith(`${slug}.md`))
   if (!file) {

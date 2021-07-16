@@ -6,6 +6,31 @@ import rehypeSlug from "rehype-slug"
 import rehypeRaw from "rehype-raw"
 import rehypeToc from "rehype-toc"
 
+/** @typedef {import("rehype-toc").HtmlElementNode} Node */
+
+/**
+ * @typedef {Object} Toc
+ * @prop {string} title
+ * @prop {string} id
+ * @prop {number} level
+ * @prop {Toc[]} [children=[]]
+ */
+
+/** @param {Node} node */
+const tocLi = (node) => {
+  if (node.tagName !== "li") throw Error("not li")
+  /** @type {Node} */
+  const hNode = node.data.hookArgs[0]
+  const hTag = hNode.tagName
+  const hId = hNode.properties.id
+  const text = hNode.children[0].value
+  let children = []
+  if (node.children[1]) {
+    children = node.children[1].children.map(tocLi)
+  }
+  return { tag: hTag, id: hId, text, children }
+}
+
 /** @type {(md: string) => { html: string, toc: any } */
 export const mdToHtmlToc = (md) => {
   let toc
@@ -17,7 +42,7 @@ export const mdToHtmlToc = (md) => {
     .use(rehypeToc, {
       headings: ["h1", "h2"],
       customizeTOC: (node) => {
-        toc = node
+        toc = node.children[0].children.map(tocLi)
         return false
       },
     })

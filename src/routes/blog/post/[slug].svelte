@@ -15,12 +15,19 @@
 </script>
 
 <script>
+  import Toc from "./_Toc.svelte"
   /** @type {import('$lib/posts').Post} */
   export let post
   const { title } = post.meta
+  const { toc } = post
 </script>
 
 <h1>{title}</h1>
-<nav><a href="/blog">BLOG</a></nav>
-<p>{JSON.stringify(post.toc)}</p>
+<nav>
+  <ol>
+    {#each toc as item (item.id)}
+      <Toc toc={item} />
+    {/each}
+  </ol>
+</nav>
 <main>{@html post.contentHtml}</main>
