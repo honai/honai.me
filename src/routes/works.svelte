@@ -5,7 +5,7 @@
   import Work from "./_Work.svelte"
 </script>
 
-<Seo title="Works | honai.me" description="Works of Honai Ueoka" path="/works/" />
+<Seo title="Works | honai.me" description="Works of Honai Ueoka" path="/works" />
 <Layout>
   <Hero title="Works" />
   <div class="card-layout">

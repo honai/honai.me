@@ -15,6 +15,10 @@
     path = $page.path
   }
 
+  if (!path.endsWith("/")) {
+    path = path + "/"
+  }
+
   const largeCard = !!ogImageUrl
   ogImageUrl = ogImageUrl || `${baseUrl}/images/profile.png`
 

@@ -7,7 +7,7 @@
   import Layout from "./_Layout.svelte"
 </script>
 
-<Seo title="Honai Ueoka" description="Honai Ueoka's portfolio website." />
+<Seo title="Honai Ueoka" description="Honai Ueoka's portfolio website." path="/" />
 
 <Layout>
   <Hero />

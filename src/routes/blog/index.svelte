@@ -25,7 +25,7 @@
   const title = "Honai's Blog"
 </script>
 
-<Seo {title} description="Latest posts from Honai's Blog" path="/blog/" />
+<Seo {title} description="Latest posts from Honai's Blog" path="/blog" />
 
 <div class="layout">
   <h1>{title}</h1>

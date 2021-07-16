@@ -7,6 +7,7 @@ const config = {
   kit: {
     adapter: adapter(),
     hydrate: false,
+    prerender: { pages: ["*", "/blog/rss.xml"] },
   },
   preprocess: preprocess(),
 }
