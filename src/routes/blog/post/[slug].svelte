@@ -30,10 +30,25 @@
 
   onMount(() => {
     ;(adsbygoogle = window.adsbygoogle || []).push({})
+    const replaceClass = "language-unknown"
+    for (const e of document.querySelectorAll(`.${replaceClass}`)) {
+      e.classList.replace(replaceClass, "language-text")
+    }
   })
 </script>
 
 <Seo title={`${title} | Honai's Blog`} {path} {description} {ogImageUrl} />
+<svelte:head>
+  <link
+    rel="stylesheet"
+    href="https://cdnjs.cloudflare.com/ajax/libs/prism/1.24.1/themes/prism-tomorrow.min.css"
+    integrity="sha512-vswe+cgvic/XBoF1OcM/TeJ2FW0OofqAVdCZiEYkd6dwGXthvkSFWOoGGJgS2CW70VK5dQM5Oh+7ne47s74VTg=="
+    crossorigin="anonymous"
+    referrerpolicy="no-referrer"
+    media="print"
+    onload="this.media='all'"
+  />
+</svelte:head>
 
 <article class="layout">
   <div class="header">

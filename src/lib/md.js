@@ -1,5 +1,6 @@
 import unified from "unified"
 import remarkParse from "remark-parse"
+import remarkPrism from "remark-prism"
 import remarkRehype from "remark-rehype"
 import rehypeStringify from "rehype-stringify"
 import rehypeSlug from "rehype-slug"
@@ -44,6 +45,7 @@ export const mdToHtmlToc = (md) => {
   let tocIDs = []
   const processer = unified()
     .use(remarkParse)
+    .use(remarkPrism, { transformInlineCode: true })
     .use(remarkRehype, { allowDangerousHtml: true })
     .use(rehypeRaw)
     .use(rehypeSlug)
