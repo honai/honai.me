@@ -4,7 +4,6 @@ export type PostMeta = {
 }
 
 export type PostToc = {
-  tag: "h1" | "h2" | "h3"
   id: string
   text: string
   children: PostToc[]

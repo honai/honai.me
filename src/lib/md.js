@@ -20,15 +20,13 @@ import rehypeToc from "rehype-toc"
 const tocLi = (node) => {
   if (node.tagName !== "li") throw Error("not li")
   /** @type {Node} */
-  const hNode = node.data.hookArgs[0]
-  const hTag = hNode.tagName
-  const hId = hNode.properties.id
-  const text = hNode.children[0].value
+  const hId = node.data.hookArgs[0].properties.id
+  const text = node.children[0].children[0].value
   let children = []
   if (node.children[1]) {
     children = node.children[1].children.map(tocLi)
   }
-  return { tag: hTag, id: hId, text, children }
+  return { id: hId, text, children }
 }
 
 /** @type {(md: string) => { html: string, toc: any } */
