@@ -7,8 +7,14 @@
   export let title = "Honai Ueoka"
   export let description = ""
   export let path = ""
-  export let ogImageUrl = `${baseUrl}/images/profile.png`
-  export let largeCard = false
+  export let ogImage = ""
+
+  const ogImageUrl = ogImage
+    ? ogImage.startsWith("/")
+      ? `${baseUrl}${ogImage}`
+      : ogImage
+    : `${baseUrl}/images/profile.png`
+  const largeCard = !!ogImage
 
   if ((dev || prerendering) && !path) {
     console.info("Path is not set on Seo props")

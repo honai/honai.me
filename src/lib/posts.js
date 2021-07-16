@@ -31,5 +31,5 @@ export const findSinglePost = (slug) => {
   const md = fs.readFileSync(path.join(BLOG_DIR, file))
   const { content, data } = matter(md)
   const { html, toc } = mdToHtmlToc(content)
-  return { meta: data, contentHtml: html, toc }
+  return { meta: { ...data, slug }, contentHtml: html, toc }
 }

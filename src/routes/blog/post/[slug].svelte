@@ -1,4 +1,5 @@
 <script context="module">
+  export const hydrate = true
   /**
    * @type {import('@sveltejs/kit').Load}
    */
@@ -15,19 +16,93 @@
 </script>
 
 <script>
+  import Seo from "$lib/components/Seo.svelte"
+
+  import ArticleHero from "./_ArticleHero.svelte"
+  import PostMd from "./_PostMd.svelte"
   import Toc from "./_Toc.svelte"
   /** @type {import('$lib/posts').Post} */
   export let post
-  const { title } = post.meta
+  const { title, date, updated, slug, description } = post.meta
+  const path = `/blog/post/${slug}`
   const { toc } = post
 </script>
 
-<h1>{title}</h1>
-<nav>
-  <ol>
-    {#each toc as item (item.id)}
-      <Toc toc={item} />
-    {/each}
-  </ol>
-</nav>
-<main>{@html post.contentHtml}</main>
+<Seo {title} {path} {description} ogImage={post.meta.og_image_url} />
+
+<article class="layout">
+  <div class="header">
+    <ArticleHero {title} {date} {updated} />
+  </div>
+  <aside class="aside">
+    <div class="sticky">
+      <nav>
+        <Toc {toc} />
+      </nav>
+    </div>
+  </aside>
+  <main class="main">
+    <PostMd html={post.contentHtml} />
+  </main>
+  <div class="ad">
+    <!-- 記事の下 -->
+    <ins
+      class="adsbygoogle"
+      style="display:block"
+      data-ad-client="ca-pub-9155380222623167"
+      data-ad-slot="4880052047"
+      data-ad-format="auto"
+      data-full-width-responsive="true"
+    />
+  </div>
+</article>
+
+<style lang="scss">
+  @use "src/variables" as v;
+  .layout {
+    padding: 1rem;
+
+    @media screen and (min-width: v.$break_lg) {
+      width: 100%;
+      display: grid;
+      justify-content: center;
+      grid-template-areas:
+        "header header"
+        "main   aside"
+        "ad     .";
+      grid-template-columns: minmax(0, 1fr) 30rem;
+      grid-template-rows: 18rem auto auto;
+      gap: 2rem 4rem;
+
+      > .header {
+        grid-area: header;
+        max-width: 72rem;
+        margin: auto;
+      }
+      > .aside {
+        grid-area: aside;
+      }
+      > .main {
+        grid-area: main;
+      }
+
+      > .aside > .sticky {
+        position: sticky;
+        top: 0;
+        padding: 1rem;
+        display: flex;
+        flex-direction: column;
+        gap: 2.4rem;
+      }
+
+      > .ad {
+        grid-area: ad;
+        margin: 1rem;
+      }
+    }
+
+    @media screen and (min-width: v.$break-xl) {
+      grid-template-columns: 84rem 30rem;
+    }
+  }
+</style>

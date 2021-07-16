@@ -18,8 +18,6 @@
 
 <script>
   import Seo from "$lib/components/Seo.svelte"
-  import Footer from "./_Footer.svelte"
-  import Header from "./_Header.svelte"
   import PostListItem from "./_PostListItem.svelte"
 
   /** @type {import("$lib/posts").PostMeta[]} */
@@ -28,8 +26,6 @@
 </script>
 
 <Seo {title} description="Latest posts from Honai's Blog" path="/blog/" />
-
-<Header />
 
 <div class="layout">
   <h1>{title}</h1>
@@ -48,8 +44,6 @@
     data-full-width-responsive="true"
   />
 </div>
-
-<Footer />
 
 <style>
   .layout {

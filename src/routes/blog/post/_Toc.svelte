@@ -1,15 +1,15 @@
 <script>
-  /** @type {import("$lib/posts").PostToc} */
+  /** @type {import("$lib/posts").PostToc[]} */
   export let toc
 </script>
 
-<li>
-  <a href={`#${toc.id}`}>{toc.text}</a>
-  {#if toc.children.length > 0}
-    <ol>
-      {#each toc.children as child (child.id)}
-        <svelte:self toc={child} />
-      {/each}
-    </ol>
-  {/if}
-</li>
+<ol>
+  {#each toc as item (item.id)}
+    <li>
+      <a href={`#${encodeURIComponent(item.id)}`}>{item.text}</a>
+      {#if item.children.length > 0}
+        <svelte:self toc={item.children} />
+      {/if}
+    </li>
+  {/each}
+</ol>
