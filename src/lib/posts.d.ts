@@ -5,7 +5,8 @@ export type PostMeta = {
 
 export type Post= {
   meta: PostMeta
-  content: string
+  contentHtml: string
+  toc: any
 }
 
 export const listPosts: () => PostMeta[]

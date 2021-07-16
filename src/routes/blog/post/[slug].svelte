@@ -22,4 +22,5 @@
 
 <h1>{title}</h1>
 <nav><a href="/blog">BLOG</a></nav>
-<main>{@html post.content}</main>
+<p>{JSON.stringify(post.toc)}</p>
+<main>{@html post.contentHtml}</main>

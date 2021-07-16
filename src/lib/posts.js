@@ -1,7 +1,7 @@
 import path from "path"
 import fs from "fs"
 import matter from "gray-matter"
-import { mdToHtml } from "./md"
+import { mdToHtmlToc } from "./md"
 
 const BLOG_DIR = "content/blog"
 const EXT_MD = ".md"
@@ -28,5 +28,6 @@ export const findSinglePost = (slug) => {
   }
   const md = fs.readFileSync(path.join(BLOG_DIR, file))
   const { content, data } = matter(md)
-  return { content: mdToHtml(content), meta: data }
+  const { html, toc } = mdToHtmlToc(content)
+  return { meta: data, contentHtml: html, toc }
 }
