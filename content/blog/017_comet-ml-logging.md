@@ -3,7 +3,7 @@
   "title": "Comet.ml で機械学習のログをクラウドに保存する",
   "date": "2020-12-05T17:38:34.620Z",
   "description": "この記事は CAMPHOR-アドベントカレンダー2020 6日目の記事です。  みなさんこんにちは、ほないです。  私は今年度から大学で自然言語処理の研究に取り組んでいて、データセットを作ってニューラル言語モデルをトレーニングして評価する機会がたくさんありました。  最近はPyTorch, TensorFlow, scikit-learnなど様々な機械学習フレームワークによって、ニューラルネットワークモデルの実装が簡単に行えるようになっています。",
-  "og_image_url": "https:https://images.ctfassets.net/7q1ibtbymdj9/1eVvfZslYntCk2TGFcxp0k/a4274d118e36835754f0c1be74a7df93/comet-ogp.png",
+  "og_image_url": "https://images.ctfassets.net/7q1ibtbymdj9/1eVvfZslYntCk2TGFcxp0k/a4274d118e36835754f0c1be74a7df93/comet-ogp.png",
   "large_card": true
 }
 ---

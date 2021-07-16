@@ -3,7 +3,7 @@
   "title": "連載「入門 HTTP」(2) TLSとHTTP - TLSの概要",
   "date": "2020-04-28",
   "description": "こんにちは。ほないです。 「入門 HTTP」( SpeakerDeck を連載としてブログに投稿しています。 こちらは第2回の記事となります。  CAMPHOR- Day での発表の時は時間の関係で（~~自分の勉強不足もあり~~）3枚のスライドですっ飛ばしてしまったTLSの話ですが、",
-  "og_image_url": "https:https://images.ctfassets.net/7q1ibtbymdj9/39XPQDzQb8OE5VtKKrAaZ/3ecc7b1c004758bb8e04c356a987bbaf/ogp.png",
+  "og_image_url": "https://images.ctfassets.net/7q1ibtbymdj9/39XPQDzQb8OE5VtKKrAaZ/3ecc7b1c004758bb8e04c356a987bbaf/ogp.png",
   "large_card": true
 }
 ---

@@ -4,7 +4,7 @@
   "date": "2019-12-01T15:00:02.681Z",
   "description": "この記事は CAMPHOR- Advent Calendar 2019 2日目 の記事です。  こんにちは、ほないです。Advent Calender の記事を書くのは、CAMPHOR- 以外のものも含めて初めてなので、わくわくしています。 1日目のあたらんさんの記事、おもしろかったです。私も質問箱をつくりたくなりました。",
   "updated": "2020-12-13T15:24:06.183Z",
-  "og_image_url": "https:https://images.ctfassets.net/7q1ibtbymdj9/6bEGPf10zzbUANTdYkev2D/edd6f13dc0e250224a68674fbf2ecbd4/ogp.png",
+  "og_image_url": "https://images.ctfassets.net/7q1ibtbymdj9/6bEGPf10zzbUANTdYkev2D/edd6f13dc0e250224a68674fbf2ecbd4/ogp.png",
   "large_card": true
 }
 ---

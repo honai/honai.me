@@ -4,7 +4,7 @@
   "date": "2020-07-02T03:13:10.138Z",
   "description": "CAMPHOR- Day 2020で発表した「入門 HTTP」を連載としてブログに投稿しています。研究やら院試勉強やらに追われて前回からかなり間が空いてしまい、CAMPHOR- Dayから3か月が過ぎてしまいました 😇 第4回の記事となります。  連載について  HTTP/1.xとKeep Alive",
   "updated": "2020-08-05T18:34:57.477Z",
-  "og_image_url": "https:https://images.ctfassets.net/7q1ibtbymdj9/TtJwQKI0sPvIecK0pG3Su/69b20fa154b5ed39672601e0c26c1aec/ogp-http2.png",
+  "og_image_url": "https://images.ctfassets.net/7q1ibtbymdj9/TtJwQKI0sPvIecK0pG3Su/69b20fa154b5ed39672601e0c26c1aec/ogp-http2.png",
   "large_card": true
 }
 ---
