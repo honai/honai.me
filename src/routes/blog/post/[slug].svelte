@@ -17,18 +17,18 @@
 
 <script>
   import Seo from "$lib/components/Seo.svelte"
-
   import ArticleHero from "./_ArticleHero.svelte"
   import PostMd from "./_PostMd.svelte"
-  import Toc from "./_Toc.svelte"
+  import Toc from "$lib/components/Toc/index.svelte"
+
   /** @type {import('$lib/posts').Post} */
   export let post
   const { title, date, updated, slug, description } = post.meta
   const path = `/blog/post/${slug}`
-  const { toc } = post
+  const { toc, tocIDs } = post
 </script>
 
-<Seo {title} {path} {description} ogImage={post.meta.og_image_url} />
+<Seo title={`${title} | Honai's Blog`} {path} {description} ogImage={post.meta.og_image_url} />
 
 <article class="layout">
   <div class="header">
@@ -37,7 +37,7 @@
   <aside class="aside">
     <div class="sticky">
       <nav>
-        <Toc {toc} />
+        <Toc {toc} {tocIDs} />
       </nav>
     </div>
   </aside>

@@ -7,7 +7,6 @@
   let dateString = post.date
   onMount(() => {
     dateString = new Date(post.date).toLocaleDateString()
-    console.log(dateString)
   })
 </script>
 

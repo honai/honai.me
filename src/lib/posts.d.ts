@@ -13,6 +13,7 @@ export type Post= {
   meta: PostMeta
   contentHtml: string
   toc: PostToc[]
+  tocIDs: stirng[]
 }
 
 export const listPosts: () => PostMeta[]

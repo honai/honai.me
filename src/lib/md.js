@@ -10,7 +10,7 @@ import rehypeToc from "rehype-toc"
 
 /**
  * @typedef {Object} Toc
- * @prop {string} title
+ * @prop {string} text
  * @prop {string} id
  * @prop {number} level
  * @prop {Toc[]} [children=[]]
@@ -29,9 +29,19 @@ const tocLi = (node) => {
   return { id: hId, text, children }
 }
 
-/** @type {(md: string) => { html: string, toc: any } */
+/** @type {(toc: Toc) => string[]} */
+const listTocIds = (toc) => {
+  if (toc.children && toc.children.length > 0) {
+    const childIDs = toc.children.map(listTocIds).flat()
+    return [toc.id, ...childIDs]
+  }
+  return [toc.id]
+}
+
+/** @type {(md: string) => { html: string, toc: Toc[], tocIDs: string[] } */
 export const mdToHtmlToc = (md) => {
-  let toc
+  let toc = []
+  let tocIDs = []
   const processer = unified()
     .use(remarkParse)
     .use(remarkRehype, { allowDangerousHtml: true })
@@ -41,11 +51,12 @@ export const mdToHtmlToc = (md) => {
       headings: ["h1", "h2"],
       customizeTOC: (node) => {
         toc = node.children[0].children.map(tocLi)
+        tocIDs = toc.map(listTocIds).flat()
         return false
       },
     })
     .use(rehypeStringify)
 
   const html = processer.processSync(md).toString()
-  return { html, toc }
+  return { html, toc, tocIDs }
 }
