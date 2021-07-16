@@ -21,9 +21,6 @@ main {
 p, ul, ol {
   margin: 0;
 }
-ul {
-  line-height: 2;
-}
 img {
   max-width: 100%;
 }
