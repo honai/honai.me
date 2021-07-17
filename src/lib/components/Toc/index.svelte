@@ -55,4 +55,13 @@
   })
 </script>
 
-<TocItem {toc} highlight={highlightedTocID} />
+<div class="title">目次</div>
+<nav>
+  <TocItem {toc} highlight={highlightedTocID} />
+</nav>
+
+<style>
+  .title {
+    font-size: 1.8rem;
+  }
+</style>

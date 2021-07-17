@@ -25,7 +25,7 @@
 
   /** @type {import('$lib/posts').Post} */
   export let post
-  const { title, date, updated, slug, description, ogImageUrl } = post.meta
+  const { title, date, updated, slug, description, ogImageUrl, filePath } = post.meta
   const path = `/blog/post/${slug}`
   const { toc, tocIDs } = post
   onMount(() => {
@@ -54,9 +54,10 @@
   </div>
   <aside class="aside">
     <div class="sticky">
-      <nav>
-        <Toc {toc} {tocIDs} />
-      </nav>
+      <Toc {toc} {tocIDs} />
+      <div>
+        <a href={`https://github.com/honai/honai.me/blob/main/${filePath}`}>この記事の編集をリクエスト (GitHub)</a>
+      </div>
     </div>
   </aside>
   <main class="main">

@@ -1,5 +1,6 @@
 export type PostMeta = {
   slug: string
+  filePath: string
   title: string
   description: string
   date: string
