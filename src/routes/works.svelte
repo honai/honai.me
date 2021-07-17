@@ -1,3 +1,7 @@
+<script context="module">
+  export const hydrate = false
+</script>
+
 <script>
   import Hero from "$lib/components/Hero.svelte"
   import Seo from "$lib/components/Seo.svelte"

@@ -1,3 +1,7 @@
+<script context="module">
+  export const hydrate = false
+</script>
+
 <script>
   import Seo from "$lib/components/Seo.svelte"
   import SimpleCard from "$lib/components/SimpleCard/index.svelte"

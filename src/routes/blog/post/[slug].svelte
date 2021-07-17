@@ -21,12 +21,16 @@
   import PostMd from "./_PostMd.svelte"
   import Toc from "$lib/components/Toc/index.svelte"
   import LinkCss from "$lib/components/LinkCss.svelte"
+  import { onMount } from "svelte"
 
   /** @type {import('$lib/posts').Post} */
   export let post
   const { title, date, updated, slug, description, ogImageUrl } = post.meta
   const path = `/blog/post/${slug}`
   const { toc, tocIDs } = post
+  onMount(() => {
+    ;(adsbygoogle = window.adsbygoogle || []).push({})
+  })
 </script>
 
 <Seo title={`${title} | Honai's Blog`} {path} {description} {ogImageUrl} />
