@@ -44,6 +44,10 @@
   async
 />
 
+<svelte:head>
+  <script defer src="https://platform.twitter.com/widgets.js" charset="utf-8"></script>
+</svelte:head>
+
 <article class="layout">
   <div class="header">
     <ArticleHero {title} {date} {updated} />
