@@ -1,11 +1,13 @@
 import unified from "unified"
 import remarkParse from "remark-parse"
 import remarkPrism from "remark-prism"
+import remarkMath from "remark-math"
 import remarkRehype from "remark-rehype"
-import rehypeStringify from "rehype-stringify"
-import rehypeSlug from "rehype-slug"
 import rehypeRaw from "rehype-raw"
+import rehypeKatex from "rehype-katex"
+import rehypeSlug from "rehype-slug"
 import rehypeToc from "rehype-toc"
+import rehypeStringify from "rehype-stringify"
 
 /** @typedef {import("rehype-toc").HtmlElementNode} Node */
 
@@ -46,6 +48,7 @@ export const mdToHtmlToc = (md) => {
   const processer = unified()
     .use(remarkParse)
     .use(remarkPrism, { transformInlineCode: true })
+    .use(remarkMath)
     .use(remarkRehype, { allowDangerousHtml: true })
     .use(rehypeRaw)
     .use(rehypeSlug)
@@ -57,6 +60,7 @@ export const mdToHtmlToc = (md) => {
         return false
       },
     })
+    .use(rehypeKatex)
     .use(rehypeStringify)
 
   const html = processer.processSync(md).toString()
