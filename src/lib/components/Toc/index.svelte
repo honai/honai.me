@@ -1,7 +1,3 @@
-<script context="module">
-  export const hydrate = true
-</script>
-
 <script>
   import { onMount } from "svelte"
 

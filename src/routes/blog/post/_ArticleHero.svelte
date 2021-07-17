@@ -1,15 +1,9 @@
 <script>
-  import { onMount } from "svelte"
-
   export let title
   export let date
   export let updated
 
-  let dateStr = date
-  let updatedStr = updated
-  onMount(() => {
-    ;[dateStr, updatedStr] = [date, updated].map((s) => new Date(s).toLocaleDateString())
-  })
+  const [dateStr, updatedStr] = [date, updated].map((s) => new Date(s).toLocaleDateString("ja"))
 </script>
 
 <header class="article-hero">

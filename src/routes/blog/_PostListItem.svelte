@@ -1,13 +1,8 @@
 <script>
-  import { onMount } from "svelte"
-
   /** @type {import('$lib/posts').PostMeta} */
   export let post
 
-  let dateString = post.date
-  onMount(() => {
-    dateString = new Date(post.date).toLocaleDateString()
-  })
+  const dateString = new Date(post.date).toLocaleDateString("ja")
 </script>
 
 <li class="post-list-item">
