@@ -8,6 +8,7 @@ const config = {
     adapter: adapter(),
     hydrate: false,
     prerender: { pages: ["*", "/blog/rss.xml"] },
+    target: "#svelte",
   },
   preprocess: preprocess(),
 }
