@@ -1,16 +1,26 @@
 <script>
-  import { onMount } from "svelte"
+  import { onMount, afterUpdate } from "svelte"
 
   /** @type {string} */
   export let html
 
   let postMarkdownEl
 
-  onMount(() => {
+  const mountOrUpdate = () => {
     const replaceClass = "language-unknown"
     for (const e of postMarkdownEl.querySelectorAll(`.${replaceClass}`)) {
       e.classList.replace(replaceClass, "language-text")
     }
+    if (window.twttr) {
+      window.twttr.widgets.load(postMarkdownEl)
+    }
+  }
+
+  onMount(() => {
+    mountOrUpdate()
+  })
+  afterUpdate(() => {
+    mountOrUpdate()
   })
 </script>
 

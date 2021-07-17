@@ -29,8 +29,8 @@
   const path = `/blog/post/${slug}`
   const { toc, tocIDs } = post
   onMount(() => {
-    var adsbygoogle = window.adsbygoogle || []
-    adsbygoogle.push({})
+    window.adsbygoogle = window.adsbygoogle || []
+    window.adsbygoogle.push({})
   })
 </script>
 
@@ -44,13 +44,6 @@
   integrity="sha512-J8je2SgrCzA7hNBeiCJiA6oETHTTdp3We3EriOgJp6POycGLcDXj5dSwWlAPQcYGeaQ4N3uf30aOg/Nt5pxW2g=="
   async
 />
-<svelte:head>
-  <script
-    defer
-    src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-9155380222623167"
-    crossorigin="anonymous"></script>
-  <script defer src="https://platform.twitter.com/widgets.js" charset="utf-8"></script>
-</svelte:head>
 
 <article class="layout">
   <div class="header">

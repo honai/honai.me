@@ -31,13 +31,6 @@
 </script>
 
 <Seo {title} description="Latest posts from Honai's Blog" path="/blog" />
-<svelte:head>
-  <link type="application/rss+xml" rel="alternate" title="Honai's Blog" href="/blog/rss.xml" />
-  <script
-    defer
-    src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-9155380222623167"
-    crossorigin="anonymous"></script>
-</svelte:head>
 
 <div class="layout">
   <h1>{title}</h1>
