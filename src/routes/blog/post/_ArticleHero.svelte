@@ -18,7 +18,7 @@
     <div class="century-gothic date">
       <time id="published-time" datetime={date}>{dateStr}</time>
       {#if !!updated}
-        (Updated at <time id="updated-time" datetime={updatedStr}>{updated}</time>)
+        (<time id="updated-time" datetime={updatedStr}>{updatedStr}</time> に更新)
       {/if}
     </div>
   </div>
