@@ -1,9 +1,20 @@
 <script>
+  import { onMount } from "svelte"
+
   /** @type {string} */
   export let html
+
+  let postMarkdownEl
+
+  onMount(() => {
+    const replaceClass = "language-unknown"
+    for (const e of postMarkdownEl.querySelectorAll(`.${replaceClass}`)) {
+      e.classList.replace(replaceClass, "language-text")
+    }
+  })
 </script>
 
-<div class="post-markdown">{@html html}</div>
+<div bind:this={postMarkdownEl} class="post-markdown">{@html html}</div>
 
 <style lang="scss" global>
   .post-markdown {

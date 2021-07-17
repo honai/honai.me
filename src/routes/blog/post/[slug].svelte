@@ -16,39 +16,29 @@
 </script>
 
 <script>
-  import { onMount } from "svelte"
   import Seo from "$lib/components/Seo.svelte"
   import ArticleHero from "./_ArticleHero.svelte"
   import PostMd from "./_PostMd.svelte"
   import Toc from "$lib/components/Toc/index.svelte"
+  import LinkCss from "$lib/components/LinkCss.svelte"
 
   /** @type {import('$lib/posts').Post} */
   export let post
   const { title, date, updated, slug, description, ogImageUrl } = post.meta
   const path = `/blog/post/${slug}`
   const { toc, tocIDs } = post
-
-  onMount(() => {
-    ;(adsbygoogle = window.adsbygoogle || []).push({})
-    const replaceClass = "language-unknown"
-    for (const e of document.querySelectorAll(`.${replaceClass}`)) {
-      e.classList.replace(replaceClass, "language-text")
-    }
-  })
 </script>
 
 <Seo title={`${title} | Honai's Blog`} {path} {description} {ogImageUrl} />
-<svelte:head>
-  <link
-    rel="stylesheet"
-    href="https://cdnjs.cloudflare.com/ajax/libs/prism/1.24.1/themes/prism-tomorrow.min.css"
-    integrity="sha512-vswe+cgvic/XBoF1OcM/TeJ2FW0OofqAVdCZiEYkd6dwGXthvkSFWOoGGJgS2CW70VK5dQM5Oh+7ne47s74VTg=="
-    crossorigin="anonymous"
-    referrerpolicy="no-referrer"
-    media="print"
-    onload="this.media='all'"
-  />
-</svelte:head>
+<LinkCss
+  href="https://cdnjs.cloudflare.com/ajax/libs/prism/1.24.1/themes/prism-tomorrow.min.css"
+  integrity="sha512-vswe+cgvic/XBoF1OcM/TeJ2FW0OofqAVdCZiEYkd6dwGXthvkSFWOoGGJgS2CW70VK5dQM5Oh+7ne47s74VTg=="
+/>
+<LinkCss
+  href="https://cdnjs.cloudflare.com/ajax/libs/KaTeX/0.13.11/katex.min.css"
+  integrity="sha512-J8je2SgrCzA7hNBeiCJiA6oETHTTdp3We3EriOgJp6POycGLcDXj5dSwWlAPQcYGeaQ4N3uf30aOg/Nt5pxW2g=="
+  async
+/>
 
 <article class="layout">
   <div class="header">
