@@ -6,7 +6,6 @@ const config = {
   extensions: [".svelte", ".svg"],
   kit: {
     adapter: adapter(),
-    hydrate: false,
     prerender: { pages: ["*", "/blog/rss.xml"] },
     target: "#svelte",
   },
