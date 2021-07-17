@@ -1,4 +1,6 @@
 /rss /blog/rss.xml 301
+/blog/post/ /blog/
+/blog/post /blog/
 /blog/2021/naacl-2021/ /blog/post/naacl-2021/ 301
 /blog/2021/naacl-2021 /blog/post/naacl-2021/ 301
 /blog/2020/makefile-python-task-runner/ /blog/post/makefile-python-task-runner/ 301
