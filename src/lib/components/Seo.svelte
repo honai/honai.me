@@ -39,4 +39,7 @@
 
   <meta name="twitter:card" content={largeCard ? "summary_large_image" : "summary"} />
   <meta name="twitter:creator" content="@_honai" />
+  {#if path.startsWith("/blog")}
+    <link type="application/rss+xml" rel="alternate" title="Honai's Blog" href="/blog/rss.xml" />
+  {/if}
 </svelte:head>

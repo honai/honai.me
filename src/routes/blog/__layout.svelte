@@ -3,13 +3,21 @@
   import Footer from "./_Footer.svelte"
 </script>
 
-<svelte:head>
-  <link type="application/rss+xml" rel="alternate" title="Honai's Blog" href="/blog/rss.xml" />
-  <script
-    defer
-    src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-9155380222623167"
-    crossorigin="anonymous"></script>
-</svelte:head>
-<Header />
-<slot />
-<Footer />
+<div class="wrap">
+  <Header />
+  <div class="grow">
+    <slot />
+  </div>
+  <Footer />
+</div>
+
+<style>
+  .wrap {
+    display: flex;
+    flex-flow: column nowrap;
+    min-height: 100vh;
+  }
+  .grow {
+    flex: 1 0 auto;
+  }
+</style>
