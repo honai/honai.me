@@ -15,7 +15,7 @@ const frontMatterToPostMeta = (data, slug, filePath) => {
   if (typeof date !== "s")
     if (dev || prerendering) {
       if ([title, description, date].some((e) => !e)) {
-        console.error(data)
+        console.error("Some of front matter is missing", data)
         throw Error("Some of front matter is missing")
       }
     }

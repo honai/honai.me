@@ -134,7 +134,7 @@
 
     <SimpleCard id="blog" title="Blog">
       <SimpleCardContent>
-        <a href="/blog">Honai's Blog</a>
+        <a href="/blog/">Honai's Blog</a>
       </SimpleCardContent>
     </SimpleCard>
   </div>

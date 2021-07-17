@@ -29,7 +29,8 @@
   const path = `/blog/post/${slug}`
   const { toc, tocIDs } = post
   onMount(() => {
-    ;(adsbygoogle = window.adsbygoogle || []).push({})
+    var adsbygoogle = window.adsbygoogle || []
+    adsbygoogle.push({})
   })
 </script>
 
