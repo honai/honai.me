@@ -25,8 +25,8 @@
   const title = "Honai's Blog"
 
   onMount(() => {
-    var adsbygoogle = window.adsbygoogle || []
-    adsbygoogle.push({})
+    window.adsbygoogle = window.adsbygoogle || []
+    window.adsbygoogle.push({})
   })
 </script>
 
