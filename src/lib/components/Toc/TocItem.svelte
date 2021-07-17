@@ -7,7 +7,8 @@
 <ol>
   {#each toc as item (item.id)}
     <li>
-      <a href={`#${encodeURIComponent(item.id)}`} class:active={item.id === highlight}>{item.text}</a>
+      <!-- SvelteKitのフラグメントでのリンクの挙動にバグがありそう -->
+      <a href={`#${item.id}`} rel="external" class:active={item.id === highlight}>{item.text}</a>
       {#if item.children.length > 0}
         <svelte:self toc={item.children} {highlight} />
       {/if}
