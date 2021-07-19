@@ -22,7 +22,7 @@ export async function get() {
       link: canonicalUrl,
       date: new Date(post.date),
       description: post.description,
-      image: post.ogImageUrl || `${baseUrl}/images/profile.png`,
+      image: post.ogImageUrl || "https://www.honai.me/images/profile.png",
     })
   }
   return { headers: { "Content-Type": "application/rss+xml" }, body: feed.rss2() }

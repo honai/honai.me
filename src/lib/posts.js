@@ -11,18 +11,21 @@ const EXT_MD = ".md"
 
 /** @type {(data: any, slug: string, filePath: string) => import("./posts").PostMeta} */
 const frontMatterToPostMeta = (data, slug, filePath) => {
-  const { title, description, date, updated, og_imaeg_url } = data
+  const { title, description, date, updated, og_image_url } = data
   if (typeof date !== "s")
     if (dev || prerendering) {
       if ([title, description, date].some((e) => !e)) {
         console.error("Some of front matter is missing", data)
         throw Error("Some of front matter is missing")
       }
+      if (!og_image_url) {
+        console.warn("OG Image is not defined", data.title)
+      }
     }
-  const ogImageUrl = og_imaeg_url
-    ? og_imaeg_url.startsWith("/")
-      ? `https://www.honai.me${og_imaeg_url}`
-      : og_imaeg_url
+  const ogImageUrl = og_image_url
+    ? og_image_url.startsWith("/")
+      ? `https://www.honai.me${og_image_url}`
+      : og_image_url
     : undefined
   return { title, description, date, updated, ogImageUrl, slug, filePath }
 }
