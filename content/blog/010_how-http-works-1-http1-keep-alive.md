@@ -30,9 +30,8 @@ CAMPHOR-のオンライン配信のイベントCAMPHOR- Dayにて「入門 HTTP�
 - **HTTP/1.xとKeep Alive**（本記事）
 - [TLSとHTTP - TLSの概要](/blog/post/how-http-works-2-tls-http)
 - [TLSとHTTP - HTTP over TLS](/blog/post/how-http-works-3-http-over-tls)
-- HTTP/1の課題とHTTP/2
-- HTTP/2からQUICへ
-- QUICとHTTP/3
+- [HTTP/1の課題とHTTP/2](/blog/post/how-http-works-4-http2)
+- [QUICとHTTP/3](/blog/post/how-http-works-5-quic-http3)
 
 ## 連載では扱わないこと
 

@@ -18,9 +18,8 @@ CAMPHOR- Day 2020で発表した「入門 HTTP」を連載としてブログに�
 - [HTTP/1.xとKeep Alive](/blog/post/how-http-works-1-http1-keep-alive)
 - [TLSとHTTP - TLSの概要](/blog/post/how-http-works-2-tls-http)
 - **TLSとHTTP - HTTP over TLS**（本記事）
-- HTTP/1の課題とHTTP/2
-- HTTP/2からQUICへ
-- QUICとHTTP/3
+- [HTTP/1の課題とHTTP/2](/blog/post/how-http-works-4-http2)
+- [QUICとHTTP/3](/blog/post/how-http-works-5-quic-http3)
 
 この連載全体については [第1回の記事](/blog/post/how-http-works-1-http1-keep-alive#%e9%80%a3%e8%bc%89%e3%81%ae%e6%a6%82%e8%a6%81) を参照してください。
 
