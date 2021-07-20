@@ -18,4 +18,6 @@ Watermarkingとは「透かし」のことで、お札の偽造防止の透か�
 
 研究室の人向けに作ったスライドなので特にNLP関係は前提知識を想定していてわかりにくいかもしれませんが、おもしろい（と私は感じる）研究なのでぜひご覧ください。
 
-<script async class="speakerdeck-embed" data-id="7af5c9a297f743b4b9da62db6b5e59d3" data-ratio="1.77777777777778" src="//speakerdeck.com/assets/embed.js"></script>
+<div style="position:relative; height:0; padding-top:56.25%;">
+  <iframe id="talk_frame_678982" src="https://speakerdeck.com/player/7af5c9a297f743b4b9da62db6b5e59d3" width="710" height="399" style="border:0; padding:0; margin:0; background:transparent; position:absolute; top: 0; left: 0; width:100%; height: 100%;" frameborder="0" allowtransparency="true" allowfullscreen="allowfullscreen" mozallowfullscreen="true" webkitallowfullscreen="true"></iframe>
+</div>
