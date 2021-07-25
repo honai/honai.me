@@ -8,6 +8,7 @@ const config = {
     adapter: adapter(),
     prerender: { pages: ["*", "/blog/rss.xml"] },
     target: "#svelte",
+    trailingSlash: "ignore", // "always" breaks prerendering RSS
   },
   preprocess: preprocess(),
 }

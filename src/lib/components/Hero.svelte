@@ -11,7 +11,7 @@
   {:else}
     <h1 class="title">Honai Ueoka's Portfolio</h1>
     <nav class="nav">
-      <a href="/works">Works</a>
+      <a href="/works/">Works</a>
       <a href="/blog/">Blog</a>
     </nav>
   {/if}
