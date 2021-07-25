@@ -1,5 +1,5 @@
-# honai/honai.me
+# ![favicon](/static/favicon.ico) honai.me
 
-My portfolio & blog site.
+My portfolio & blog site.  https://www.honai.me/
 
-Powered by [11ty (Eleventy)](https://www.11ty.dev/) .
+Powered by [SvelteKit](https://kit.svelte.dev/) .
