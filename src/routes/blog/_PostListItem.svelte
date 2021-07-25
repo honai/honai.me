@@ -3,6 +3,7 @@
   export let post
 
   const dateString = new Date(post.date).toLocaleDateString("ja")
+  const postUrl = `/blog/post/${post.slug}/`
 </script>
 
 <li class="post-list-item">
@@ -10,12 +11,12 @@
     <time datetime={post.date} class="post-publish-date">{dateString}</time>
   </div>
   <h2 class="title">
-    <a href={`/blog/post/${post.slug}`} class="link _reset-a">{post.title}</a>
+    <a href={postUrl} class="link _reset-a">{post.title}</a>
   </h2>
   <p class="description">
     {post.description}
     ...
-    <a href={post.url} class="_reset-a more">この記事を読む</a>
+    <a href={postUrl} class="_reset-a more">この記事を読む</a>
   </p>
 </li>
 
