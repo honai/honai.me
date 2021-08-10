@@ -55,7 +55,7 @@ export const mdToHtmlToc = (md) => {
     .use(rehypeRaw)
     .use(rehypeSlug)
     .use(rehypeToc, {
-      headings: ["h1", "h2"],
+      headings: ["h2", "h3"],
       customizeTOC: (node) => {
         toc = node.children[0].children.map(tocLi)
         tocIDs = toc.map(listTocIds).flat()

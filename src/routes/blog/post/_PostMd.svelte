@@ -28,16 +28,16 @@
 
 <style lang="scss" global>
   .post-markdown {
-    > h1 {
+    > h2 {
       border-bottom: 1px solid rgba(0, 0, 0, 0.2);
     }
-    > h2 {
+    > h3 {
       line-height: 1.5;
       display: flex;
       align-items: center;
       margin: 3.2rem 0 2.4rem;
     }
-    > h2::before {
+    > h3::before {
       content: "";
       background-color: var(--color-primary);
       height: 25px;
@@ -45,12 +45,17 @@
       border-radius: 3px;
       margin-right: 15px;
     }
-    > h2::after {
+    > h3::after {
       content: "";
       border-bottom: 1px dashed;
       border-color: rgba(0, 0, 0, 0.2);
       flex: 1 1 auto;
       margin-left: 10px;
+    }
+    h4,
+    h5,
+    h6 {
+      font-weight: bold;
     }
     p {
       margin: 1.6rem 0;
