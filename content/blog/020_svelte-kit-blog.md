@@ -93,10 +93,10 @@ export async function get({ params }) {
 
 これで、 `/blog/first-post.json` にアクセスすると
 
-```
+```json
 {
-  meta: { title: 最初の記事 },
-  body: { <div><h1>First Post!</h1>...(略) }
+  "meta": { "title": "最初の記事" },
+  "body": "<div><h1>First Post!</h1>...(略)"
 }
 ```
 
