@@ -7,8 +7,6 @@
 }
 ---
 
-# DockerでLAMP (ローカル開発用)
-
 環境：Ubuntu 18.04 LTS
 
 ローカルのLAMP環境がほしくなったので、Dockerに初挑戦しました。

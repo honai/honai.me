@@ -19,13 +19,13 @@ CAMPHOR-のオンライン配信のイベントCAMPHOR- Dayにて「入門 HTTP�
 発表では時間の都合で解説できなかった部分も載せようと思います。
 量が多くなるので、連載形式でやっていきます。完走したい。
 
-# 連載の概要
+## 連載の概要
 
 インターネットで広く使われている通信プロトコルのHTTPですが、
 今回の連載では、HTTPというプロトコルの中でも実際の通信にかかわる部分（一部TCPなど下のレイヤーを含む）について、
 バージョンごとの違い・進化に重点を置いて解説していきたいと思います。
 
-## 連載の計画
+### 連載の計画
 
 - **HTTP/1.xとKeep Alive**（本記事）
 - [TLSとHTTP - TLSの概要](/blog/post/how-http-works-2-tls-http)
@@ -33,7 +33,7 @@ CAMPHOR-のオンライン配信のイベントCAMPHOR- Dayにて「入門 HTTP�
 - [HTTP/1の課題とHTTP/2](/blog/post/how-http-works-4-http2)
 - [QUICとHTTP/3](/blog/post/how-http-works-5-quic-http3)
 
-## 連載では扱わないこと
+### 連載では扱わないこと
 
 アプリケーションプロトコルというよりも通信プロトコルとしての進化に重点を置いていること、
 また下のレイヤーまで掘り下げすぎないようにするため、
@@ -45,16 +45,16 @@ CAMPHOR-のオンライン配信のイベントCAMPHOR- Dayにて「入門 HTTP�
 - DNS
 - IP層を含む下位のレイヤー
 
-#### 本ブログ記事に掲載している画像の無断転載を禁じます。
+##### 本ブログ記事に掲載している画像の無断転載を禁じます。
 
-# 第1回 HTTP/1.xとKeep Alive
+## 第1回 HTTP/1.xとKeep Alive
 
 今回のテーマは、HTTPとして広く普及し実質的な標準となったHTTP/1.0や、
 RFCに定められた最初の正式バージョンであるHTTP/1.1の基本的な通信の仕組みと、高速化のための機能であるKeep Aliveについて詳解します。
 
-## HTTP/1系の基本的な通信フロー
+### HTTP/1系の基本的な通信フロー
 
-### TCPによる接続
+#### TCPによる接続
 
 ![tcp-connection](https://images.ctfassets.net/7q1ibtbymdj9/3QT6ql3rMYjj7hwfUhNi1W/6fc5a1860decb87fffe41b7143aeb335/tcp-connection.png)
 
@@ -65,7 +65,7 @@ TCPとは、信頼性の高い双方向通信を行うためのトランスポ�
 
 クライアント側からTCPの [3ウェイ・ハンドシェイク](#tcp%E3%81%AE%E3%83%8F%E3%83%B3%E3%83%89%E3%82%B7%E3%82%A7%E3%82%A4%E3%82%AF) を行うことで接続を確立します。
 
-### HTTPの文字列をエンコード
+#### HTTPの文字列をエンコード
 
 クライアントは、例えば次のようなリクエストの文字列を作ります:
 ```http
@@ -78,7 +78,7 @@ Accept: */*
 
 そしてクライアントは、作ったリクエストの文字列をバイナリにエンコードします。ヘッダーはASCIIでエンコードします。またボディは `Content-Type` , `Content-Encoding` などで文字コード・圧縮形式を指定することで様々な形式でエンコードすることができます。
 
-### TCPで送信
+#### TCPで送信
 
 クライアントは作ったバイナリをTCPを利用してサーバーに送ります。
 バイナリはパケットに分割して送信されますが、
@@ -86,33 +86,33 @@ Accept: */*
 
 ![request-flow](https://images.ctfassets.net/7q1ibtbymdj9/6IFZy3hL8Yfzw7fZ2dBa3N/fa656a7e02c84e06f276d04d3d0ee747/request-flow.png)
 
-### サーバーが受け取ったバイナリをデコード
+#### サーバーが受け取ったバイナリをデコード
 
 TCPによってサーバーに届いたバイナリを（ヘッダーがASCIIであることはわかっているため）ASCIIでデコードします。
 空行でヘッダーの終わりを検知し、（ボディがあれば）ヘッダーに基づいてボディもエンコードします。
 
 出てきた文字列を解釈し、必要な処理（ファイルやデータベースを読み込んだり）を行ってレスポンスの準備をします。
 
-### 以下同様に
+#### 以下同様に
 
 次はサーバーがレスポンスの文字列を生成し、エンコードし、TCPで送信…リクエストと同じ流れですね。
 そしてクライアントは受け取ったレスポンスを同様にデコードして、処理を行います。
 
 ![response-flow](https://images.ctfassets.net/7q1ibtbymdj9/5Xr3OIyrdtiuaCUGytp25s/a0119a68c60ae23eeeecea72525ead8e/response-flow.png)
 
-### TCPを切断
+#### TCPを切断
 
 サーバーからのレスポンスが全て送信されると、
 サーバー側からTCPのコネクションを切断します。これでHTTPの1回のリクエスト・レスポンスが終了します。
 
-## シンプルかつ汎用性の高いプロトコル
+### シンプルかつ汎用性の高いプロトコル
 
 HTTPではヘッダーとボディを分けることで様々な形式のデータをやりとりすることができるようになりました。
 この汎用性の高さこそが、20年以上HTTPが（セマンティックをほとんど変えずに）現役である理由の一つだと思います。
 
-## Keep Aliveによる高速化
+### Keep Aliveによる高速化
 
-### TCPのハンドシェイク
+#### TCPのハンドシェイク
 
 先述したように、HTTP/1系ではクライアントがTCP接続を開始し、
 レスポンスの送信が終わるとサーバー側がTCPを切断します。
@@ -126,13 +126,13 @@ TCPでは信頼性の高い通信を行うため、相手から応答が返っ�
 TCPでは接続と切断それぞれに1.5RTTを要します。
 （実際は、接続時のクライアントからのAckに続けてデータを送信開始できる・切断時のFINはサーバーからのデータに続けて送られてくるため、クライアントから見るとそれぞれ1RTTを要することになります）。
 
-### HTTP/1.xの課題 - 毎回のTCP接続・切断によるレイテンシ
+#### HTTP/1.xの課題 - 毎回のTCP接続・切断によるレイテンシ
 したがって、リクエスト毎にTCPの接続・切断を行うHTTP/1.xでは、
 リクエストの数が増えるとこのハンドシェイクによる時間のロスの影響が大きくなります。
 
 ![http-without-keep-alive](https://images.ctfassets.net/7q1ibtbymdj9/76b9x8qIeP80yhC4gfPMSk/438a04e9752df37350643e7be4a8056a/http-without-keep-alive.png)
 
-### Keep Alive - TCPを接続したままにして高速化する
+#### Keep Alive - TCPを接続したままにして高速化する
 
 そこで登場したのがKeep Aliveです。
 仕組みは単純で、1つ目のリクエスト/レスポンスが終わった後、TCPを切断せずに、次のリクエストで再利用します。
@@ -143,13 +143,13 @@ TCPでは接続と切断それぞれに1.5RTTを要します。
 
 ![http-with-keep-alive](https://images.ctfassets.net/7q1ibtbymdj9/4ZSZpaIXHOtg2dIF8FWexV/f06ee2675dd5c61aaea44f7aff93455c/http-with-keep-alive.png)
 
-## Keep Aliveの効果を確かめる
+### Keep Aliveの効果を確かめる
 
 Keep Aliveの効果はローカル環境でも簡単に確かめることができます。
 Nginxの `keepalive_timeout` ディレクティブを0に設定することで（デフォルトは65）Keep Aliveを無効にすることができます。
 
 ```nginx
-# nginx.conf
+## nginx.conf
 server_1 {
 	listen				8001;
 	keepalive_timeout	0;
@@ -171,13 +171,13 @@ server_2 {
 <iframe src="http://localhost:8002/emoji.html">
 ```
 
-### 結果
+#### 結果
 
 筆者がNginx + Chromeで試した結果です。試すときはキャッシュは無効にしてください。
 
 ![keep-alive](https://images.ctfassets.net/7q1ibtbymdj9/7D58baZU2PmBWhkD1eiMtg/10298f31d52dc6d18486877edee57f99/keep-alive.gif)
 
-### 開発者ツールで違いを見る
+#### 開発者ツールで違いを見る
 
 <small>※ スクリーンショットはChromeのものです。</small>
 
@@ -210,7 +210,7 @@ TCP接続を複数張ることで並列化しています
 Keep Aliveが有効の場合、タイミングに「Initial Connection」がなく、
 Waterfallを見ても連続的にロスなくやり取りできていることがわかります。
 
-## まとめ
+### まとめ
 
 HTTP/1.x は、TCPを利用したテキストベースのプロトコルです。
 TCPが高信頼な双方向通信を提供するため、HTTP/1.x自体は（通信プロトコルという観点では）シンプルです。
@@ -218,7 +218,7 @@ TCPの接続・切断によるレイテンシを削減するため、Keep Alive�
 
 次回はHTTP/2について解説します。
 
-## 参考文献
+### 参考文献
 
 - 渋川よしき, Real World HTTP ミニ版, オライリー・ジャパン, 2019
 - Ilya Grigorik, High Performance Browser Networking, O'Reilly Media, 2013<br>
