@@ -7,8 +7,6 @@
 }
 ---
 
-# Surface Pro 4にUbuntuを入れたときの初期設定
-
 ## 前提
 
 - Microsoft Surface Pro 4 にWindowsとは別にUbuntuをインストール完了した状態 (Ubuntuのインストールについては解説していません)

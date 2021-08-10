@@ -13,7 +13,7 @@
 CAMPHOR- Day 2020で発表した「入門 HTTP」を連載としてブログに投稿しています。
 こちらは第3回の記事となります。
 
-# 連載について
+## 連載について
 
 - [HTTP/1.xとKeep Alive](/blog/post/how-http-works-1-http1-keep-alive)
 - [TLSとHTTP - TLSの概要](/blog/post/how-http-works-2-tls-http)
@@ -25,7 +25,7 @@ CAMPHOR- Day 2020で発表した「入門 HTTP」を連載としてブログに�
 
 **本ブログ記事に掲載している画像の無断転載を禁じます。**
 
-# 第3回 TLSとHTTP - HTTP over TLS
+## 第3回 TLSとHTTP - HTTP over TLS
 
 前回は、HTTPとTLSというよりもTLSそのものに重点を置いて説明しました。
 今回はHTTP over TLSということで、TLSのハンドシェイクや、
@@ -39,7 +39,7 @@ TLS 1.2 (以前) と TLS 1.3 の違いに注目して紹介していきたいと
 といっても、TLSのバージョンアップについて全てを網羅するのは分量としても内容としても難しいので、
 ハンドシェイクプロトコルの違いについて解説していきます。
 
-## TLSプロトコルのデータ転送とTCP
+### TLSプロトコルのデータ転送とTCP
 
 TLSは、HTTP/1.xと違い、バイナリベースのプロトコルです（HTTP/1系はテキストベースでした）。
 「データの何bitから何bitまでがバージョンを表す。次の n bitはenumで、1だったらこれ、2だったらこれ…」というように、フォーマットが定まっています。
@@ -62,7 +62,7 @@ TCP, TLS Record, TLSサブプロトコル, HTTPの関係を図で整理すると
 A, BともにTLSのデータ自体はRecordプロトコルによって運ばれています。
 AとBでは使われているサブプロトコルが異なり、AではHandshakeプロトコルのデータとしてClient Helloを送っています。BではApplication DataプロトコルでHTTPのメッセージを送っています。
 
-## TLS 1.2 Handshake
+### TLS 1.2 Handshake
 
 TLS 1.2 の基本的な（クライアントの認証を伴わない）フルハンドシェイクは次の図のようになっています。
 
@@ -101,7 +101,7 @@ $ curl --tls-max 1.2 --http1.1 -I -v https://example.com/
   続くFinishedでは、ハンドシェイクの一連のメッセージのハッシュ値やマスターシークレットの値から計算した
   `verified_data` というフィールドがあり、ハンドシェイク中にメッセージが改ざんされていないことを確認できます。
 
-### Application Data
+#### Application Data
 
 ここまでくれば後はHTTP over TCPの場合と同じです。
 Application Dataプロトコルで、上位のプロトコルのデータをセキュアに送受信することができます。
@@ -110,7 +110,7 @@ Application Dataプロトコルで、上位のプロトコルのデータをセ�
 ![TLSレコード上のHTTP/1.1](https://images.ctfassets.net/7q1ibtbymdj9/2Te2lyGW4LIsxouhmtFflX/732abb42754b0d422a363bcd3dca9bfb/h1.1-over-t1.2.png)
 HTTPから見れば、データを運んでもらうのがTCPかTLSかという違いだけで、何もプロトコルについて変更する必要がないことがわかります。
 
-### Session IDによる再開のハンドシェイク
+#### Session IDによる再開のハンドシェイク
 
 TLS 1.2では、接続に対してSession IDを発行することができ、
 一定時間内（RFC 5246では24時間までを推奨）に再接続する場合は以前のセッションと同じ鍵を使用して通信を再開することができます。
@@ -120,7 +120,7 @@ TLS 1.2では、接続に対してSession IDを発行することができ、
 Client HelloでSession IDをサーバーに送り、
 サーバーがそれをチェックして有効であれば、鍵交換をスキップして1RTTでアプリケーションデータを送ることができます。
 
-## TLS 1.3 Hadshake
+### TLS 1.3 Hadshake
 
 TLS 1.3のフルハンドシェイクでは、1RTTでアプリケーションデータを送信できるようになりました。次の図はTLS 1.3のフルハンドシェイクの一例です。
 
@@ -130,7 +130,7 @@ TLS 1.3のフルハンドシェイクでは、1RTTでアプリケーションデ
 TLS 1.2ではハンドシェイクはFinishedしか暗号化されていませんでしたが、
 TLS 1.3ではハンドシェイク用の鍵で暗号化されます。
 
-### PSKとEarly Data (0-RTT Data)
+#### PSKとEarly Data (0-RTT Data)
 
 TLS 1.3では、以前のハンドシェイクなどで手に入れたPSK（Pre-Shared Key: 事前共有鍵）によって、
 Client Helloと同じタイミングでアプリケーションデータを送信することができるようになりました。
@@ -138,7 +138,7 @@ Nginxでもバージョン1.16からTLS 1.3 Early Dataがサポートされた�
 
 ![TLS 1.3 Early Data](https://images.ctfassets.net/7q1ibtbymdj9/6YmU2C3MyVXeOKHQUOtkMw/7a37d67c8ecedb7357349ed8559a055b/tls-1.3-0-rtt.png)
 
-## ALPN: Application Layer Protocol Negotiation
+### ALPN: Application Layer Protocol Negotiation
 
 TLSのハンドシェイクの中でも、HTTPのレイヤーから見て非常に重要なのがALPN（[RFC 7301](https://tools.ietf.org/html/rfc7301)）です。
 これはアプリケーション層のプロトコルを選択する拡張機能です。
@@ -179,7 +179,7 @@ DNS over TLS | `dot`
 ※ `h2c` は、TLSのハンドシェイクができている（＝クライアント/サーバーともにTLSに対応している）にもかかわらずTLSを使わずにHTTP/2で通信を行うということです。
 実際にこれが使われることはまずありません。
 
-### TLSとALPNがインターネットにもたらしたメリット
+#### TLSとALPNがインターネットにもたらしたメリット
 
 参考文献のReal World HTTPからの引用です。
 
@@ -194,7 +194,7 @@ IPv4とTCPを使っていても、往々にして既存のルーターが新し�
 TLSが普及し、ALPNによって途中のルーターに介入されずにプロトコルのネゴシエーションを行えるようになったことで、
 20年近く使われたHTTP/1.xと全く互換性のないHTTP/2を（既存のルーターに邪魔されることなく）普及させることができたといえるでしょう。
 
-## まとめ
+### まとめ
 
 HTTP over TLSでは、HTTP over TCPの時に比べ通信開始までのRTTが増えます。
 これはTLSでセキュリティを確保するためには仕方ないことですが、
@@ -205,7 +205,7 @@ ALPN拡張によって新しいプロトコルを普及しやすくするとい�
 
 次回はHTTP/2について解説していきたいと思います。
 
-## 参考文献
+### 参考文献
 
 - 渋川よしき, Real World HTTP 第2版, オライリー・ジャパン, 2020
 - Ristić, Ivan (2017)『プロフェッショナルSSL/TLS』(齋藤孝道 監訳) ラムダノート出版
