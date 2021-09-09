@@ -46,12 +46,16 @@ export default {
       title: "ピクシブ株式会社（アルバイト）",
     },
     {
+      period: "2021.8",
+      title: "ヤフー株式会社（インターン, 2 weeks）"
+    },
+    {
       period: "2020.3",
-      title: "ピクシブ株式会社（インターン）",
+      title: "ピクシブ株式会社（インターン, 1 week）",
     },
     {
       period: "2019.8",
-      title: "株式会社サイバーエージェント（インターン）",
+      title: "株式会社サイバーエージェント（インターン, 3 weeks）",
     },
   ],
   publications: [
