@@ -46,6 +46,10 @@ export default {
       title: "ピクシブ株式会社（アルバイト）",
     },
     {
+      period: "2021.9",
+      title: "サイボウズ株式会社（インターン, 1 week）"
+    },
+    {
       period: "2021.8",
       title: "ヤフー株式会社（インターン, 2 weeks）"
     },
