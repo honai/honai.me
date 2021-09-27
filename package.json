@@ -19,9 +19,9 @@
     "@sveltejs/adapter-static": "^1.0.0-next.13",
     "@sveltejs/kit": "^1.0.0-next.146",
     "npm-run-all": "^4.1.5",
-    "sass": "^1.38.2",
+    "sass": "^1.41.1",
     "svelte": "^3.42.4",
-    "svelte-preprocess": "^4.7.4"
+    "svelte-preprocess": "^4.9.5"
   },
   "dependencies": {
     "feed": "^4.2.2",
