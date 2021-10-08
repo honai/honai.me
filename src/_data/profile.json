@@ -41,12 +41,20 @@
       "title": "ピクシブ株式会社（アルバイト）"
     },
     {
+      "period": "2021.9",
+      "title": "サイボウズ株式会社（インターン, 1 week）"
+    },
+    {
+      "period": "2021.8",
+      "title": "ヤフー株式会社（インターン, 2 weeks）"
+    },
+    {
       "period": "2020.3",
-      "title": "ピクシブ株式会社（インターン）"
+      "title": "ピクシブ株式会社（インターン, 1 week）"
     },
     {
       "period": "2019.8",
-      "title": "株式会社サイバーエージェント（インターン）"
+      "title": "株式会社サイバーエージェント（インターン, 3 weeks）"
     }
   ],
   "publications": [
@@ -55,8 +63,14 @@
       "authors": "Honai Ueoka, Yugo Murawaki and Sadao Kurohashi.",
       "journal": "In Proceedings of the 2021 Conference of the North American Chapter of the Association for Computational Linguistics: Human Language Technologies (NAACL-HLT 2021), pp. 5486-5492, online, June 2021. (short paper).",
       "links": [
-        { "text": "paper", "url": "https://www.aclweb.org/anthology/2021.naacl-main.433/" },
-        { "text": "code", "url": "https://github.com/ku-nlp/steganography-with-masked-lm" }
+        {
+          "text": "paper",
+          "url": "https://www.aclweb.org/anthology/2021.naacl-main.433/"
+        },
+        {
+          "text": "code",
+          "url": "https://github.com/ku-nlp/steganography-with-masked-lm"
+        }
       ]
     },
     {
@@ -64,7 +78,10 @@
       "authors": "Akiko Aizawa, Frederic Bergeron, Junjie Chen, Fei Cheng, Katsuhiko Hayashi, Kentaro Inui, Hiroyoshi Ito, Daisuke Kawahara, Masaru Kitsuregawa, Hirokazu Kiyomaru, Masaki Kobayashi, Takashi Kodama, Sadao Kurohashi, Qianying Liu, Masaki Matsubara, Yusuke Miyao, Atsuyuki Morishima, Yugo Murawaki, Kazumasa Omura, Haiyue Song, Eiichiro Sumita, Shinji Suzuki, Ribeka Tanaka, Yu Tanaka, Masashi Toyoda, Nobuhiro Ueda, Honai Ueoka, Masao Utiyama, Ying Zhong.",
       "journal": "Workshop on NLP for COVID-19 (Part 2) at EMNLP 2020, online, November 2020. (workshop)",
       "links": [
-        { "text": "paper", "url": "https://www.aclweb.org/anthology/2020.nlpcovid19-2.13/" }
+        {
+          "text": "paper",
+          "url": "https://www.aclweb.org/anthology/2020.nlpcovid19-2.13/"
+        }
       ]
     }
   ]
