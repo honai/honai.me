@@ -1,19 +1,30 @@
 ---
 title: Honai Ueoka
 description: Honai Ueoka's portfolio website.
-typekitCss: https://use.typekit.net/bdo3rru.css
+asyncStylesheets:
+  - /style.css
+  - https://use.typekit.net/bdo3rru.css
+preconnectDomains:
+  - https://p.typekit.net
+  - https://res.cloudinary.com
 ---
 <!DOCTYPE html>
 <html lang="ja">
 
 <head>
   {% include 'seo.njk' %}
-  <link rel="stylesheet" href="/style.css">
-  <link rel="preload" as="style" href="{{ typekitCss }}" onload="this.onload=null;this.rel='stylesheet'">
+  {% for domain in preconnectDomains %}
+    <link rel="preconnect" href="{{ domain }}">
+  {% endfor %}
+  {% for href in asyncStylesheets %}
+    <link rel="preload" as="style" href="{{ href }}" onload="this.rel='stylesheet';">
+  {% endfor %}
+  <style>{% sassinline 'portfolio-critical.scss' %}</style>
   <noscript>
-    <link rel="stylesheet" href="{{ typekitCss }}">
+    {% for href in asyncStylesheets %}
+      <link rel="stylesheet" href="{{ href }}">
+    {% endfor %}
   </noscript>
-  <!-- <script data-ad-client="ca-pub-9155380222623167" async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js"></script> -->
 </head>
 
 <body class="body-layout">

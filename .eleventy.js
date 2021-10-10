@@ -8,7 +8,7 @@ const pluginTOC = require('eleventy-plugin-nesting-toc');
 const fileCopies = ['images', 'favicon.ico', 'scripts']
 
 module.exports = (eleventyConfig) => {
-  eleventyConfig.setTemplateFormats(['html', 'md', 'njk', 'pug', 'ejs', '11ty.js', 'png', 'jpg'])
+  eleventyConfig.setTemplateFormats(['html', 'md', 'njk', 'ejs', '11ty.js'])
 
   // static file copy
   for (const f of fileCopies) {
@@ -16,8 +16,11 @@ module.exports = (eleventyConfig) => {
   }
 
   // sass
-  eleventyConfig.addFilter('sass', (code) => {
-    return sass.renderSync({ data: code, outputStyle: 'compressed' }).css.toString()
+  eleventyConfig.addShortcode('sassinline', (filename) => {
+    return sass.renderSync({
+      file: `${__dirname}/src/styles/${filename}`,
+      outputStyle: 'compressed'
+    }).css.toString()
   })
   eleventyConfig.addWatchTarget('src/styles')
   eleventyConfig.addPlugin(syntaxHighlight)
