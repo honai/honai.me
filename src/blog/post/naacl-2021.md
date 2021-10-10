@@ -1,7 +1,7 @@
 ---
 title: オンライン国際学会に参加した
 date: 2021-07-02
-og_image_url: https://res.cloudinary.com/honai/image/upload/v1633575294/blog/gather-og.jpg
+og_image_url: https://res.cloudinary.com/honai/image/upload/blog/gather-og.jpg
 large_card: true
 description:
   6月にNAACL2021という自然言語処理系の国際学会に参加し、
@@ -14,7 +14,7 @@ description:
 
 参加したのは、ACLやEMNLPと並ぶ [自然言語処理のトップカンファレンス](https://qiita.com/mhangyo/items/4eb5add038d6d4e76c79) の1つ、NAACL 2021です。正式には "2021 Annual Conference of the North American Chapter of the Association for Computational Linguistics - NAACL-HLT 2021" です。
 
-[![NAACLウェブサイト](/images/blog/naacl.jpg)](https://2021.naacl.org/)
+[![NAACLウェブサイト](https://res.cloudinary.com/honai/image/upload/f_auto/blog/naacl.jpg)](https://2021.naacl.org/)
 
 ## 投稿した論文
 
@@ -29,33 +29,33 @@ description:
 
 ## 時系列でふりかえり
 
-### 2020/11/24 **Final paper submission due** (投稿締切)
+### 2020/11/24&ensp; **Final paper submission due** (投稿締切)
 ちょうど勤労感謝の日に伴う三連休明けの火曜日の夜9時が締め切りでした。
 
 9～10月に時間があったにも関わらず、あまり進捗がなく、全体的に締め切り前にかなりの負荷がかかってしまいました。クラウドソーシングによる評価に手間取ったり、初めての英語での論文執筆でなかなか書き進められなかったりと、提出前の1週間は大変でした。特に英語の添削は指導教員の先生に大変お世話になり、Technical Writing力不足を痛感しました。
 
-### 2021/01/21-26 **Author Response Period** (査読者への回答期間)
+### 2021/01/21-26&ensp; **Author Response Period** (査読者への回答期間)
 査読者（3人）からのコメントと評価スコアが届き、それに対する回答を執筆し提出しました。
 評価が低い査読者からは、提案手法についてというよりも、倫理的に問題があるのではないかという指摘をされていました。情報隠蔽技術なので確かに悪用できますが、暗号などの研究にもすべて当てはまると考え、反論しました。
 
-### 2021/03/11 **Notification of acceptance** (受理の通知)
+### 2021/03/11&ensp; **Notification of acceptance** (受理の通知)
 査読者の平均スコアがちょうどボーダーの目安の少し下くらいだったので正直無理かなと思っていましたが、受理の通知が届きました。通知によると、Charの判断で査読者が1人追加されていました（おそらく倫理面で意見が割れていたため）。
 
 手法や結果の内容で評価されないのなら仕方ないですが、正直、このテーマで倫理面での批判で拒否されるのは心外だったため、Charの判断に感謝しています。
 
-### 2021/04/12 **Camera ready papers due** (最終版の締切り)
+### 2021/04/12&ensp; **Camera ready papers due** (最終版の締切り)
 受理通知の1か月後に、Camera Readyと呼ばれる最終版の締め切りがありました。
 
 NAACL 2021のShort Paperは、査読時点では（ReferenceやAppendixを除き）4ページの制限があり、査読を受けて内容を改善することを想定して、Camera Readyでは制限が増え5ページになります。
 
 筆者も、査読で指摘された点や、ページの節約のために省いていたやや細かい注釈などを追加しました。
 
-### 2021/05/12 **ポスターと録画発表の締め切り**
+### 2021/05/12&ensp; **ポスターと録画発表の締め切り**
 おそらく学会の運営側もオンライン化でバタバタしていたのだと予想されますが、5月に入ってから「全員がポスター発表とオーラルでの発表をする」ことになるとの通知がきて、急いでポスター作成とオーラルの録画発表の収録をしました。（普通の対面での学会なら、どちらかで済むはずなのですが。）
 
 ポスターは、現地発表であれば、A0サイズ等に縦で印刷しますが、今回はPDFでの提出で、形式は自由でした。自由がゆえに、向きやフォントサイズやどれくらい詰め込むかなど迷う要素がたくさんありました。筆者は結局、モニタで見やすい横向きで、A3サイズに対して10ptを最小フォントサイズとするくらいのサイズ感でつくりました。
 
-[![ポスター](/images/blog/poster.png)](https://cdn.honai.me/other/naacl-2021-poster.pdf)<br>
+[![ポスター](https://res.cloudinary.com/honai/image/upload/f_auto/blog/poster.png)](https://cdn.honai.me/other/naacl-2021-poster.pdf)<br>
 <small>ポスター</small>
 
 また、これもオンライン学会ならではですが、オーラル発表のかわりとして、スライドを使っての発表を録画しました。運営から推奨されていたScreencast-o-maticというアプリを使って、Webカメラの映像と音声と画面を収録しました。一発ノーカット撮りしないといけないわけではなく、言い間違えたら言い直して後からトリミングできるので収録は気楽でした。
@@ -63,11 +63,11 @@ NAACL 2021のShort Paperは、査読時点では（ReferenceやAppendixを除き
 [オーラル発表のビデオ](https://underline.io/lecture/19735-frustratingly-easy-edit-based-linguistic-steganography-with-a-masked-language-model)
 （会員登録しないと再生できないかもしれません。）
 
-### 2021/06/06-11 **学会期間**
+### 2021/06/06-11&ensp; **学会期間**
 いよいよ学会期間です。
 Underlineというサービスがメインで、ZoomやGather.townなどを組み合わせたオンライン学会となっていました。
 
-![Underlineの画面](/images/blog/underline.jpg)<br>
+![Underlineの画面](https://res.cloudinary.com/honai/image/upload/f_auto/blog/underline.jpg)<br>
 <small>オーラル発表の録画の閲覧画面。横にQ&Aのチャットもありました</small>
 
 オーラルの録画とは別に、Zoomでのライブセッションでの短い発表時間がありました。タイムゾーンを考慮したグループ分けがされていたようで、東アジアの大学の人がほとんどのグループで、日本時間で10:30ごろからの発表でした。北アメリカの学会なので時差で深夜に入れられることを覚悟していたので、これはありがたかったかもしれません。
@@ -75,7 +75,7 @@ Underlineというサービスがメインで、ZoomやGather.townなどを組�
 ライブセッションの後はGather.townでポスター発表の時間が設けられていました。
 Gather.townはRPGのような画面でアバターを操作し、近くにいる人とビデオ通話ができる、一風変わったバーチャルコミュニケーションツールです。
 
-![Gather.townの画面](/images/blog/gather.jpg)<br>
+![Gather.townの画面](https://res.cloudinary.com/honai/image/upload/f_auto/blog/gather.jpg)<br>
 <small>Gather.townの画面。左下に私のポスターの場所があります。人があまりいないタイミングでスクショしてしまった。</small>
 
 Gather.townのおかげで対面でのポスター発表に近い感覚はありましたが、やはり近づいて通話で話しかけるのは心理的にハードルがありました。
