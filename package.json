@@ -1,14 +1,13 @@
 {
-  "name": "honai",
+  "name": "honai.me",
   "version": "1.0.0",
   "main": "index.js",
-  "repository": "git@github.com:honai/honai.me.git",
+  "repository": "https://github.com/honai/honai.me.git",
   "author": "Honai Ueoka",
-  "license": "MIT",
   "private": true,
   "scripts": {
     "build": "eleventy",
-    "clean": "rimraf _site",
+    "clean": "rimraf build",
     "dev": "eleventy --serve"
   },
   "devDependencies": {
