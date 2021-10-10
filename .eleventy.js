@@ -5,7 +5,7 @@ const markdownItAnchor = require('markdown-it-anchor')
 const markdownItKatex = require('@iktakahiro/markdown-it-katex')
 const pluginTOC = require('eleventy-plugin-nesting-toc');
 
-const fileCopies = ['images', 'favicon.ico', 'ads.txt', 'redirects']
+const fileCopies = ['images', 'favicon.ico', 'scripts']
 
 module.exports = (eleventyConfig) => {
   eleventyConfig.setTemplateFormats(['html', 'md', 'njk', 'pug', 'ejs', '11ty.js', 'png', 'jpg'])
