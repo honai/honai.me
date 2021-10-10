@@ -1,41 +1,9 @@
+@use 'blog/article-header';
+@use 'blog/post-edit';
+@use 'blog/post-toc';
+
 .article-layout {
   padding: 1rem;
-}
-
-.article-header {
-  text-align: center;
-  display: flex;
-  flex-direction: column;
-  gap: 1.2rem;
-  > .title {
-    font-size: 3.2rem;
-  }
-}
-
-.post-toc {
-  > .title {
-    font-size: 1.8rem;
-  }
-  > .toc {
-    ol {
-      padding: 0 0 0 2.4rem;
-    }
-    li {
-      color: var(--color-text-secondary);
-    }
-    a {
-      color: inherit;
-    }
-    a.-active {
-      font-weight: bold;
-    }
-  }
-}
-
-.post-edit {
-  > .link {
-    color: var(--color-text-secondary)
-  }
 }
 
 @media screen and (min-width: 992px) {
