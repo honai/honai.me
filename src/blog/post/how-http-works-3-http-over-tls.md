@@ -4,7 +4,7 @@
   "date": "2020-05-05",
   "description": "こんにちは。ほないです。 CAMPHOR- Day 2020で発表した「入門 HTTP」を連載としてブログに投稿しています。 こちらは第3回の記事となります。  連載について  HTTP/1.xとKeep Alive TLSとHTTP - TLSの概要 TLSとHTTP - HTTP over TLS（本記事）",
   "updated": "2020-05-16T14:22:53.370Z",
-  "og_image_url": "https://images.ctfassets.net/7q1ibtbymdj9/6YmU2C3MyVXeOKHQUOtkMw/7a37d67c8ecedb7357349ed8559a055b/tls-1.3-0-rtt.png",
+  "og_image_url": "https://res.cloudinary.com/honai/image/upload/ctf/tls-1.3-0-rtt.png",
   "large_card": true
 }
 ---
@@ -55,9 +55,9 @@ TLSのメインの仕様では4つのサブプロトコルがあります。
 
 TCP, TLS Record, TLSサブプロトコル, HTTPの関係を図で整理すると次のようになります。
 
-![tcp-tls-client-hello](https://images.ctfassets.net/7q1ibtbymdj9/7l8JLwH5wFFsdBNUJWlZry/e68757bcf1793fc24cf87c2d548ed675/tcp-tls-client-hello.png)
+![tcp-tls-client-hello](https://res.cloudinary.com/honai/image/upload/f_auto/ctf/tcp-tls-client-hello.png)
 
-![tcp-tls-http](https://images.ctfassets.net/7q1ibtbymdj9/4rpRD5cgieIbIa2i9vgJxn/1b707eea277621d659b695000c650031/tcp-tls-http.png)
+![tcp-tls-http](https://res.cloudinary.com/honai/image/upload/f_auto/ctf/tcp-tls-http.png)
 
 A, BともにTLSのデータ自体はRecordプロトコルによって運ばれています。
 AとBでは使われているサブプロトコルが異なり、AではHandshakeプロトコルのデータとしてClient Helloを送っています。BではApplication DataプロトコルでHTTPのメッセージを送っています。
@@ -66,7 +66,7 @@ AとBでは使われているサブプロトコルが異なり、AではHandshak
 
 TLS 1.2 の基本的な（クライアントの認証を伴わない）フルハンドシェイクは次の図のようになっています。
 
-![TLS 1.2のフルハンドシェイク](https://images.ctfassets.net/7q1ibtbymdj9/3TAMSz2qw5CxyUrgmuhv8o/59b41e2359934f3b3ed76e21c29e5940/tls-1.2-full-handshake.png)
+![TLS 1.2のフルハンドシェイク](https://res.cloudinary.com/honai/image/upload/f_auto/ctf/tls-1.2-full-handshake.png)
 
 これを見ると、TLS 1.2ではTLSのハンドシェイクに2RTTかかることがわかります。
 
@@ -79,7 +79,7 @@ curlで以下のようなコマンドを叩くと、TLS 1.2, HTTP/1.1でHEADリ�
 $ curl --tls-max 1.2 --http1.1 -I -v https://example.com/
 ```
 
-![WireSharkでキャプチャしたHTTP/1.1 over TLS 1.2のパケットのスクリーンショット](https://images.ctfassets.net/7q1ibtbymdj9/22yDyL9FmExzVWZnQrFM8K/39c44c7f030c97e11035c2e95b4dce56/ws-h1.1-t1.2-full.png)
+![WireSharkでキャプチャしたHTTP/1.1 over TLS 1.2のパケットのスクリーンショット](https://res.cloudinary.com/honai/image/upload/f_auto/ctf/ws-h1.1-t1.2-full.png)
 
 最初の3行はTCPの3ウェイ・ハンドシェイクです。クライアントからサーバーにSYNを送り、
 サーバーからSYNに対するACKとサーバーからのSYNが返され、クライアントがACKを送ることで通信が開始されます。
@@ -107,7 +107,7 @@ $ curl --tls-max 1.2 --http1.1 -I -v https://example.com/
 Application Dataプロトコルで、上位のプロトコルのデータをセキュアに送受信することができます。
 この場合、例えば `HEAD / HTTP/1.1\r\n` というような文字列をエンコードしたバイト列が、暗号化されたうえでTLSのレコードとして運ばれていることになります。
 
-![TLSレコード上のHTTP/1.1](https://images.ctfassets.net/7q1ibtbymdj9/2Te2lyGW4LIsxouhmtFflX/732abb42754b0d422a363bcd3dca9bfb/h1.1-over-t1.2.png)
+![TLSレコード上のHTTP/1.1](https://res.cloudinary.com/honai/image/upload/f_auto/ctf/h1.1-over-t1.2.png)
 HTTPから見れば、データを運んでもらうのがTCPかTLSかという違いだけで、何もプロトコルについて変更する必要がないことがわかります。
 
 #### Session IDによる再開のハンドシェイク
@@ -115,7 +115,7 @@ HTTPから見れば、データを運んでもらうのがTCPかTLSかという�
 TLS 1.2では、接続に対してSession IDを発行することができ、
 一定時間内（RFC 5246では24時間までを推奨）に再接続する場合は以前のセッションと同じ鍵を使用して通信を再開することができます。
 
-![TLS 1.2 セッション再開時のハンドシェイク](https://images.ctfassets.net/7q1ibtbymdj9/41Ix1uaZIlFOphoDfPbgIo/29288a71506bbd45115864bcf3697b6c/tls-1.2-session-resume.png)
+![TLS 1.2 セッション再開時のハンドシェイク](https://res.cloudinary.com/honai/image/upload/f_auto/ctf/tls-1.2-session-resume.png)
 
 Client HelloでSession IDをサーバーに送り、
 サーバーがそれをチェックして有効であれば、鍵交換をスキップして1RTTでアプリケーションデータを送ることができます。
@@ -124,7 +124,7 @@ Client HelloでSession IDをサーバーに送り、
 
 TLS 1.3のフルハンドシェイクでは、1RTTでアプリケーションデータを送信できるようになりました。次の図はTLS 1.3のフルハンドシェイクの一例です。
 
-![TLS 1.3のフルハンドシェイク](https://images.ctfassets.net/7q1ibtbymdj9/4veuJAx7B1aOmOv5As7KLW/7ff503b8a664524d87e9b0bd44766f18/tls-1.3-full-handshake.png)
+![TLS 1.3のフルハンドシェイク](https://res.cloudinary.com/honai/image/upload/f_auto/ctf/tls-1.3-full-handshake.png)
 
 図の青線はそのハンドシェイクメッセージが暗号化されていることを示します。
 TLS 1.2ではハンドシェイクはFinishedしか暗号化されていませんでしたが、
@@ -136,7 +136,7 @@ TLS 1.3では、以前のハンドシェイクなどで手に入れたPSK（Pre-
 Client Helloと同じタイミングでアプリケーションデータを送信することができるようになりました。
 Nginxでもバージョン1.16からTLS 1.3 Early Dataがサポートされたようです。
 
-![TLS 1.3 Early Data](https://images.ctfassets.net/7q1ibtbymdj9/6YmU2C3MyVXeOKHQUOtkMw/7a37d67c8ecedb7357349ed8559a055b/tls-1.3-0-rtt.png)
+![TLS 1.3 Early Data](https://res.cloudinary.com/honai/image/upload/f_auto/ctf/tls-1.3-0-rtt.png)
 
 ### ALPN: Application Layer Protocol Negotiation
 
@@ -151,7 +151,7 @@ HTTPのリクエストの場合、現在ならHTTP/1.1かHTTP/2を要求する�
 以下はcurlによるHTTPリクエスト（HTTPのバージョンを指定しない）をWireSharkでキャプチャし、
 Client HelloのALPN Extensionを見たものです。
 
-![TLS 1.2 Client Hello](https://images.ctfassets.net/7q1ibtbymdj9/1ENTIXzdgB8W7GmJtKbk3I/94c60657b6b61f24174290c8b2ae37e8/t1.2-client-hello.png)
+![TLS 1.2 Client Hello](https://res.cloudinary.com/honai/image/upload/f_auto/ctf/t1.2-client-hello.png)
 
 ```
 Extension: application_layer_protocol_negotiation (len=14)

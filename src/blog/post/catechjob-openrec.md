@@ -4,7 +4,7 @@
   "date": "2019-09-06T07:54:27.083Z",
   "description": "こんにちは。ほないです。 京都はまだ暑いですが、9月になりましたね。通った高校では9月初めに運動会があります。もうそんな季節かぁとぼやいています。  先月、大学の夏休みを利用して、株式会社CyberZ の OPENREC.tv というサービスの開発チームでインターンをしてきました。サイバーエージェントの就業型インターン「CA Tech JOB」で、職種としてはWebフロントエンジニアです。この記事では、インターンで取り組んだことやインターン全体の回想をまとめています。",
   "updated": "2020-05-16T14:22:53.298Z",
-  "og_image_url": "https://images.ctfassets.net/7q1ibtbymdj9/5tEQT9FRIAsVPZHnijnT9r/70f9b51eb3b45494782f44b77ed99c77/ca-entrance.JPG",
+  "og_image_url": "https://res.cloudinary.com/honai/image/upload/ctf/ca-entrance.jpg",
   "large_card": true,
   "plugins": [
     "twitter"
@@ -21,7 +21,7 @@
 
 [OPENREC.tv](https://www.openrec.tv) は、ゲーム実況・プレイ動画やライブ配信が楽しめる、動画コミュニティプラットフォームです。
 
-![openrec トップ画面](https://images.ctfassets.net/7q1ibtbymdj9/6BYdDXMzjihIXao9bPYT6i/459b1bd4409faafff8433fa82f4e556b/openrec-min.jpg)
+![openrec トップ画面](https://res.cloudinary.com/honai/image/upload/f_auto/ctf/openrec-min.jpg)
 
 個人の配信だけでなく、オフィシャルチャンネルでのイベントやe-Sports大会の配信、プロゲーマーやタレントによる番組など、様々なコンテンツを楽しむことができます 📺 🎮 
 
@@ -35,13 +35,13 @@
 
 ライブ配信にはチャット機能があり、視聴者が投稿したコメントやスタンプが流れていくのですが、ライブ配信中に時間を遡って途中から再生する「追いかけ再生」をすると、チャットは非表示になっていました。
 
-![機能実装前のアプリ画面キャプチャ](https://images.ctfassets.net/7q1ibtbymdj9/7jqDLbgJ2MMsMksD7MDiIr/c1f8ca5433ba694f7bf80b4d7e4c457b/dvr-chat-before-mini.gif)
+![機能実装前のアプリ画面キャプチャ](https://res.cloudinary.com/honai/image/upload/f_auto/ctf/dvr-chat-before-mini.gif)
 
 ### 実装後
 
 これを、追いかけ再生に合わせて、チャットが再現されるようにしました。
 
-![機能実装後のアプリ画面キャプチャ](https://images.ctfassets.net/7q1ibtbymdj9/42Dw5xh5DGNOo6zhrscQh5/9045a01fb88107f51ba773886e8f0ddb/dvr-chat-after.gif)
+![機能実装後のアプリ画面キャプチャ](https://res.cloudinary.com/honai/image/upload/f_auto/ctf/dvr-chat-after.gif)
 
 チャット欄下部のボタンで、追いかけ再生に合わせたチャットと、リアルタイムのチャットの表示を切り替えることができます。
 
@@ -104,7 +104,7 @@ OPENRECの公式Twitterでも紹介されてます 🎉
 3週目には、就業中のインターン生・内定者(内定者バイト)による成果発表会がありました。
 サイバーエージェント全体でのインターン/内定者の発表で、思ったより人数が多く(90人くらい集まった)、少し緊張しました。AbemaTVやアドテクなど、様々な部門・分野で、技術的な話や成果、業務外のエピソードなどを聴くことができました。みんなプレゼンが上手でした。
 
-![LT発表中の画像](https://images.ctfassets.net/7q1ibtbymdj9/7bBi0HBBgblze5JB1Gturl/39ae70930ce28b1b0552bf75d71cd6e5/190828-lt-min.jpg)
+![LT発表中の画像](https://res.cloudinary.com/honai/image/upload/f_auto/ctf/190828-lt-min.jpg)
 
 ↑緊張しながらしゃべっている自分です。
 
@@ -147,5 +147,5 @@ OPENREC開発チームの先輩からのお誘いで、様々なIT企業の新�
 
 OPENREC開発チームの皆さん、サポートしてくださった人事の皆さん、そしてメンターとして3週間ご指導してくださったメンターの社員さんおふたりに心から感謝しています。ありがとうございました！
 
-![ca-entrance](https://images.ctfassets.net/7q1ibtbymdj9/5tEQT9FRIAsVPZHnijnT9r/70f9b51eb3b45494782f44b77ed99c77/ca-entrance.JPG)
+![ca-entrance](https://res.cloudinary.com/honai/image/upload/f_auto/ctf/ca-entrance.jpg)
 

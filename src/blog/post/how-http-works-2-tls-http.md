@@ -3,7 +3,7 @@
   "title": "連載「入門 HTTP」(2) TLSとHTTP - TLSの概要",
   "date": "2020-04-28",
   "description": "こんにちは。ほないです。 「入門 HTTP」( SpeakerDeck を連載としてブログに投稿しています。 こちらは第2回の記事となります。  CAMPHOR- Day での発表の時は時間の関係で（~~自分の勉強不足もあり~~）3枚のスライドですっ飛ばしてしまったTLSの話ですが、",
-  "og_image_url": "https://images.ctfassets.net/7q1ibtbymdj9/39XPQDzQb8OE5VtKKrAaZ/3ecc7b1c004758bb8e04c356a987bbaf/ogp.png",
+  "og_image_url": "https://res.cloudinary.com/honai/image/upload/ctf/ogp-tls.png",
   "large_card": true
 }
 ---
@@ -42,7 +42,7 @@ HTTP/1.1の仕様策定と並行して、TLS（Transport Layer Security）によ
 
 TLSとは通信のセキュリティを高めるための技術で、通信のなりすまし、盗聴、改ざんを防ぐことができます。
 
-![ブラウザの鍵マークでTLSが使われていることを示すスクリーンショット](https://images.ctfassets.net/7q1ibtbymdj9/65cNhSeXTVHeWojYmlq2eu/22c8b7657cf6c438c22481f1ea48df6d/connection-secure.png)
+![ブラウザの鍵マークでTLSが使われていることを示すスクリーンショット](https://res.cloudinary.com/honai/image/upload/f_auto/ctf/connection-secure.png)
 
 ### TLSとTCP, HTTPの関係
 
@@ -57,7 +57,7 @@ TLSを利用してもHTTPの通信部分の規約を変更する必要は特に�
 認証、暗号化、完全性の検証をTLSが担って、
 アプリケーション層に影響を与えることなく通信をセキュアにすることができます。
 
-![TLSとHTTPの関係を表す図](https://images.ctfassets.net/7q1ibtbymdj9/3zmC2PVbzlCuhuG5y9191/a2eb8e3d1c55c5c25f1e49c85185fdc0/http-tls.png)
+![TLSとHTTPの関係を表す図](https://res.cloudinary.com/honai/image/upload/f_auto/ctf/http-tls.png)
 
 ### TLSプロトコルの大まかな処理の流れ
 
@@ -83,15 +83,15 @@ Chromeで適当な（ `https://` で始まる）サイトを開き、
 
 <div class="img-row-wrap">
   <figure>
-    <img src="https://images.ctfassets.net/7q1ibtbymdj9/3LMcVRs4tb0LDZZUeI5GpS/9b4cfaabea9669b97275bbe23b353afc/google-cert-domain.png" alt="google.comの証明書" title="google.comの証明書">
+    <img src="https://res.cloudinary.com/honai/image/upload/f_auto/ctf/google-cert-domain.png" alt="google.comの証明書" title="google.comの証明書">
     <figcaption>サーバー証明書</figcaption>
   </figure>
   <figure>
-    <img src="https://images.ctfassets.net/7q1ibtbymdj9/1MuChk5qiWNFmQUlgJgByt/95f734fc5da86d8157462e9b13e668cc/google-cert-mid.png" alt="Google Trust servicesの証明書" title="中間証明書">
+    <img src="https://res.cloudinary.com/honai/image/upload/f_auto/ctf/google-cert-mid.png" alt="Google Trust servicesの証明書" title="中間証明書">
     <figcaption>中間証明書</figcaption>
   </figure>
   <figure>
-    <img src="https://images.ctfassets.net/7q1ibtbymdj9/x0QBn7gd4KmvVdMScV1HA/72862ce33d4d0f37dbef118dfc6424a7/google-cert-root.png" alt="GlobalSignの証明書" title="ルート証明書">
+    <img src="https://res.cloudinary.com/honai/image/upload/f_auto/ctf/google-cert-root.png" alt="GlobalSignの証明書" title="ルート証明書">
     <figcaption>ルート証明書</figcaption>
   </figure>
 </div>

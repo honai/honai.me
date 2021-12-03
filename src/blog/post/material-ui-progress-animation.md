@@ -4,7 +4,7 @@
   "date": "2019-12-01T15:00:02.681Z",
   "description": "この記事は CAMPHOR- Advent Calendar 2019 2日目 の記事です。  こんにちは、ほないです。Advent Calender の記事を書くのは、CAMPHOR- 以外のものも含めて初めてなので、わくわくしています。 1日目のあたらんさんの記事、おもしろかったです。私も質問箱をつくりたくなりました。",
   "updated": "2020-12-13T15:24:06.183Z",
-  "og_image_url": "https://images.ctfassets.net/7q1ibtbymdj9/6bEGPf10zzbUANTdYkev2D/edd6f13dc0e250224a68674fbf2ecbd4/ogp.png",
+  "og_image_url": "https://res.cloudinary.com/honai/image/upload/ctf/ogp.png",
   "large_card": true
 }
 ---
@@ -132,7 +132,7 @@ circle {
 
 速度の変化は ease-in-out なので、最初は遅くてだんだん速くなって最後は遅くなる、という動きになります(図は Firefox の開発者ツールから引用)。
 
-![ease-in-out](https://images.ctfassets.net/7q1ibtbymdj9/6lnGf0xZGpgtPAWD1Qv4vu/4cc67763396a9b942d41509c50ebc960/ease-in-out.png)
+![ease-in-out](https://res.cloudinary.com/honai/image/upload/f_auto/ctf/ease-in-out.png)
 
 以上が丸いプログレスインジケーターのアニメーションにです。シンプルで気持ち良い動きですが、これを頭の中で思いついてコードにおこすのは難しそうです。
 
@@ -205,7 +205,7 @@ Material Design では、進捗を表す要素として、丸いインジケー�
 
 `cubic-bezier(...)` の指定によるバーの速度変化はこんな感じです(右が1つ目、左が2つ目のバー)。
 
-![cubic-bezier](https://images.ctfassets.net/7q1ibtbymdj9/3xUNguGEVBpX3eLcRi4T4b/a220d73d4756c360f85e1fb64f4429d3/cubic-bezier.png)
+![cubic-bezier](https://res.cloudinary.com/honai/image/upload/f_auto/ctf/cubic-bezier.png)
 
 以上がプログレスバーのアニメーションの解説になります。
 
