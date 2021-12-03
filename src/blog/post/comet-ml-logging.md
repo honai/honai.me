@@ -3,7 +3,7 @@
   "title": "Comet.ml で機械学習のログをクラウドに保存する",
   "date": "2020-12-05T17:38:34.620Z",
   "description": "この記事は CAMPHOR-アドベントカレンダー2020 6日目の記事です。  みなさんこんにちは、ほないです。  私は今年度から大学で自然言語処理の研究に取り組んでいて、データセットを作ってニューラル言語モデルをトレーニングして評価する機会がたくさんありました。  最近はPyTorch, TensorFlow, scikit-learnなど様々な機械学習フレームワークによって、ニューラルネットワークモデルの実装が簡単に行えるようになっています。",
-  "og_image_url": "https://images.ctfassets.net/7q1ibtbymdj9/1eVvfZslYntCk2TGFcxp0k/a4274d118e36835754f0c1be74a7df93/comet-ogp.png",
+  "og_image_url": "https://res.cloudinary.com/honai/image/upload/ctf/comet-ogp.png",
   "large_card": true
 }
 ---
@@ -63,11 +63,11 @@ Cometでは、Project -> Experiment という単位で記録を行います。
 
 CometのUIをサンプルプロジェクトのスクリーンショットで紹介します。
 
-![Cometメインパネルのスクリーンショット](https://images.ctfassets.net/7q1ibtbymdj9/6F3D97v9xfoOE5huoleQUv/9c273e9bf79b7a2e87372875a3b3ac8e/comet-main-panel.png)
+![Cometメインパネルのスクリーンショット](https://res.cloudinary.com/honai/image/upload/f_auto/ctf/comet-main-panel.png)
 
-![Cometで画像を保存する](https://images.ctfassets.net/7q1ibtbymdj9/35ZnJn6fpxwe65I37O6i6r/751103afec8c2fd99bda5f3307f9b3d6/comet-graphic-audio.jpg)
+![Cometで画像を保存する](https://res.cloudinary.com/honai/image/upload/f_auto/ctf/comet-graphic-audio.jpg)
 
-![Cometで音声データを保存する](https://images.ctfassets.net/7q1ibtbymdj9/7xcgTrej4r5u6wKf8e9kJR/475c5c72f6aea495315e0dd13048ac9d/comet-audio.png)
+![Cometで音声データを保存する](https://res.cloudinary.com/honai/image/upload/f_auto/ctf/comet-audio.png)
 
 このように、lossや精度を可視化したり、複数のExperimentを比較したり、
 画像や音声などのアセットをアップロードして閲覧したりすることができます。
@@ -108,7 +108,7 @@ experiment = Experiment()
 
 などが自動で記録されます。詳しくはこの表を見てください ↓
 
-![Cometが対応しているフレームワーク](https://images.ctfassets.net/7q1ibtbymdj9/6PGZGiCHjMjtfc0Fgl7qZc/8d31406c43f6807f3b9ecf3b1581e192/comet-supported-framework.png)
+![Cometが対応しているフレームワーク](https://res.cloudinary.com/honai/image/upload/f_auto/ctf/comet-supported-framework.png)
 
 さらにValidation Loss, Test Accuracyなど記録したい指標は
 

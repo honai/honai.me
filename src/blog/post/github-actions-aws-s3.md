@@ -36,7 +36,7 @@ GitHub Actions からS3のバケット内のファイルを読み書きするに
 
 AWSコンソールにサインインして、サービスからIdentity and Access Management (IAM)を選びます。「ポリシー」→「ポリシーの作成」。
 
-![IAMのコンソール画面](https://images.ctfassets.net/7q1ibtbymdj9/43Iz0lczGrmdVjIzsoDbit/ab17a3a061be6658c02fce0c4264d8c8/policy.png)
+![IAMのコンソール画面](https://res.cloudinary.com/honai/image/upload/f_auto/ctf/policy.png)
 
 次の画面では、サービス名などを検索してGUIで権限を設定するか、JSONで設定を直接記述することができます。
 
@@ -73,7 +73,7 @@ AWSコンソールにサインインして、サービスからIdentity and Acce
 
 同じくIAMの管理画面から「ユーザー」→「ユーザーを追加」
 
-![IAMのコンソール画面](https://images.ctfassets.net/7q1ibtbymdj9/6Noe2IX7bxvdWBaXyqGIhE/0766c5d162726efa65bebd978482aec9/iam1.png)
+![IAMのコンソール画面](https://res.cloudinary.com/honai/image/upload/f_auto/ctf/iam1.png)
 
 ユーザー名を決めて入力し、「アクセスの種類」は「プログラムによるアクセス」を選びます。続く「アクセス許可の設定」では「既存のポリシーを直接アタッチ」で、先ほど作成したポリシーの名前を検索して適用します。
 

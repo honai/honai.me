@@ -4,7 +4,7 @@
   "date": "2020-07-02T03:13:10.138Z",
   "description": "CAMPHOR- Day 2020で発表した「入門 HTTP」を連載としてブログに投稿しています。研究やら院試勉強やらに追われて前回からかなり間が空いてしまい、CAMPHOR- Dayから3か月が過ぎてしまいました 😇 第4回の記事となります。  連載について  HTTP/1.xとKeep Alive",
   "updated": "2020-08-05T18:34:57.477Z",
-  "og_image_url": "https://images.ctfassets.net/7q1ibtbymdj9/TtJwQKI0sPvIecK0pG3Su/69b20fa154b5ed39672601e0c26c1aec/ogp-http2.png",
+  "og_image_url": "https://res.cloudinary.com/honai/image/upload/ctf/ogp-http2.png",
   "large_card": true
 }
 ---
@@ -91,7 +91,7 @@ TLSを利用する場合はさらにハンドシェイクに時間がかかり�
 
 HTTP/1.xの問題点は、先述したように1つのTCP接続で同時に1つのリクエストしか処理できないということです。
 
-![HTTP HoLブロッキングの説明図](https://images.ctfassets.net/7q1ibtbymdj9/LQfYcUIqxiC7ZYUH7ed0y/57a26eb1f4c895b0b2fb0706ba9c24e7/http-hol-blocking.png)
+![HTTP HoLブロッキングの説明図](https://res.cloudinary.com/honai/image/upload/f_auto/ctf/http-hol-blocking.png)
 
 Head of Lineブロッキングは、待ち行列の先頭が後続を止めてしまうという意味で、
 たとえばいったんサイズの大きいファイルをリクエストしてしまうと、
@@ -110,7 +110,7 @@ HTTP/2はHTTP/1系と全く互換性がありません。
 HTTP/1系では、ヘッダーはASCIIのプレーンテキストで、改行の後にボディがくるというふうに文字列ベースのプロトコルでしたが、
 HTTP/2ではバイト列のフォーマットがあらかじめ定められており、HTTPリクエスト・レスポンスをFrameという単位に分割して送信するようになっています。
 
-![HTTP/2がバイナリベースであることの説明図](https://images.ctfassets.net/7q1ibtbymdj9/36X3K4xubg7wSIP0XbOqnz/47970a1464062afe309862b630f12898/http-2-frame.png)
+![HTTP/2がバイナリベースであることの説明図](https://res.cloudinary.com/honai/image/upload/f_auto/ctf/http-2-frame.png)
 
 「互換性がない」といいましたが、HTTP/2の導入によって、アプリケーション層からみたHTTPの使い方が変わるわけではなりません。
 TCPあるいはTCPによるバイト列の転送と、高水準のHTTPのAPI（メソッド、ヘッダーなどセマンティック）の間の、
@@ -126,7 +126,7 @@ HTTP/2では、バイナリフォーマットを採用することで、
 - メッセージ: 1つのHTTPのリクエストやレスポンスに対応する、フレームの列
 - ストリーム: フレームをやり取りする仮想的な双方向の通信路
 
-![HTTP/2 ストリームによる通信路の多重化](https://images.ctfassets.net/7q1ibtbymdj9/7i33ZeHhjPpQRBFyLhmbjp/dd760b804bfb54bedb2d98fd9d7d662a/http-2-stream.png)
+![HTTP/2 ストリームによる通信路の多重化](https://res.cloudinary.com/honai/image/upload/f_auto/ctf/http-2-stream.png)
 
 図のように、仮想的な通信路であるストリームに、例えば画像をリクエストして取得するデータを運ぶフレームが行き来しているイメージです。
 
@@ -134,12 +134,12 @@ HTTP/2では、バイナリフォーマットを採用することで、
 
 それでは例によってWireSharkでパケットを見てみましょう。
 
-![パケットキャプチャのスクリーンショット](https://images.ctfassets.net/7q1ibtbymdj9/76XMAs8XTadLdeztaRbVZ7/054d23853aaa7c749e91b84e294c8249/http-2-capture.png)
+![パケットキャプチャのスクリーンショット](https://res.cloudinary.com/honai/image/upload/f_auto/ctf/http-2-capture.png)
 
 TCPとTLSのハンドシェイクの後、Magic, SETTINGS, WINDOW_UPDATE という3種類のフレームが送信された後、HTTP/1系でいうヘッダーに対応するHEADERSフレームが送信されています。
 メソッドはHEADです。
 
-![HEADERフレーム](https://images.ctfassets.net/7q1ibtbymdj9/5Mh31BbhqzY3it7iGNCJWE/1c2194296355acf3529bf4c6a7fd5650/header-frame.png)
+![HEADERフレーム](https://res.cloudinary.com/honai/image/upload/f_auto/ctf/header-frame.png)
 
 リクエストのHEADERフレームはこのようになっています。
 

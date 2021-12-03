@@ -3,7 +3,7 @@
   "title": "連載「入門 HTTP」(1) HTTP/1.xとKeep Alive",
   "date": "2020-04-21",
   "description": "みなさんこんにちは、ほないです。 CAMPHOR-のオンライン配信のイベントCAMPHOR- Dayにて「入門 HTTP」というタイトルで発表した内容をブログにまとめようと思います。  CAMPHOR- カンファー : 京都のIT系学生コミュニティ 【ライブ配信】CAMPHOR- DAY 2020 - connpass",
-  "og_image_url": "https://images.ctfassets.net/7q1ibtbymdj9/1DtNogvBSlG0kw9v7QBNfr/a3d940eafafd78b01c415a4b74100b98/ogp.jpg",
+  "og_image_url": "https://res.cloudinary.com/honai/image/upload/ctf/ogp.jpg",
   "large_card": true
 }
 ---
@@ -56,7 +56,7 @@ RFCに定められた最初の正式バージョンであるHTTP/1.1の基本的
 
 #### TCPによる接続
 
-![tcp-connection](https://images.ctfassets.net/7q1ibtbymdj9/3QT6ql3rMYjj7hwfUhNi1W/6fc5a1860decb87fffe41b7143aeb335/tcp-connection.png)
+![tcp-connection](https://res.cloudinary.com/honai/image/upload/f_auto/ctf/tcp-connection.png)
 
 HTTP/1系では、クライアント-サーバー間の接続にTCPプロトコルを利用します。
 TCPとは、信頼性の高い双方向通信を行うためのトランスポートプロトコルで、
@@ -84,7 +84,7 @@ Accept: */*
 バイナリはパケットに分割して送信されますが、
 順序や損失、誤りの訂正はTCPが行います。
 
-![request-flow](https://images.ctfassets.net/7q1ibtbymdj9/6IFZy3hL8Yfzw7fZ2dBa3N/fa656a7e02c84e06f276d04d3d0ee747/request-flow.png)
+![request-flow](https://res.cloudinary.com/honai/image/upload/f_auto/ctf/request-flow.png)
 
 #### サーバーが受け取ったバイナリをデコード
 
@@ -98,7 +98,7 @@ TCPによってサーバーに届いたバイナリを（ヘッダーがASCIIで
 次はサーバーがレスポンスの文字列を生成し、エンコードし、TCPで送信…リクエストと同じ流れですね。
 そしてクライアントは受け取ったレスポンスを同様にデコードして、処理を行います。
 
-![response-flow](https://images.ctfassets.net/7q1ibtbymdj9/5Xr3OIyrdtiuaCUGytp25s/a0119a68c60ae23eeeecea72525ead8e/response-flow.png)
+![response-flow](https://res.cloudinary.com/honai/image/upload/f_auto/ctf/response-flow.png)
 
 #### TCPを切断
 
@@ -120,7 +120,7 @@ HTTPではヘッダーとボディを分けることで様々な形式のデー�
 TCPでは信頼性の高い通信を行うため、相手から応答が返ってくるか最初に確認してから実際の通信を開始し、
 切断する場合も相手と切断の確認を行います。
 
-![tcp-handshake](https://images.ctfassets.net/7q1ibtbymdj9/6A1T15aTslfxGhtViyNtMt/6c8133ecdc90556a792344996d47d7fc/tcp-handshake.png)
+![tcp-handshake](https://res.cloudinary.com/honai/image/upload/f_auto/ctf/tcp-handshake.png)
 
 パケットが1往復するのにかかる時間をRTT (Round-Trip Time) といいますが、
 TCPでは接続と切断それぞれに1.5RTTを要します。
@@ -130,7 +130,7 @@ TCPでは接続と切断それぞれに1.5RTTを要します。
 したがって、リクエスト毎にTCPの接続・切断を行うHTTP/1.xでは、
 リクエストの数が増えるとこのハンドシェイクによる時間のロスの影響が大きくなります。
 
-![http-without-keep-alive](https://images.ctfassets.net/7q1ibtbymdj9/76b9x8qIeP80yhC4gfPMSk/438a04e9752df37350643e7be4a8056a/http-without-keep-alive.png)
+![http-without-keep-alive](https://res.cloudinary.com/honai/image/upload/f_auto/ctf/http-without-keep-alive.png)
 
 #### Keep Alive - TCPを接続したままにして高速化する
 
@@ -141,7 +141,7 @@ TCPでは接続と切断それぞれに1.5RTTを要します。
 サーバー/クライアントそれぞれにタイムアウト時間が設定されており、
 どちらか短いほうに達すると切断されます。
 
-![http-with-keep-alive](https://images.ctfassets.net/7q1ibtbymdj9/4ZSZpaIXHOtg2dIF8FWexV/f06ee2675dd5c61aaea44f7aff93455c/http-with-keep-alive.png)
+![http-with-keep-alive](https://res.cloudinary.com/honai/image/upload/f_auto/ctf/http-with-keep-alive.png)
 
 ### Keep Aliveの効果を確かめる
 
@@ -175,7 +175,7 @@ server_2 {
 
 筆者がNginx + Chromeで試した結果です。試すときはキャッシュは無効にしてください。
 
-![keep-alive](https://images.ctfassets.net/7q1ibtbymdj9/7D58baZU2PmBWhkD1eiMtg/10298f31d52dc6d18486877edee57f99/keep-alive.gif)
+![keep-alive](https://res.cloudinary.com/honai/image/upload/f_auto/ctf/keep-alive.gif)
 
 #### 開発者ツールで違いを見る
 
@@ -187,11 +187,11 @@ server_2 {
 
 <div class="img-row-wrap">
   <figure>
-    <img src="https://images.ctfassets.net/7q1ibtbymdj9/2schRVkkfmeN765hIJkccM/44f20c2bd8b2bffd52f7072fac323645/devtool-waterfall.png" alt="Keep Aliveなしの開発者ツールのスクリーンショット" title="Keep Aliveなし">
+    <img src="https://res.cloudinary.com/honai/image/upload/f_auto/ctf/devtool-waterfall.png" alt="Keep Aliveなしの開発者ツールのスクリーンショット" title="Keep Aliveなし">
     <figcaption>Keep Aliveなし</figcaption>
   </figure>
   <figure>
-    <img src="https://images.ctfassets.net/7q1ibtbymdj9/7u6ye4ZiIAmsqhlW4iUrDE/42b597558897d6165d224917b0add187/devtool-waterfall-keep-alive.png" alt="Keep Aliveありの開発者ツールのスクリーンショット" title="Keep Aliveあり">
+    <img src="https://res.cloudinary.com/honai/image/upload/f_auto/ctf/devtool-waterfall-keep-alive.png" alt="Keep Aliveありの開発者ツールのスクリーンショット" title="Keep Aliveあり">
     <figcaption>Keep Aliveあり</figcaption>
   </figure>
 </div>

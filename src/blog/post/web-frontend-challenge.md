@@ -4,7 +4,7 @@
   "date": "2019-03-16",
   "description": "こんにちは、ほないです。  2019年3月9日・10日の2日間、サイバーエージェントの短期インターン「Web Frontend Challenge」に参加してきました。  wfc  Web Frontend Challenge | 株式会社サイバーエージェント  応募のきっかけ ",
   "updated": "2020-05-16T14:22:53.387Z",
-  "og_image_url": "https://images.ctfassets.net/7q1ibtbymdj9/4N4cL2giFr1ZKYZiFJue1Z/a33e0b3ee50b074fde4041e3badd587d/wfc.png",
+  "og_image_url": "https://res.cloudinary.com/honai/image/upload/ctf/wfc.png",
   "large_card": true,
   "plugins": [
     "twitter"
@@ -16,7 +16,7 @@
 
 2019年3月9日・10日の2日間、サイバーエージェントの短期インターン「Web Frontend Challenge」に参加してきました。
 
-![wfc](https://images.ctfassets.net/7q1ibtbymdj9/4N4cL2giFr1ZKYZiFJue1Z/a33e0b3ee50b074fde4041e3badd587d/wfc.png)
+![wfc](https://res.cloudinary.com/honai/image/upload/f_auto/ctf/wfc.png)
 
 [Web Frontend Challenge | 株式会社サイバーエージェント](https://www.cyberagent.co.jp/careers/students/event/detail/id=22740)
 
@@ -48,7 +48,7 @@
 
 10時になり、いよいよインターンがスタートしました。
 
-![office](https://images.ctfassets.net/7q1ibtbymdj9/rCvZrrFrXcK2lzr2W4WO7/eeea1e573ce21a82590dacb2e50ec85c/office.jpg)
+![office](https://res.cloudinary.com/honai/image/upload/f_auto/ctf/office.jpg)
 
 ### 自己紹介
 
@@ -62,9 +62,9 @@
 
 お題は次のようなものでした。
 
-![slide-1](https://images.ctfassets.net/7q1ibtbymdj9/1OsYNDpjvvstRcoL71jveS/bed6f78bfba74f8540243efb4a2ce8be/slide-1.png)
+![slide-1](https://res.cloudinary.com/honai/image/upload/f_auto/ctf/slide-1.png)
 
-![slide-2](https://images.ctfassets.net/7q1ibtbymdj9/2LpfrQUCrxQeNtBWELsWyb/b94b41188c9f7cbd330ac4d98b1e5766/slide-2.png)
+![slide-2](https://res.cloudinary.com/honai/image/upload/f_auto/ctf/slide-2.png)
 
 - 画像APIを使って画像の一覧が作成できている
 - 一覧から画像詳細画面を開ける
@@ -96,7 +96,7 @@ create-react-appでGithubにレポジトリを作ったはいいものの、Reac
 
 という3つの目標を立て、2日目のワークを開始しました。
 
-![lunch](https://images.ctfassets.net/7q1ibtbymdj9/55nuu0Qyfkn0ekW26VmBqo/86dcf78ef0ee8aa9df5875d25fe822f0/lunch.jpg)
+![lunch](https://res.cloudinary.com/honai/image/upload/f_auto/ctf/lunch.jpg)
 
 ### ワーク
 
@@ -116,10 +116,10 @@ CSSには自信があったので、どんな画面サイズでも見やすく�
 
 [GridPics](https://honai.github.io/wfc-photo/)
 
-![gridpics-1](https://images.ctfassets.net/7q1ibtbymdj9/qkeuCyMBHZ7guP2POQsuX/dd7b8982cf2ee73e2001132a2ee286f9/gridpics-1.jpg)
+![gridpics-1](https://res.cloudinary.com/honai/image/upload/f_auto/ctf/gridpics-1.jpg)
 
 <div class="img-row-wrap">
-<img src="https://images.ctfassets.net/7q1ibtbymdj9/3Q3feIisIHDfDDjoGroCEq/20ca6b3edaed63d556e8e6911b4d5b91/gridpics-2.jpg" alt="gridpics-2"><img src="https://images.ctfassets.net/7q1ibtbymdj9/MEaY1la21IQrOagsnKrTX/b7b4c94c40e43ac3af98d450b8cb1d44/gridpics-3.jpg" alt="gridpics-3">
+<img src="https://res.cloudinary.com/honai/image/upload/f_auto/ctf/gridpics-2.jpg" alt="gridpics-2"><img src="https://res.cloudinary.com/honai/image/upload/f_auto/ctf/gridpics-3.jpg" alt="gridpics-3">
 </div>
 
 コードはGithubで公開しています。

@@ -3,7 +3,7 @@
   "title": "連載「入門HTTP」 (5) QUICとHTTP/3",
   "date": "2020-08-06T08:42:56.552Z",
   "description": "8月になりました。京都は真夏日や猛暑日が続きそうです……。入門HTTPの連載も今回で最後になります。  連載について  HTTP/1.xとKeep Alive TLSとHTTP - TLSの概要 TLSとHTTP - HTTP over TLS HTTP/1の課題とHTTP/2 QUICとHTTP/3（本記事）",
-  "og_image_url": "https://images.ctfassets.net/7q1ibtbymdj9/4AIeWZ6Q34a9HbGRmNDavI/561c51ca5d14d7efb047734ba5c3c4c5/ietf-quic.png",
+  "og_image_url": "https://res.cloudinary.com/honai/image/upload/ctf/ietf-quic.png",
   "large_card": true
 }
 ---
@@ -49,7 +49,7 @@ TCPの処理はOSで、HTTPの処理はアプリケーションで行ってい�
 
 少しわかりにくいと思うので図を用意しました。
 
-![TCPのHead of Lineブロッキングを説明する図](https://images.ctfassets.net/7q1ibtbymdj9/44LZZhJEzQYJ0R4NTCKraR/06fe16a07d980a93771236cecb3fdb4d/tcp-hol.png)
+![TCPのHead of Lineブロッキングを説明する図](https://res.cloudinary.com/honai/image/upload/f_auto/ctf/tcp-hol.png)
 
 この図ではストリームを色で区別しています。この図のように、青のストリームのパケットが届かなかったとしても、
 直後に届いている緑や橙のストリームのパケットは処理できるのですが、
@@ -75,7 +75,7 @@ HTTP/2の課題を2つ挙げました。しかし、これらの課題につい�
 
 #### Google版QUICの概要
 
-![Google版QUICの構成を説明する図](https://images.ctfassets.net/7q1ibtbymdj9/3A7kUlLyJK9MnBswdStjGf/80bcafe67b2afbffb6eb13dcad9146e0/google-quic.png)
+![Google版QUICの構成を説明する図](https://res.cloudinary.com/honai/image/upload/f_auto/ctf/google-quic.png)
 
 <small>* QUICと重複する機能を除いたHTTP/2</small>
 
@@ -107,14 +107,14 @@ TCPはすべてのパケットの到着順序や欠落をOSレベルでチェッ
 QUICでは、ただ相手にパケットを送るだけのプロトコルであるUDPの上に、
 改めてTCPと同じような双方向の高信頼の通信を行うための機能を実装したプロトコルです。
 
-![QUICのリクエスト多重化の仕組みを説明する図](https://images.ctfassets.net/7q1ibtbymdj9/5wZjtuELcWIBCBGqA8Ndgf/4847a6ab4fd63b5b58ad1323ab52194d/quic-stream.png)
+![QUICのリクエスト多重化の仕組みを説明する図](https://res.cloudinary.com/honai/image/upload/f_auto/ctf/quic-stream.png)
 
 TCPとの違いは、はじめから多重化することを前提としている点です。
 HTTP/2と同じようにQUICでもフレームにストリームIDを振って仮想的な多重化を行います。
 ストリーム内でのフレームの順序は保証されますが、
 違うストリーム間の順序は保証されません。
 
-![QUICではヘッドオブラインブロッキングが起こらないことを説明する図](https://images.ctfassets.net/7q1ibtbymdj9/64ulLDjWRqKBBgwYbGpv9z/964d9231838908ffce7fce4175738424/quic-hol.png)
+![QUICではヘッドオブラインブロッキングが起こらないことを説明する図](https://res.cloudinary.com/honai/image/upload/f_auto/ctf/quic-hol.png)
 
 これで、TCPの仕様上回避できなかったHoLブロッキングが起こらないより効率的なプロトコルとなりました。
 
@@ -136,11 +136,11 @@ QUICは、Connection Migrationという機能を備えており、
 
 スマートフォンなどが普及し、Wi-Fiとモバイル通信を切り替えながらインターネットにアクセスすることも増えてきた昨今で役立つ機能といえるでしょう。
 
-![QUICではIPやポート番号が変わってもHTTP通信を継続できる](https://images.ctfassets.net/7q1ibtbymdj9/T5mQwABqMcksP4sezdQK7/c78217f03de35174ad963d8415d53026/connection-migration.png)
+![QUICではIPやポート番号が変わってもHTTP通信を継続できる](https://res.cloudinary.com/honai/image/upload/f_auto/ctf/connection-migration.png)
 
 ### HTTP/3 - QUICを利用した新しいバージョンのHTTP
 
-![Google版QUICとIETF版QUICの比較](https://images.ctfassets.net/7q1ibtbymdj9/4AIeWZ6Q34a9HbGRmNDavI/561c51ca5d14d7efb047734ba5c3c4c5/ietf-quic.png)
+![Google版QUICとIETF版QUICの比較](https://res.cloudinary.com/honai/image/upload/f_auto/ctf/ietf-quic.png)
 
 説明したとおり、QUICはGoogleが開発したもので、暗号化は独自のものでした。
 QUICをインターネットの標準プロトコルとして整備するにあたって、
