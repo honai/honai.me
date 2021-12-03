@@ -1,0 +1,34 @@
+---
+title: Honai Ueoka
+description: Honai Ueoka's portfolio website.
+asyncStylesheets:
+  - /style.css
+  - https://use.typekit.net/bdo3rru.css
+preconnectDomains:
+  - https://p.typekit.net
+  - https://res.cloudinary.com
+---
+<!DOCTYPE html>
+<html lang="ja">
+
+<head>
+  {% include 'seo.njk' %}
+  {% for domain in preconnectDomains %}
+    <link rel="preconnect" href="{{ domain }}">
+  {% endfor %}
+  {% for href in asyncStylesheets %}
+    <link rel="preload" as="style" href="{{ href }}" onload="this.rel='stylesheet';">
+  {% endfor %}
+  <style>{% sassinline 'portfolio-critical.scss' %}</style>
+  <noscript>
+    {% for href in asyncStylesheets %}
+      <link rel="stylesheet" href="{{ href }}">
+    {% endfor %}
+  </noscript>
+</head>
+
+<body class="body-layout">
+  <main class="main-content">
+    {{ content | safe }}
+  </main>
+</body>

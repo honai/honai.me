@@ -1,0 +1,9 @@
+.article-header {
+  text-align: center;
+  display: flex;
+  flex-direction: column;
+  gap: 1.2rem;
+  > .title {
+    font-size: 3.2rem;
+  }
+}

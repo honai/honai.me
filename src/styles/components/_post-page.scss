@@ -1,0 +1,55 @@
+@use '../variables' as v;
+
+@use 'blog/article-header';
+@use 'blog/post-edit';
+@use 'blog/post-toc';
+
+.article-layout {
+  padding: 1rem;
+}
+
+@media screen and (min-width: v.$break-md) {
+  .article-layout {
+    display: grid;
+    grid-template-areas: 
+      "header header"
+      "main   aside"
+      "ad     .";
+    max-width: 120rem;
+    margin: 0 auto;
+    grid-template-columns: minmax(0, 1fr) min(30rem, 30vw);
+    grid-template-rows: 18rem auto auto;
+    padding: 2rem 3rem;
+    gap: 2rem 4rem;
+    
+    > .header {
+      grid-area: header;
+      max-width: 72rem;
+      margin: auto;
+    }
+    > .aside {
+      grid-area: aside;
+    }
+    > .main {
+      grid-area: main;
+    }
+    > .main > .post-markdown {
+      max-width: 72rem;
+    }
+
+    > .aside > .sticky {
+      position: sticky;
+      top: 2rem;
+      display: flex;
+      flex-direction: column;
+      gap: 2rem;
+      max-height: calc(100vh - 4rem);
+      overflow-y: auto;
+    }
+
+    > .ad {
+      grid-area: ad;
+      margin: 1rem;
+    }
+  }
+}

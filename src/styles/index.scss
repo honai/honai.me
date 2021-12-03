@@ -1,0 +1,72 @@
+@use 'variables' as v;
+
+.education-item {
+  > .period {
+    color: var(--color-text-secondary);
+  }
+  > .desc {}
+}
+
+.slide-list {
+  @media screen and (min-width: v.$break-sm) {
+    display: flex;
+    flex-flow: row wrap;
+    justify-content: space-between;
+    > .slide-item {
+      flex: 0 0 49%;
+    }
+  }
+  > .slide-item {
+    margin-bottom: 1.5rem;
+  }
+}
+
+.slide-item {
+  border-radius: var(--len-radius);
+  border: 1px solid var(--color-border);
+}
+
+.slide-item > .link {
+  display: flex;
+  flex-flow: column nowrap;
+  > .thumb {
+    border-radius: var(--len-radius) var(--len-radius) 0 0;
+    width: 100%;
+    height: auto;
+  }
+  > .texts {
+    padding: 1rem;
+  }
+  > .texts > .title {
+    padding: 0.5rem 0;
+  }
+  > .texts > .subtitle, > .texts > .date {
+    font-size: 1.4rem;
+    color: var(--color-text-secondary);
+  }
+}
+
+.works-gallery {
+  padding: 0 2rem;
+  display: flex;
+  flex-flow: column nowrap;
+  > .thumblink {
+    margin: 0.4rem 0;
+  }
+}
+.works-page-link {
+  padding-top: 0.4rem;
+  text-align-last: center;
+}
+
+// 404.ejs
+.notfound-heading {
+  text-align: center;
+  font-size: 2.8rem;
+  font-family: var(--font-family-century);
+}
+
+// works.ejs
+.work-thumb {
+  width: 100%;
+}
