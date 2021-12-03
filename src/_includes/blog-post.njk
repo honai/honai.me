@@ -33,16 +33,11 @@ githubLinkBase: https://github.com/honai/honai.me/blob/main/
             {{ content | toc | safe }}
           </div>
 
-          <div class="post-edit">
-            <a href="{{ githubLinkBase }}{{ page.inputPath }}" class="link">この記事の編集をリクエスト (GitHub)</a>
-          </div>
-
-          <div>
-            <a href="/blog">記事一覧</a>
-          </div>
-
-          <div>
-            {% set newerPost = collections.posts | getPreviousCollectionItem(page) %}
+          <div class="post-navigate">
+            <div>
+              <a href="/blog">記事一覧</a>
+            </div>
+              {% set newerPost = collections.posts | getPreviousCollectionItem(page) %}
             {% if newerPost %}
               <div>
                 次の記事: <a href="{{ newerPost.url }}">{{ newerPost.data.title }}</a>
@@ -55,11 +50,17 @@ githubLinkBase: https://github.com/honai/honai.me/blob/main/
               </div>
             {% endif %}
           </div>
+
+          <div class="post-edit">
+            <a href="{{ githubLinkBase }}{{ page.inputPath }}" class="link">この記事の編集をリクエスト (GitHub)</a>
+          </div>
         </div>
       </aside>
 
-      <main class="main post-markdown">
-        {{ content | safe }}
+      <main class="main">
+        <div class="post-markdown">
+          {{ content | safe }}
+        </div>
       </main>
 
       <div class="ad ad-sense">
