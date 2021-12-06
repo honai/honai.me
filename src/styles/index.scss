@@ -59,6 +59,13 @@
   text-align-last: center;
 }
 
+.site-footer {
+  color: var(--color-text-secondary);
+  font-size: 1.4rem;
+  text-align: center;
+  padding: 2rem 0;
+}
+
 // 404.ejs
 .notfound-heading {
   text-align: center;
