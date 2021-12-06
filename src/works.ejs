@@ -9,6 +9,29 @@ title: Works | honai.me
   <h1 class="title">Works</h1>
 </div>
 
+<% url = "https://camph.net/" %>
+<% name = "CAMPHOR- Website" %>
+<div class="simple-card">
+  <h2 class="heading">
+    <a href="<%= url %>" class="_reset-a"><%= name %></a>
+  </h2>
+  <a href="<%= url %>">
+    <img
+      src="https://res.cloudinary.com/honai/image/upload/f_auto/v1638781653/portfolio/camph-net.jpg"
+      alt="<%= name %>"
+      class="work-thumb"
+      width="725"
+      height="361"
+    >
+  </a>
+  <div class="content">
+    <ul class="work-desc">
+      <li>DjangoからNext.js + Goへのリプレイスを担当</li>
+      <li>Code: Private</li>
+    </ul>
+  </div>
+</div>
+
 <% url = "https://lotus.kuee.kyoto-u.ac.jp/NLPforCOVID-19/" %>
 <% name = "COVID-19 World Information Watcher" %>
 <div class="simple-card">
@@ -16,10 +39,10 @@ title: Works | honai.me
     <a href="<%= url %>" class="_reset-a"><%= name %></a>
   </h2>
   <a href="<%= url %>">
-    <img src="/images/covid-19-watcher.png" alt="<%= name %>" class="work-thumb">
+    <img src="/images/covid-19-watcher.png" alt="<%= name %>" class="work-thumb" loading="lazy">
   </a>
   <div class="content">
-    <ul>
+    <ul class="work-desc">
       <li>Code (frontend): <a href="https://github.com/NLPforCOVID-19/covid-19-ui">NLPforCOVID-19 / covid-19-ui</a></li>
       <li>
         <a href="https://www.nii.ac.jp/today/89/2.html">「世界中のCOVID-19情報が俯瞰できるサイトを構築」第89号 - NII Today</a>
@@ -36,10 +59,10 @@ title: Works | honai.me
     <a href="<%= url %>" class="_reset-a"><%= name %></a>
   </h2>
   <a href="<%= url %>">
-    <img src="/images/excelm.png" alt="<%= name %>" class="work-thumb">
+    <img src="/images/excelm.png" alt="<%= name %>" class="work-thumb" loading="lazy">
   </a>
   <div class="content">
-    <ul>
+    <ul class="work-desc">
       <li>Code: <a href="https://github.com/honai/excelm">honai / excelm</a></li>
       <li>
         <a href="https://qiita.com/honai/items/061b024839f1d174436e">ElmでミニExcelを作ろう - Qiita</a>
@@ -55,10 +78,10 @@ title: Works | honai.me
     <a href="<%= url %>" class="_reset-a"><%= name %></a>
   </h2>
   <a href="<%= url %>">
-    <img src="/images/neing.png" alt="<%= name %>" class="work-thumb">
+    <img src="/images/neing.png" alt="<%= name %>" class="work-thumb" loading="lazy">
   </a>
   <div class="content">
-    <ul>
+    <ul class="work-desc">
       <li>Code: private</li>
       <li>TypeScript / Next.js / Firebase</li>
     </ul>
@@ -72,10 +95,10 @@ title: Works | honai.me
     <a href="<%= url %>" class="_reset-a"><%= name %></a>
   </h2>
   <a href="<%= url %>">
-    <img src="/images/vscode-shortcut.png" alt="<%= name %>" class="work-thumb">
+    <img src="/images/vscode-shortcut.png" alt="<%= name %>" class="work-thumb" loading="lazy">
   </a>
   <div class="content">
-    <ul>
+    <ul class="work-desc">
       <li>Code: <a href="https://github.com/honai/vscode-shortcuts-wallpaper">honai / vscode-shortcuts-wallpaper</a></li>
       <li>Just reproduced the official keyboard shortcuts reference (PDF) with CSS with darker theme.</li>
     </ul>
