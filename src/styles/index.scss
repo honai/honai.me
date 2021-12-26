@@ -84,6 +84,7 @@
 }
 
 a[target]:not(._nonewicon) {
+  text-decoration: underline;
   &::after {
     content: '';
     display: inline-block;
