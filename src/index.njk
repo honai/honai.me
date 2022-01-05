@@ -26,14 +26,14 @@ layout: portfolio-base
     <p>
       京都大学大学院 情報学研究科 通信情報システム専攻
       / 修士課程（2023年3月修了予定）
-      / <a href="https://camph.net/">CAMPHOR-</a> 運営メンバー
+      / <a href="https://camph.net/" target="_blank" rel="noopener">CAMPHOR-</a> 運営メンバー
     </p>
   </div>
   <div class="content">
     <ul class="social-links _reset-ul">
       {% for L in profile.links %}
         <li class="item">
-          <a href="{{ L.url }}" class="link _reset-a">
+          <a href="{{ L.url }}" target="_blank" rel="noopener" class="link _reset-a">
             {% include L.icon %}
             <span class="text">{{ L.text }}</span>
           </a>
@@ -84,7 +84,7 @@ layout: portfolio-base
       {{ P.journal }}
       <br>
       {% for L in P.links %}
-        <a href="{{ L.url }}">{{ L.text }}</a>&ensp;
+        <a href="{{ L.url }}" target="_blank" rel="noopener">{{ L.text }}</a>&ensp;
       {% endfor %}
     </div>
   {% endfor %}
