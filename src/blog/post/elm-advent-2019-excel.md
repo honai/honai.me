@@ -2,11 +2,15 @@
 title: ElmでミニExcelをつくろう
 date: 2019-12-18
 description: この記事は Elm Advent Calendar 2019 - 18日目 の記事です。 自己紹介 はじめまして、ほない ( @_honai ) です。Webフロントが好きな大学生で、今年の8月くらいからElmを触り始めました。...
-updated: 2021-04-22
+updated: 2022-01-08
 og_image_url: https://res.cloudinary.com/honai/image/upload/v1633575294/blog/excelm.png
 ---
 
 この記事は [Elm Advent Calendar 2019](https://qiita.com/advent-calendar/2019/elm) - 18日目 の記事です。
+
+### 更新履歴
+
+- 2022/01/08 画像のURLを訂正しました
 
 ## 自己紹介
 
@@ -15,7 +19,7 @@ og_image_url: https://res.cloudinary.com/honai/image/upload/v1633575294/blog/exc
 
 ## できたもの
 
-![ExcElmスクリーンショット](/images/blog/excelm.png)
+![ExcElmスクリーンショット](https://res.cloudinary.com/honai/image/upload/f_auto/v1633575294/blog/excelm.png)
 
 公開のデモを設置しましたが、まだまだバグや操作の不自由が多いのでご注意ください。
 デモ： [ExcElm - https://excelm.honai.me/](https://excelm.honai.me/)
