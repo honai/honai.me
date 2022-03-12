@@ -123,17 +123,16 @@ layout: portfolio-base
   </h2>
   <div class="content">
     <div class="works-gallery">
-      <a href="https://camph.net/" class="thumblink">
-        <img 
-          src="https://res.cloudinary.com/honai/image/upload/f_auto/v1638781653/portfolio/camph-net.jpg"
-          alt="CAMPHOR- Website"
-          class="thumb"
-          loading="lazy"
-        >
-      </a>
-      <a href="https://lotus.kuee.kyoto-u.ac.jp/NLPforCOVID-19/" class="thumblink">
-        <img src="/images/covid-19-watcher.png" alt="COVID-19 World Information Watcher" class="thumb" loading="lazy">
-      </a>
+      {% for w in profile.works.slice(0, 2) %}
+        <a href="{{ w.url }}" title="{{ w.name }}" class="thumblink">
+          <img 
+            src="{{ w.thumb }}"
+            alt="{{ w.name }}"
+            class="thumb"
+            loading="lazy"
+          >
+        </a>
+      {% endfor %}
     </div>
     <div class="works-page-link">
       <a href="/works">See more works</a>
