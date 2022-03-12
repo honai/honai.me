@@ -25,6 +25,12 @@ module.exports = (eleventyConfig) => {
   eleventyConfig.addWatchTarget('src/styles')
   eleventyConfig.addPlugin(syntaxHighlight)
 
+  // inline markdown
+  const mdLibInline = markdownIt({ linkify: true })
+  eleventyConfig.addFilter('mdinline', (md) => {
+    return mdLibInline.render(md)
+  })
+
   // markdown customize
   eleventyConfig.addPlugin(pluginTOC, { tags: ['h2', 'h3'], wrapperClass: 'toc', });
   const mdLib = markdownIt({ html: true }).use(markdownItAnchor).use(markdownItKatex)
