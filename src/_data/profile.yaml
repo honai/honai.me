@@ -60,6 +60,11 @@ publications:
       url: https://www.aclweb.org/anthology/2020.nlpcovid19-2.13/
 
 slides:
+  - title: JSXでJSなしの静的サイトをつくる
+    subtitle: 全国学生エンジニア交流会「NSEEM」
+    url: https://speakerdeck.com/honai/jsx-as-ssg-template
+    thumb: 11ty-jsx.jpg
+    date: 2022/03/12
   - title: IPv6と日本のインターネット
     subtitle: CAMPHOR- DAY 2021
     url: https://speakerdeck.com/honai/ipv6-internet-in-japan
