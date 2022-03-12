@@ -1,0 +1,23 @@
+---
+layout: portfolio-base
+title: Works | honai.me
+---
+<div class="nav-title">
+  <h2 class="subtitle">
+    <a href="/" class="_uncolor">Honai Ueoka's Portfolio</a>
+  </h2>
+  <h1 class="title">Works</h1>
+</div>
+
+{% for w in profile.works %}
+  <div class="simple-card">
+    <h2 class="heading">
+      <a href="{{ w.url }}" target="_blank" rel="noopener" class="_reset-a">{{ w.name }}</a>
+    </h2>
+    <a href="{{ w.url }}">
+      {# FIXME height #}
+      <img src="{{ w.thumb }}" alt="{{ w.name }}" height="360" class="work-thumb">
+    </a>
+    <div class="content">{{ w.desc | mdinline | safe }}</div>
+  </div>
+{% endfor %}
