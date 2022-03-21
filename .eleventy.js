@@ -4,6 +4,7 @@ const markdownIt = require('markdown-it')
 const markdownItAnchor = require('markdown-it-anchor')
 const markdownItKatex = require('@iktakahiro/markdown-it-katex')
 const pluginTOC = require('eleventy-plugin-nesting-toc');
+const yaml = require('js-yaml')
 
 const fileCopies = ['images', 'favicon.ico', 'scripts']
 
@@ -14,6 +15,9 @@ module.exports = (eleventyConfig) => {
   for (const f of fileCopies) {
     eleventyConfig.addPassthroughCopy(`src/${f}`)
   }
+
+  // yaml
+  eleventyConfig.addDataExtension("yaml", contents => yaml.load(contents));
 
   // sass
   eleventyConfig.addShortcode('sassinline', (filename) => {
