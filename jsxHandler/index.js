@@ -21,10 +21,13 @@ module.exports = {
       return html.startsWith("<html") ? `<!DOCTYPE html>${html}` : html;
     };
   },
-  getData(inputPath) {
-    return require(resolveInputPath(inputPath));
-  },
   read: false,
+  getData(inputPath) {
+    return require(resolveInputPath(inputPath)).data;
+  },
+  compileOptions: {
+    permalink: "raw",
+  },
 };
 
 /** @param {string} inputPath */
