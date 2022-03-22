@@ -38,7 +38,10 @@ async function cacheUrl(url, cacheFile) {
   await fs.writeFile(cacheFile, data.body, { encoding: "utf-8" })
 }
 
-/** 1時間以内に更新されたかチェック */
+/** 
+ * 1時間以内に更新されたかチェック
+ * @param {string} file - フルパス
+ */
 async function isFileFresh(file) {
   try {
     const { mtime } = await fs.stat(file)
@@ -55,6 +58,7 @@ async function isFileFresh(file) {
   }
 }
 
+/** @param {string} url */
 function url2hash(url) {
   return crypto.createHash('md5')
                .update(url, "binary")
