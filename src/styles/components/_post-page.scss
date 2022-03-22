@@ -1,8 +1,8 @@
-@use '../variables' as v;
+@use "../variables" as v;
 
-@use 'blog/article-header';
-@use 'blog/post-edit';
-@use 'blog/post-toc';
+@use "blog/article-header";
+@use "blog/post-edit";
+@use "blog/post-toc";
 
 .article-layout {
   padding: 1rem;
@@ -11,7 +11,7 @@
 @media screen and (min-width: v.$break-md) {
   .article-layout {
     display: grid;
-    grid-template-areas: 
+    grid-template-areas:
       "header header"
       "main   aside"
       "ad     .";
@@ -21,7 +21,7 @@
     grid-template-rows: 18rem auto auto;
     padding: 2rem 3rem;
     gap: 2rem 4rem;
-    
+
     > .header {
       grid-area: header;
       max-width: 72rem;

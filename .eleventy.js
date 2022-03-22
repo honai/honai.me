@@ -1,54 +1,61 @@
-const sass = require('sass')
-const syntaxHighlight = require("@11ty/eleventy-plugin-syntaxhighlight")
-const markdownIt = require('markdown-it')
-const markdownItAnchor = require('markdown-it-anchor')
-const markdownItKatex = require('@iktakahiro/markdown-it-katex')
-const pluginTOC = require('eleventy-plugin-nesting-toc');
-const yaml = require('js-yaml')
+const sass = require("sass");
+const syntaxHighlight = require("@11ty/eleventy-plugin-syntaxhighlight");
+const markdownIt = require("markdown-it");
+const markdownItAnchor = require("markdown-it-anchor");
+const markdownItKatex = require("@iktakahiro/markdown-it-katex");
+const pluginTOC = require("eleventy-plugin-nesting-toc");
+const yaml = require("js-yaml");
 
-const fileCopies = ['images', 'favicon.ico', 'scripts']
+const fileCopies = ["images", "favicon.ico", "scripts"];
 
 module.exports = (eleventyConfig) => {
-  eleventyConfig.setTemplateFormats(['html', 'md', 'njk', 'ejs', '11ty.js'])
+  eleventyConfig.setTemplateFormats(["html", "md", "njk", "ejs", "11ty.js"]);
 
   // static file copy
   for (const f of fileCopies) {
-    eleventyConfig.addPassthroughCopy(`src/${f}`)
+    eleventyConfig.addPassthroughCopy(`src/${f}`);
   }
 
   // yaml
-  eleventyConfig.addDataExtension("yaml", contents => yaml.load(contents));
+  eleventyConfig.addDataExtension("yaml", (contents) => yaml.load(contents));
 
   // sass
-  eleventyConfig.addShortcode('sassinline', (filename) => {
-    return sass.renderSync({
-      file: `${__dirname}/src/styles/${filename}`,
-      outputStyle: 'compressed'
-    }).css.toString()
-  })
-  eleventyConfig.addWatchTarget('src/styles')
-  eleventyConfig.addPlugin(syntaxHighlight)
+  eleventyConfig.addShortcode("sassinline", (filename) => {
+    return sass
+      .renderSync({
+        file: `${__dirname}/src/styles/${filename}`,
+        outputStyle: "compressed",
+      })
+      .css.toString();
+  });
+  eleventyConfig.addWatchTarget("src/styles");
+  eleventyConfig.addPlugin(syntaxHighlight);
 
   // inline markdown
-  const mdLibInline = markdownIt({ linkify: true })
-  eleventyConfig.addFilter('mdinline', (md) => {
-    return mdLibInline.render(md)
-  })
+  const mdLibInline = markdownIt({ linkify: true });
+  eleventyConfig.addFilter("mdinline", (md) => {
+    return mdLibInline.render(md);
+  });
 
   // JS Date to ISO date string (YYYY-MM-DD)
-  eleventyConfig.addFilter('isodate', (/**@type {Date}*/ date) =>
+  eleventyConfig.addFilter("isodate", (/**@type {Date}*/ date) =>
     date.toISOString().slice(0, 10)
-  )
+  );
 
   // markdown customize
-  eleventyConfig.addPlugin(pluginTOC, { tags: ['h2', 'h3'], wrapperClass: 'toc', });
-  const mdLib = markdownIt({ html: true }).use(markdownItAnchor).use(markdownItKatex)
-  eleventyConfig.setLibrary('md', mdLib)
+  eleventyConfig.addPlugin(pluginTOC, {
+    tags: ["h2", "h3"],
+    wrapperClass: "toc",
+  });
+  const mdLib = markdownIt({ html: true })
+    .use(markdownItAnchor)
+    .use(markdownItKatex);
+  eleventyConfig.setLibrary("md", mdLib);
 
   return {
     dir: {
-      input: 'src',
-      output: 'build'
+      input: "src",
+      output: "build",
     },
-  }
-}
+  };
+};

@@ -1,5 +1,5 @@
-@use 'css-variables';
-@use 'reset';
+@use "css-variables";
+@use "reset";
 
 .body-layout {
   background-color: var(--color-bg);
@@ -80,7 +80,7 @@
     font-size: 2.4rem;
   }
   > .name > .en {
-    color:var(--color-text-secondary);
+    color: var(--color-text-secondary);
   }
 }
 

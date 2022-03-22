@@ -1,17 +1,17 @@
-const sass = require('sass')
+const sass = require("sass");
 
 class Style {
   data() {
     return {
-      permalink: 'style.css',
-    }
+      permalink: "style.css",
+    };
   }
   render(data) {
     return sass.renderSync({
       file: `${__dirname}/index.scss`,
-      outputStyle: 'compressed',
-    }).css
+      outputStyle: "compressed",
+    }).css;
   }
 }
 
-module.exports = Style
+module.exports = Style;

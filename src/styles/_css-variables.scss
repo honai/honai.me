@@ -7,7 +7,8 @@
   --color-fg: #fff;
   --color-border: rgb(219, 219, 219);
   --len-radius: 4px;
-  --font-family-century: 'Century Gothic', CenturyGothic, century-gothic, sans-serif;
+  --font-family-century: "Century Gothic", CenturyGothic, century-gothic,
+    sans-serif;
   --font-weight-century: 400;
 }
 
@@ -17,7 +18,7 @@
     --color-text-secondary: #aaa;
     --color-bg: #000;
     --color-fg: #000;
-    --color-border: #444;  
+    --color-border: #444;
   }
   a {
     color: rgb(62, 166, 255);
