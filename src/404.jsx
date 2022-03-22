@@ -1,6 +1,7 @@
 export const data = {
   permalink: "404.html",
 };
+
 export default (props) => {
   return (
     <html lang="ja">
