@@ -4,7 +4,6 @@ export const data = {
 };
 
 export default ({ profile, _functions }) => {
-  // console.log(other);
   return (
     <>
       <div className="nav-title">
@@ -18,20 +17,15 @@ export default ({ profile, _functions }) => {
       {profile.works.map((w) => (
         <div className="simple-card">
           <h2 className="heading">
-            <a
-              href="{{ w.url }}"
-              target="_blank"
-              rel="noopener"
-              className="_reset-a"
-            >
+            <a href={w.url} target="_blank" rel="noopener" className="_reset-a">
               {w.name}
             </a>
           </h2>
-          <a href="{{ w.url }}">
+          <a href={w.url}>
             {/* FIXME: height */}
             <img
-              src="{{ w.thumb }}"
-              alt="{{ w.name }}"
+              src={w.thumb}
+              alt={w.name}
               height="360"
               className="work-thumb"
             />
