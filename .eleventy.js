@@ -35,6 +35,11 @@ module.exports = (eleventyConfig) => {
     return mdLibInline.render(md)
   })
 
+  // JS Date to ISO date string (YYYY-MM-DD)
+  eleventyConfig.addFilter('isodate', (/**@type {Date}*/ date) =>
+    date.toISOString().slice(0, 10)
+  )
+
   // markdown customize
   eleventyConfig.addPlugin(pluginTOC, { tags: ['h2', 'h3'], wrapperClass: 'toc', });
   const mdLib = markdownIt({ html: true }).use(markdownItAnchor).use(markdownItKatex)
