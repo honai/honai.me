@@ -8,7 +8,9 @@
   "scripts": {
     "build": "eleventy",
     "clean": "rimraf build",
-    "dev": "eleventy --serve"
+    "dev": "eleventy --serve",
+    "format:check": "prettier --check --ignore-path .gitignore \"**/*.{js,jsx,json,yaml,scss,css}\"",
+    "format": "prettier --write --ignore-path .gitignore \"**/*.{js,jsx,json,yaml,scss,css}\""
   },
   "devDependencies": {
     "@11ty/eleventy": "1.0.0",
@@ -21,6 +23,7 @@
     "js-yaml": "^4.1.0",
     "markdown-it": "^12.3.2",
     "markdown-it-anchor": "^8.4.1",
+    "prettier": "^2.6.0",
     "rimraf": "^3.0.2",
     "sass": "^1.49.9"
   },
