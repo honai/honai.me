@@ -6,12 +6,11 @@ const markdownItKatex = require("@iktakahiro/markdown-it-katex");
 const pluginTOC = require("eleventy-plugin-nesting-toc");
 const yaml = require("js-yaml");
 
-const fileCopies = ["images", "favicon.ico", "scripts"];
-
 module.exports = (eleventyConfig) => {
   eleventyConfig.setTemplateFormats(["html", "md", "njk", "ejs", "11ty.js"]);
 
   // static file copy
+  const fileCopies = ["images", "favicon.ico", "scripts"];
   for (const f of fileCopies) {
     eleventyConfig.addPassthroughCopy(`src/${f}`);
   }
