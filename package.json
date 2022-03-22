@@ -9,7 +9,8 @@
     "build": "eleventy",
     "clean": "rimraf build",
     "dev": "eleventy --serve",
-    "format": "prettier --write **/*.{js,jsx,json,yaml}"
+    "format:check": "prettier --check --ignore-path .gitignore \"**/*.{js,jsx,json,yaml,scss,css}\"",
+    "format": "prettier --write --ignore-path .gitignore \"**/*.{js,jsx,json,yaml,scss,css}\""
   },
   "devDependencies": {
     "@11ty/eleventy": "1.0.0",
