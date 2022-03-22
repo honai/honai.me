@@ -91,6 +91,19 @@ layout: portfolio-base
 </section>
 
 <section class="simple-card">
+  <h2 class="heading" id="posts">
+    <a href="#posts" class="anchor">Posts</a>
+  </h2>
+  <div class="content">
+    <ul>
+      {% for post in feeds %}
+        <li><a href="{{ post.url }}">{{ post.title }}</a></li>
+      {% endfor %}
+    </ul>
+  </div>
+</section>
+
+<section class="simple-card">
   <h2 class="heading" id="presentations">
     <a href="#presentations" class="anchor">Presentations</a>
   </h2>
