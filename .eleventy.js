@@ -14,7 +14,6 @@ module.exports = (eleventyConfig) => {
     "html",
     "md",
     "njk",
-    "ejs",
     "11ty.js",
   ]);
 
