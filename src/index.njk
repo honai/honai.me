@@ -91,6 +91,24 @@ layout: portfolio-base
 </section>
 
 <section class="simple-card">
+  <h2 class="heading" id="posts">
+    <a href="#posts" class="anchor">Posts</a>
+  </h2>
+  {% for post in feeds %}
+    <div class="content post-item">
+      <a href="{{ post.link }}" target="_blank" rel="noopener">{{ post.title }}</a>
+      <div class="source">
+        <time datetime="{{ post.pubDate | isodate }}">
+          {{ post.pubDate | isodate }}
+        </time>
+        &middot;
+        <a href="{{ post.sourceUrl }}" target="_blank" rel="noopener" class="_uncolor">{{ post.sourceTitle }}</a>
+      </div>
+    </div>
+  {% endfor %}
+</section>
+
+<section class="simple-card">
   <h2 class="heading" id="presentations">
     <a href="#presentations" class="anchor">Presentations</a>
   </h2>
