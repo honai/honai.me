@@ -11,14 +11,18 @@ module.exports = {
   },
   compile(_, inputPath) {
     // this.config is eleventyConfig object
+    const _functions = this.config.javascriptFunctions;
     return function (data) {
-      const Component = require(resolveInputPath(inputPath)).default(data);
+      const Component = require(resolveInputPath(inputPath)).default({
+        ...data,
+        _functions,
+      });
       const html = renderToStaticMarkup(Component);
       return html.startsWith("<html") ? `<!DOCTYPE html>${html}` : html;
     };
   },
   getData(inputPath) {
-    return require(resolveInputPath(inputPath)).data;
+    return require(resolveInputPath(inputPath));
   },
   read: false,
 };
