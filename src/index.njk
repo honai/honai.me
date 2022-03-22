@@ -94,17 +94,18 @@ layout: portfolio-base
   <h2 class="heading" id="posts">
     <a href="#posts" class="anchor">Posts</a>
   </h2>
-  <div class="content">
-    <ul>
-      {% for post in feeds %}
-        <li>
-          <a href="{{ post.url }}" target="_blank" rel="noopener">{{ post.title }}</a>
-          from
-          <a href="{{ post.souceUrl }}" target="_blank" rel="noopener">{{ post.sourceTitle }}</a>
-        </li>
-      {% endfor %}
-    </ul>
-  </div>
+  {% for post in feeds %}
+    <div class="content post-item">
+      <a href="{{ post.url }}" target="_blank" rel="noopener">{{ post.title }}</a>
+      <div class="source">
+        <time datetime="{{ post.pubDate | isodate }}">
+          {{ post.pubDate | isodate }}
+        </time>
+        &middot;
+        <a href="{{ post.souceUrl }}" target="_blank" rel="noopener" class="_uncolor">{{ post.sourceTitle }}</a>
+      </div>
+    </div>
+  {% endfor %}
 </section>
 
 <section class="simple-card">
