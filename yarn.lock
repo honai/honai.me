@@ -15,7 +15,7 @@
     linkedom "^0.13.2"
     prismjs "^1.26.0"
 
-"@11ty/eleventy@1.0.0":
+"@11ty/eleventy@^1.0.0":
   version "1.0.0"
   resolved "https://registry.yarnpkg.com/@11ty/eleventy/-/eleventy-1.0.0.tgz#febe42fabc00547aaf4c43ed78b412d8afa04a04"
   integrity sha512-UMZghkMFwovu3Vh6DzjJ9GbcBnlE3nydGmLAti2AB1d6etQE+jXgfuHNxOyV1em33ywsBgGUCtLmLHaaTSU+Nw==

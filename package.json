@@ -13,7 +13,7 @@
     "format": "prettier --write --ignore-path .gitignore \"**/*.{js,jsx,json,yaml,scss,css}\""
   },
   "devDependencies": {
-    "@11ty/eleventy": "1.0.0",
+    "@11ty/eleventy": "^1.0.0",
     "@11ty/eleventy-plugin-syntaxhighlight": "^4.0.0",
     "@babel/core": "^7.17.8",
     "@babel/preset-env": "^7.16.11",
