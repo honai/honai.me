@@ -1,6 +1,9 @@
 {
   "presets": [
-    ["@babel/preset-react", { "runtime": "automatic" }],
+    [
+      "@babel/preset-react",
+      { "runtime": "automatic", "importSource": "preact" }
+    ],
     [
       "@babel/preset-env",
       {

@@ -1,6 +1,6 @@
 const path = require("path");
 
-const { renderToStaticMarkup } = require("react-dom/server");
+const { render: renderToStaticMarkup } = require("preact-render-to-string");
 
 module.exports = {
   outputFileExtension: "html",
