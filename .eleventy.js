@@ -28,12 +28,9 @@ module.exports = (eleventyConfig) => {
 
   // sass
   eleventyConfig.addShortcode("sassinline", (filename) => {
-    return sass
-      .renderSync({
-        file: `${__dirname}/src/styles/${filename}`,
-        outputStyle: "compressed",
-      })
-      .css.toString();
+    return sass.compile(`${__dirname}/src/styles/${filename}`, {
+      style: "compressed",
+    }).css;
   });
   eleventyConfig.addWatchTarget("src/styles");
   eleventyConfig.addPlugin(syntaxHighlight);
