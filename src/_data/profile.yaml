@@ -1,16 +1,16 @@
 links:
   - url: https://github.com/honai
     text: github.com/honai
-    icon: svg/github.svg
+    icon: github
   - url: https://twitter.com/_honai
     text: twitter.com/_honai
-    icon: svg/twitter.svg
+    icon: twitter
   - url: https://www.facebook.com/honai.ueoka/
     text: facebook.com/honai.ueoka
-    icon: svg/facebook.svg
+    icon: facebook
   - url: https://www.linkedin.com/in/honai-ueoka/
     text: linkedin.com/in/honai-ueoka
-    icon: svg/linkedin.svg
+    icon: linkedin
 
 education:
   - period: 2021.4 -
