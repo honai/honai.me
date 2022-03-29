@@ -1,6 +1,9 @@
 const path = require("path");
 
+const { jsx } = require("preact/jsx-runtime");
 const { render: renderToStaticMarkup } = require("preact-render-to-string");
+
+let Provider;
 
 module.exports = {
   outputFileExtension: "html",
@@ -8,16 +11,16 @@ module.exports = {
     require("@babel/register")({
       extensions: [".jsx"],
     });
+    const jsFuncs = this.config.javascriptFunctions;
+    const ProviderFC = require("../src/_includes/EleventyContext.jsx").default;
+    Provider = ({ children }) => jsx(ProviderFC, { value: jsFuncs, children });
   },
   compile(_, inputPath) {
-    // this.config is eleventyConfig object
-    const _functions = this.config.javascriptFunctions;
     return function (data) {
-      const Component = require(resolveInputPath(inputPath)).default({
-        ...data,
-        _functions,
-      });
-      const html = renderToStaticMarkup(Component);
+      const Component = require(resolveInputPath(inputPath)).default;
+      const html = renderToStaticMarkup(
+        jsx(Provider, { children: jsx(Component, data) })
+      );
       return html.startsWith("<html") ? `<!DOCTYPE html>${html}` : html;
     };
   },
