@@ -1,8 +1,11 @@
+import { useEleventy } from "./_includes/EleventyContext";
+
 export const data = {
   permalink: "404.html",
 };
 
 export default (props) => {
+  const { sassinline } = useEleventy();
   return (
     <html lang="ja">
       <head>
@@ -13,7 +16,7 @@ export default (props) => {
         <link rel="stylesheet" href="https://use.typekit.net/bdo3rru.css" />
         <style
           dangerouslySetInnerHTML={{
-            __html: props._functions.sassinline("portfolio-critical.scss"),
+            __html: sassinline("portfolio-critical.scss"),
           }}
         />
       </head>

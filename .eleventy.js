@@ -1,3 +1,6 @@
+const fs = require("fs");
+const path = require("path");
+
 const sass = require("sass");
 const syntaxHighlight = require("@11ty/eleventy-plugin-syntaxhighlight");
 const markdownIt = require("markdown-it");
@@ -9,13 +12,7 @@ const yaml = require("js-yaml");
 const jsx = require("./jsxHandler");
 
 module.exports = (eleventyConfig) => {
-  eleventyConfig.setTemplateFormats([
-    "jsx",
-    "html",
-    "md",
-    "njk",
-    "11ty.js",
-  ]);
+  eleventyConfig.setTemplateFormats(["jsx", "html", "md", "njk", "11ty.js"]);
 
   // static file copy
   const fileCopies = ["images", "favicon.ico", "scripts"];
@@ -50,6 +47,10 @@ module.exports = (eleventyConfig) => {
   // JS Date to ISO date string (YYYY-MM-DD)
   eleventyConfig.addFilter("isodate", (/**@type {Date}*/ date) =>
     date.toISOString().slice(0, 10)
+  );
+
+  eleventyConfig.addJavaScriptFunction("svginline", (filename) =>
+    fs.readFileSync(path.join(__dirname, `src/_includes/svg/${filename}.svg`))
   );
 
   // markdown customize

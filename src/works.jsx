@@ -1,9 +1,12 @@
+import { useEleventy } from "./_includes/EleventyContext";
+
 export const data = {
   layout: "portfolio-base.njk",
   title: "Works | honai.me",
 };
 
 export default ({ profile, _functions }) => {
+  const { mdinline } = useEleventy();
   return (
     <>
       <div className="nav-title">
@@ -33,7 +36,7 @@ export default ({ profile, _functions }) => {
           <div
             className="content"
             dangerouslySetInnerHTML={{
-              __html: _functions.mdinline(w.desc),
+              __html: mdinline(w.desc),
             }}
           />
         </div>
