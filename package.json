@@ -20,7 +20,7 @@
     "markdown-it": "^12.3.2",
     "markdown-it-anchor": "^8.4.1",
     "rimraf": "^3.0.2",
-    "sass": "^1.49.9"
+    "sass": "^1.49.11"
   },
   "dependencies": {}
 }
