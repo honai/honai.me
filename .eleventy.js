@@ -53,11 +53,12 @@ module.exports = (eleventyConfig) => {
     fs.readFileSync(path.join(__dirname, `src/_includes/svg/${filename}.svg`))
   );
 
-  // markdown customize
   eleventyConfig.addPlugin(pluginTOC, {
     tags: ["h2", "h3"],
     wrapperClass: "toc",
   });
+
+  // markdown customize
   const mdLib = markdownIt({ html: true })
     .use(markdownItAnchor)
     .use(markdownItKatex);
