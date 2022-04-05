@@ -1,16 +1,13 @@
 import { useEleventy } from "./_includes/EleventyContext";
+import { PortfolioLayout } from "./_includes/PortfolioLayout";
 import { SpanSvg } from "./_includes/svg";
 
-export const data = {
-  layout: "portfolio-base",
-};
-
-export default ({ profile, feeds }) => {
+export default ({ profile, feeds, page }) => {
   const { isodate } = useEleventy();
   return (
-    <>
+    <PortfolioLayout pageUrl={page.url}>
       <div class="nav-title">
-        <h1 class="title">Honai's Portfolio</h1>
+        <h1 class="title">Hi👋 I'm honai.</h1>
         <nav class="nav">
           <a href="/works">Works</a>
           <a href="/blog/">Blog</a>
@@ -209,6 +206,6 @@ export default ({ profile, feeds }) => {
           <a href="/blog">Honai's Blog</a>
         </div>
       </section>
-    </>
+    </PortfolioLayout>
   );
 };

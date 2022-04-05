@@ -1,21 +1,21 @@
 import { useEleventy } from "./_includes/EleventyContext";
+import { PortfolioLayout } from "./_includes/PortfolioLayout";
 
-export const data = {
-  layout: "portfolio-base.njk",
-  title: "Works | honai.me",
-};
-
-export default ({ profile, _functions }) => {
+export default ({ profile, page }) => {
   const { mdinline } = useEleventy();
   return (
-    <>
+    <PortfolioLayout
+      pageUrl={page.url}
+      subTitle="Works"
+      description="Works by honai"
+    >
       <div className="nav-title">
         <h2 className="subtitle">
           <a href="/" className="_uncolor">
-            Honai Ueoka's Portfolio
+            honai.me
           </a>
         </h2>
-        <h1 className="title">Works</h1>
+        <h1 className="title">Works by honai</h1>
       </div>
       {profile.works.map((w) => (
         <div className="simple-card">
@@ -41,6 +41,6 @@ export default ({ profile, _functions }) => {
           />
         </div>
       ))}
-    </>
+    </PortfolioLayout>
   );
 };
