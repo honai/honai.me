@@ -1,7 +1,4 @@
----
-permalink: /_redirects
----
-/rss /blog/rss.xml 301
+const redirectText = `/rss /blog/rss.xml 301
 /blog/post/ /blog/
 /blog/post /blog/
 /blog/2021/naacl-2021/ /blog/post/naacl-2021/ 301
@@ -42,3 +39,17 @@ permalink: /_redirects
 /blog/2019/made-nextjs-md-blog /blog/post/made-nextjs-md-blog/ 301
 /blog/2019/web-frontend-challenge/ /blog/post/web-frontend-challenge/ 301
 /blog/2019/web-frontend-challenge /blog/post/web-frontend-challenge/ 301
+`;
+
+class Redirects {
+  data() {
+    return {
+      permalink: "/_redirects",
+    };
+  }
+  render() {
+    return redirectText;
+  }
+}
+
+module.exports = Redirects;
