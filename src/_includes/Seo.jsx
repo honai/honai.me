@@ -4,19 +4,16 @@
  * @param {string} props.pageUrl
  * @param {string} props.description
  * @param {string} [props.og_image_url]
- * @param {boolean} [props.large_card]
  */
-export const Seo = ({
-  title,
-  pageUrl,
-  description,
-  og_image_url,
-  large_card,
-}) => {
+export const Seo = ({ title, pageUrl, description, og_image_url }) => {
   if (!pageUrl.startsWith("/")) {
     throw new Error("Invalid pageUrl");
   }
+  if (!!og_image_url && /^https?:\/\//.test(og_image_url)) {
+    throw new Error("Invalid ogp image url");
+  }
   const canonicalUrl = `https://www.honai.me${pageUrl}`;
+  const isLargeCard = !!og_image_url;
   const ogImage = og_image_url || "https://www.honai.me/images/profile.png";
   return (
     <>
@@ -38,7 +35,7 @@ export const Seo = ({
 
       <meta
         name="twitter:card"
-        content={large_card ? "summary_large_image" : "summary"}
+        content={isLargeCard ? "summary_large_image" : "summary"}
       />
       <meta name="twitter:site" content="@_honai" />
 
