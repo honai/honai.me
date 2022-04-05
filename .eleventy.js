@@ -42,9 +42,12 @@ module.exports = (eleventyConfig) => {
   });
 
   // JS Date to ISO date string (YYYY-MM-DD)
-  eleventyConfig.addFilter("isodate", (/**@type {Date}*/ date) =>
-    date.toISOString().slice(0, 10)
-  );
+  eleventyConfig.addFilter("isodate", (/**@type {Date | string}*/ date) => {
+    if (typeof date === "string") {
+      return new Date(date).toISOString().slice(0, 10);
+    }
+    return date.toISOString().slice(0, 10);
+  });
 
   eleventyConfig.addJavaScriptFunction("svginline", (filename) =>
     fs.readFileSync(path.join(__dirname, `src/_includes/svg/${filename}.svg`))

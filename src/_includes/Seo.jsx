@@ -7,10 +7,10 @@
  */
 export const Seo = ({ title, pageUrl, description, og_image_url }) => {
   if (!pageUrl.startsWith("/")) {
-    throw new Error("Invalid pageUrl");
+    throw new Error(`Invalid pageUrl: ${pageUrl}`);
   }
-  if (!!og_image_url && /^https?:\/\//.test(og_image_url)) {
-    throw new Error("Invalid ogp image url");
+  if (!!og_image_url && !/^https?:\/\//.test(og_image_url)) {
+    throw new Error(`Invalid ogp image url: ${og_image_url}`);
   }
   const canonicalUrl = `https://www.honai.me${pageUrl}`;
   const isLargeCard = !!og_image_url;

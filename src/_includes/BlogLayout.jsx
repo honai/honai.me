@@ -2,18 +2,27 @@ import { Script } from "./Script";
 import { Seo } from "./Seo";
 
 /**
+ * @typedef {Object} StyleSheet
+ * @prop {string} href
+ * @prop {string} integrity
+ * @prop {boolean} [async]
+ */
+
+/**
  * @param {Object} props
  * @param {string} props.pageUrl
  * @param {string} props.title
  * @param {string} props.description
+ * @param {StyleSheet[]} [props.styleSheets]
  * @param {string} [props.ogImageUrl]
- * @param {any=}   props.children
+ * @param {any} props.children
  */
 export const BlogLayout = ({
   pageUrl,
   title,
   description,
   ogImageUrl,
+  styleSheets,
   children,
 }) => {
   return (
@@ -25,7 +34,27 @@ export const BlogLayout = ({
           description={description}
           og_image_url={ogImageUrl}
         />
-        <base href="{{ page.url }}" />
+        <base href={pageUrl} />
+        {(styleSheets || []).map(({ href, integrity, async }) =>
+          async ? (
+            <link
+              rel="preload"
+              as="style"
+              href={href}
+              integrity={integrity}
+              crossOrigin="anonymous"
+              // @ts-ignore
+              onLoad="this.rel='stylesheet';"
+            />
+          ) : (
+            <link
+              rel="stylesheet"
+              href={href}
+              integrity={integrity}
+              crossOrigin="anonymous"
+            />
+          )
+        )}
         {/* TODO: async fallback */}
         <link
           rel="stylesheet"

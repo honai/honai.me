@@ -1,7 +1,17 @@
 import { createContext } from "preact";
 import { useContext } from "preact/hooks";
 
-/** @type {any} */
+/**
+ * @typedef {Object} EleventyContextVal
+ * @prop {(date: string | Date) => string} isodate
+ * @prop {(md: string) => string} mdinline
+ * @prop {(content: string) => string} toc
+ * @prop {(collection: unknown, page: unknown) => any} getPreviousCollectionItem
+ * @prop {(collection: unknown, page: unknown) => any} getNextCollectionItem
+ */
+
+/** @type {EleventyContextVal} */
+// @ts-ignore
 const ContextValue = {};
 const EleventyContext = createContext(ContextValue);
 
