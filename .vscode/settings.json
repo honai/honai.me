@@ -1,7 +1,6 @@
 {
   "editor.tabSize": 2,
-  "js/ts.implicitProjectConfig.checkJs": true,
-  "[javascriptreact][javascript][json][yaml][css][scss]": {
+  "[javascriptreact][javascript][json][jsonc][yaml][css][scss]": {
     "editor.defaultFormatter": "esbenp.prettier-vscode",
     "editor.formatOnSave": true
   }
