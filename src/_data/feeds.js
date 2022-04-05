@@ -60,7 +60,7 @@ async function cacheUrl(url, cacheFile) {
 async function isFileFresh(file) {
   try {
     const { mtime } = await fs.stat(file);
-    const diff = mtime.getTime() - new Date().getTime();
+    const diff = new Date().getTime() - mtime.getTime();
     if (diff <= 1000 * 60 * 60) {
       return true;
     }
