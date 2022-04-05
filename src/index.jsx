@@ -7,7 +7,7 @@ export default ({ profile, feeds, page }) => {
   return (
     <PortfolioLayout pageUrl={page.url}>
       <div class="nav-title">
-        <h1 class="title">Hi👋 I'm honai.</h1>
+        <h1 class="title">Hi👋 I'm Honai.</h1>
         <nav class="nav">
           <a href="/works">Works</a>
           <a href="/blog/">Blog</a>

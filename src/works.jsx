@@ -7,7 +7,7 @@ export default ({ profile, page }) => {
     <PortfolioLayout
       pageUrl={page.url}
       subTitle="Works"
-      description="Works by honai"
+      description="Works by Honai"
     >
       <div className="nav-title">
         <h2 className="subtitle">
@@ -15,7 +15,7 @@ export default ({ profile, page }) => {
             honai.me
           </a>
         </h2>
-        <h1 className="title">Works by honai</h1>
+        <h1 className="title">Works by Honai</h1>
       </div>
       {profile.works.map((w) => (
         <div className="simple-card">
