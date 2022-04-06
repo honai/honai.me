@@ -87,7 +87,7 @@ Github PagesのようなStatic Hostingで公開するのも簡単です。
 
 記事のページの実際のURLは `/post?path=hello-world.md` という形式で、
 クエリ文字列から.mdファイルのパスを受け取って、動的にrequireしています。
-```
+```js
 const path = router.query.path    // hello-world.md
 const { default: rawMarkdown } = require(`/posts/${path}`)
 ```
@@ -95,7 +95,7 @@ markdonwファイルを直接import/requireするにはraw-loaderを使います
 Nextでは `next.config.js` にWebpackの設定を記述します。
 
 Markdown-itとkatexの連携はとても簡単で、markdown-it-katexをインストールして、
-```
+```js
 import markdonwIt from 'markdown-it'
 import mk from 'markdown-it-katex'
 
