@@ -1,10 +1,7 @@
 {
   "editor.tabSize": 2,
-  "[javascriptreact][javascript][json][jsonc][yaml][css][scss]": {
+  "[javascript][json][jsonc][yaml][css][scss][svelte]": {
     "editor.defaultFormatter": "esbenp.prettier-vscode",
-    "editor.formatOnSave": true
-  },
-  "[svelte]": {
     "editor.formatOnSave": true
   }
 }

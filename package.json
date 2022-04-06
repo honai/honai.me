@@ -9,11 +9,12 @@
     "build": "eleventy",
     "clean": "rimraf build",
     "dev": "eleventy --serve",
-    "format:check": "prettier --check --ignore-path .gitignore \"**/*.{js,jsx,json,yaml,scss,css}\"",
-    "format": "prettier --write --ignore-path .gitignore \"**/*.{js,jsx,json,yaml,scss,css}\""
+    "format:check": "prettier --check --ignore-path .gitignore \"**/*.{js,svelte,json,yaml,scss,css}\"",
+    "format": "prettier --write --ignore-path .gitignore \"**/*.{js,svelte,json,yaml,scss,css}\""
   },
   "devDependencies": {
     "prettier": "^2.6.2",
+    "prettier-plugin-svelte": "^2.6.0",
     "rimraf": "^3.0.2"
   },
   "dependencies": {
