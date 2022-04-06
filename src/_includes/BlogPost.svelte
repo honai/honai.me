@@ -51,12 +51,10 @@
                 {fn.isodate(page.date)}
               </time>
               {#if updated}
-                {" "}
-                (Updated at{" "}
+                (Updated at
                 <time id="updated-time" dateTime={fn.isodate(updated)}>
                   {updated}
-                </time>
-                )
+                </time>)
               {/if}
             </div>
           </div>
@@ -76,13 +74,13 @@
               </div>
               {#if newerPost}
                 <div>
-                  次の記事:{" "}
+                  次の記事:
                   <a href={newerPost.url}>{newerPost.data.title}</a>
                 </div>
               {/if}
               {#if olderPost}
                 <div>
-                  前の記事:{" "}
+                  前の記事:
                   <a href={olderPost.url}>{olderPost.data.title}</a>
                 </div>
               {/if}
@@ -100,7 +98,6 @@
           <div class="post-markdown">
             {@html content}
           </div>
-          >
         </main>
 
         <div class="ad ad-sense">

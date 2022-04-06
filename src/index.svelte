@@ -35,7 +35,7 @@
         修士課程（2023年3月修了予定） /{" "}
         <a href="https://camph.net/" target="_blank" rel="noopener">
           CAMPHOR-
-        </a>{" "}
+        </a>
         運営メンバー
       </p>
     </div>
@@ -120,8 +120,8 @@
         <div class="source">
           <time dateTime={isodate(post.pubDate)}>
             {isodate(post.pubDate)}
-          </time>{" "}
-          &middot;{" "}
+          </time>
+          &middot;
           <a
             href={post.sourceUrl}
             target="_blank"

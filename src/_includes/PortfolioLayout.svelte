@@ -46,7 +46,7 @@
   <footer class="site-footer">
     &copy; 2022 Honai Ueoka
     <br />
-    Powered by{" "}
+    Powered by
     <a
       href="https://www.11ty.dev/"
       target="_blank"

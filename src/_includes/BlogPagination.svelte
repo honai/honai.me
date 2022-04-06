@@ -15,4 +15,3 @@
     {#if nextHref}<a href={nextHref}>Next &gt;</a>{/if}
   </div>
 </div>
-); };
