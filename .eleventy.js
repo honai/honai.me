@@ -9,10 +9,11 @@ const markdownItKatex = require("@iktakahiro/markdown-it-katex");
 const pluginTOC = require("eleventy-plugin-nesting-toc");
 const yaml = require("js-yaml");
 
-const jsx = require("./jsxHandler");
+const jsx = require("./customHandlers/jsx");
+const svelte = require("./customHandlers/svelte");
 
 module.exports = (eleventyConfig) => {
-  eleventyConfig.setTemplateFormats(["jsx", "md", "11ty.js"]);
+  eleventyConfig.setTemplateFormats(["svelte", "jsx", "md", "11ty.js"]);
 
   // static file copy
   const fileCopies = ["images", "favicon.ico", "scripts"];
@@ -25,6 +26,9 @@ module.exports = (eleventyConfig) => {
 
   // jsx
   eleventyConfig.addExtension("jsx", jsx);
+
+  // svelte
+  eleventyConfig.addExtension("svelte", svelte);
 
   // sass
   eleventyConfig.addShortcode("sassinline", (filename) => {

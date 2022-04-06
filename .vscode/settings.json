@@ -3,5 +3,8 @@
   "[javascriptreact][javascript][json][jsonc][yaml][css][scss]": {
     "editor.defaultFormatter": "esbenp.prettier-vscode",
     "editor.formatOnSave": true
+  },
+  "[svelte]": {
+    "editor.formatOnSave": true
   }
 }

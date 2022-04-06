@@ -31,7 +31,8 @@
     "preact-render-to-string": "^5.1.20",
     "prettier": "^2.6.0",
     "rimraf": "^3.0.2",
-    "sass": "^1.49.9"
+    "sass": "^1.49.9",
+    "svelte": "^3.46.6"
   },
   "dependencies": {}
 }

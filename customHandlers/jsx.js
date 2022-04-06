@@ -1,7 +1,7 @@
-const path = require("path");
-
 const { jsx } = require("preact/jsx-runtime");
 const { render: renderToStaticMarkup } = require("preact-render-to-string");
+
+const { resolveInputPath } = require("./common");
 
 let Provider;
 
@@ -32,6 +32,3 @@ module.exports = {
     permalink: "raw",
   },
 };
-
-/** @param {string} inputPath */
-const resolveInputPath = (inputPath) => path.join(process.cwd(), inputPath);
