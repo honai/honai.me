@@ -9,6 +9,7 @@
    * @prop {(collection: unknown, page: unknown) => any} getPreviousCollectionItem
    * @prop {(collection: unknown, page: unknown) => any} getNextCollectionItem
    * @prop {(scssfile: string) => string} sassinline
+   * @prop {(svgfilename: string) => string} svginline
    */
 
   export const JS_FUNCS_KEY = "jsFuncs";

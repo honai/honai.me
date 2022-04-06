@@ -2,9 +2,7 @@
   "compilerOptions": {
     "target": "esnext",
     "moduleResolution": "node",
-    "jsx": "react-jsx",
-    "jsxImportSource": "preact",
     "checkJs": true
   },
-  "include": ["./src/**/*.jsx"]
+  "include": ["./src/**/*.svelte"]
 }

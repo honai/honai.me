@@ -16,17 +16,22 @@ module.exports = {
     const Component = require(resolveInputPath(inputPath)).default;
     return function (data) {
       const { head, html, css } = Component.render(data, { context });
-      // console.log({ head, html, css });
-      // console.log(data.page.url);
       // CSSをビルドするために、必要なcomponentをまとめてpermalinkがcssである
       // svelte componentをつくり、各ページcomponentにはstyleタグを書くようにする
       if (path.extname(data.page.url) === ".css") {
         return css.code;
       }
       const htmlTrimmed = html.trim();
-      return htmlTrimmed.startsWith("<html")
-        ? `<!DOCTYPE html>${htmlTrimmed}`
-        : htmlTrimmed;
+      if (htmlTrimmed.startsWith("<html") || htmlTrimmed.startsWith("<body")) {
+        throw new Error("don't use <html> or <body> in svelte template");
+      }
+      return [
+        '<!DOCTYPE html><html lang="ja"><head>',
+        head.trim(),
+        "</head><body>",
+        htmlTrimmed,
+        "</body></html>",
+      ].join("");
     };
   },
   read: false,
