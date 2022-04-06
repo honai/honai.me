@@ -1,7 +1,5 @@
 const path = require("path");
 
-const { resolveInputPath } = require("./common");
-
 let context = new Map();
 
 module.exports = {
@@ -42,3 +40,6 @@ module.exports = {
     permalink: "raw",
   },
 };
+
+/** @param {string} inputPath */
+const resolveInputPath = (inputPath) => path.join(process.cwd(), inputPath);

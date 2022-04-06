@@ -4,5 +4,5 @@
     "moduleResolution": "node",
     "checkJs": true
   },
-  "include": ["./src/**/*.svelte"]
+  "include": ["./src"]
 }
