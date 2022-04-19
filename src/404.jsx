@@ -16,7 +16,7 @@ export default (props) => {
         <link rel="stylesheet" href="https://use.typekit.net/bdo3rru.css" />
         <style
           dangerouslySetInnerHTML={{
-            __html: sassinline("portfolio-critical.scss"),
+            __html: sassinline("_portfolio-critical.scss"),
           }}
         />
       </head>

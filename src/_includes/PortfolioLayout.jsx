@@ -43,7 +43,7 @@ export const PortfolioLayout = ({
         ))}
         <style
           dangerouslySetInnerHTML={{
-            __html: sassinline("portfolio-critical.scss"),
+            __html: sassinline("_portfolio-critical.scss"),
           }}
         />
         <noscript>
