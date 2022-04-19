@@ -1,28 +1,10 @@
 // theme
 :root {
   --color-primary: #02454a;
-  --color-text: #333;
-  --color-text-secondary: #666;
-  --color-bg: rgba(250, 250, 250);
-  --color-fg: #fff;
-  --color-border: rgb(219, 219, 219);
   --len-radius: 4px;
   --font-family-century: "Century Gothic", CenturyGothic, century-gothic,
     sans-serif;
   --font-weight-century: 400;
-}
-
-@media (prefers-color-scheme: dark) {
-  :root {
-    --color-text: #fff;
-    --color-text-secondary: #aaa;
-    --color-bg: #000;
-    --color-fg: #000;
-    --color-border: #444;
-  }
-  a {
-    color: rgb(62, 166, 255);
-  }
 }
 
 // other variables

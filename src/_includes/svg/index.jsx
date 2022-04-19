@@ -4,7 +4,7 @@ export const SpanSvg = ({ filename, ...other }) => {
   const { svginline } = useEleventy();
   return (
     <span
-      class={other.class}
+      {...other}
       dangerouslySetInnerHTML={{ __html: svginline(filename) }}
     />
   );
