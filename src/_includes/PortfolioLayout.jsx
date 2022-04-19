@@ -1,7 +1,10 @@
 import { useEleventy } from "./EleventyContext";
 import { Seo } from "./Seo";
 
-const asyncStylesheets = ["/style.css", "https://use.typekit.net/bdo3rru.css"];
+const asyncStylesheets = [
+  "/styles/index.css",
+  "https://use.typekit.net/bdo3rru.css",
+];
 const preconnectDomains = [
   "https://p.typekit.net",
   "https://res.cloudinary.com",
