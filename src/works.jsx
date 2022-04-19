@@ -10,11 +10,6 @@ export default ({ profile, page }) => {
       description="Works by Honai"
     >
       <div className="nav-title">
-        <h2 className="subtitle">
-          <a href="/" className="_uncolor">
-            honai.me
-          </a>
-        </h2>
         <h1 className="title">Works by Honai</h1>
       </div>
       {profile.works.map((w) => (

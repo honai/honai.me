@@ -1,5 +1,7 @@
+import { ThemeToggle } from "./components/ThemeToggle";
 import { useEleventy } from "./EleventyContext";
 import { Seo } from "./Seo";
+import { LabelSvg } from "./svg";
 
 const asyncStylesheets = [
   "/styles/index.css",
@@ -41,7 +43,7 @@ export const PortfolioLayout = ({
             as="style"
             href={href}
             // @ts-ignore
-            onLoad="this.rel='stylesheet';"
+            onLoad="this.onload=null;this.rel='stylesheet'"
           />
         ))}
         <style
@@ -57,7 +59,17 @@ export const PortfolioLayout = ({
       </head>
 
       <body class="body-layout">
-        <main class="main-content">{children}</main>
+        <div class="center">
+          <header class="portfolio-header">
+            <h2 className="title">
+              <a href="/" className="_uncolor">
+                honai.me
+              </a>
+            </h2>
+            <ThemeToggle />
+          </header>
+          <main class="main-content">{children}</main>
+        </div>
         <footer class="site-footer">
           &copy; 2022 Honai Ueoka
           <br />

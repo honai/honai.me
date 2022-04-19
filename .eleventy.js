@@ -35,15 +35,17 @@ module.exports = (eleventyConfig) => {
         return;
       }
       const result = sass.compileString(inputContent, {
-        loadPaths: [parsed.dir],
+        loadPaths: [parsed.dir, this.config.dir.includes],
+        style: "compressed",
       });
       return async (data) => {
         return result.css;
       };
     },
   });
-  eleventyConfig.addShortcode("sassinline", (filename) => {
+  eleventyConfig.addShortcode("sassinline", function (filename) {
     return sass.compile(`${__dirname}/src/styles/${filename}`, {
+      loadPaths: [`${__dirname}/src/_includes`],
       style: "compressed",
     }).css;
   });
