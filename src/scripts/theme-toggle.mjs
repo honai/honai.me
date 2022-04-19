@@ -59,12 +59,18 @@ const storedPreference = () => {
 };
 
 const savePreference = (scheme) => {
+  if (scheme === SYSTEM) {
+    localStorage.removeItem(STORAGE_KEY);
+    return;
+  }
   localStorage.setItem(STORAGE_KEY, scheme);
 };
 
-updatePreference(storedPreference());
 // TODO: WebComponentsにしたい
 const themeSelector = document.getElementById("theme-selector");
+const storedMode = storedPreference();
+themeSelector.value = storedMode;
+updatePreference(storedMode);
 themeSelector.addEventListener("change", (e) => {
   const mode = e.target.value;
   if (![SYSTEM, DARK, LIGHT].includes(mode)) {
