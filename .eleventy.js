@@ -12,7 +12,7 @@ const yaml = require("js-yaml");
 const jsx = require("./jsxHandler");
 
 module.exports = (eleventyConfig) => {
-  eleventyConfig.setTemplateFormats(["jsx", "md", "11ty.js"]);
+  eleventyConfig.setTemplateFormats(["jsx", "scss", "md", "11ty.js"]);
 
   // static file copy
   const fileCopies = ["images", "favicon.ico", "scripts"];
@@ -27,12 +27,27 @@ module.exports = (eleventyConfig) => {
   eleventyConfig.addExtension("jsx", jsx);
 
   // sass
+  eleventyConfig.addExtension("scss", {
+    outputFileExtension: "css",
+    compile: async function (inputContent, inputPath) {
+      const parsed = path.parse(inputPath);
+      if (parsed.name.startsWith("_")) {
+        return;
+      }
+      const result = sass.compileString(inputContent, {
+        loadPaths: [parsed.dir],
+      });
+      return async (data) => {
+        return result.css;
+      };
+    },
+  });
   eleventyConfig.addShortcode("sassinline", (filename) => {
     return sass.compile(`${__dirname}/src/styles/${filename}`, {
       style: "compressed",
     }).css;
   });
-  eleventyConfig.addWatchTarget("src/styles");
+
   eleventyConfig.addPlugin(syntaxHighlight);
 
   // inline markdown

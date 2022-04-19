@@ -1,7 +1,10 @@
 import { useEleventy } from "./EleventyContext";
 import { Seo } from "./Seo";
 
-const asyncStylesheets = ["/style.css", "https://use.typekit.net/bdo3rru.css"];
+const asyncStylesheets = [
+  "/styles/index.css",
+  "https://use.typekit.net/bdo3rru.css",
+];
 const preconnectDomains = [
   "https://p.typekit.net",
   "https://res.cloudinary.com",
@@ -43,7 +46,7 @@ export const PortfolioLayout = ({
         ))}
         <style
           dangerouslySetInnerHTML={{
-            __html: sassinline("portfolio-critical.scss"),
+            __html: sassinline("_portfolio-critical.scss"),
           }}
         />
         <noscript>
