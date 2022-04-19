@@ -2,7 +2,9 @@
   "compilerOptions": {
     "target": "esnext",
     "moduleResolution": "node",
+    "jsx": "react-jsx",
+    "jsxImportSource": "preact",
     "checkJs": true
   },
-  "include": ["./src"]
+  "include": ["./src/**/*.jsx"]
 }
