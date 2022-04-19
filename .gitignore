@@ -5,3 +5,4 @@ dist
 .firebase
 /_site
 /build
+/src/_data/*.xml
