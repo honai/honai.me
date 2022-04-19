@@ -13,6 +13,10 @@
     "format": "prettier --write --ignore-path .gitignore \"**/*.{js,jsx,json,yaml,scss,css}\""
   },
   "devDependencies": {
+    "prettier": "^2.6.0",
+    "rimraf": "^3.0.2"
+  },
+  "dependencies": {
     "@11ty/eleventy": "^1.0.0",
     "@11ty/eleventy-plugin-syntaxhighlight": "^4.0.0",
     "@babel/core": "^7.17.8",
@@ -29,9 +33,6 @@
     "markdown-it-anchor": "^8.4.1",
     "preact": "^10.6.6",
     "preact-render-to-string": "^5.1.20",
-    "prettier": "^2.6.0",
-    "rimraf": "^3.0.2",
     "sass": "^1.49.9"
-  },
-  "dependencies": {}
+  }
 }
