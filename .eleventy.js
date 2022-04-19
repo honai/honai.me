@@ -12,7 +12,7 @@ const yaml = require("js-yaml");
 const jsx = require("./jsxHandler");
 
 module.exports = (eleventyConfig) => {
-  eleventyConfig.setTemplateFormats(["jsx", "scss", "md", "11ty.js"]);
+  eleventyConfig.setTemplateFormats(["jsx", "scss", "md", "11ty.js", "css"]);
 
   // static file copy
   const fileCopies = ["images", "favicon.ico", "scripts"];

@@ -36,6 +36,25 @@ export const PortfolioLayout = ({
         {preconnectDomains.map((domain) => (
           <link rel="preconnect" href={domain} />
         ))}
+
+        {/* 同期で読み込むStyleSheet */}
+        <link
+          rel="stylesheet"
+          href="/styles/theme-dark.css"
+          media="(prefers-color-scheme: dark)"
+        />
+        <link
+          rel="stylesheet"
+          href="/styles/theme-light.css"
+          media="(prefers-color-scheme: light)"
+        />
+        <style
+          dangerouslySetInnerHTML={{
+            __html: sassinline("_portfolio-critical.scss"),
+          }}
+        />
+
+        {/* 遅延読み込みするStyleSheet */}
         {asyncStylesheets.map((href) => (
           <link
             rel="preload"
@@ -45,11 +64,6 @@ export const PortfolioLayout = ({
             onLoad="this.onload=null;this.rel='stylesheet'"
           />
         ))}
-        <style
-          dangerouslySetInnerHTML={{
-            __html: sassinline("_portfolio-critical.scss"),
-          }}
-        />
         <noscript>
           {asyncStylesheets.map((href) => (
             <link rel="stylesheet" href={href} />
