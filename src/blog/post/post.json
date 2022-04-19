@@ -1,6 +1,6 @@
 {
   "tags": ["posts"],
-  "layout": "BlogPost",
+  "layout": "BlogPost.jsx",
   "plugins": [],
   "updated": false
 }

@@ -4,7 +4,7 @@
 .body-layout {
   background-color: var(--color-bg);
   color: var(--color-text);
-  min-height: 100vh;
+  // padding-top: 5.4rem;
 }
 
 .nav-title {
@@ -97,10 +97,14 @@
     align-items: center;
     color: var(--color-text-secondary);
     --svg-size: 2.4rem;
-    > svg {
+    > .icon {
       width: var(--svg-size);
       height: var(--svg-size);
       margin-right: 1rem;
+    }
+    > .icon > svg {
+      width: var(--svg-size);
+      height: var(--svg-size);
     }
     > .text {
       font-family: var(--font-family-century);
