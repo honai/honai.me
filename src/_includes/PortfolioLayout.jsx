@@ -69,6 +69,9 @@ export const PortfolioLayout = ({
             <link rel="stylesheet" href={href} />
           ))}
         </noscript>
+
+        {/* theme-toggle */}
+        <script type="module" src="/scripts/theme-toggle.mjs"></script>
       </head>
 
       <body class="body-layout">
