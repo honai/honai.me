@@ -64,14 +64,6 @@ export const PortfolioLayout = ({
       </head>
 
       <body class="body-layout">
-        <script
-          dangerouslySetInnerHTML={{
-            __html: `
-              const theme = localStorage.getItem("theme-toggle-scheme");
-              document.body.classList.add(theme);
-            `,
-          }}
-        />
         <div class="center">
           <header class="portfolio-header">
             <h2 className="title">
@@ -96,6 +88,14 @@ export const PortfolioLayout = ({
             Eleventy
           </a>
         </footer>
+        <script
+          dangerouslySetInnerHTML={{
+            __html: `
+              const theme = localStorage.getItem("theme-toggle-scheme");
+              document.body.classList.add(theme);
+            `,
+          }}
+        />
       </body>
     </html>
   );
