@@ -1,6 +1,6 @@
 import { ThemeToggle } from "../components/ThemeToggle";
 import { useEleventy } from "../EleventyContext";
-import { Seo } from "../Seo";
+import { Seo } from "../components/Seo";
 
 const asyncStylesheets = [
   "/styles/index.css",
