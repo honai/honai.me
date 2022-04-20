@@ -37,17 +37,6 @@ export const PortfolioLayout = ({
           <link rel="preconnect" href={domain} />
         ))}
 
-        {/* 同期で読み込むStyleSheet */}
-        <link
-          rel="stylesheet"
-          href="/styles/theme-dark.css"
-          media="(prefers-color-scheme: dark)"
-        />
-        <link
-          rel="stylesheet"
-          href="/styles/theme-light.css"
-          media="(prefers-color-scheme: light)"
-        />
         <style
           dangerouslySetInnerHTML={{
             __html: sassinline("_portfolio-critical.scss"),
@@ -75,6 +64,14 @@ export const PortfolioLayout = ({
       </head>
 
       <body class="body-layout">
+        <script
+          dangerouslySetInnerHTML={{
+            __html: `
+              const theme = localStorage.getItem("theme-toggle-scheme");
+              document.body.classList.add(theme);
+            `,
+          }}
+        />
         <div class="center">
           <header class="portfolio-header">
             <h2 className="title">
