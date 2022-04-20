@@ -14,8 +14,8 @@ export default ({ profile, feeds, page }) => {
         </nav>
       </div>
 
-      <section class="simple-card">
-        <h2 class="heading" id="about">
+      <section id="about" class="simple-card">
+        <h2 class="heading">
           <a href="#about" class="anchor">
             About
           </a>
@@ -58,8 +58,8 @@ export default ({ profile, feeds, page }) => {
         </div>
       </section>
 
-      <section class="simple-card">
-        <h2 class="heading" id="education">
+      <section id="education" class="simple-card">
+        <h2 class="heading">
           <a href="#education" class="anchor">
             Education
           </a>
@@ -74,8 +74,8 @@ export default ({ profile, feeds, page }) => {
         ))}
       </section>
 
-      <section class="simple-card">
-        <h2 class="heading" id="intern">
+      <section id="intern" class="simple-card">
+        <h2 class="heading">
           <a href="#intern" class="anchor">
             Internships / Employments
           </a>
@@ -90,8 +90,8 @@ export default ({ profile, feeds, page }) => {
         ))}
       </section>
 
-      <section class="simple-card">
-        <h2 class="heading" id="publications">
+      <section id="publications" class="simple-card">
+        <h2 class="heading">
           <a href="#publications" class="anchor">
             Publications
           </a>
@@ -116,8 +116,8 @@ export default ({ profile, feeds, page }) => {
         ))}
       </section>
 
-      <section class="simple-card">
-        <h2 class="heading" id="posts">
+      <section id="posts" class="simple-card">
+        <h2 class="heading">
           <a href="#posts" class="anchor">
             Posts
           </a>
@@ -145,8 +145,8 @@ export default ({ profile, feeds, page }) => {
         ))}
       </section>
 
-      <section class="simple-card">
-        <h2 class="heading" id="presentations">
+      <section id="presentations" class="simple-card">
+        <h2 class="heading">
           <a href="#presentations" class="anchor">
             Presentations
           </a>
@@ -176,8 +176,8 @@ export default ({ profile, feeds, page }) => {
         </div>
       </section>
 
-      <section class="simple-card">
-        <h2 class="heading" id="works">
+      <section id="works" class="simple-card">
+        <h2 class="heading">
           <a href="#works" class="anchor">
             Works
           </a>
@@ -196,8 +196,8 @@ export default ({ profile, feeds, page }) => {
         </div>
       </section>
 
-      <section class="simple-card">
-        <h2 class="heading" id="blog">
+      <section id="blog" class="simple-card">
+        <h2 class="heading">
           <a href="#blog" class="anchor">
             Blog
           </a>
