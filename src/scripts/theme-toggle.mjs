@@ -2,56 +2,30 @@ const DARK = "dark";
 const LIGHT = "light";
 const SYSTEM = "system";
 
-const DARK_MEDIA = `(prefers-color-scheme: ${DARK})`;
-const LIGHT_MEDIA = `(prefers-color-scheme: ${LIGHT})`;
-
 const STORAGE_KEY = "theme-toggle-scheme";
-
-const darkCSS = document.querySelectorAll(
-  `link[rel=stylesheet][media*=prefers-color-scheme][media*="${DARK}"]`
-);
-const lightCSS = document.querySelectorAll(
-  `link[rel=stylesheet][media*=prefers-color-scheme][media*="${LIGHT}"]`
-);
 
 const updatePreference = (mode) => {
   savePreference(mode);
+  const { classList } = document.body;
   switch (mode) {
     case SYSTEM: {
-      darkCSS.forEach((link) => {
-        link.media = DARK_MEDIA;
-        link.disabled = false;
-      });
-      lightCSS.forEach((link) => {
-        link.media = LIGHT_MEDIA;
-        link.disabled = false;
-      });
+      classList.remove(DARK, LIGHT);
       break;
     }
     case DARK: {
-      darkCSS.forEach(enableCSS);
-      lightCSS.forEach(disableCSS);
+      classList.remove(LIGHT);
+      classList.add(DARK);
       break;
     }
     case LIGHT: {
-      darkCSS.forEach(disableCSS);
-      lightCSS.forEach(enableCSS);
+      classList.remove(DARK);
+      classList.add(LIGHT);
       break;
     }
     default:
       // noop
       break;
   }
-};
-
-const enableCSS = (link) => {
-  link.media = "all";
-  link.disabled = false;
-};
-
-const disableCSS = (link) => {
-  link.media = "not all";
-  link.disabled = true;
 };
 
 const storedPreference = () => {
