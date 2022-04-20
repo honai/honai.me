@@ -1,12 +1,20 @@
 // theme
 :root {
   --color-primary: #02454a;
+  --color-link: rgb(0, 0, 238);
+  --color-link-visited: rgb(85, 26, 139);
   --len-radius: 4px;
   --font-family-century: "Century Gothic", CenturyGothic, century-gothic,
     sans-serif;
   --font-weight-century: 400;
-  --color-link-light: rgb(62, 166, 255);
   --height-blog-header: 3.6rem;
+}
+
+a {
+  color: var(--color-link);
+  &:visited {
+    color: var(--color-link-visited);
+  }
 }
 
 @mixin light {
@@ -23,6 +31,8 @@
   --color-bg: #000;
   --color-fg: #000;
   --color-border: #444;
+  --color-link: rgb(62, 166, 255);
+  --color-link-visited: rgb(193, 128, 255);
 }
 
 @media (prefers-color-scheme: dark) {
