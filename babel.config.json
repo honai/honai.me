@@ -1,16 +1,17 @@
 {
   "presets": [
     [
-      "@babel/preset-react",
-      { "runtime": "automatic", "importSource": "preact" }
-    ],
-    [
       "@babel/preset-env",
       {
         "targets": {
           "node": "current"
         }
       }
-    ]
+    ],
+    [
+      "@babel/preset-react",
+      { "runtime": "automatic", "importSource": "preact" }
+    ],
+    "@linaria"
   ]
 }

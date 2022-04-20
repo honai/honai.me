@@ -35,7 +35,7 @@ module.exports = (eleventyConfig) => {
         return;
       }
       const result = sass.compileString(inputContent, {
-        loadPaths: [parsed.dir, this.config.dir.includes],
+        loadPaths: [parsed.dir, `${__dirname}/src/_includes`],
         style: "compressed",
       });
       return async (data) => {

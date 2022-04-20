@@ -6,3 +6,4 @@ dist
 /_site
 /build
 /src/_data/*.xml
+/src/_includes/**/*.css
