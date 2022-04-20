@@ -1,5 +1,5 @@
 import { BlogHeader } from "../_includes/BlogHeader";
-import { BlogLayout } from "../_includes/BlogLayout";
+import { BlogLayout } from "../_includes/layouts/BlogLayout";
 import { BlogPagination } from "../_includes/BlogPagination";
 import { Footer } from "../_includes/Footer";
 import { Script } from "../_includes/Script";

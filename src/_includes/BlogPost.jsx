@@ -1,5 +1,5 @@
 import { BlogHeader } from "./BlogHeader";
-import { BlogLayout } from "./BlogLayout";
+import { BlogLayout } from "./layouts/BlogLayout";
 import { useEleventy } from "./EleventyContext";
 import { Footer } from "./Footer";
 import { Script } from "./Script";

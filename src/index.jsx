@@ -1,5 +1,5 @@
 import { useEleventy } from "./_includes/EleventyContext";
-import { PortfolioLayout } from "./_includes/PortfolioLayout";
+import { PortfolioLayout } from "./_includes/layouts/PortfolioLayout";
 import { SpanSvg } from "./_includes/svg";
 
 export default ({ profile, feeds, page }) => {
