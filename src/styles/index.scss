@@ -1,21 +1,5 @@
 @use "variables" as v;
 
-.education-item {
-  > .period {
-    color: var(--color-text-secondary);
-  }
-  > .desc {
-  }
-}
-
-.post-item {
-  > .source {
-    text-align: right;
-    font-size: 1.4rem;
-    color: var(--color-text-secondary);
-  }
-}
-
 .slide-list {
   @media screen and (min-width: v.$break-sm) {
     display: flex;
@@ -68,30 +52,6 @@
 .works-page-link {
   padding-top: 0.4rem;
   text-align: center;
-}
-
-.site-footer {
-  color: var(--color-text-secondary);
-  font-size: 1.4rem;
-  text-align: center;
-  padding: 2rem 0;
-}
-
-// 404.ejs
-.notfound-heading {
-  text-align: center;
-  font-size: 2.8rem;
-  font-family: var(--font-family-century);
-}
-
-// works.ejs
-.work-thumb {
-  width: 100%;
-  height: auto;
-}
-.work-desc {
-  padding-left: 2rem;
-  line-height: 1.5;
 }
 
 a[target]:not(._nonewicon) {

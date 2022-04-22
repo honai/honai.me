@@ -46,13 +46,12 @@ const {
     },
   },
   utils: {
-    centuryGothic: (bool) =>
-      bool && {
-        fontFamily:
-          '"Century Gothic", CenturyGothic, century-gothic, sans-serif',
-        fontStyle: "normal",
-        fontWeight: 400,
-      },
+    centuryGothic: () => ({
+      fontFamily: '"Century Gothic", CenturyGothic, century-gothic, sans-serif',
+      fontStyle: "normal",
+      fontWeight: 400,
+    }),
+    inheritColor: () => ({ color: "inherit !important" }),
   },
 });
 
@@ -129,6 +128,11 @@ const helperClasses = globalCss({
   },
 });
 
+/** utility classes */
+const uc = {
+  uncolor: css({ color: "inherit !important" })(),
+};
+
 const getCssText = () => {
   normalizeStyle();
   colorSchemeStyles();
@@ -139,4 +143,4 @@ const getCssText = () => {
 /** @type {(...classNames: string[]) => string} */
 const cx = (...classNames) => classNames.join(" ");
 
-export { css, getCssText, cx };
+export { css, getCssText, cx, uc };

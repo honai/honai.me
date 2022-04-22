@@ -1,10 +1,11 @@
 import { ThemeToggle } from "../components/ThemeToggle";
 import { useEleventy } from "../EleventyContext";
 import { Seo } from "../components/Seo";
+import { css } from "../style.mjs";
 
 const asyncStylesheets = [
   "/styles/stitches.css",
-  "/styles/index.css",
+  // "/styles/index.css",
   "https://use.typekit.net/bdo3rru.css",
 ];
 const preconnectDomains = [
@@ -76,7 +77,14 @@ export const PortfolioLayout = ({
           </header>
           <main class="main-content">{children}</main>
         </div>
-        <footer class="site-footer">
+        <footer
+          class={css({
+            color: "$textSecondary",
+            fontSize: "1.4rem",
+            textAlign: "center",
+            padding: "2rem 0",
+          })()}
+        >
           &copy; 2022 Honai Ueoka
           <br />
           Powered by{" "}

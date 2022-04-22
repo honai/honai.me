@@ -1,11 +1,8 @@
-import { useEleventy } from "./_includes/EleventyContext";
-
 export const data = {
   permalink: "404.html",
 };
 
-export default (props) => {
-  const { sassinline } = useEleventy();
+export default () => {
   return (
     <html lang="ja">
       <head>
@@ -14,11 +11,7 @@ export default (props) => {
         <title>404 Not Found</title>
         <link rel="icon" href="/favicon.ico" />
         <link rel="stylesheet" href="https://use.typekit.net/bdo3rru.css" />
-        <style
-          dangerouslySetInnerHTML={{
-            __html: sassinline("_portfolio-critical.scss"),
-          }}
-        />
+        <link rel="stylesheet" href="/styles/stitches.css" />
       </head>
 
       <body className="body-layout">
