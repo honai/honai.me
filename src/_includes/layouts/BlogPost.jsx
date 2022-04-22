@@ -5,6 +5,7 @@ import { Footer } from "../components/Footer";
 import { Script } from "../components/Script";
 import { AdSenseWrap } from "../components/AdSenseWrap";
 import { ArticleHeader } from "../components/blog/ArticleHeader";
+import { css } from "../style.mjs";
 
 const githubLinkBase = "https://github.com/honai/honai.me/blob/main/";
 const styleSheets = [
@@ -54,10 +55,13 @@ export default ({
             </div>
             <aside class="aside">
               <div class="sticky">
-                <div class="post-toc">
-                  <div class="title">目次</div>
+                <div>
+                  <div class={tocTitle()}>目次</div>
                   {/* div > nav.toc > ol > li > a.-active */}
-                  <div dangerouslySetInnerHTML={{ __html: fn.toc(content) }} />
+                  <div
+                    dangerouslySetInnerHTML={{ __html: fn.toc(content) }}
+                    class={tocStyle()}
+                  />
                 </div>
 
                 <div class="post-navigate">
@@ -78,8 +82,11 @@ export default ({
                   )}
                 </div>
 
-                <div class="post-edit">
-                  <a href={`${githubLinkBase}${page.inputPath}`} class="link">
+                <div>
+                  <a
+                    href={`${githubLinkBase}${page.inputPath}`}
+                    class={postEditLink()}
+                  >
                     この記事の編集をリクエスト (GitHub)
                   </a>
                 </div>
@@ -120,3 +127,16 @@ export default ({
     </BlogLayout>
   );
 };
+
+const postEditLink = css({ color: "var(--color-text-secondary)" });
+
+const tocTitle = css({ fontSize: "1.8rem" });
+
+const tocStyle = css({
+  "> nav.toc": {
+    ol: { padding: "0 0 0 2.4rem" },
+    li: { color: "var(--color-text-secondary)" },
+    a: { color: "inherit" },
+    "a.-active": { fontWeight: "bold" },
+  },
+});
