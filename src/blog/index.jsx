@@ -3,6 +3,7 @@ import { BlogLayout } from "../_includes/layouts/BlogLayout";
 import { BlogPagination } from "../_includes/components/BlogPagination";
 import { Footer } from "../_includes/components/Footer";
 import { Script } from "../_includes/components/Script";
+import { AdSenseWrap } from "../_includes/components/AdSenseWrap";
 
 export const data = {
   pagination: {
@@ -47,7 +48,7 @@ export default ({ page, pagination }) => {
             ))}
           </ul>
           <BlogPagination pagination={pagination} />
-          <div class="ad-sense">
+          <AdSenseWrap>
             {/* ブログ記事一覧下 */}
             <ins
               class="adsbygoogle"
@@ -57,7 +58,7 @@ export default ({ page, pagination }) => {
               data-ad-format="auto"
               data-full-width-responsive="true"
             ></ins>
-          </div>
+          </AdSenseWrap>
         </div>
         <Footer />
       </div>

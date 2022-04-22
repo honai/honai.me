@@ -3,6 +3,7 @@ import { BlogLayout } from "./BlogLayout";
 import { useEleventy } from "../EleventyContext";
 import { Footer } from "../components/Footer";
 import { Script } from "../components/Script";
+import { AdSenseWrap } from "../components/AdSenseWrap";
 
 const githubLinkBase = "https://github.com/honai/honai.me/blob/main/";
 const styleSheets = [
@@ -105,16 +106,18 @@ export default ({
               ></div>
             </main>
 
-            <div class="ad ad-sense">
-              {/* 記事の下 */}
-              <ins
-                class="adsbygoogle"
-                style="display:block"
-                data-ad-client="ca-pub-9155380222623167"
-                data-ad-slot="4880052047"
-                data-ad-format="auto"
-                data-full-width-responsive="true"
-              ></ins>
+            <div class="ad">
+              <AdSenseWrap>
+                {/* 記事の下 */}
+                <ins
+                  class="adsbygoogle"
+                  style="display:block"
+                  data-ad-client="ca-pub-9155380222623167"
+                  data-ad-slot="4880052047"
+                  data-ad-format="auto"
+                  data-full-width-responsive="true"
+                ></ins>
+              </AdSenseWrap>
             </div>
           </article>
         </div>
