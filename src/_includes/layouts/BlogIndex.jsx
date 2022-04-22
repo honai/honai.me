@@ -25,7 +25,9 @@ export const BlogIndex = ({ pageUrl, posts, pagination }) => {
         <BlogHeader />
         <VerticalGrow.Grow>
           <div class={postListLayout()}>
-            <h1 class={cx("century-gothic", titleSty())}>Honai's Blog</h1>
+            <h1 class={cx(css({ centuryGothic: true })(), titleSty())}>
+              Honai's Blog
+            </h1>
             <PostList posts={posts} />
             <BlogPagination pagination={pagination} />
             <AdSenseWrap>

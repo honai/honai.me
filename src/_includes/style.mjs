@@ -1,14 +1,26 @@
 import { createStitches } from "@stitches/core";
 
+const minWidthMedia = (px) => `screen and (min-width: ${px}px)`;
+
 const {
   css,
   getCssText: getCssTextInternal,
   globalCss,
 } = createStitches({
   media: {
-    sm: "(min-width: 576px)",
-    md: "(min-width: 768px)",
-    lg: "(min-width: 992px)",
+    sm: minWidthMedia(576),
+    md: minWidthMedia(768),
+    lg: minWidthMedia(992),
+  },
+  utils: {
+    centuryGothic: (bool) =>
+      bool && {
+        fontFamily:
+          '"Century Gothic", CenturyGothic, century-gothic, sans-serif',
+        fontStyle: "normal",
+        fontWeight: 400,
+        fontDisplay: "swap",
+      },
   },
 });
 

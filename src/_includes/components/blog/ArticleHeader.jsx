@@ -10,7 +10,7 @@ export const ArticleHeader = ({ title, published, updated }) => (
   <header class={style()}>
     <h1 class="title">{title}</h1>
     <div>
-      <div class="century-gothic">
+      <div class={css({ centuryGothic: true })()}>
         <time data-js-locale-date dateTime={published}>
           {published}
         </time>
