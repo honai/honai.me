@@ -4,19 +4,13 @@ import { BlogPagination } from "../components/BlogPagination";
 import { Footer } from "../components/Footer";
 import { Script } from "../components/Script";
 import { AdSenseWrap } from "../components/AdSenseWrap";
-
-/**
- * @typedef PostItem
- * @prop {string} date ISO Date
- * @prop {string} url
- * @prop {string} title
- * @prop {string} description
- */
+import { PostList } from "../components/blog/PostList";
+import { css, cx } from "../style.mjs";
 
 /**
  * @param {object} p
  * @param {string} p.pageUrl
- * @param {PostItem[]} p.posts
+ * @param {import("../components/blog/PostList").PostItem[]} p.posts
  * @param {unknown} p.pagination
  */
 export const BlogIndex = ({ pageUrl, posts, pagination }) => {
@@ -28,31 +22,9 @@ export const BlogIndex = ({ pageUrl, posts, pagination }) => {
     >
       <div class="body-layout">
         <BlogHeader />
-        <div class="grow post-list-layout">
-          <h1 class="post-list-title century-gothic">Honai's Blog</h1>
-          <ul class="post-list-ul">
-            {posts.map((post) => (
-              <li class="post-list-item">
-                <div class="date">
-                  <time dateTime={post.date} class="post-publish-date">
-                    {post.date}
-                  </time>
-                </div>
-                <h2 class="title">
-                  <a href={post.url} class="link _reset-a">
-                    {post.title}
-                  </a>
-                </h2>
-                <p class="description">
-                  {post.description}
-                  ...
-                  <a href={post.url} class="_reset-a more">
-                    この記事を読む
-                  </a>
-                </p>
-              </li>
-            ))}
-          </ul>
+        <div class={cx("grow", postListLayout())}>
+          <h1 class={cx("century-gothic", titleSty())}>Honai's Blog</h1>
+          <PostList posts={posts} />
           <BlogPagination pagination={pagination} />
           <AdSenseWrap>
             {/* ブログ記事一覧下 */}
@@ -78,3 +50,11 @@ export const BlogIndex = ({ pageUrl, posts, pagination }) => {
     </BlogLayout>
   );
 };
+
+const postListLayout = css({
+  width: "100%",
+  maxWidth: "720px",
+  margin: "0 auto",
+  padding: "0 20px 20px",
+});
+const titleSty = css({ textAlign: "center", padding: "48px 0" });

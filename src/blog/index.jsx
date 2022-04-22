@@ -8,7 +8,7 @@ export const data = {
   },
 };
 
-/** @type {(p: any) => import("../_includes/layouts/BlogIndex").PostItem} */
+/** @type {(p: any) => import("../_includes/components/blog/PostList").PostItem} */
 const convertPost = (p) => {
   return {
     date: p.date,
