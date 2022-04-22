@@ -1,16 +1,49 @@
 import { createStitches } from "@stitches/core";
 
+const themeToObjStyle = (theme) => {
+  const res = {};
+  // TODO: add other than colors
+  [theme.colors].forEach((tokens) => {
+    Object.keys(tokens).forEach((k) => {
+      const token = tokens[k];
+      res[token.variable] = token.value;
+    });
+  });
+  return res;
+};
+
 const minWidthMedia = (px) => `screen and (min-width: ${px}px)`;
 
 const {
   css,
   getCssText: getCssTextInternal,
   globalCss,
+  createTheme,
+  theme: defaultTheme,
 } = createStitches({
   media: {
     sm: minWidthMedia(576),
     md: minWidthMedia(768),
     lg: minWidthMedia(992),
+    dark: "(prefers-color-scheme: dark)",
+  },
+  theme: {
+    colors: {
+      primary: "rgb(2, 69, 74)",
+      link: "rgb(0, 0, 238)",
+      linkVisited: "rgb(85, 26, 139)",
+      text: "#333",
+      textSecondary: "#666",
+      bg: "rgba(250, 250, 250)",
+      fg: "#fff",
+      border: "rgb(219, 219, 219)",
+      // TODO: primaryを再利用
+      borderTarget: "rgba(2, 69, 74, 0.5)",
+      shadow: "rgba(0, 0, 0, 0.2)",
+    },
+    radii: {
+      defaultRad: "4px",
+    },
   },
   utils: {
     centuryGothic: (bool) =>
@@ -23,10 +56,21 @@ const {
   },
 });
 
-/** @type {(...classNames: string[]) => string} */
-const cx = (...classNames) => classNames.join(" ");
+const darkTheme = createTheme({
+  colors: {
+    text: "#eee",
+    textSecondary: "#aaa",
+    bg: "#000",
+    fg: "#111",
+    border: "#444",
+    link: "rgb(62, 166, 255)",
+    linkVisited: "rgb(193, 128, 255)",
+    borderTarget: "$primary",
+    shadow: "rgba(255, 255, 255, 0.5)",
+  },
+});
 
-const globalStyle = globalCss({
+const normalizeStyle = globalCss({
   "*, *::before, *::after": {
     boxSizing: "border-box",
   },
@@ -56,6 +100,19 @@ const globalStyle = globalCss({
   img: {
     maxWidth: "100%",
   },
+  a: {
+    color: "$link",
+    "&:visited": { color: "$linkVisited" },
+  },
+});
+
+const colorSchemeStyles = globalCss({
+  // @ts-ignore
+  "@dark": { ":root": themeToObjStyle(darkTheme) },
+});
+
+/** @deprecated */
+const helperClasses = globalCss({
   "._rounded": {
     borderRadius: "50%",
   },
@@ -73,8 +130,13 @@ const globalStyle = globalCss({
 });
 
 const getCssText = () => {
-  globalStyle();
+  normalizeStyle();
+  colorSchemeStyles();
+  helperClasses();
   return getCssTextInternal();
 };
+
+/** @type {(...classNames: string[]) => string} */
+const cx = (...classNames) => classNames.join(" ");
 
 export { css, getCssText, cx };

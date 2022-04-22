@@ -63,7 +63,6 @@ export const BlogLayout = ({
           // @ts-ignore
           onload="this.media='all'"
         />
-        <link rel="stylesheet" href="/styles/blog.css" />
         <link rel="stylesheet" href="/styles/stitches.css" />
       </head>
 

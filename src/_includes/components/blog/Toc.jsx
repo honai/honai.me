@@ -11,9 +11,9 @@ export const Toc = ({ tocHtml }) => (
 const tocTitle = css({ fontSize: "1.8rem" });
 
 const tocStyle = css({
-  "> nav.toc": {
+  "& > nav.toc": {
     ol: { padding: "0 0 0 2.4rem" },
-    li: { color: "var(--color-text-secondary)" },
+    li: { color: "$textSecondary" },
     a: { color: "inherit" },
     "a.-active": { fontWeight: "bold" },
   },

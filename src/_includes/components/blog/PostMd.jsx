@@ -14,7 +14,7 @@ const mdStyle = css({
   },
   "> h3::before": {
     content: '""',
-    backgroundColor: "var(--color-primary)",
+    backgroundColor: "$primary",
     height: "25px",
     width: "5px",
     borderRadius: "3px",
