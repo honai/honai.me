@@ -1,7 +1,6 @@
 import { ThemeToggle } from "../components/ThemeToggle";
 import { useEleventy } from "../EleventyContext";
 import { Seo } from "../components/Seo";
-import { css, cx } from "../style.mjs";
 
 const asyncStylesheets = [
   "/styles/stitches.css",
@@ -77,7 +76,7 @@ export const PortfolioLayout = ({
           </header>
           <main class="main-content">{children}</main>
         </div>
-        <footer class={cx("site-footer", style())}>
+        <footer class="site-footer">
           &copy; 2022 Honai Ueoka
           <br />
           Powered by{" "}
@@ -102,5 +101,3 @@ export const PortfolioLayout = ({
     </html>
   );
 };
-
-const style = css({ color: "blue" });

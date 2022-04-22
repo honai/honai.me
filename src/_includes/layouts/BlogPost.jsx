@@ -7,6 +7,8 @@ import { AdSenseWrap } from "../components/AdSenseWrap";
 import { ArticleHeader } from "../components/blog/ArticleHeader";
 import { css } from "../style.mjs";
 import { PostMd } from "../components/blog/PostMd";
+import { Toc } from "../components/blog/Toc";
+import { PostNavigate } from "../components/blog/PostNavigate";
 
 const githubLinkBase = "https://github.com/honai/honai.me/blob/main/";
 const styleSheets = [
@@ -46,7 +48,7 @@ export default ({
       <div class="body-layout">
         <BlogHeader />
         <div class="grow">
-          <article class="article-layout">
+          <article class={articleLayout()}>
             <div class="header">
               <ArticleHeader
                 title={title}
@@ -56,33 +58,8 @@ export default ({
             </div>
             <aside class="aside">
               <div class="sticky">
-                <div>
-                  <div class={tocTitle()}>目次</div>
-                  {/* div > nav.toc > ol > li > a.-active */}
-                  <div
-                    dangerouslySetInnerHTML={{ __html: fn.toc(content) }}
-                    class={tocStyle()}
-                  />
-                </div>
-
-                <div class="post-navigate">
-                  <div>
-                    <a href="/blog">記事一覧</a>
-                  </div>
-                  {newerPost && (
-                    <div>
-                      次の記事:{" "}
-                      <a href={newerPost.url}>{newerPost.data.title}</a>
-                    </div>
-                  )}
-                  {olderPost && (
-                    <div>
-                      前の記事:{" "}
-                      <a href={olderPost.url}>{olderPost.data.title}</a>
-                    </div>
-                  )}
-                </div>
-
+                <Toc tocHtml={fn.toc(content)} />
+                <PostNavigate newerPost={newerPost} olderPost={olderPost} />
                 <div>
                   <a
                     href={`${githubLinkBase}${page.inputPath}`}
@@ -126,15 +103,33 @@ export default ({
   );
 };
 
-const postEditLink = css({ color: "var(--color-text-secondary)" });
-
-const tocTitle = css({ fontSize: "1.8rem" });
-
-const tocStyle = css({
-  "> nav.toc": {
-    ol: { padding: "0 0 0 2.4rem" },
-    li: { color: "var(--color-text-secondary)" },
-    a: { color: "inherit" },
-    "a.-active": { fontWeight: "bold" },
+const articleLayout = css({
+  padding: "1rem",
+  "@md": {
+    display: "grid",
+    gridTemplateAreas: `"header header"
+                        "main   aside"
+                        "ad     ."`,
+    maxWidth: "120rem",
+    margin: "0 auto",
+    gridTemplateColumns: "minmax(0, 1fr) min(30rem, 30vw)",
+    gridTemplateRows: "18rem auto auto",
+    padding: "2rem 3rem",
+    gap: "2rem 6rem",
+    "> .header": { gridArea: "header", maxWidth: "72rem", margin: "auto" },
+    "> .aside": { gridArea: "aside" },
+    "> .main": { gridArea: "main" },
+    "> .aside > .sticky": {
+      position: "sticky",
+      top: "2rem",
+      display: "flex",
+      flexDirection: "column",
+      gap: "2rem",
+      maxHeight: "calc(100vh - 4rem)",
+      overflowY: "auto",
+    },
+    "> .ad": { gridArea: "ad", margin: "1rem" },
   },
 });
+
+const postEditLink = css({ color: "var(--color-text-secondary)" });

@@ -2,7 +2,9 @@ import { createStitches } from "@stitches/core";
 
 export const { css, getCssText, reset } = createStitches({
   media: {
-    lg: "(min-width: 960px)",
+    sm: "(min-width: 576px)",
+    md: "(min-width: 768px)",
+    lg: "(min-width: 992px)",
   },
 });
 
