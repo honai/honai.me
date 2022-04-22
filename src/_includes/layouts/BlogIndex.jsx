@@ -6,6 +6,7 @@ import { Script } from "../components/Script";
 import { AdSenseWrap } from "../components/AdSenseWrap";
 import { PostList } from "../components/blog/PostList";
 import { css, cx } from "../style.mjs";
+import VerticalGrow from "../components/VerticalGrow";
 
 /**
  * @param {object} p
@@ -20,26 +21,28 @@ export const BlogIndex = ({ pageUrl, posts, pagination }) => {
       title="Honai's Blog"
       description="honaiのブログの記事一覧"
     >
-      <div class="body-layout">
+      <VerticalGrow>
         <BlogHeader />
-        <div class={cx("grow", postListLayout())}>
-          <h1 class={cx("century-gothic", titleSty())}>Honai's Blog</h1>
-          <PostList posts={posts} />
-          <BlogPagination pagination={pagination} />
-          <AdSenseWrap>
-            {/* ブログ記事一覧下 */}
-            <ins
-              class="adsbygoogle"
-              style="display:block"
-              data-ad-client="ca-pub-9155380222623167"
-              data-ad-slot="3792188932"
-              data-ad-format="auto"
-              data-full-width-responsive="true"
-            ></ins>
-          </AdSenseWrap>
-        </div>
+        <VerticalGrow.Grow>
+          <div class={postListLayout()}>
+            <h1 class={cx("century-gothic", titleSty())}>Honai's Blog</h1>
+            <PostList posts={posts} />
+            <BlogPagination pagination={pagination} />
+            <AdSenseWrap>
+              {/* ブログ記事一覧下 */}
+              <ins
+                class="adsbygoogle"
+                style="display:block"
+                data-ad-client="ca-pub-9155380222623167"
+                data-ad-slot="3792188932"
+                data-ad-format="auto"
+                data-full-width-responsive="true"
+              ></ins>
+            </AdSenseWrap>
+          </div>
+        </VerticalGrow.Grow>
         <Footer />
-      </div>
+      </VerticalGrow>
       <Script>{`
         const publishDateEls = document.getElementsByClassName('post-publish-date')
         for (const el of publishDateEls) {

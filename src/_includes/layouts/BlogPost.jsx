@@ -9,6 +9,7 @@ import { css } from "../style.mjs";
 import { PostMd } from "../components/blog/PostMd";
 import { Toc } from "../components/blog/Toc";
 import { PostNavigate } from "../components/blog/PostNavigate";
+import VerticalGrow from "../components/VerticalGrow";
 
 const githubLinkBase = "https://github.com/honai/honai.me/blob/main/";
 const styleSheets = [
@@ -45,9 +46,9 @@ export default ({
       ogImageUrl={og_image_url}
       styleSheets={styleSheets}
     >
-      <div class="body-layout">
+      <VerticalGrow>
         <BlogHeader />
-        <div class="grow">
+        <VerticalGrow.Grow>
           <article class={articleLayout()}>
             <div class="header">
               <ArticleHeader
@@ -89,9 +90,9 @@ export default ({
               </AdSenseWrap>
             </div>
           </article>
-        </div>
+        </VerticalGrow.Grow>
         <Footer />
-      </div>
+      </VerticalGrow>
 
       <script defer src="/scripts/blog-post.js"></script>
       {plugins.includes("twitter") && (
