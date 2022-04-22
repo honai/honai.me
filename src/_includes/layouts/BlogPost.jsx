@@ -6,6 +6,7 @@ import { Script } from "../components/Script";
 import { AdSenseWrap } from "../components/AdSenseWrap";
 import { ArticleHeader } from "../components/blog/ArticleHeader";
 import { css } from "../style.mjs";
+import { PostMd } from "../components/blog/PostMd";
 
 const githubLinkBase = "https://github.com/honai/honai.me/blob/main/";
 const styleSheets = [
@@ -94,10 +95,7 @@ export default ({
             </aside>
 
             <main class="main">
-              <div
-                class="post-markdown"
-                dangerouslySetInnerHTML={{ __html: content }}
-              ></div>
+              <PostMd content={content} />
             </main>
 
             <div class="ad">

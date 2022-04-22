@@ -16,8 +16,7 @@
     grid-template-columns: minmax(0, 1fr) min(30rem, 30vw);
     grid-template-rows: 18rem auto auto;
     padding: 2rem 3rem;
-    gap: 2rem 4rem;
-
+    gap: 2rem 6rem;
     > .header {
       grid-area: header;
       max-width: 72rem;
@@ -28,9 +27,6 @@
     }
     > .main {
       grid-area: main;
-    }
-    > .main > .post-markdown {
-      max-width: 72rem;
     }
 
     > .aside > .sticky {
