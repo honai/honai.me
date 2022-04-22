@@ -1,5 +1,5 @@
 import { useEleventy } from "./_includes/EleventyContext";
-import { PortfolioLayout } from "./_includes/PortfolioLayout";
+import { PortfolioLayout } from "./_includes/layouts/PortfolioLayout";
 
 export default ({ profile, page }) => {
   const { mdinline } = useEleventy();

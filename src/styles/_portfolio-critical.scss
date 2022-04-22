@@ -52,6 +52,10 @@
   color: var(--color-text);
   border: 1px solid var(--color-border);
   border-radius: var(--len-radius);
+  &:target {
+    border: 2px solid var(--color-border-target);
+    box-shadow: 0 0 3px var(--color-shadow);
+  }
   > .heading {
     font-family: var(--font-family-century);
     font-size: 2rem;

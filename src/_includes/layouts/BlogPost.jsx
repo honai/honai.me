@@ -1,8 +1,8 @@
-import { BlogHeader } from "./BlogHeader";
+import { BlogHeader } from "../components/BlogHeader";
 import { BlogLayout } from "./BlogLayout";
-import { useEleventy } from "./EleventyContext";
-import { Footer } from "./Footer";
-import { Script } from "./Script";
+import { useEleventy } from "../EleventyContext";
+import { Footer } from "../components/Footer";
+import { Script } from "../components/Script";
 
 const githubLinkBase = "https://github.com/honai/honai.me/blob/main/";
 const styleSheets = [

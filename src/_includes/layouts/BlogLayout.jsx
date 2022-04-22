@@ -1,5 +1,5 @@
-import { Script } from "./Script";
-import { Seo } from "./Seo";
+import { Script } from "../components/Script";
+import { Seo } from "../components/Seo";
 
 /**
  * @typedef {Object} StyleSheet

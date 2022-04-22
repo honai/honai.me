@@ -1,8 +1,8 @@
-import { BlogHeader } from "../_includes/BlogHeader";
-import { BlogLayout } from "../_includes/BlogLayout";
-import { BlogPagination } from "../_includes/BlogPagination";
-import { Footer } from "../_includes/Footer";
-import { Script } from "../_includes/Script";
+import { BlogHeader } from "../_includes/components/BlogHeader";
+import { BlogLayout } from "../_includes/layouts/BlogLayout";
+import { BlogPagination } from "../_includes/components/BlogPagination";
+import { Footer } from "../_includes/components/Footer";
+import { Script } from "../_includes/components/Script";
 
 export const data = {
   pagination: {
