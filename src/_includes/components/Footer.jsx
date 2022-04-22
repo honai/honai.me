@@ -1,5 +1,7 @@
+import { css } from "../style.mjs";
+
 export const Footer = () => (
-  <footer class="site-footer">
+  <footer class={style()}>
     &copy; 2021 Honai Ueoka
     <br />
     <a href="/" class="_uncolor">
@@ -15,3 +17,10 @@ export const Footer = () => (
     </a>
   </footer>
 );
+
+const style = css({
+  backgroundColor: "#444",
+  color: "#ccc",
+  textAlign: "center",
+  padding: "2rem",
+});

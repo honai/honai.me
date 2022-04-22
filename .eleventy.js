@@ -9,7 +9,7 @@ const markdownItKatex = require("@iktakahiro/markdown-it-katex");
 const pluginTOC = require("eleventy-plugin-nesting-toc");
 const yaml = require("js-yaml");
 
-const jsx = require("./jsxHandler");
+const jsx = require("./customHandlers/jsx");
 
 module.exports = (eleventyConfig) => {
   eleventyConfig.setTemplateFormats(["jsx", "scss", "md", "11ty.js", "css"]);
@@ -24,6 +24,9 @@ module.exports = (eleventyConfig) => {
   eleventyConfig.addDataExtension("yaml", (contents) => yaml.load(contents));
 
   // jsx
+  require("@babel/register")({
+    extensions: [".jsx", ".mjs"],
+  });
   eleventyConfig.addExtension("jsx", jsx);
 
   // sass
@@ -80,6 +83,12 @@ module.exports = (eleventyConfig) => {
     .use(markdownItAnchor)
     .use(markdownItKatex);
   eleventyConfig.setLibrary("md", mdLib);
+
+  // after
+  eleventyConfig.on("eleventy.after", async () => {
+    const { getCssText } = require("./src/_includes/style.mjs");
+    fs.promises.writeFile("build/stitches.css", getCssText());
+  });
 
   return {
     dir: {
