@@ -1,6 +1,6 @@
-import { BlogHeader } from "../components/BlogHeader";
+import { BlogHeader } from "../components/blog/BlogHeader";
 import { BlogLayout } from "../layouts/BlogLayout";
-import { BlogPagination } from "../components/BlogPagination";
+import { BlogPagination } from "../components/blog/BlogPagination";
 import { Footer } from "../components/Footer";
 import { Script } from "../components/Script";
 import { AdSenseWrap } from "../components/AdSenseWrap";

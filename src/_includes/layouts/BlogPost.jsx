@@ -1,4 +1,4 @@
-import { BlogHeader } from "../components/BlogHeader";
+import { BlogHeader } from "../components/blog/BlogHeader";
 import { BlogLayout } from "./BlogLayout";
 import { useEleventy } from "../EleventyContext";
 import { Footer } from "../components/Footer";

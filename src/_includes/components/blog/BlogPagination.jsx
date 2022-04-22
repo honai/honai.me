@@ -1,4 +1,4 @@
-import { css } from "../style.mjs";
+import { css } from "../../style.mjs";
 
 export const BlogPagination = ({ pagination }) => {
   const nextHref = pagination.href.next;

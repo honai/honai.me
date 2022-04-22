@@ -1,4 +1,4 @@
-import { css } from "../style.mjs";
+import { css } from "../../style.mjs";
 
 export const BlogHeader = () => (
   <header class={header()}>
