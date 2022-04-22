@@ -10,6 +10,7 @@ const pluginTOC = require("eleventy-plugin-nesting-toc");
 const yaml = require("js-yaml");
 
 const jsx = require("./customHandlers/jsx");
+const scss = require("./customHandlers/scss");
 
 module.exports = (eleventyConfig) => {
   eleventyConfig.setTemplateFormats(["jsx", "scss", "md", "11ty.js", "css"]);
@@ -30,22 +31,7 @@ module.exports = (eleventyConfig) => {
   eleventyConfig.addExtension("jsx", jsx);
 
   // sass
-  eleventyConfig.addExtension("scss", {
-    outputFileExtension: "css",
-    compile: async function (inputContent, inputPath) {
-      const parsed = path.parse(inputPath);
-      if (parsed.name.startsWith("_")) {
-        return;
-      }
-      const result = sass.compileString(inputContent, {
-        loadPaths: [parsed.dir, this.config.dir.includes],
-        style: "compressed",
-      });
-      return async (data) => {
-        return result.css;
-      };
-    },
-  });
+  eleventyConfig.addExtension("scss", scss);
   eleventyConfig.addShortcode("sassinline", function (filename) {
     return sass.compile(`${__dirname}/src/styles/${filename}`, {
       loadPaths: [`${__dirname}/src/_includes`],
@@ -87,7 +73,7 @@ module.exports = (eleventyConfig) => {
   // after
   eleventyConfig.on("eleventy.after", async () => {
     const { getCssText } = require("./src/_includes/style.mjs");
-    fs.promises.writeFile("build/stitches.css", getCssText());
+    await fs.promises.writeFile("build/styles/stitches.css", getCssText());
   });
 
   return {
