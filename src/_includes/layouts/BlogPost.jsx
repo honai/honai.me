@@ -4,6 +4,7 @@ import { useEleventy } from "../EleventyContext";
 import { Footer } from "../components/Footer";
 import { Script } from "../components/Script";
 import { AdSenseWrap } from "../components/AdSenseWrap";
+import { ArticleHeader } from "../components/blog/ArticleHeader";
 
 const githubLinkBase = "https://github.com/honai/honai.me/blob/main/";
 const styleSheets = [
@@ -44,27 +45,13 @@ export default ({
         <BlogHeader />
         <div class="grow">
           <article class="article-layout">
-            <header class="header article-header">
-              <h1 class="title">{title}</h1>
-              <div class="meta">
-                <div class="century-gothic date">
-                  <time id="published-time" dateTime={fn.isodate(page.date)}>
-                    {fn.isodate(page.date)}
-                  </time>
-                  {updated && (
-                    <>
-                      {" "}
-                      (Updated at{" "}
-                      <time id="updated-time" dateTime={fn.isodate(updated)}>
-                        {updated}
-                      </time>
-                      )
-                    </>
-                  )}
-                </div>
-              </div>
-            </header>
-
+            <div class="header">
+              <ArticleHeader
+                title={title}
+                published={fn.isodate(page.date)}
+                updated={updated ?? fn.isodate(updated)}
+              />
+            </div>
             <aside class="aside">
               <div class="sticky">
                 <div class="post-toc">
