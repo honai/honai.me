@@ -105,6 +105,7 @@ export default ({
 };
 
 const articleLayout = css({
+  // FIXME: class直書き指定をやめる
   padding: "1rem",
   "@md": {
     display: "grid",
@@ -133,4 +134,4 @@ const articleLayout = css({
   },
 });
 
-const postEditLink = css({ color: "var(--color-text-secondary)" });
+const postEditLink = css({ color: "$textSecondary" });

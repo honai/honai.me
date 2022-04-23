@@ -52,8 +52,8 @@ const dateSty = css({ color: "rgba(0, 0, 0, 0.75)" });
 const titleSty = css({
   fontSize: "2.4rem",
   padding: "0.5rem 0",
-  borderBottom: "1px solid var(--color-primary)",
-  color: "var(--color-primary)",
+  borderBottom: "1px solid $primary",
+  color: "$primary",
 });
 const titleLink = css({ display: "block", textDecoration: "none" });
 const descSty = css({ padding: "0.5rem 0" });

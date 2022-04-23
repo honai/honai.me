@@ -21,9 +21,9 @@ const svgIcon = css({
 });
 
 const select = css({
-  color: "var(--color-text)",
-  backgroundColor: "var(--color-fg)",
-  border: "1px solid var(--color-border)",
+  color: "$text",
+  backgroundColor: "transparent",
+  border: "1px solid $border",
   borderRadius: "0.5rem",
   padding: "0.5rem 0",
 });
