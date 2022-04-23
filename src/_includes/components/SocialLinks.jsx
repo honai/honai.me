@@ -6,7 +6,7 @@ import { SpanSvg } from "../svg";
  * @param {{url: string; text: string; icon: string}[]} p.links
  */
 export const SocialLinks = ({ links }) => (
-  <ul class={cx("_reset-ul", list())}>
+  <ul class={cx(uc.resetUl, list())}>
     {links.map(({ url, icon, text }) => (
       <li class={iconTextFlex()}>
         <a
@@ -20,12 +20,7 @@ export const SocialLinks = ({ links }) => (
         >
           <SpanSvg class={spanSvgSty()} filename={icon} />
         </a>
-        <a
-          href={url}
-          target="_blank"
-          rel="noopener"
-          class={cx(link(), uc.uncolor)}
-        >
+        <a href={url} target="_blank" rel="noopener" class={link()}>
           <span class="text">{text}</span>
         </a>
       </li>

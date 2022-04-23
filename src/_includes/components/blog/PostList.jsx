@@ -6,7 +6,7 @@
  * @prop {string} description
  */
 
-import { css, cx } from "../../style.mjs";
+import { css, cx, uc } from "../../style.mjs";
 
 /**
  * @param {object} p
@@ -23,14 +23,14 @@ export const PostList = ({ posts }) => {
             </time>
           </div>
           <h2 class={titleSty()}>
-            <a href={post.url} class={cx("_reset-a", titleLink())}>
+            <a href={post.url} class={cx(uc.uncolor, titleLink())}>
               {post.title}
             </a>
           </h2>
           <p class={descSty()}>
             {post.description}
             ...
-            <a href={post.url} class={cx("_reset-a", moreSty())}>
+            <a href={post.url} class={cx(uc.uncolor, moreSty())}>
               この記事を読む
             </a>
           </p>

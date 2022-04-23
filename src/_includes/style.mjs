@@ -69,11 +69,6 @@ const darkTheme = createTheme({
   },
 });
 
-/** utility classes */
-const uc = {
-  uncolor: css({ color: "inherit !important" })(),
-};
-
 const normalizeStyle = globalCss({
   "*, *::before, *::after": {
     boxSizing: "border-box",
@@ -131,28 +126,18 @@ const colorSchemeStyles = globalCss({
   "@dark": { ":root": themeToObjStyle(darkTheme) },
 });
 
-/** @deprecated */
-const helperClasses = globalCss({
-  "._rounded": {
-    borderRadius: "50%",
-  },
-  "._uncolor": {
-    color: "inherit !important",
-  },
-  "._reset-ul": {
+/** utility classes */
+const uc = {
+  uncolor: css({ color: "inherit !important" })(),
+  resetUl: css({
     paddingLeft: "0",
     listStyle: "none",
-  },
-  "._reset-a": {
-    color: "inherit !important",
-    textDecorationLine: "inherit !important",
-  },
-});
+  })(),
+};
 
 const getCssText = () => {
   normalizeStyle();
   colorSchemeStyles();
-  helperClasses();
   return getCssTextInternal();
 };
 

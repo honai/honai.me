@@ -1,9 +1,12 @@
-import { css, cx } from "../../style.mjs";
+import { css, cx, uc } from "../../style.mjs";
 
 export const BlogHeader = () => (
   <header class={header()}>
     <div class={cx(title(), css({ centuryGothic: true })())}>
-      <a href="/blog/" class="_reset-a">
+      <a
+        href="/blog/"
+        class={cx(uc.uncolor, css({ textDecoration: "none" })())}
+      >
         Honai's Blog
       </a>
     </div>

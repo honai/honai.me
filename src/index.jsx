@@ -4,7 +4,7 @@ import { SlideList } from "./_includes/components/SlideList";
 import { SocialLinks } from "./_includes/components/SocialLinks";
 import { useEleventy } from "./_includes/EleventyContext";
 import { PortfolioLayout } from "./_includes/layouts/PortfolioLayout";
-import { css, cx } from "./_includes/style.mjs";
+import { css, cx, uc } from "./_includes/style.mjs";
 import { SpanSvg } from "./_includes/svg";
 
 export default ({ profile, feeds, page }) => {
@@ -103,7 +103,7 @@ export default ({ profile, feeds, page }) => {
                 href={post.sourceUrl}
                 target="_blank"
                 rel="noopener"
-                class="_uncolor"
+                class={uc.uncolor}
               >
                 {post.sourceTitle}
               </a>
@@ -122,7 +122,7 @@ export default ({ profile, feeds, page }) => {
         <SimpleCard.Content>
           <ul
             class={cx(
-              "_reset-ul",
+              uc.resetUl,
               css({ padding: "1rem 2rem 2rem", display: "grid", gap: "2rem" })()
             )}
           >
