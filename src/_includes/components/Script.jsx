@@ -1,3 +1,3 @@
 export const Script = ({ children, ...attrs }) => (
-  <script {...attrs} dangerouslySetInnerHTML={{ __html: children }} />
+  <script {...attrs} dangerouslySetInnerHTML={{ __html: children.trim() }} />
 );

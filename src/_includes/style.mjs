@@ -19,7 +19,7 @@ const {
   getCssText: getCssTextInternal,
   globalCss,
   createTheme,
-  theme: defaultTheme,
+  theme: lightTheme,
 } = createStitches({
   media: {
     sm: minWidthMedia(576),
@@ -144,4 +144,4 @@ const getCssText = () => {
 /** @type {(...classNames: string[]) => string} */
 const cx = (...classNames) => classNames.join(" ");
 
-export { css, getCssText, cx, uc };
+export { css, getCssText, cx, uc, darkTheme, lightTheme };

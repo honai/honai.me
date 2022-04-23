@@ -74,14 +74,6 @@ export const PortfolioLayout = ({
           </main>
         </div>
         <Footer />
-        <script
-          dangerouslySetInnerHTML={{
-            __html: `
-              const theme = localStorage.getItem("theme-toggle-scheme");
-              document.body.classList.add(theme);
-            `,
-          }}
-        />
       </body>
     </html>
   );
