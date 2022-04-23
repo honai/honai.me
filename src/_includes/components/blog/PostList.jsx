@@ -17,7 +17,7 @@ export const PostList = ({ posts }) => {
     <ul class={listStyle()}>
       {posts.map((post) => (
         <li>
-          <div class={dateSty()}>
+          <div class={css({ color: "$textSecondary" })()}>
             <time dateTime={post.date} class="post-publish-date">
               {post.date}
             </time>
@@ -48,7 +48,6 @@ const listStyle = css({
   gap: "3.6rem",
 });
 
-const dateSty = css({ color: "rgba(0, 0, 0, 0.75)" });
 const titleSty = css({
   fontSize: "2.4rem",
   padding: "0.5rem 0",
