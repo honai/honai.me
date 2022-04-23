@@ -36,6 +36,7 @@ const {
       textSecondary: "#666",
       bg: "rgba(250, 250, 250)",
       fg: "#fff",
+      bgGray: "#eee",
       border: "rgb(219, 219, 219)",
       // TODO: primaryを再利用
       borderTarget: "rgba(2, 69, 74, 0.5)",
@@ -61,6 +62,7 @@ const darkTheme = createTheme({
     textSecondary: "#aaa",
     bg: "#000",
     fg: "#111",
+    bgGray: "#2d2d2d",
     border: "#444",
     link: "rgb(62, 166, 255)",
     linkVisited: "rgb(193, 128, 255)",

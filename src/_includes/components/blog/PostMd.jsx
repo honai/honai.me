@@ -46,12 +46,9 @@ const mdStyle = css({
     verticalAlign: "bottom",
     borderBottom: "2px solid #dee2e6",
   },
-  ':not(pre) > code[class="language-text"]': {
-    backgroundColor: "#eee",
+  ":not(pre) > code.language-text": {
     color: "$text",
-    "@dark": {
-      backgroundColor: "#2d2d2d",
-    },
+    backgroundColor: "$bgGray",
   },
   "> blockquote": {
     margin: "0",
