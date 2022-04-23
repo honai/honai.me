@@ -5,6 +5,7 @@ const syntaxHighlight = require("@11ty/eleventy-plugin-syntaxhighlight");
 const markdownIt = require("markdown-it");
 const markdownItAnchor = require("markdown-it-anchor");
 const markdownItKatex = require("@iktakahiro/markdown-it-katex");
+const markdownItLinkAttrs = require("markdown-it-link-attributes");
 const pluginTOC = require("eleventy-plugin-nesting-toc");
 const yaml = require("js-yaml");
 
@@ -56,7 +57,23 @@ module.exports = (eleventyConfig) => {
   // markdown customize
   const mdLib = markdownIt({ html: true })
     .use(markdownItAnchor)
-    .use(markdownItKatex);
+    .use(markdownItKatex)
+    .use(markdownItLinkAttrs, {
+      // 外部リンクを target blank
+      matcher(href, config) {
+        const hasScheme = /^(https?:)?\/\//;
+        if (!hasScheme.test(href)) {
+          // 相対パス or 絶対パス or fragment
+          return false;
+        }
+        const sameDomainUrl = /^(https?:)?\/\/[^\/]*honai\.me($|[^.])/;
+        return !sameDomainUrl.test(href);
+      },
+      attrs: {
+        target: "_blank",
+        rel: "noopener",
+      },
+    });
   eleventyConfig.setLibrary("md", mdLib);
 
   // after
@@ -70,5 +87,6 @@ module.exports = (eleventyConfig) => {
       input: "src",
       output: "build",
     },
+    markdownTemplateEngine: false,
   };
 };
