@@ -1,5 +1,6 @@
 import { PortfolioHeader } from "./_includes/components/PortfolioHeader";
 import SimpleCard from "./_includes/components/SimpleCard";
+import { SocialLinks } from "./_includes/components/SocialLinks";
 import { useEleventy } from "./_includes/EleventyContext";
 import { PortfolioLayout } from "./_includes/layouts/PortfolioLayout";
 import { css, cx } from "./_includes/style.mjs";
@@ -31,21 +32,7 @@ export default ({ profile, feeds, page }) => {
           </p>
         </SimpleCard.Content>
         <SimpleCard.Content>
-          <ul class="social-links _reset-ul">
-            {profile.links.map((L) => (
-              <li class="item">
-                <a
-                  href={L.url}
-                  target="_blank"
-                  rel="noopener"
-                  class="link _reset-a"
-                >
-                  <SpanSvg class="icon" filename={L.icon} />
-                  <span class="text">{L.text}</span>
-                </a>
-              </li>
-            ))}
-          </ul>
+          <SocialLinks links={profile.links} />
         </SimpleCard.Content>
       </SimpleCard>
 

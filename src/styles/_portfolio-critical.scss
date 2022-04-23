@@ -19,31 +19,3 @@
     color: var(--color-text-secondary);
   }
 }
-
-.social-links {
-  padding: 0 1rem;
-  > .item {
-    margin-bottom: 1.5rem;
-    &:last-child {
-      margin-bottom: 0;
-    }
-  }
-  > .item > .link {
-    display: flex;
-    align-items: center;
-    color: var(--color-text-secondary);
-    --svg-size: 2.4rem;
-    > .icon {
-      width: var(--svg-size);
-      height: var(--svg-size);
-      margin-right: 1rem;
-    }
-    > .icon > svg {
-      width: var(--svg-size);
-      height: var(--svg-size);
-    }
-    > .text {
-      font-family: var(--font-family-century);
-    }
-  }
-}
