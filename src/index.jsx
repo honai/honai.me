@@ -1,14 +1,22 @@
+import { Articles } from "./_includes/components/Articles";
 import { PortfolioHeader } from "./_includes/components/PortfolioHeader";
 import SimpleCard from "./_includes/components/SimpleCard";
 import { SlideList } from "./_includes/components/SlideList";
 import { SocialLinks } from "./_includes/components/SocialLinks";
-import { useEleventy } from "./_includes/EleventyContext";
 import { PortfolioLayout } from "./_includes/layouts/PortfolioLayout";
 import { css, cx, uc } from "./_includes/style.mjs";
 import { SpanSvg } from "./_includes/svg";
 
-export default ({ profile, feeds, page }) => {
-  const { isodate } = useEleventy();
+export default ({ profile, feeds, page, collections }) => {
+  const posts = collections.posts.map(({ data, date, url }) => ({
+    title: data.title,
+    url,
+    date,
+    thumb: data.og_image_url,
+  }));
+  const latestArticles = [...posts, ...feeds]
+    .sort((a, b) => new Date(b.date).getTime() - new Date(a.date).getTime())
+    .slice(0, 5);
   return (
     <PortfolioLayout pageUrl={page.url}>
       <PortfolioHeader title="Hi👋 I'm Honai." showNav />
@@ -82,35 +90,7 @@ export default ({ profile, feeds, page }) => {
         ))}
       </SimpleCard>
 
-      <SimpleCard id="posts" title="Posts">
-        {feeds.map((post) => (
-          <SimpleCard.Content>
-            <a href={post.link} target="_blank" rel="noopener">
-              {post.title}
-            </a>
-            <div
-              class={css({
-                textAlign: "right",
-                fontSize: "1.4rem",
-                color: "$textSecondary",
-              })()}
-            >
-              <time dateTime={isodate(post.pubDate)}>
-                {isodate(post.pubDate)}
-              </time>{" "}
-              &middot;{" "}
-              <a
-                href={post.sourceUrl}
-                target="_blank"
-                rel="noopener"
-                class={uc.uncolor}
-              >
-                {post.sourceTitle}
-              </a>
-            </div>
-          </SimpleCard.Content>
-        ))}
-      </SimpleCard>
+      <Articles articles={latestArticles} />
 
       <SimpleCard id="presentations" title="Presentations">
         <SimpleCard.Content>

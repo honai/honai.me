@@ -6,42 +6,39 @@ const { XMLParser } = require("fast-xml-parser");
 
 const RSS_FEEDS = [
   {
-    title: "CAMPHOR- Blog",
     feedUrl: "https://blog.camph.net/author/honai/feed/",
-    visitUrl: "https://blog.camph.net/author/honai/",
+    getPosts: (parsed) =>
+      parsed.rss.channel.item.map((item) => {
+        const size = "200";
+        return {
+          title: item.title,
+          url: item.link,
+          date: new Date(item.pubDate),
+          thumb:
+            item["media:content"]["@_url"].split("?")[0] +
+            `?fit=${size}%2C${size}`,
+          source: {
+            title: "CAMPHOR- Blog",
+            url: "https://blog.camph.net/author/honai/",
+          },
+        };
+      }),
   },
 ];
 
 module.exports = async () => {
-  const parser = new XMLParser();
+  const parser = new XMLParser({ ignoreAttributes: false });
   const notFlat = await Promise.all(
-    RSS_FEEDS.map(async ({ feedUrl, title, visitUrl }) => {
+    RSS_FEEDS.map(async ({ feedUrl, getPosts }) => {
       const cacheFile = path.join(__dirname, `${url2hash(feedUrl)}.xml`);
       await cacheUrl(feedUrl, cacheFile);
       const xmlStr = await fs.readFile(cacheFile, { encoding: "utf-8" });
       const parsed = parser.parse(xmlStr);
-      return rss2posts(parsed).map((post) => ({
-        ...post,
-        sourceTitle: title,
-        sourceUrl: visitUrl,
-      }));
+      return getPosts(parsed);
     })
   );
-  return notFlat
-    .flat(1)
-    .sort((a, b) => b.pubDate.getTime() - a.pubDate.getTime());
+  return notFlat.flat(1).sort((a, b) => b.date.getTime() - a.date.getTime());
 };
-
-/**
- * @return {{ title: string; link: string; pubDate: Date }[]}
- */
-function rss2posts(parsed) {
-  return parsed.rss.channel.item.map((item) => ({
-    title: item.title,
-    link: item.link,
-    pubDate: new Date(item.pubDate),
-  }));
-}
 
 async function cacheUrl(url, cacheFile) {
   const { got } = await import("got");
