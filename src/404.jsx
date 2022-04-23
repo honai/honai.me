@@ -16,6 +16,7 @@ export default () => {
         <link rel="icon" href="/favicon.ico" />
         <link rel="stylesheet" href="https://use.typekit.net/bdo3rru.css" />
         <link rel="stylesheet" href="/index.css" />
+        <script type="module" src="/scripts/theme-toggle.mjs"></script>
       </head>
       <body>
         <div class={css({ maxWidth: "72rem", margin: "2rem auto" })()}>
