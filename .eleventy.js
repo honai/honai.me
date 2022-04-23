@@ -1,7 +1,6 @@
 const fs = require("fs");
 const path = require("path");
 
-const sass = require("sass");
 const syntaxHighlight = require("@11ty/eleventy-plugin-syntaxhighlight");
 const markdownIt = require("markdown-it");
 const markdownItAnchor = require("markdown-it-anchor");
@@ -10,7 +9,6 @@ const pluginTOC = require("eleventy-plugin-nesting-toc");
 const yaml = require("js-yaml");
 
 const jsx = require("./customHandlers/jsx");
-const scss = require("./customHandlers/scss");
 
 module.exports = (eleventyConfig) => {
   eleventyConfig.setTemplateFormats(["jsx", "scss", "md", "11ty.js", "css"]);
@@ -29,15 +27,6 @@ module.exports = (eleventyConfig) => {
     extensions: [".jsx", ".mjs"],
   });
   eleventyConfig.addExtension("jsx", jsx);
-
-  // sass
-  eleventyConfig.addExtension("scss", scss);
-  eleventyConfig.addShortcode("sassinline", function (filename) {
-    return sass.compile(`${__dirname}/src/styles/${filename}`, {
-      loadPaths: [`${__dirname}/src/_includes`],
-      style: "compressed",
-    }).css;
-  });
 
   eleventyConfig.addPlugin(syntaxHighlight);
 

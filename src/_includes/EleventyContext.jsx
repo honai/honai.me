@@ -5,7 +5,6 @@ import { useContext } from "preact/hooks";
  * @typedef {Object} EleventyContextVal
  * @prop {(date: string | Date) => string} isodate
  * @prop {(md: string) => string} mdinline
- * @prop {(scssFile: string) => string} sassinline
  * @prop {(svgFile: string) => string} svginline
  * @prop {(content: string) => string} toc
  * @prop {(collection: unknown, page: unknown) => any} getPreviousCollectionItem
