@@ -11,6 +11,7 @@ export const SocialLinks = ({ links }) => (
       <li class={iconTextFlex()}>
         <a
           href={url}
+          title={text}
           target="_blank"
           rel="noopener"
           class={css({
