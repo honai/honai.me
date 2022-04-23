@@ -2,7 +2,7 @@ import { Seo } from "../components/Seo";
 import { css } from "../style.mjs";
 import { Footer } from "../components/Footer";
 
-const asyncStylesheets = ["/index.css", "https://use.typekit.net/bdo3rru.css"];
+const asyncStylesheets = ["https://use.typekit.net/bdo3rru.css"];
 const preconnectDomains = [
   "https://p.typekit.net",
   "https://res.cloudinary.com",
@@ -32,6 +32,8 @@ export const PortfolioLayout = ({
         {preconnectDomains.map((domain) => (
           <link rel="preconnect" href={domain} />
         ))}
+
+        <link rel="stylesheet" href="/index.css" />
 
         {/* 遅延読み込みするStyleSheet */}
         {asyncStylesheets.map((href) => (
