@@ -1,30 +1,26 @@
+import { PortfolioHeader } from "./_includes/components/PortfolioHeader";
+import { css } from "./_includes/style.mjs";
+
 export const data = {
   permalink: "404.html",
 };
 
 export default () => {
+  const title = "404 Not Found";
   return (
     <html lang="ja">
       <head>
         <meta charSet="UTF-8" />
-        <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-        <title>404 Not Found</title>
+        <meta name="viewport" content="width=device-width" />
+        <title>{title}</title>
         <link rel="icon" href="/favicon.ico" />
         <link rel="stylesheet" href="https://use.typekit.net/bdo3rru.css" />
         <link rel="stylesheet" href="/styles/stitches.css" />
       </head>
-
-      <body className="body-layout">
-        <main className="main-content">
-          <div className="nav-title">
-            <h2 className="subtitle">
-              <a href="/" className="_uncolor">
-                Honai Ueoka's Portfolio
-              </a>
-            </h2>
-            <h1 className="title">404 Not Found</h1>
-          </div>
-        </main>
+      <body>
+        <div class={css({ maxWidth: "72rem", margin: "2rem auto" })()}>
+          <PortfolioHeader title={title} />
+        </div>
       </body>
     </html>
   );
