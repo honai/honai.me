@@ -6,7 +6,7 @@
  * @prop {string} description
  */
 
-import { css, cx, uc } from "../../style.mjs";
+import { css, cx, darkTheme, uc } from "../../style.mjs";
 
 /**
  * @param {object} p
@@ -17,7 +17,7 @@ export const PostList = ({ posts }) => {
     <ul class={listStyle()}>
       {posts.map((post) => (
         <li>
-          <div class={dateSty()}>
+          <div class={css({ color: "$textSecondary" })()}>
             <time dateTime={post.date} class="post-publish-date">
               {post.date}
             </time>
@@ -48,15 +48,13 @@ const listStyle = css({
   gap: "3.6rem",
 });
 
-const dateSty = css({ color: "rgba(0, 0, 0, 0.75)" });
 const titleSty = css({
   fontSize: "2.4rem",
   padding: "0.5rem 0",
   borderBottom: "1px solid $primary",
   color: "$primary",
-  "@dark": {
-    color: "$text",
-  },
+  "@dark": { color: "$text" },
+  [`.${darkTheme} &`]: { color: "$text" },
 });
 const titleLink = css({ display: "block", textDecoration: "none" });
 const descSty = css({ padding: "0.5rem 0" });
