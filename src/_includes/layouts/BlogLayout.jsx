@@ -1,6 +1,8 @@
 import { Script } from "../components/Script";
 import { Seo } from "../components/Seo";
 
+const GTAG_ID = "UA-137251140-3";
+
 /**
  * @typedef {Object} StyleSheet
  * @prop {string} href
@@ -63,7 +65,8 @@ export const BlogLayout = ({
           // @ts-ignore
           onload="this.media='all'"
         />
-        <link rel="stylesheet" href="/styles/blog.css" />
+        <link rel="stylesheet" href="/index.css" />
+        <script type="module" src="/scripts/theme-toggle.mjs"></script>
       </head>
 
       <body>
@@ -91,7 +94,7 @@ export const BlogLayout = ({
               document.body.appendChild(e)
             })
             window.ga=window.ga||function(){(ga.q=ga.q||[]).push(arguments)};ga.l=+new Date;
-            ga('create', '{{ gtag_id | safe }}', 'auto');
+            ga('create', '${GTAG_ID}', 'auto');
             ga('send', 'pageview');
             (adsbygoogle = window.adsbygoogle || []).push({});
           })

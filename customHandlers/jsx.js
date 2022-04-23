@@ -8,9 +8,6 @@ let Provider;
 module.exports = {
   outputFileExtension: "html",
   init() {
-    require("@babel/register")({
-      extensions: [".jsx"],
-    });
     const jsFuncs = this.config.javascriptFunctions;
     const ProviderFC = require("../src/_includes/EleventyContext.jsx").default;
     Provider = ({ children }) => jsx(ProviderFC, { value: jsFuncs, children });

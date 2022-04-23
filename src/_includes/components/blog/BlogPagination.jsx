@@ -1,8 +1,10 @@
+import { css } from "../../style.mjs";
+
 export const BlogPagination = ({ pagination }) => {
   const nextHref = pagination.href.next;
   const prevHref = pagination.href.previous;
   return (
-    <div class="post-pagination">
+    <div class={wrapStyle()}>
       <div>{prevHref && <a href={prevHref}>&lt; Previous</a>}</div>
       <div>
         {pagination.pageNumber + 1} of {pagination.pages.length}
@@ -11,3 +13,8 @@ export const BlogPagination = ({ pagination }) => {
     </div>
   );
 };
+
+const wrapStyle = css({
+  display: "flex",
+  justifyContent: "space-between",
+});

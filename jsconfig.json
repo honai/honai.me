@@ -6,5 +6,5 @@
     "jsxImportSource": "preact",
     "checkJs": true
   },
-  "include": ["./src/**/*.jsx"]
+  "include": ["./src/**/*.jsx", "./customHandlers/*.js"]
 }

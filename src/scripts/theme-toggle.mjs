@@ -1,54 +1,44 @@
-const DARK = "dark";
-const LIGHT = "light";
-const SYSTEM = "system";
-
-const STORAGE_KEY = "theme-toggle-scheme";
-
-const updatePreference = (mode) => {
-  savePreference(mode);
-  const { classList } = document.body;
-  switch (mode) {
-    case SYSTEM: {
-      classList.remove(DARK, LIGHT);
-      break;
-    }
-    case DARK: {
-      classList.remove(LIGHT);
-      classList.add(DARK);
-      break;
-    }
-    case LIGHT: {
-      classList.remove(DARK);
-      classList.add(LIGHT);
-      break;
-    }
-    default:
-      // noop
-      break;
-  }
-};
-
-const storedPreference = () => {
-  return localStorage.getItem(STORAGE_KEY) ?? SYSTEM;
-};
-
-const savePreference = (scheme) => {
-  if (scheme === SYSTEM) {
-    localStorage.removeItem(STORAGE_KEY);
-    return;
-  }
-  localStorage.setItem(STORAGE_KEY, scheme);
-};
-
 // TODO: WebComponentsにしたい
-const themeSelector = document.getElementById("theme-selector");
-const storedMode = storedPreference();
-themeSelector.value = storedMode;
-updatePreference(storedMode);
-themeSelector.addEventListener("change", (e) => {
-  const mode = e.target.value;
-  if (![SYSTEM, DARK, LIGHT].includes(mode)) {
-    return;
+function main() {
+  /** @type {HTMLSelectElement} */
+  const themeSelector = document.getElementById("theme-selector");
+  const STORAGE_KEY = themeSelector.dataset.storageKey;
+
+  const themeClassMap = new Map(
+    Array.from(themeSelector.options)
+      .filter((option) => !!option.value) // デフォルトオプションは空文字
+      //                key =>        value
+      .map((option) => [option.value, option.dataset.themeClass])
+  );
+
+  const modes = Array.from(themeClassMap.keys());
+  function changeTheme(mode) {
+    themeClassMap.forEach((v, k) => {
+      if (mode === k) {
+        document.body.classList.add(v);
+      } else {
+        document.body.classList.remove(v);
+      }
+    });
   }
-  updatePreference(mode);
-});
+
+  const storedMode = localStorage.getItem(STORAGE_KEY);
+  if (modes.includes(storedMode)) {
+    themeSelector.value = storedMode;
+    // changeTheme(storedMode); // 初期でやるならいらない
+  }
+
+  themeSelector.addEventListener("change", (e) => {
+    const mode = e.target.value;
+    changeTheme(mode);
+    !!mode
+      ? localStorage.setItem(STORAGE_KEY, mode)
+      : localStorage.removeItem(STORAGE_KEY);
+  });
+}
+
+// pollyfill
+const requestIdleCallback =
+  window.requestIdleCallback || ((cb) => setTimeout(cb, 1));
+
+requestIdleCallback(main);

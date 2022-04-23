@@ -1,8 +1,6 @@
 // 日付をブラウザ言語に合わせる
-const publishedTimeEl = document.getElementById("published-time");
-const updatedTimeEl = document.getElementById("updated-time");
-for (const el of [publishedTimeEl, updatedTimeEl]) {
-  if (!el) continue;
+const dateElements = document.querySelectorAll("[data-js-locale-date]");
+for (const el of dateElements) {
   const date = new Date(el.getAttribute("datetime"));
   el.textContent = date.toLocaleDateString();
 }

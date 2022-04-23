@@ -1,8 +1,15 @@
-import { BlogHeader } from "../components/BlogHeader";
+import { BlogHeader } from "../components/blog/BlogHeader";
 import { BlogLayout } from "./BlogLayout";
 import { useEleventy } from "../EleventyContext";
 import { Footer } from "../components/Footer";
 import { Script } from "../components/Script";
+import { AdSenseWrap } from "../components/AdSenseWrap";
+import { ArticleHeader } from "../components/blog/ArticleHeader";
+import { css } from "../style.mjs";
+import { PostMd } from "../components/blog/PostMd";
+import { Toc } from "../components/blog/Toc";
+import { PostNavigate } from "../components/blog/PostNavigate";
+import VerticalGrow from "../components/VerticalGrow";
 
 const githubLinkBase = "https://github.com/honai/honai.me/blob/main/";
 const styleSheets = [
@@ -39,59 +46,26 @@ export default ({
       ogImageUrl={og_image_url}
       styleSheets={styleSheets}
     >
-      <div class="body-layout">
+      <VerticalGrow>
         <BlogHeader />
-        <div class="grow">
-          <article class="article-layout">
-            <header class="header article-header">
-              <h1 class="title">{title}</h1>
-              <div class="meta">
-                <div class="century-gothic date">
-                  <time id="published-time" dateTime={fn.isodate(page.date)}>
-                    {fn.isodate(page.date)}
-                  </time>
-                  {updated && (
-                    <>
-                      {" "}
-                      (Updated at{" "}
-                      <time id="updated-time" dateTime={fn.isodate(updated)}>
-                        {updated}
-                      </time>
-                      )
-                    </>
-                  )}
-                </div>
-              </div>
-            </header>
-
+        <VerticalGrow.Grow>
+          <article class={articleLayout()}>
+            <div class="header">
+              <ArticleHeader
+                title={title}
+                published={fn.isodate(page.date)}
+                updated={updated ?? fn.isodate(updated)}
+              />
+            </div>
             <aside class="aside">
               <div class="sticky">
-                <div class="post-toc">
-                  <div class="title">目次</div>
-                  {/* div > nav.toc > ol > li > a.-active */}
-                  <div dangerouslySetInnerHTML={{ __html: fn.toc(content) }} />
-                </div>
-
-                <div class="post-navigate">
-                  <div>
-                    <a href="/blog">記事一覧</a>
-                  </div>
-                  {newerPost && (
-                    <div>
-                      次の記事:{" "}
-                      <a href={newerPost.url}>{newerPost.data.title}</a>
-                    </div>
-                  )}
-                  {olderPost && (
-                    <div>
-                      前の記事:{" "}
-                      <a href={olderPost.url}>{olderPost.data.title}</a>
-                    </div>
-                  )}
-                </div>
-
-                <div class="post-edit">
-                  <a href={`${githubLinkBase}${page.inputPath}`} class="link">
+                <Toc tocHtml={fn.toc(content)} />
+                <PostNavigate newerPost={newerPost} olderPost={olderPost} />
+                <div>
+                  <a
+                    href={`${githubLinkBase}${page.inputPath}`}
+                    class={postEditLink()}
+                  >
                     この記事の編集をリクエスト (GitHub)
                   </a>
                 </div>
@@ -99,27 +73,26 @@ export default ({
             </aside>
 
             <main class="main">
-              <div
-                class="post-markdown"
-                dangerouslySetInnerHTML={{ __html: content }}
-              ></div>
+              <PostMd content={content} />
             </main>
 
-            <div class="ad ad-sense">
-              {/* 記事の下 */}
-              <ins
-                class="adsbygoogle"
-                style="display:block"
-                data-ad-client="ca-pub-9155380222623167"
-                data-ad-slot="4880052047"
-                data-ad-format="auto"
-                data-full-width-responsive="true"
-              ></ins>
+            <div class="ad">
+              <AdSenseWrap>
+                {/* 記事の下 */}
+                <ins
+                  class="adsbygoogle"
+                  style="display:block"
+                  data-ad-client="ca-pub-9155380222623167"
+                  data-ad-slot="4880052047"
+                  data-ad-format="auto"
+                  data-full-width-responsive="true"
+                ></ins>
+              </AdSenseWrap>
             </div>
           </article>
-        </div>
+        </VerticalGrow.Grow>
         <Footer />
-      </div>
+      </VerticalGrow>
 
       <script defer src="/scripts/blog-post.js"></script>
       {plugins.includes("twitter") && (
@@ -130,3 +103,35 @@ export default ({
     </BlogLayout>
   );
 };
+
+const articleLayout = css({
+  // FIXME: class直書き指定をやめる
+  padding: "1rem",
+  "@md": {
+    display: "grid",
+    gridTemplateAreas: `"header header"
+                        "main   aside"
+                        "ad     ."`,
+    maxWidth: "120rem",
+    margin: "0 auto",
+    gridTemplateColumns: "minmax(0, 1fr) min(30rem, 30vw)",
+    gridTemplateRows: "18rem auto auto",
+    padding: "2rem 3rem",
+    gap: "2rem 6rem",
+    "> .header": { gridArea: "header", maxWidth: "72rem", margin: "auto" },
+    "> .aside": { gridArea: "aside" },
+    "> .main": { gridArea: "main" },
+    "> .aside > .sticky": {
+      position: "sticky",
+      top: "2rem",
+      display: "flex",
+      flexDirection: "column",
+      gap: "2rem",
+      maxHeight: "calc(100vh - 4rem)",
+      overflowY: "auto",
+    },
+    "> .ad": { gridArea: "ad", margin: "1rem" },
+  },
+});
+
+const postEditLink = css({ color: "$textSecondary" });

@@ -1,35 +1,34 @@
+import { PortfolioHeader } from "./_includes/components/PortfolioHeader";
+import SimpleCard from "./_includes/components/SimpleCard";
+import { SlideList } from "./_includes/components/SlideList";
+import { SocialLinks } from "./_includes/components/SocialLinks";
 import { useEleventy } from "./_includes/EleventyContext";
 import { PortfolioLayout } from "./_includes/layouts/PortfolioLayout";
+import { css, cx, uc } from "./_includes/style.mjs";
 import { SpanSvg } from "./_includes/svg";
 
 export default ({ profile, feeds, page }) => {
   const { isodate } = useEleventy();
   return (
     <PortfolioLayout pageUrl={page.url}>
-      <div class="nav-title">
-        <h1 class="title">Hi👋 I'm Honai.</h1>
-        <nav class="nav">
-          <a href="/works">Works</a>
-          <a href="/blog/">Blog</a>
-        </nav>
-      </div>
-
-      <section id="about" class="simple-card">
-        <h2 class="heading">
-          <a href="#about" class="anchor">
-            About
-          </a>
-        </h2>
-        <div class="content">
-          <div class="profile-section">
+      <PortfolioHeader title="Hi👋 I'm Honai." showNav />
+      <SimpleCard id="about" title="About">
+        <SimpleCard.Content>
+          <div
+            class={css({
+              display: "flex",
+              alignItems: "center",
+              gap: "2.4rem",
+            })()}
+          >
             <SpanSvg filename="asisai" />
-            <div class="name">
-              <div class="ja">ほない</div>
-              <div class="en">Honai Ueoka</div>
+            <div class={css({ textAlign: "center" })()}>
+              <div class={css({ fontSize: "2.4rem" })()}>ほない</div>
+              <div class={css({ color: "$textSecondary" })()}>Honai Ueoka</div>
             </div>
           </div>
-        </div>
-        <div class="content">
+        </SimpleCard.Content>
+        <SimpleCard.Content>
           <p>
             京都大学大学院 情報学研究科 通信情報システム専攻 /
             修士課程（2023年3月修了予定） /{" "}
@@ -38,66 +37,33 @@ export default ({ profile, feeds, page }) => {
             </a>{" "}
             運営メンバー
           </p>
-        </div>
-        <div class="content">
-          <ul class="social-links _reset-ul">
-            {profile.links.map((L) => (
-              <li class="item">
-                <a
-                  href={L.url}
-                  target="_blank"
-                  rel="noopener"
-                  class="link _reset-a"
-                >
-                  <SpanSvg class="icon" filename={L.icon} />
-                  <span class="text">{L.text}</span>
-                </a>
-              </li>
-            ))}
-          </ul>
-        </div>
-      </section>
+        </SimpleCard.Content>
+        <SimpleCard.Content>
+          <SocialLinks links={profile.links} />
+        </SimpleCard.Content>
+      </SimpleCard>
 
-      <section id="education" class="simple-card">
-        <h2 class="heading">
-          <a href="#education" class="anchor">
-            Education
-          </a>
-        </h2>
+      <SimpleCard id="education" title="Education">
         {profile.education.map((E) => (
-          <div class="content">
-            <div class="education-item">
-              <div class="period">{E.period}</div>
-              <div class="desc">{E.title}</div>
-            </div>
-          </div>
+          <SimpleCard.Content>
+            <div class={css({ color: "$textSecondary" })()}>{E.period}</div>
+            <div>{E.title}</div>
+          </SimpleCard.Content>
         ))}
-      </section>
+      </SimpleCard>
 
-      <section id="intern" class="simple-card">
-        <h2 class="heading">
-          <a href="#intern" class="anchor">
-            Internships / Employments
-          </a>
-        </h2>
+      <SimpleCard id="intern" title="Internships / Employments">
         {profile.jobs.map((E) => (
-          <div class="content">
-            <div class="education-item">
-              <div class="period">{E.period}</div>
-              <div class="desc">{E.title}</div>
-            </div>
-          </div>
+          <SimpleCard.Content>
+            <div class={css({ color: "$textSecondary" })()}>{E.period}</div>
+            <div>{E.title}</div>
+          </SimpleCard.Content>
         ))}
-      </section>
+      </SimpleCard>
 
-      <section id="publications" class="simple-card">
-        <h2 class="heading">
-          <a href="#publications" class="anchor">
-            Publications
-          </a>
-        </h2>
+      <SimpleCard id="publications" title="Publications">
         {profile.publications.map((P) => (
-          <div class="content">
+          <SimpleCard.Content>
             {P.authors}
             <br />
             <strong>{P.title}</strong>
@@ -112,22 +78,23 @@ export default ({ profile, feeds, page }) => {
                 &ensp;
               </>
             ))}
-          </div>
+          </SimpleCard.Content>
         ))}
-      </section>
+      </SimpleCard>
 
-      <section id="posts" class="simple-card">
-        <h2 class="heading">
-          <a href="#posts" class="anchor">
-            Posts
-          </a>
-        </h2>
+      <SimpleCard id="posts" title="Posts">
         {feeds.map((post) => (
-          <div class="content post-item">
+          <SimpleCard.Content>
             <a href={post.link} target="_blank" rel="noopener">
               {post.title}
             </a>
-            <div class="source">
+            <div
+              class={css({
+                textAlign: "right",
+                fontSize: "1.4rem",
+                color: "$textSecondary",
+              })()}
+            >
               <time dateTime={isodate(post.pubDate)}>
                 {isodate(post.pubDate)}
               </time>{" "}
@@ -136,76 +103,48 @@ export default ({ profile, feeds, page }) => {
                 href={post.sourceUrl}
                 target="_blank"
                 rel="noopener"
-                class="_uncolor"
+                class={uc.uncolor}
               >
                 {post.sourceTitle}
               </a>
             </div>
-          </div>
+          </SimpleCard.Content>
         ))}
-      </section>
+      </SimpleCard>
 
-      <section id="presentations" class="simple-card">
-        <h2 class="heading">
-          <a href="#presentations" class="anchor">
-            Presentations
-          </a>
-        </h2>
-        <div class="content">
-          <ul class="_reset-ul slide-list">
-            {profile.slides.map((s) => (
-              <li class="slide-item">
-                <a href={s.url} class="link _reset-a">
-                  <img
-                    src={`/images/slide_thumb/${s.thumb}`}
-                    alt={`${s.title}のスライドのサムネイル`}
-                    width="640"
-                    height="320"
-                    class="thumb"
-                    loading="lazy"
-                  />
-                  <div class="texts">
-                    <div class="title">{s.title}</div>
-                    <div class="subtitle">{s.subtitle}</div>
-                    <div class="date">{s.date}</div>
-                  </div>
+      <SimpleCard id="presentations" title="Presentations">
+        <SimpleCard.Content>
+          <SlideList slides={profile.slides} />
+        </SimpleCard.Content>
+      </SimpleCard>
+
+      <SimpleCard id="works" title="Works">
+        <SimpleCard.Content>
+          <ul
+            class={cx(
+              uc.resetUl,
+              css({ padding: "1rem 2rem 2rem", display: "grid", gap: "2rem" })()
+            )}
+          >
+            {profile.works.slice(0, 2).map((w, i) => (
+              <li>
+                <a href={`/works/#${i}`} title={w.name}>
+                  <img src={w.thumb} alt={w.name} loading="lazy" />
                 </a>
               </li>
             ))}
           </ul>
-        </div>
-      </section>
-
-      <section id="works" class="simple-card">
-        <h2 class="heading">
-          <a href="#works" class="anchor">
-            Works
-          </a>
-        </h2>
-        <div class="content">
-          <div class="works-gallery">
-            {profile.works.slice(0, 2).map((w) => (
-              <a href={w.url} title={w.name} class="thumblink">
-                <img src={w.thumb} alt={w.name} class="thumb" loading="lazy" />
-              </a>
-            ))}
+          <div class={css({ textAlign: "center" })()}>
+            <a href="/works/">See more works</a>
           </div>
-          <div class="works-page-link">
-            <a href="/works">See more works</a>
-          </div>
-        </div>
-      </section>
+        </SimpleCard.Content>
+      </SimpleCard>
 
-      <section id="blog" class="simple-card">
-        <h2 class="heading">
-          <a href="#blog" class="anchor">
-            Blog
-          </a>
-        </h2>
-        <div class="content">
-          <a href="/blog">Honai's Blog</a>
-        </div>
-      </section>
+      <SimpleCard id="blog" title="Blog">
+        <SimpleCard.Content>
+          <a href="/blog/">Honai's Blog</a>
+        </SimpleCard.Content>
+      </SimpleCard>
     </PortfolioLayout>
   );
 };
