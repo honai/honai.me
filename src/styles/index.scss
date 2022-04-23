@@ -1,17 +1,3 @@
-.works-gallery {
-  padding: 0 2rem;
-  display: flex;
-  flex-flow: column nowrap;
-  align-items: center;
-  > .thumblink {
-    margin: 0.4rem 0;
-  }
-}
-.works-page-link {
-  padding-top: 0.4rem;
-  text-align: center;
-}
-
 a[target]:not(._nonewicon) {
   text-decoration: underline;
   &::after {

@@ -4,7 +4,7 @@ import { SlideList } from "./_includes/components/SlideList";
 import { SocialLinks } from "./_includes/components/SocialLinks";
 import { useEleventy } from "./_includes/EleventyContext";
 import { PortfolioLayout } from "./_includes/layouts/PortfolioLayout";
-import { css } from "./_includes/style.mjs";
+import { css, cx } from "./_includes/style.mjs";
 import { SpanSvg } from "./_includes/svg";
 
 export default ({ profile, feeds, page }) => {
@@ -120,22 +120,29 @@ export default ({ profile, feeds, page }) => {
 
       <SimpleCard id="works" title="Works">
         <SimpleCard.Content>
-          <div class="works-gallery">
-            {profile.works.slice(0, 2).map((w) => (
-              <a href={w.url} title={w.name} class="thumblink">
-                <img src={w.thumb} alt={w.name} class="thumb" loading="lazy" />
-              </a>
+          <ul
+            class={cx(
+              "_reset-ul",
+              css({ padding: "1rem 2rem 2rem", display: "grid", gap: "2rem" })()
+            )}
+          >
+            {profile.works.slice(0, 2).map((w, i) => (
+              <li>
+                <a href={`/works/#${i}`} title={w.name}>
+                  <img src={w.thumb} alt={w.name} loading="lazy" />
+                </a>
+              </li>
             ))}
-          </div>
-          <div class="works-page-link">
-            <a href="/works">See more works</a>
+          </ul>
+          <div class={css({ textAlign: "center" })()}>
+            <a href="/works/">See more works</a>
           </div>
         </SimpleCard.Content>
       </SimpleCard>
 
       <SimpleCard id="blog" title="Blog">
         <SimpleCard.Content>
-          <a href="/blog">Honai's Blog</a>
+          <a href="/blog/">Honai's Blog</a>
         </SimpleCard.Content>
       </SimpleCard>
     </PortfolioLayout>

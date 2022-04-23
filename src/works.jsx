@@ -13,8 +13,8 @@ export default ({ profile, page }) => {
       description="Works by Honai"
     >
       <PortfolioHeader title="Works by Honai" />
-      {profile.works.map((w) => (
-        <SimpleCard title={w.name} href={w.url}>
+      {profile.works.map((w, i) => (
+        <SimpleCard id={i} title={w.name} href={w.url}>
           <a href={w.url}>
             {/* FIXME: height */}
             <img
