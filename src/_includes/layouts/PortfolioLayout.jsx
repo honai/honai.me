@@ -1,7 +1,7 @@
-import { ThemeToggle } from "../components/ThemeToggle";
 import { useEleventy } from "../EleventyContext";
 import { Seo } from "../components/Seo";
 import { css } from "../style.mjs";
+import { Footer, PortfolioHeader } from "../components/PortfolioParts";
 
 const asyncStylesheets = [
   "/styles/stitches.css",
@@ -65,38 +65,26 @@ export const PortfolioLayout = ({
         <script type="module" src="/scripts/theme-toggle.mjs"></script>
       </head>
 
-      <body class="body-layout">
-        <div class="center">
-          <header class="portfolio-header">
-            <h2 className="title">
-              <a href="/" className="_uncolor">
-                honai.me
-              </a>
-            </h2>
-            <ThemeToggle />
-          </header>
-          <main class="main-content">{children}</main>
-        </div>
-        <footer
+      <body>
+        <div
           class={css({
-            color: "$textSecondary",
-            fontSize: "1.4rem",
-            textAlign: "center",
-            padding: "2rem 0",
+            padding: "1rem",
+            maxWidth: "calc(720px + 2rem)",
+            margin: "0 auto",
           })()}
         >
-          &copy; 2022 Honai Ueoka
-          <br />
-          Powered by{" "}
-          <a
-            href="https://www.11ty.dev/"
-            target="_blank"
-            rel="noopener"
-            class="_uncolor"
+          <PortfolioHeader />
+          <main
+            class={css({
+              display: "flex",
+              flexFlow: "column nowrap",
+              gap: "3rem",
+            })()}
           >
-            Eleventy
-          </a>
-        </footer>
+            {children}
+          </main>
+        </div>
+        <Footer />
         <script
           dangerouslySetInnerHTML={{
             __html: `

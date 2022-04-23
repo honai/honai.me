@@ -1,25 +1,5 @@
 @use "css-variables";
 
-.body-layout {
-  background-color: var(--color-bg);
-  color: var(--color-text);
-  // padding-top: 5.4rem;
-  > .center {
-    padding: 1rem;
-    max-width: calc(720px + 2rem);
-    margin: 0 auto;
-  }
-}
-
-.portfolio-header {
-  display: flex;
-  justify-content: space-between;
-  > .title {
-    font-size: 1.8rem;
-    font-family: var(--font-family-century);
-  }
-}
-
 .nav-title {
   padding: 1rem 0 0;
   font-family: var(--font-family-century);
@@ -37,12 +17,6 @@
       color: unset;
     }
   }
-}
-
-.main-content {
-  display: flex;
-  flex-flow: column nowrap;
-  gap: 3rem;
 }
 
 .profile-section {

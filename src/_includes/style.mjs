@@ -82,6 +82,8 @@ const normalizeStyle = globalCss({
     fontSize: "1.6rem",
     margin: "0",
     lineHeight: 1.75,
+    backgroundColor: "$bg",
+    color: "$text",
   },
   "h1, h2, h3, h4, h5, h6": {
     margin: "0",
