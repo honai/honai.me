@@ -3,7 +3,7 @@ import SimpleCard from "./_includes/components/SimpleCard";
 import { SocialLinks } from "./_includes/components/SocialLinks";
 import { useEleventy } from "./_includes/EleventyContext";
 import { PortfolioLayout } from "./_includes/layouts/PortfolioLayout";
-import { css, cx } from "./_includes/style.mjs";
+import { css } from "./_includes/style.mjs";
 import { SpanSvg } from "./_includes/svg";
 
 export default ({ profile, feeds, page }) => {
@@ -13,11 +13,17 @@ export default ({ profile, feeds, page }) => {
       <PortfolioHeader title="Hi👋 I'm Honai." showNav />
       <SimpleCard id="about" title="About">
         <SimpleCard.Content>
-          <div class="profile-section">
+          <div
+            class={css({
+              display: "flex",
+              alignItems: "center",
+              gap: "2.4rem",
+            })()}
+          >
             <SpanSvg filename="asisai" />
-            <div class="name">
-              <div class="ja">ほない</div>
-              <div class="en">Honai Ueoka</div>
+            <div class={css({ textAlign: "center" })()}>
+              <div class={css({ fontSize: "2.4rem" })()}>ほない</div>
+              <div class={css({ color: "$textSecondary" })()}>Honai Ueoka</div>
             </div>
           </div>
         </SimpleCard.Content>

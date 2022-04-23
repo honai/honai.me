@@ -1,4 +1,3 @@
-import { useEleventy } from "../EleventyContext";
 import { Seo } from "../components/Seo";
 import { css } from "../style.mjs";
 import { Footer } from "../components/Footer";
@@ -26,7 +25,6 @@ export const PortfolioLayout = ({
   pageUrl,
   children,
 }) => {
-  const { sassinline } = useEleventy();
   return (
     <html lang="ja">
       <head>
@@ -38,12 +36,6 @@ export const PortfolioLayout = ({
         {preconnectDomains.map((domain) => (
           <link rel="preconnect" href={domain} />
         ))}
-
-        <style
-          dangerouslySetInnerHTML={{
-            __html: sassinline("_portfolio-critical.scss"),
-          }}
-        />
 
         {/* 遅延読み込みするStyleSheet */}
         {asyncStylesheets.map((href) => (
