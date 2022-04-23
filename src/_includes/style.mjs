@@ -47,12 +47,11 @@ const {
     },
   },
   utils: {
-    centuryGothic: () => ({
+    centuryGothic: (_) => ({
       fontFamily: '"Century Gothic", CenturyGothic, century-gothic, sans-serif',
       fontStyle: "normal",
       fontWeight: 400,
     }),
-    inheritColor: () => ({ color: "inherit !important" }),
   },
 });
 

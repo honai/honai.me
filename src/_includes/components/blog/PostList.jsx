@@ -6,7 +6,7 @@
  * @prop {string} description
  */
 
-import { css, cx, uc } from "../../style.mjs";
+import { css, cx, darkTheme, uc } from "../../style.mjs";
 
 /**
  * @param {object} p
@@ -53,9 +53,8 @@ const titleSty = css({
   padding: "0.5rem 0",
   borderBottom: "1px solid $primary",
   color: "$primary",
-  "@dark": {
-    color: "$text",
-  },
+  "@dark": { color: "$text" },
+  [`.${darkTheme} &`]: { color: "$text" },
 });
 const titleLink = css({ display: "block", textDecoration: "none" });
 const descSty = css({ padding: "0.5rem 0" });
