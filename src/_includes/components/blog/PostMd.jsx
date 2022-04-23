@@ -1,4 +1,4 @@
-import { css } from "../../style.mjs";
+import { css, lightTheme } from "../../style.mjs";
 
 export const PostMd = ({ content }) => (
   <div dangerouslySetInnerHTML={{ __html: content }} class={mdStyle()} />
@@ -48,7 +48,10 @@ const mdStyle = css({
   },
   ':not(pre) > code[class="language-text"]': {
     backgroundColor: "#eee",
-    color: "unset",
+    color: "$text",
+    "@dark": {
+      backgroundColor: "#2d2d2d",
+    },
   },
   "> blockquote": {
     margin: "0",

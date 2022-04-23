@@ -57,7 +57,7 @@ const {
 
 const darkTheme = createTheme({
   colors: {
-    text: "#eee",
+    text: "#ccc",
     textSecondary: "#aaa",
     bg: "#000",
     fg: "#111",

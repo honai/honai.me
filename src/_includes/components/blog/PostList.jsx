@@ -54,6 +54,9 @@ const titleSty = css({
   padding: "0.5rem 0",
   borderBottom: "1px solid $primary",
   color: "$primary",
+  "@dark": {
+    color: "$text",
+  },
 });
 const titleLink = css({ display: "block", textDecoration: "none" });
 const descSty = css({ padding: "0.5rem 0" });
