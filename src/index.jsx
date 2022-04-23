@@ -1,5 +1,6 @@
 import { PortfolioHeader } from "./_includes/components/PortfolioHeader";
 import SimpleCard from "./_includes/components/SimpleCard";
+import { SlideList } from "./_includes/components/SlideList";
 import { SocialLinks } from "./_includes/components/SocialLinks";
 import { useEleventy } from "./_includes/EleventyContext";
 import { PortfolioLayout } from "./_includes/layouts/PortfolioLayout";
@@ -113,27 +114,7 @@ export default ({ profile, feeds, page }) => {
 
       <SimpleCard id="presentations" title="Presentations">
         <SimpleCard.Content>
-          <ul class="_reset-ul slide-list">
-            {profile.slides.map((s) => (
-              <li class="slide-item">
-                <a href={s.url} class="link _reset-a">
-                  <img
-                    src={`/images/slide_thumb/${s.thumb}`}
-                    alt={`${s.title}のスライドのサムネイル`}
-                    width="640"
-                    height="320"
-                    class="thumb"
-                    loading="lazy"
-                  />
-                  <div class="texts">
-                    <div class="title">{s.title}</div>
-                    <div class="subtitle">{s.subtitle}</div>
-                    <div class="date">{s.date}</div>
-                  </div>
-                </a>
-              </li>
-            ))}
-          </ul>
+          <SlideList slides={profile.slides} />
         </SimpleCard.Content>
       </SimpleCard>
 
