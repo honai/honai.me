@@ -1,24 +1,5 @@
 @use "css-variables";
 
-.nav-title {
-  padding: 1rem 0 0;
-  font-family: var(--font-family-century);
-  > .title {
-    padding: 2rem 0 1rem;
-    text-align: center;
-  }
-  > .nav {
-    font-size: 1.8rem;
-    display: flex;
-    width: 120px;
-    margin: 0 auto;
-    justify-content: space-between;
-    > a {
-      color: unset;
-    }
-  }
-}
-
 .profile-section {
   display: flex;
   align-items: center;

@@ -1,3 +1,4 @@
+import { PortfolioHeader } from "./_includes/components/PortfolioHeader";
 import SimpleCard from "./_includes/components/SimpleCard";
 import { useEleventy } from "./_includes/EleventyContext";
 import { PortfolioLayout } from "./_includes/layouts/PortfolioLayout";
@@ -11,9 +12,7 @@ export default ({ profile, page }) => {
       subTitle="Works"
       description="Works by Honai"
     >
-      <div className="nav-title">
-        <h1 className="title">Works by Honai</h1>
-      </div>
+      <PortfolioHeader title="Works by Honai" />
       {profile.works.map((w) => (
         <SimpleCard title={w.name} href={w.url}>
           <a href={w.url}>

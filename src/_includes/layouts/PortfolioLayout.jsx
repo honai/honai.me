@@ -1,7 +1,6 @@
 import { useEleventy } from "../EleventyContext";
 import { Seo } from "../components/Seo";
 import { css } from "../style.mjs";
-import { PortfolioHeader } from "../components/PortfolioParts";
 import { Footer } from "../components/Footer";
 
 const asyncStylesheets = [
@@ -74,7 +73,6 @@ export const PortfolioLayout = ({
             margin: "0 auto",
           })()}
         >
-          <PortfolioHeader />
           <main
             class={css({
               display: "flex",

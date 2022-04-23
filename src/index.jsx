@@ -1,3 +1,4 @@
+import { PortfolioHeader } from "./_includes/components/PortfolioHeader";
 import SimpleCard from "./_includes/components/SimpleCard";
 import { useEleventy } from "./_includes/EleventyContext";
 import { PortfolioLayout } from "./_includes/layouts/PortfolioLayout";
@@ -8,14 +9,7 @@ export default ({ profile, feeds, page }) => {
   const { isodate } = useEleventy();
   return (
     <PortfolioLayout pageUrl={page.url}>
-      <div class="nav-title">
-        <h1 class="title">Hi👋 I'm Honai.</h1>
-        <nav class="nav">
-          <a href="/works">Works</a>
-          <a href="/blog/">Blog</a>
-        </nav>
-      </div>
-
+      <PortfolioHeader title="Hi👋 I'm Honai." showNav />
       <SimpleCard id="about" title="About">
         <SimpleCard.Content>
           <div class="profile-section">
