@@ -69,6 +69,11 @@ const darkTheme = createTheme({
   },
 });
 
+/** utility classes */
+const uc = {
+  uncolor: css({ color: "inherit !important" })(),
+};
+
 const normalizeStyle = globalCss({
   "*, *::before, *::after": {
     boxSizing: "border-box",
@@ -104,6 +109,20 @@ const normalizeStyle = globalCss({
   a: {
     color: "$link",
     "&:visited": { color: "$linkVisited" },
+    "&[target]": {
+      "&::after": {
+        $$image: "url('/images/open_in_new.svg')",
+        content: "",
+        maskImage: "$$image",
+        backgroundColor: "currentColor",
+        display: "inline-block",
+        opacity: 0.75,
+        width: "0.9em",
+        height: "0.9em",
+        marginLeft: "0.2em",
+        verticalAlign: "middle",
+      },
+    },
   },
 });
 
@@ -129,11 +148,6 @@ const helperClasses = globalCss({
     textDecorationLine: "inherit !important",
   },
 });
-
-/** utility classes */
-const uc = {
-  uncolor: css({ color: "inherit !important" })(),
-};
 
 const getCssText = () => {
   normalizeStyle();

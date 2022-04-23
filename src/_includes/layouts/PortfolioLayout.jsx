@@ -4,7 +4,6 @@ import { Footer } from "../components/Footer";
 
 const asyncStylesheets = [
   "/styles/stitches.css",
-  // "/styles/index.css",
   "https://use.typekit.net/bdo3rru.css",
 ];
 const preconnectDomains = [

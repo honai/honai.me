@@ -8,14 +8,24 @@ import { SpanSvg } from "../svg";
 export const SocialLinks = ({ links }) => (
   <ul class={cx("_reset-ul", list())}>
     {links.map(({ url, icon, text }) => (
-      <li>
+      <li class={iconTextFlex()}>
+        <a
+          href={url}
+          target="_blank"
+          rel="noopener"
+          class={css({
+            ...iconSize,
+            "&::after": { display: "none !important" },
+          })()}
+        >
+          <SpanSvg class={spanSvgSty()} filename={icon} />
+        </a>
         <a
           href={url}
           target="_blank"
           rel="noopener"
           class={cx(link(), uc.uncolor)}
         >
-          <SpanSvg class={iconSty()} filename={icon} />
           <span class="text">{text}</span>
         </a>
       </li>
@@ -31,18 +41,23 @@ const list = css({
 });
 
 const link = css({
-  display: "flex",
-  flexFlow: "row nowrap",
-  alignItems: "center",
-  gap: "1rem",
   centuryGothic: true,
   color: "$textSecondary",
 });
 
-const iconSty = css({
+const iconTextFlex = css({
+  display: "flex",
+  flexFlow: "row nowrap",
+  alignItems: "center",
+  gap: "1rem",
+});
+
+const iconSize = {
   "$$svg-size": "2.4rem",
-  "&, &>svg": {
-    width: "$$svg-size",
-    height: "$$svg-size",
-  },
+  width: "$$svg-size",
+  height: "$$svg-size",
+};
+
+const spanSvgSty = css({
+  "&, & > svg": iconSize,
 });
