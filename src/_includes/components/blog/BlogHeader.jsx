@@ -1,4 +1,5 @@
 import { css, cx, uc } from "../../style.mjs";
+import { ThemeToggle } from "../ThemeToggle.jsx";
 
 export const BlogHeader = () => (
   <header class={header()}>
@@ -10,20 +11,24 @@ export const BlogHeader = () => (
         Honai's Blog
       </a>
     </div>
+    <div>
+      <ThemeToggle />
+    </div>
   </header>
 );
 
 const header = css({
-  height: "3.6rem",
+  height: "4rem",
   color: "rgba(255, 255, 255, 0.8)",
   backgroundColor: "$primary",
   borderBottom: "1px solid rgba(0, 0, 0, 0.5)",
   display: "flex",
   alignItems: "center",
-  justifyContent: "center",
+  justifyContent: "space-between",
+  padding: "0 2rem",
+  lineHeight: 1,
 });
 
 const title = css({
   fontSize: "2rem",
-  lineHeight: 1,
 });

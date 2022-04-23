@@ -6,7 +6,7 @@ const STORAGE_KEY = "theme-toggle-scheme";
 
 export const ThemeToggle = () => {
   return (
-    <div id="theme-toggle" class="theme-toggle">
+    <div id="theme-toggle" class={wrap()}>
       <SpanSvg class={svgIcon()} filename="theme" />{" "}
       <select
         id="theme-selector"
@@ -33,6 +33,11 @@ export const ThemeToggle = () => {
   );
 };
 
+const wrap = css({
+  display: "flex",
+  gap: "0.5rem",
+});
+
 const svgIcon = css({
   "> svg": {
     verticalAlign: "middle",
@@ -44,5 +49,5 @@ const select = css({
   backgroundColor: "$bg",
   border: "1px solid $border",
   borderRadius: "0.5rem",
-  padding: "0.5rem 0",
+  opacity: 0.8,
 });

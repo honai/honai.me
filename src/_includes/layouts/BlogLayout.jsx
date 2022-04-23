@@ -64,6 +64,7 @@ export const BlogLayout = ({
           onload="this.media='all'"
         />
         <link rel="stylesheet" href="/index.css" />
+        <script type="module" src="/scripts/theme-toggle.mjs"></script>
       </head>
 
       <body>
