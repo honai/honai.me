@@ -45,10 +45,8 @@ export default ({ profile, feeds, page }) => {
       <SimpleCard id="education" title="Education">
         {profile.education.map((E) => (
           <SimpleCard.Content>
-            <div>
-              <div class={css({ color: "$textSecondary" })()}>{E.period}</div>
-              <div>{E.title}</div>
-            </div>
+            <div class={css({ color: "$textSecondary" })()}>{E.period}</div>
+            <div>{E.title}</div>
           </SimpleCard.Content>
         ))}
       </SimpleCard>
@@ -56,10 +54,8 @@ export default ({ profile, feeds, page }) => {
       <SimpleCard id="intern" title="Internships / Employments">
         {profile.jobs.map((E) => (
           <SimpleCard.Content>
-            <div class="education-item">
-              <div class="period">{E.period}</div>
-              <div class="desc">{E.title}</div>
-            </div>
+            <div class={css({ color: "$textSecondary" })()}>{E.period}</div>
+            <div>{E.title}</div>
           </SimpleCard.Content>
         ))}
       </SimpleCard>
