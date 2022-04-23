@@ -1,7 +1,8 @@
 import { useEleventy } from "../EleventyContext";
 import { Seo } from "../components/Seo";
 import { css } from "../style.mjs";
-import { Footer, PortfolioHeader } from "../components/PortfolioParts";
+import { PortfolioHeader } from "../components/PortfolioParts";
+import { Footer } from "../components/Footer";
 
 const asyncStylesheets = [
   "/styles/stitches.css",

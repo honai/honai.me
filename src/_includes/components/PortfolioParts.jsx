@@ -11,26 +11,3 @@ export const PortfolioHeader = () => (
     <ThemeToggle />
   </header>
 );
-
-export const Footer = () => (
-  <footer
-    class={css({
-      color: "$textSecondary",
-      fontSize: "1.4rem",
-      textAlign: "center",
-      padding: "2rem 0",
-    })()}
-  >
-    &copy; 2022 Honai Ueoka
-    <br />
-    Powered by{" "}
-    <a
-      href="https://www.11ty.dev/"
-      target="_blank"
-      rel="noopener"
-      class={uc.uncolor}
-    >
-      Eleventy
-    </a>
-  </footer>
-);
