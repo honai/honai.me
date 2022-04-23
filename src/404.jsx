@@ -15,7 +15,7 @@ export default () => {
         <title>{title}</title>
         <link rel="icon" href="/favicon.ico" />
         <link rel="stylesheet" href="https://use.typekit.net/bdo3rru.css" />
-        <link rel="stylesheet" href="/styles/stitches.css" />
+        <link rel="stylesheet" href="/index.css" />
       </head>
       <body>
         <div class={css({ maxWidth: "72rem", margin: "2rem auto" })()}>

@@ -2,10 +2,7 @@ import { Seo } from "../components/Seo";
 import { css } from "../style.mjs";
 import { Footer } from "../components/Footer";
 
-const asyncStylesheets = [
-  "/styles/stitches.css",
-  "https://use.typekit.net/bdo3rru.css",
-];
+const asyncStylesheets = ["/index.css", "https://use.typekit.net/bdo3rru.css"];
 const preconnectDomains = [
   "https://p.typekit.net",
   "https://res.cloudinary.com",

@@ -62,7 +62,7 @@ module.exports = (eleventyConfig) => {
   // after
   eleventyConfig.on("eleventy.after", async () => {
     const { getCssText } = require("./src/_includes/style.mjs");
-    await fs.promises.writeFile("build/styles/stitches.css", getCssText());
+    await fs.promises.writeFile("build/index.css", getCssText());
   });
 
   return {
