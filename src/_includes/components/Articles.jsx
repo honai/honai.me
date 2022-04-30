@@ -20,25 +20,31 @@ export const Articles = ({ articles }) => {
       {articles.map((a) => {
         return (
           <SimpleCard.Content>
-            {/* <img src={a.thumb} loading="lazy" /> */}
-            <Link href={a.url}>{a.title}</Link>
-            <div
-              class={css({
-                textAlign: "right",
-                fontSize: "1.4rem",
-                color: "$textSecondary",
-              })()}
-            >
-              <time dateTime={isodate(a.date)}>{isodate(a.date)}</time>
-              {a.source && (
-                <>
-                  {" "}
-                  &middot;{" "}
-                  <Link href={a.source.url} class={uc.uncolor}>
-                    {a.source.title}
-                  </Link>
-                </>
+            <div class={articleSty()}>
+              {a.thumb && (
+                <Link href={a.url} class={articleThumb()}>
+                  <img src={a.thumb} loading="lazy" />
+                </Link>
               )}
+              <div class={articleDesc()}>
+                <Link href={a.url}>{a.title}</Link>
+                <div
+                  class={css({
+                    textAlign: "right",
+                    fontSize: "1.4rem",
+                    color: "$textSecondary",
+                  })()}
+                >
+                  {a.source && (
+                    <>
+                      <Link href={a.source.url} class={uc.uncolor}>
+                        {a.source.title}
+                      </Link>{" "}
+                    </>
+                  )}
+                  <time dateTime={isodate(a.date)}>{isodate(a.date)}</time>
+                </div>
+              </div>
             </div>
           </SimpleCard.Content>
         );
@@ -46,3 +52,42 @@ export const Articles = ({ articles }) => {
     </SimpleCard>
   );
 };
+
+const articleThumb = css({
+  lineHeight: 0,
+  "& > img": {
+    display: "block",
+    objectFit: "cover",
+    borderRadius: "$defaultRad",
+    border: "1px solid $border",
+    width: "12rem",
+    height: "6rem",
+  },
+  "@sm": {
+    "& > img": {
+      width: "18rem",
+      height: "9rem",
+    },
+  },
+});
+
+const articleDesc = css({
+  display: "flex",
+  flexFlow: "column nowrap",
+  justifyContent: "space-between",
+  gap: "0.5rem",
+  lineHeight: 1.5,
+});
+
+const articleSty = css({
+  display: "flex",
+  flexFlow: "row nowrap",
+  alignItems: "space-between",
+  gap: "1rem",
+  [`& > .${articleThumb}`]: {
+    flex: "0 0 auto",
+  },
+  [`& > .${articleDesc}`]: {
+    flex: "1 1 auto",
+  },
+});

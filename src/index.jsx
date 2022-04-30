@@ -7,14 +7,21 @@ import { PortfolioLayout } from "./_includes/layouts/PortfolioLayout";
 import { css, cx, uc } from "./_includes/style.mjs";
 import { SpanSvg } from "./_includes/svg";
 
-export default ({ profile, feeds, page, collections }) => {
+const articleWithSource = (articles) => {
+  return articles.items.map((a) => ({
+    ...a,
+    source: articles.sources[a.source],
+  }));
+};
+
+export default ({ profile, articles, page, collections }) => {
   const posts = collections.posts.map(({ data, date, url }) => ({
     title: data.title,
     url,
     date,
     thumb: data.og_image_url,
   }));
-  const latestArticles = [...posts, ...feeds]
+  const latestArticles = [...posts, ...articleWithSource(articles)]
     .sort((a, b) => new Date(b.date).getTime() - new Date(a.date).getTime())
     .slice(0, 5);
   return (
@@ -50,6 +57,8 @@ export default ({ profile, feeds, page, collections }) => {
           <SocialLinks links={profile.links} />
         </SimpleCard.Content>
       </SimpleCard>
+
+      <Articles articles={latestArticles} />
 
       <SimpleCard id="education" title="Education">
         {profile.education.map((E) => (
@@ -89,8 +98,6 @@ export default ({ profile, feeds, page, collections }) => {
           </SimpleCard.Content>
         ))}
       </SimpleCard>
-
-      <Articles articles={latestArticles} />
 
       <SimpleCard id="presentations" title="Presentations">
         <SimpleCard.Content>
