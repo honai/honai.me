@@ -30,7 +30,7 @@
     "feed": "^4.2.2",
     "got": "^12.0.3",
     "js-yaml": "^4.1.0",
-    "markdown-it": "^12.3.2",
+    "markdown-it": "^13.0.0",
     "markdown-it-anchor": "^8.6.2",
     "markdown-it-link-attributes": "^4.0.0",
     "preact": "^10.7.1",
