@@ -1124,10 +1124,10 @@
     escape-string-regexp "^2.0.0"
     lodash.deburr "^4.1.0"
 
-"@stitches/core@^1.2.7":
-  version "1.2.7"
-  resolved "https://registry.yarnpkg.com/@stitches/core/-/core-1.2.7.tgz#9d421b0635ee2acd65a8f0c078d5f5be8fc81766"
-  integrity sha512-2bSto+jqPjeODcdNvwuXduhUH5b1bROmGNSBj/EVOGk8a8dIdCnoZyXYSxdKlKA9SnedBg94qNO0QQAMvTAz3w==
+"@stitches/core@^1.2.8":
+  version "1.2.8"
+  resolved "https://registry.yarnpkg.com/@stitches/core/-/core-1.2.8.tgz#dce3b8fdc764fbc6dbea30c83b73bfb52cf96173"
+  integrity sha512-Gfkvwk9o9kE9r9XNBmJRfV8zONvXThnm1tcuojL04Uy5uRyqg93DC83lDebl0rocZCfKSjUv+fWYtMQmEDJldg==
 
 "@szmarczak/http-timer@^5.0.1":
   version "5.0.1"
