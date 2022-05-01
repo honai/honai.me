@@ -1,0 +1,10 @@
+items:
+  - title: CAMPHOR-のWebサイトをリプレイスした (フロントエンド編)
+    url: https://blog.camph.net/release/new-website-1/
+    date: 2021-12-09
+    source: camphor-blog
+
+sources:
+  camphor-blog:
+    title: CAMPHOR- Blog
+    url: https://blog.camph.net/author/honai/
