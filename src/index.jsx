@@ -126,12 +126,6 @@ export default ({ profile, articles, page, collections }) => {
           </div>
         </SimpleCard.Content>
       </SimpleCard>
-
-      <SimpleCard id="blog" title="Blog">
-        <SimpleCard.Content>
-          <a href="/blog/">Honai's Blog</a>
-        </SimpleCard.Content>
-      </SimpleCard>
     </PortfolioLayout>
   );
 };
