@@ -23,7 +23,7 @@ class Rss {
         link: canonicalUrl,
         date: post.date,
         description: post.data.description,
-        image: post.data.og_image_url,
+        image: post.data.thumbnail_url,
       });
     }
     return feed.rss2();

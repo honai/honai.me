@@ -3,7 +3,7 @@
   "title": "MakeをPythonのタスクランナーとして使う",
   "date": "2020-12-15T15:08:38.668Z",
   "description": "この記事は Kyoto University Advent Calendar 2020 - Adventar と CAMPHOR- Advent Calendar の16日目の記事です。  こんにちは、ほないです。今年も残り半月、アドベントカレンダーも後半に入っていますね。",
-  "og_image_url": "https://res.cloudinary.com/honai/image/upload/ctf/makefile-vs.png",
+  "thumbnail_url": "https://res.cloudinary.com/honai/image/upload/ctf/makefile-vs.png",
   "large_card": true
 }
 ---

@@ -3,18 +3,21 @@
  * @param {string} props.title
  * @param {string} props.pageUrl
  * @param {string} props.description
- * @param {string} [props.og_image_url]
+ * @param {string} [props.thumbnailUrl]
  */
-export const Seo = ({ title, pageUrl, description, og_image_url }) => {
+export const Seo = ({ title, pageUrl, description, thumbnailUrl }) => {
+  if (!pageUrl) {
+    return;
+  }
   if (!pageUrl.startsWith("/")) {
     throw new Error(`Invalid pageUrl: ${pageUrl}`);
   }
-  if (!!og_image_url && !/^https?:\/\//.test(og_image_url)) {
-    throw new Error(`Invalid ogp image url: ${og_image_url}`);
+  if (!!thumbnailUrl && !/^https?:\/\//.test(thumbnailUrl)) {
+    throw new Error(`Invalid ogp image url: ${thumbnailUrl}`);
   }
   const canonicalUrl = `https://www.honai.me${pageUrl}`;
-  const isLargeCard = !!og_image_url;
-  const ogImage = og_image_url || "https://www.honai.me/images/profile.png";
+  const isLargeCard = !!thumbnailUrl;
+  const ogImage = thumbnailUrl || "https://www.honai.me/images/profile.png";
   return (
     <>
       <meta charSet="UTF-8" />

@@ -4,7 +4,7 @@
   "date": "2019-09-06T07:54:27.083Z",
   "description": "こんにちは。ほないです。 京都はまだ暑いですが、9月になりましたね。通った高校では9月初めに運動会があります。もうそんな季節かぁとぼやいています。  先月、大学の夏休みを利用して、株式会社CyberZ の OPENREC.tv というサービスの開発チームでインターンをしてきました。サイバーエージェントの就業型インターン「CA Tech JOB」で、職種としてはWebフロントエンジニアです。この記事では、インターンで取り組んだことやインターン全体の回想をまとめています。",
   "updated": "2020-05-16T14:22:53.298Z",
-  "og_image_url": "https://res.cloudinary.com/honai/image/upload/ctf/ca-entrance.jpg",
+  "thumbnail_url": "https://res.cloudinary.com/honai/image/upload/ctf/ca-entrance.jpg",
   "large_card": true,
   "plugins": [
     "twitter"

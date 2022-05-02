@@ -16,14 +16,14 @@ const GTAG_ID = "UA-137251140-3";
  * @param {string} props.title
  * @param {string} props.description
  * @param {StyleSheet[]} [props.styleSheets]
- * @param {string} [props.ogImageUrl]
+ * @param {string} [props.thumbnailUrl]
  * @param {any} props.children
  */
 export const BlogLayout = ({
   pageUrl,
   title,
   description,
-  ogImageUrl,
+  thumbnailUrl,
   styleSheets,
   children,
 }) => {
@@ -34,7 +34,7 @@ export const BlogLayout = ({
           pageUrl={pageUrl}
           title={title}
           description={description}
-          og_image_url={ogImageUrl}
+          thumbnailUrl={thumbnailUrl}
         />
         <base href={pageUrl} />
         {(styleSheets || []).map(({ href, integrity, async }) =>

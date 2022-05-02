@@ -19,7 +19,7 @@ export default ({ profile, articles, page, collections }) => {
     title: data.title,
     url,
     date,
-    thumb: data.og_image_url,
+    thumb: data.thumbnail_url,
   }));
   const latestArticles = [...posts, ...articleWithSource(articles)]
     .sort((a, b) => new Date(b.date).getTime() - new Date(a.date).getTime())
