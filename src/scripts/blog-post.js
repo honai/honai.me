@@ -14,7 +14,7 @@ for (const el of document.querySelectorAll(
 
 // TOCスクロール連動
 const initTableOfContents = () => {
-  const postTocClass = "post-toc";
+  const postTocClass = "toc";
   const headingObserveMap = new Map();
   const ids = [];
 
