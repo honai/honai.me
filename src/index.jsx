@@ -7,22 +7,13 @@ import { PortfolioLayout } from "./_includes/layouts/PortfolioLayout";
 import { css, cx, uc } from "./_includes/style.mjs";
 import { SpanSvg } from "./_includes/svg";
 
-const articleWithSource = (articles) => {
-  return articles.items.map((a) => ({
-    ...a,
-    source: articles.sources[a.source],
-  }));
-};
-
-export default ({ profile, articles, page, collections }) => {
-  const posts = collections.posts.map(({ data, date, url }) => ({
-    title: data.title,
-    url,
-    date,
-    thumb: data.thumbnail_url,
-  }));
-  const latestArticles = [...posts, ...articleWithSource(articles)]
-    .sort((a, b) => new Date(b.date).getTime() - new Date(a.date).getTime())
+export default ({ profile, page, collections }) => {
+  const latestArticles = [
+    ...collections.posts.map(postToFeed),
+    ...profile.articles.map(articleToFeed),
+    ...profile.slides.map(slideToFeed),
+  ]
+    .sort((a, b) => b.date.getTime() - a.date.getTime())
     .slice(0, 5);
   return (
     <PortfolioLayout pageUrl={page.url}>
@@ -99,12 +90,6 @@ export default ({ profile, articles, page, collections }) => {
         ))}
       </SimpleCard>
 
-      <SimpleCard id="presentations" title="Presentations">
-        <SimpleCard.Content>
-          <SlideList slides={profile.slides} />
-        </SimpleCard.Content>
-      </SimpleCard>
-
       <SimpleCard id="works" title="Works">
         <SimpleCard.Content>
           <ul
@@ -129,3 +114,34 @@ export default ({ profile, articles, page, collections }) => {
     </PortfolioLayout>
   );
 };
+
+const articleToFeed = (a) => ({
+  type: "Article",
+  date: new Date(a.date),
+  title: a.title,
+  url: a.url,
+  sub: {
+    title: a.source.title,
+    url: a.source.url,
+  },
+});
+
+const postToFeed = (p) => ({
+  type: "Article",
+  title: p.data.title,
+  url: p.url,
+  date: p.date,
+  thumb: { url: p.data.thumbnail_url, alt: p.data.title },
+});
+
+const slideToFeed = (s) => ({
+  type: "Slide",
+  title: s.title,
+  url: s.url,
+  date: new Date(s.date),
+  thumb: { url: `/images/slide_thumb/${s.thumb}`, alt: s.title },
+  sub: {
+    title: s.event.title,
+    url: s.event.url,
+  },
+});

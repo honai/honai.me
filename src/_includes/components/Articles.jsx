@@ -1,10 +1,11 @@
 /**
  * @typedef Article
+ * @prop {string} type
  * @prop {string} title
  * @prop {string} url
  * @prop {Date | string} date
- * @prop {string} [thumb]
- * @prop {{url: string; title: string}} [source]
+ * @prop {{url: string; alt: string}} [thumb]
+ * @prop {{url: string; title: string}} [sub]
  */
 
 import { useEleventy } from "../EleventyContext";
@@ -16,33 +17,31 @@ import SimpleCard from "./SimpleCard";
 export const Articles = ({ articles }) => {
   const { isodate } = useEleventy();
   return (
-    <SimpleCard id="articles" title="Recent Articles">
+    <SimpleCard id="feed" title="Recent Articles & Slides">
       {articles.map((a) => {
         return (
           <SimpleCard.Content>
             <div class={articleSty()}>
-              {a.thumb && (
-                <Link href={a.url} class={articleThumb()}>
-                  <img src={a.thumb} loading="lazy" />
-                </Link>
-              )}
+              <Link href={a.url} class={articleThumb()}>
+                {a.thumb ? (
+                  <img src={a.thumb.url} alt={a.thumb.alt} loading="lazy" />
+                ) : (
+                  <div class={noImage()}>No Image</div>
+                )}
+              </Link>
               <div class={articleDesc()}>
-                <Link href={a.url}>{a.title}</Link>
+                <Link href={a.url} class={css({ fontSize: "1.8rem" })()}>
+                  {a.title}
+                </Link>
                 <div
                   class={css({
-                    textAlign: "right",
-                    fontSize: "1.4rem",
                     color: "$textSecondary",
                   })()}
                 >
-                  {a.source && (
-                    <>
-                      <Link href={a.source.url} class={uc.uncolor}>
-                        {a.source.title}
-                      </Link>{" "}
-                    </>
-                  )}
-                  <time dateTime={isodate(a.date)}>{isodate(a.date)}</time>
+                  <div class={css({ centuryGothic: true })()}>
+                    <span>{a.type}</span> &middot;{" "}
+                    <time dateTime={isodate(a.date)}>{isodate(a.date)}</time>
+                  </div>
                 </div>
               </div>
             </div>
@@ -53,21 +52,30 @@ export const Articles = ({ articles }) => {
   );
 };
 
+const noImage = css({
+  backgroundColor: "$bg",
+  color: "$textSecondary",
+  display: "flex",
+  alignItems: "center",
+  justifyContent: "center",
+  centuryGothic: true,
+});
+
 const articleThumb = css({
-  lineHeight: 0,
+  textDecoration: "none",
+  aspectRatio: 2,
+  "&::after": {
+    display: "none !important",
+  },
+  [`& > img, & > .${noImage}`]: {
+    borderRadius: "$defaultRad",
+    border: "1px solid $border",
+    width: "100%",
+    height: "100%",
+  },
   "& > img": {
     display: "block",
     objectFit: "cover",
-    borderRadius: "$defaultRad",
-    border: "1px solid $border",
-    width: "12rem",
-    height: "6rem",
-  },
-  "@sm": {
-    "& > img": {
-      width: "18rem",
-      height: "9rem",
-    },
   },
 });
 
@@ -75,19 +83,24 @@ const articleDesc = css({
   display: "flex",
   flexFlow: "column nowrap",
   justifyContent: "space-between",
-  gap: "0.5rem",
   lineHeight: 1.5,
 });
 
 const articleSty = css({
+  width: "min(100%, 36rem)",
+  marginInline: "auto",
   display: "flex",
-  flexFlow: "row nowrap",
-  alignItems: "space-between",
+  flexWrap: "wrap",
   gap: "1rem",
   [`& > .${articleThumb}`]: {
-    flex: "0 0 auto",
-  },
-  [`& > .${articleDesc}`]: {
     flex: "1 1 auto",
+  },
+  "@sm": {
+    width: "100%",
+    gap: "2rem",
+    flexWrap: "nowrap",
+    [`& > .${articleThumb}`]: {
+      flex: "0 0 24rem",
+    },
   },
 });
