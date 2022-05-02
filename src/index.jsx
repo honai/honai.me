@@ -1,7 +1,6 @@
-import { Articles } from "./_includes/components/Articles";
+import { Recents } from "./_includes/components/Recents";
 import { PortfolioHeader } from "./_includes/components/PortfolioHeader";
 import SimpleCard from "./_includes/components/SimpleCard";
-import { SlideList } from "./_includes/components/SlideList";
 import { SocialLinks } from "./_includes/components/SocialLinks";
 import { PortfolioLayout } from "./_includes/layouts/PortfolioLayout";
 import { css, cx, uc } from "./_includes/style.mjs";
@@ -49,7 +48,7 @@ export default ({ profile, page, collections }) => {
         </SimpleCard.Content>
       </SimpleCard>
 
-      <Articles articles={latestArticles} />
+      <Recents articles={latestArticles} />
 
       <SimpleCard id="education" title="Education">
         {profile.education.map((E) => (

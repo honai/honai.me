@@ -14,7 +14,7 @@ import { Link } from "./Link";
 import SimpleCard from "./SimpleCard";
 
 /** @param {{articles: Article[]}} p */
-export const Articles = ({ articles }) => {
+export const Recents = ({ articles }) => {
   const { isodate } = useEleventy();
   return (
     <SimpleCard id="feed" title="Recent Articles & Slides">
