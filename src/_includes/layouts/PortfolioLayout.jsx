@@ -1,6 +1,7 @@
 import { Seo } from "../components/Seo";
-import { css } from "../style.mjs";
 import { Footer } from "../components/Footer";
+import { Header } from "../components/Header";
+import VerticalGrow from "../components/VerticalGrow";
 
 const asyncStylesheets = ["https://use.typekit.net/bdo3rru.css"];
 const preconnectDomains = [
@@ -13,22 +14,29 @@ const preconnectDomains = [
  * @param {string} [props.subTitle]
  * @param {string} [props.description] 空文字ならdescriptionなし、undefならデフォルトのテキスト
  * @param {string} props.pageUrl Absolute page path, "page.url" in data cascade
+ * @param {string} [props.thumbnailUrl]
+ * @param {boolean} [props.noSeo]
  * @param {any} props.children
  */
 export const PortfolioLayout = ({
   subTitle,
   description,
   pageUrl,
+  thumbnailUrl,
+  noSeo,
   children,
 }) => {
   return (
     <html lang="ja">
       <head>
-        <Seo
-          title={!!subTitle ? `${subTitle} | honai.me` : "honai.me"}
-          description={description ?? "honaiのポートフォリオ・ブログ"}
-          pageUrl={pageUrl}
-        />
+        {!noSeo && (
+          <Seo
+            title={!!subTitle ? `${subTitle} | honai.me` : "honai.me"}
+            description={description ?? "honaiのポートフォリオ・ブログ"}
+            pageUrl={pageUrl}
+            thumbnailUrl={thumbnailUrl}
+          />
+        )}
         {preconnectDomains.map((domain) => (
           <link rel="preconnect" href={domain} />
         ))}
@@ -56,24 +64,11 @@ export const PortfolioLayout = ({
       </head>
 
       <body>
-        <div
-          class={css({
-            padding: "1rem",
-            maxWidth: "calc(720px + 2rem)",
-            margin: "0 auto",
-          })()}
-        >
-          <main
-            class={css({
-              display: "flex",
-              flexFlow: "column nowrap",
-              gap: "3rem",
-            })()}
-          >
-            {children}
-          </main>
-        </div>
-        <Footer />
+        <VerticalGrow>
+          <Header />
+          <VerticalGrow.Grow>{children}</VerticalGrow.Grow>
+          <Footer />
+        </VerticalGrow>
       </body>
     </html>
   );

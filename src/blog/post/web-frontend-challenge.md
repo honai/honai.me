@@ -4,7 +4,7 @@
   "date": "2019-03-16",
   "description": "こんにちは、ほないです。  2019年3月9日・10日の2日間、サイバーエージェントの短期インターン「Web Frontend Challenge」に参加してきました。  wfc  Web Frontend Challenge | 株式会社サイバーエージェント  応募のきっかけ ",
   "updated": "2020-05-16T14:22:53.387Z",
-  "og_image_url": "https://res.cloudinary.com/honai/image/upload/ctf/wfc.png",
+  "thumbnail_url": "https://res.cloudinary.com/honai/image/upload/ctf/wfc.png",
   "large_card": true,
   "plugins": [
     "twitter"

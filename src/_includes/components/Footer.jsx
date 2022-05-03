@@ -2,15 +2,23 @@ import { css, uc } from "../style.mjs";
 
 export const Footer = () => (
   <footer class={style()}>
-    <nav class={css({ padding: "1rem" })()}>
+    <nav
+      class={css({
+        padding: "1rem",
+        display: "flex",
+        gap: "1.5rem",
+        justifyContent: "center",
+      })()}
+    >
       <a href="/" class={uc.uncolor}>
         About
       </a>
-      &ensp;
       <a href="/works/" class={uc.uncolor}>
         Works
       </a>
-      &ensp;
+      <a href="/talks/" class={uc.uncolor}>
+        Talks
+      </a>
       <a href="/blog/" class={uc.uncolor}>
         Blog
       </a>
@@ -39,4 +47,5 @@ const style = css({
   color: "$textSecondary",
   textAlign: "center",
   padding: "2rem 0",
+  centuryGothic: true,
 });

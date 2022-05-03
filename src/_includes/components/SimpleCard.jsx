@@ -5,7 +5,7 @@ import { css, uc } from "../style.mjs";
  * @param {string=} p.id
  * @param {string} p.title
  * @param {string=} p.href defaults to self
- * @param {JSX.Element | JSX.Element[]} p.children
+ * @param {any} p.children
  */
 const SimpleCard = ({ id, title, href, children }) => (
   <section id={id} class={wrap()}>
@@ -15,7 +15,7 @@ const SimpleCard = ({ id, title, href, children }) => (
           {title}
         </a>
       ) : (
-        { title }
+        <>{title}</>
       )}
     </h2>
     {children}

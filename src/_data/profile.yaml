@@ -61,33 +61,6 @@ publications:
       - text: paper
         url: https://www.aclweb.org/anthology/2020.nlpcovid19-2.13/
 
-slides:
-  - title: スマホがネットにつながる仕組み
-    subtitle: CAMPHOR- DAY 2022
-    url: https://speakerdeck.com/honai/mobile-network-explained
-    thumb: lte.jpg
-    date: 2022/03/19
-  - title: JSXでJSなしの静的サイトをつくる
-    subtitle: 全国学生エンジニア交流会「NSEEM」
-    url: https://speakerdeck.com/honai/jsx-as-ssg-template
-    thumb: 11ty-jsx.jpg
-    date: 2022/03/12
-  - title: IPv6と日本のインターネット
-    subtitle: CAMPHOR- DAY 2021
-    url: https://speakerdeck.com/honai/ipv6-internet-in-japan
-    thumb: ipv6.jpg
-    date: 2021/03/27
-  - title: pixivの選考インターンに行ってきた
-    subtitle: インターン報告大会
-    url: https://docs.google.com/presentation/d/e/2PACX-1vSs0HRmFPKl-ux8W8nMCp_rKAmVmq0OiSFS7_Sk1mdTrM7OvntyrYEGqD5SivnGbwUNcxNkf14xiLjv/pub?start=false&loop=false&delayms=3000
-    thumb: pixiv-intern.png
-    date: 2020/10/10
-  - title: 入門HTTP
-    subtitle: CAMPHOR- DAY 2020
-    url: https://speakerdeck.com/honai/introducing-http
-    thumb: http.jpg
-    date: 2020/03/29
-
 works:
   - name: CAMPHOR- Website
     url: https://camph.net/
@@ -120,3 +93,11 @@ works:
     desc: |
       * Code: [honai / vscode-shortcuts-wallpaper](https://github.com/honai/vscode-shortcuts-wallpaper)
       * Just reproduced the official keyboard shortcuts reference (PDF) with CSS with darker theme.
+
+articles:
+  - title: CAMPHOR-のWebサイトをリプレイスした (フロントエンド編)
+    url: https://blog.camph.net/release/new-website-1/
+    date: 2021-12-09
+    source:
+      title: CAMPHOR- Blog
+      url: https://blog.camph.net/author/honai/

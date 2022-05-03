@@ -3,6 +3,7 @@ import { useContext } from "preact/hooks";
 
 /**
  * @typedef {Object} EleventyContextVal
+ * @prop {{url: string}} page
  * @prop {(date: string | Date) => string} isodate
  * @prop {(md: string) => string} mdinline
  * @prop {(svgFile: string) => string} svginline

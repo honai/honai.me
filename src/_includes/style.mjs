@@ -26,6 +26,7 @@ const {
     md: minWidthMedia(768),
     lg: minWidthMedia(992),
     dark: "(prefers-color-scheme: dark)",
+    reduceMotion: "(prefers-reduced-motion)",
   },
   theme: {
     colors: {
@@ -78,6 +79,10 @@ const normalizeStyle = globalCss({
     // 1rem = 10px
     fontSize: "62.5%",
     fontFamily: "sans-serif",
+    scrollBehavior: "smooth",
+    "@reduceMotion": {
+      scrollBehavior: "auto",
+    },
   },
   body: {
     fontSize: "1.6rem",

@@ -3,7 +3,7 @@
   "title": "連載「入門 HTTP」(1) HTTP/1.xとKeep Alive",
   "date": "2020-04-21",
   "description": "みなさんこんにちは、ほないです。 CAMPHOR-のオンライン配信のイベントCAMPHOR- Dayにて「入門 HTTP」というタイトルで発表した内容をブログにまとめようと思います。  CAMPHOR- カンファー : 京都のIT系学生コミュニティ 【ライブ配信】CAMPHOR- DAY 2020 - connpass",
-  "og_image_url": "https://res.cloudinary.com/honai/image/upload/ctf/ogp.jpg",
+  "thumbnail_url": "https://res.cloudinary.com/honai/image/upload/ctf/ogp.jpg",
   "large_card": true
 }
 ---

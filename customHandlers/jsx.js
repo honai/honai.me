@@ -10,13 +10,17 @@ module.exports = {
   init() {
     const jsFuncs = this.config.javascriptFunctions;
     const ProviderFC = require("../src/_includes/EleventyContext.jsx").default;
-    Provider = ({ children }) => jsx(ProviderFC, { value: jsFuncs, children });
+    Provider = ({ otherValue, children }) =>
+      jsx(ProviderFC, { value: { ...jsFuncs, ...otherValue }, children });
   },
   compile(_, inputPath) {
     return function (data) {
       const Component = require(resolveInputPath(inputPath)).default;
       const html = renderToStaticMarkup(
-        jsx(Provider, { children: jsx(Component, data) })
+        jsx(Provider, {
+          otherValue: { page: data.page },
+          children: jsx(Component, data),
+        })
       );
       return html.startsWith("<html") ? `<!DOCTYPE html>${html}` : html;
     };

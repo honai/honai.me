@@ -3,7 +3,7 @@
   "title": "Outlook.comのスパムフィルタをPower Automateを使って無効化する",
   "date": "2020-09-04T07:44:57.328Z",
   "description": "小ネタです。突然ですが IFTTT 便利ですよね。今回はIFTTTに似た自動化サービスでWebメールで感じていた不便さを解決したというメモを投稿します。  背景: Outlook.comのスパムフィルタが不便  筆者は普段、GmailのほかにMicrosoftのOutlook.comも使っているのですが、以前から迷惑メールフィルタが強すぎるというか、特に大学や研究室のメールの転送先として使うとかなりの頻度で大事なメールが迷惑メールフォルダに入ってしまっていました。",
-  "og_image_url": "https://res.cloudinary.com/honai/image/upload/ctf/automate-outlook.png",
+  "thumbnail_url": "https://res.cloudinary.com/honai/image/upload/ctf/automate-outlook.png",
   "large_card": true
 }
 ---

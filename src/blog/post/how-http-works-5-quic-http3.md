@@ -3,7 +3,7 @@
   "title": "連載「入門HTTP」 (5) QUICとHTTP/3",
   "date": "2020-08-06T08:42:56.552Z",
   "description": "8月になりました。京都は真夏日や猛暑日が続きそうです……。入門HTTPの連載も今回で最後になります。  連載について  HTTP/1.xとKeep Alive TLSとHTTP - TLSの概要 TLSとHTTP - HTTP over TLS HTTP/1の課題とHTTP/2 QUICとHTTP/3（本記事）",
-  "og_image_url": "https://res.cloudinary.com/honai/image/upload/ctf/ietf-quic.png",
+  "thumbnail_url": "https://res.cloudinary.com/honai/image/upload/ctf/ietf-quic.png",
   "large_card": true
 }
 ---

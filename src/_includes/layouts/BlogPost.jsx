@@ -31,7 +31,7 @@ export default ({
   collections,
   title,
   description,
-  og_image_url,
+  thumbnail_url,
   updated,
   plugins,
 }) => {
@@ -43,7 +43,7 @@ export default ({
       pageUrl={page.url}
       title={title}
       description={description}
-      ogImageUrl={og_image_url}
+      thumbnailUrl={thumbnail_url}
       styleSheets={styleSheets}
     >
       <VerticalGrow>

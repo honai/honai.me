@@ -8,6 +8,7 @@
  */
 
 import { css } from "../style.mjs";
+import { DateTag } from "./DateTag.jsx";
 
 /**
  * @param {object} p
@@ -20,15 +21,14 @@ export const SlideList = ({ slides }) => {
         <article class={itemSty()}>
           <a href={s.url}>
             <img
-              src={`/images/slide_thumb/${s.thumb}`}
+              src={s.thumb}
               alt={`${s.title}のスライドのサムネイル`}
-              width="640"
-              height="320"
               class={css({
                 display: "block",
                 borderRadius: "$defaultRad $defaultRad 0 0",
                 width: "100%",
-                height: "auto",
+                aspectRatio: "16/9",
+                objectFit: "cover",
               })()}
               loading="lazy"
             />
@@ -44,7 +44,9 @@ export const SlideList = ({ slides }) => {
               <a href={s.url}>{s.title}</a>
             </h3>
             <div class={slideSubText()}>{s.subtitle}</div>
-            <div class={slideSubText()}>{s.date}</div>
+            <div class={slideSubText()}>
+              <DateTag date={s.date} />
+            </div>
           </div>
         </article>
       ))}
@@ -59,7 +61,7 @@ const itemSty = css({
 
 const listSty = css({
   display: "grid",
-  gap: "1.5rem;",
+  gap: "2.4rem;",
   "@sm": {
     gridTemplateColumns: "1fr 1fr",
   },

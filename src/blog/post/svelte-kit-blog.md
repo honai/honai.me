@@ -3,7 +3,8 @@ title: SvelteKitでブログを作ってみた
 description: プレビュー段階のSvelteKitというフレームワークでブログを作ってみました。この記事では、SvelteKitを静的サイトジェネレータとして使うためのアイデアの紹介や、SvelteKitと他のフレームワークとの比較を行っています。
 date: 2021-08-10
 large_card: true
-og_image_url: https://res.cloudinary.com/honai/image/upload/v1633575294/blog/og-svelte-kit-blog.png
+thumbnail_url: https://res.cloudinary.com/honai/image/upload/v1633575294/blog/og-svelte-kit-blog.png
+thumb_cld: blog/og-svelte-kit-blog.png
 ---
 
 気になるサイトジェネレータやフレームワークがあるとブログで試してみることが多く、この個人ブログも実は今までいろいろな構成を試してきました。構成だけ変わって肝心の記事は増えないのもよくないので今回は移行した記録を記事として残しておきます。
