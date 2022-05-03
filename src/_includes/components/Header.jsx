@@ -11,7 +11,9 @@ export const Header = () => {
   return (
     <header
       class={css({
-        padding: "1rem 2rem",
+        width: "min(100% - 2rem, 72rem)",
+        margin: "0 auto",
+        padding: "1rem 0",
         display: "flex",
         alignItems: "center",
         justifyContent: "space-between",
@@ -37,14 +39,4 @@ export const Header = () => {
       <ThemeToggle />
     </header>
   );
-};
-
-/** @param {string} url starts with "/" */
-const firstPathSegment = (url) => {
-  // "/blog/" -> ["", "blog", ""]
-  const split = url.split("/");
-  if (split.length < 3) {
-    return null;
-  }
-  return split[1];
 };
