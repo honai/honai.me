@@ -20,7 +20,7 @@ export const Recents = ({ articles }) => {
       {articles.map((a) => {
         return (
           <SimpleCard.Content>
-            <div class={articleSty()}>
+            <article class={articleSty()}>
               <Link href={a.url} class={articleThumb()}>
                 {a.thumb ? (
                   <img src={a.thumb.url} alt={a.thumb.alt} loading="lazy" />
@@ -29,9 +29,11 @@ export const Recents = ({ articles }) => {
                 )}
               </Link>
               <div class={articleDesc()}>
-                <Link href={a.url} class={css({ fontSize: "1.8rem" })()}>
-                  {a.title}
-                </Link>
+                <h3>
+                  <Link href={a.url} class={css({ fontSize: "1.8rem" })()}>
+                    {a.title}
+                  </Link>
+                </h3>
                 <div
                   class={css({
                     color: "$textSecondary",
@@ -43,7 +45,7 @@ export const Recents = ({ articles }) => {
                   </div>
                 </div>
               </div>
-            </div>
+            </article>
           </SimpleCard.Content>
         );
       })}
