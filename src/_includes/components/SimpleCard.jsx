@@ -15,7 +15,7 @@ const SimpleCard = ({ id, title, href, children }) => (
           {title}
         </a>
       ) : (
-        { title }
+        <>{title}</>
       )}
     </h2>
     {children}
