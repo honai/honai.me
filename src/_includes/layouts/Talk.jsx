@@ -2,12 +2,13 @@ import { DateTag } from "../components/DateTag.jsx";
 import { css } from "../style.mjs";
 import { PortfolioLayout } from "./PortfolioLayout";
 
-export default ({ page, content, title }) => {
+export default ({ page, content, title, thumbnail }) => {
   return (
     <PortfolioLayout
       pageUrl={page.url}
-      subTitle="Talks"
-      description="Talks by Honai Ueoka"
+      subTitle={title}
+      description=""
+      thumbnailUrl={`https://www.honai.me${thumbnail}`}
     >
       <div
         class={css({

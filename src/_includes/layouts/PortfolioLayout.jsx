@@ -14,6 +14,7 @@ const preconnectDomains = [
  * @param {string} [props.subTitle]
  * @param {string} [props.description] 空文字ならdescriptionなし、undefならデフォルトのテキスト
  * @param {string} props.pageUrl Absolute page path, "page.url" in data cascade
+ * @param {string} [props.thumbnailUrl]
  * @param {boolean} [props.noSeo]
  * @param {any} props.children
  */
@@ -21,6 +22,7 @@ export const PortfolioLayout = ({
   subTitle,
   description,
   pageUrl,
+  thumbnailUrl,
   noSeo,
   children,
 }) => {
@@ -32,6 +34,7 @@ export const PortfolioLayout = ({
             title={!!subTitle ? `${subTitle} | honai.me` : "honai.me"}
             description={description ?? "honaiのポートフォリオ・ブログ"}
             pageUrl={pageUrl}
+            thumbnailUrl={thumbnailUrl}
           />
         )}
         {preconnectDomains.map((domain) => (
