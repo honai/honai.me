@@ -4,7 +4,10 @@ import { ThemeToggle } from "./ThemeToggle";
 
 export const Header = () => {
   const { page } = useEleventy();
-  const segment = firstPathSegment(page.url);
+  const segment = page.url.split("/")[1];
+  console.log(page.url, segment);
+  const segmentMatch = page.url === `/${segment}/`;
+  console.log(segmentMatch);
   return (
     <header
       class={css({
@@ -18,13 +21,16 @@ export const Header = () => {
         <a href="/" className={uc.uncolor}>
           honai.me
         </a>
-        {segment && (
+        {segment !== "" && (
           <>
-            {" "}
-            /{" "}
-            <a href={`/${segment}/`} class={uc.uncolor}>
-              {segment}
-            </a>
+            {" / "}
+            {segmentMatch ? (
+              <>{segment}</>
+            ) : (
+              <a href={`/${segment}/`} class={uc.uncolor}>
+                {segment}
+              </a>
+            )}
           </>
         )}
       </h2>
