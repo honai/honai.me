@@ -61,7 +61,7 @@ const itemSty = css({
 
 const listSty = css({
   display: "grid",
-  gap: "1.5rem;",
+  gap: "2.4rem;",
   "@sm": {
     gridTemplateColumns: "1fr 1fr",
   },
