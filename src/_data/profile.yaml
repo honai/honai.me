@@ -61,47 +61,6 @@ publications:
       - text: paper
         url: https://www.aclweb.org/anthology/2020.nlpcovid19-2.13/
 
-slides:
-  - title: スマホがネットにつながる仕組み
-    url: https://speakerdeck.com/honai/mobile-network-explained
-    date: 2022-03-19
-    thumb: lte.jpg
-    event:
-      title: CAMPHOR- DAY 2022
-      url: https://camphor.connpass.com/event/240762/
-
-  - title: JSXでJSなしの静的サイトをつくる
-    url: https://speakerdeck.com/honai/jsx-as-ssg-template
-    date: 2022-03-12
-    thumb: 11ty-jsx.jpg
-    event:
-      title: 全国学生エンジニア交流会「NSEEM」
-      url: https://zli.connpass.com/event/239501/
-
-  - title: IPv6と日本のインターネット
-    url: https://speakerdeck.com/honai/ipv6-internet-in-japan
-    date: 2021-03-27
-    thumb: ipv6.jpg
-    event:
-      title: CAMPHOR- DAY 2021
-      url: https://camphor.connpass.com/event/206786/
-
-  - title: pixivの選考インターンに行ってきた
-    url: https://docs.google.com/presentation/d/e/2PACX-1vSs0HRmFPKl-ux8W8nMCp_rKAmVmq0OiSFS7_Sk1mdTrM7OvntyrYEGqD5SivnGbwUNcxNkf14xiLjv/pub?start=false&loop=false&delayms=3000
-    date: 2020-10-10
-    thumb: pixiv-intern.png
-    event:
-      title: インターン報告大会 2020
-      url: https://camphor.connpass.com/event/189734/
-
-  - title: 入門HTTP
-    url: https://speakerdeck.com/honai/introducing-http
-    date: 2020-03-29
-    thumb: http.jpg
-    event:
-      title: CAMPHOR- DAY 2020
-      url: https://camphor.connpass.com/event/167947/
-
 works:
   - name: CAMPHOR- Website
     url: https://camph.net/
