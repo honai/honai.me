@@ -34,6 +34,9 @@ const Nav = () => (
     <a href="/works/" class={uc.uncolor}>
       Works
     </a>
+    <a href="/talks/" class={uc.uncolor}>
+      Talks
+    </a>
     <a href="/blog/" class={uc.uncolor}>
       Blog
     </a>
