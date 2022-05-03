@@ -12,7 +12,7 @@ export default ({ profile, page }) => {
       subTitle="Works"
       description="Works by Honai"
     >
-      <PortfolioHero title="Works by Honai" />
+      <PortfolioHero title="Works" />
       <div
         class={css({
           margin: "0 auto",

@@ -1,5 +1,4 @@
 import { Seo } from "../components/Seo";
-import { css } from "../style.mjs";
 import { Footer } from "../components/Footer";
 import { Header } from "../components/Header";
 import VerticalGrow from "../components/VerticalGrow";

@@ -1,10 +1,14 @@
 import { DateTag } from "../components/DateTag.jsx";
-import { css, uc } from "../style.mjs";
+import { css } from "../style.mjs";
 import { PortfolioLayout } from "./PortfolioLayout";
 
 export default ({ page, content, title }) => {
   return (
-    <PortfolioLayout pageUrl={page.url}>
+    <PortfolioLayout
+      pageUrl={page.url}
+      subTitle="Talks"
+      description="Talks by Honai Ueoka"
+    >
       <div
         class={css({
           width: "min(100% - 2rem, 72rem)",
