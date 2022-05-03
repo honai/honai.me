@@ -19,7 +19,11 @@ export default ({ page, collections }) => {
     }))
     .sort((a, b) => b.date - a.date);
   return (
-    <PortfolioLayout pageUrl={page.url}>
+    <PortfolioLayout
+      pageUrl={page.url}
+      subTitle="Talks"
+      description="Talks by Honai."
+    >
       <PortfolioHero title="Talks" />
       <div
         class={css({
