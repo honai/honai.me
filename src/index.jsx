@@ -9,8 +9,8 @@ import { SpanSvg } from "./_includes/svg";
 export default ({ profile, page, collections }) => {
   const latestArticles = [
     ...collections.posts.map(postToFeed),
+    ...collections.talks.map(talkToFeed),
     ...profile.articles.map(articleToFeed),
-    ...profile.slides.map(slideToFeed),
   ]
     .sort((a, b) => b.date.getTime() - a.date.getTime())
     .slice(0, 5);
@@ -136,10 +136,6 @@ const articleToFeed = (a) => ({
   date: new Date(a.date),
   title: a.title,
   url: a.url,
-  sub: {
-    title: a.source.title,
-    url: a.source.url,
-  },
 });
 
 const postToFeed = (p) => ({
@@ -150,14 +146,10 @@ const postToFeed = (p) => ({
   thumb: { url: p.data.thumbnail_url, alt: p.data.title },
 });
 
-const slideToFeed = (s) => ({
-  type: "Slide",
-  title: s.title,
-  url: s.url,
-  date: new Date(s.date),
-  thumb: { url: `/images/slide_thumb/${s.thumb}`, alt: s.title },
-  sub: {
-    title: s.event.title,
-    url: s.event.url,
-  },
+const talkToFeed = (t) => ({
+  type: "Talk",
+  title: t.data.title,
+  url: t.url,
+  date: t.date,
+  thumb: { url: t.data.thumbnail, alt: t.data.title },
 });

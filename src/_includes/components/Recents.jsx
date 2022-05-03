@@ -5,11 +5,10 @@
  * @prop {string} url
  * @prop {Date | string} date
  * @prop {{url: string; alt: string}} [thumb]
- * @prop {{url: string; title: string}} [sub]
  */
 
 import { useEleventy } from "../EleventyContext";
-import { css, uc } from "../style.mjs";
+import { css } from "../style.mjs";
 import { Link } from "./Link";
 import SimpleCard from "./SimpleCard";
 
@@ -17,7 +16,7 @@ import SimpleCard from "./SimpleCard";
 export const Recents = ({ articles }) => {
   const { isodate } = useEleventy();
   return (
-    <SimpleCard id="feed" title="Recent Articles & Slides">
+    <SimpleCard id="feed" title="Recent Articles &amp; Talks">
       {articles.map((a) => {
         return (
           <SimpleCard.Content>
