@@ -47,6 +47,19 @@ export const Recents = ({ articles }) => {
           </SimpleCard.Content>
         );
       })}
+      <SimpleCard.Content>
+        <div
+          class={css({
+            textAlign: "center",
+            fontSize: "1.8rem",
+            centuryGothic: true,
+          })()}
+        >
+          <a href="/blog/">more articles</a>
+          {" / "}
+          <a href="/talks/">more talks</a>
+        </div>
+      </SimpleCard.Content>
     </SimpleCard>
   );
 };
