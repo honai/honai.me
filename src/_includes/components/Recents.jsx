@@ -40,7 +40,7 @@ export const Recents = ({ articles }) => {
                   })()}
                 >
                   <div class={css({ centuryGothic: true })()}>
-                    <span>{a.type}</span> &middot;{" "}
+                    <span>{a.type}</span>&middot;{" "}
                     <time dateTime={isodate(a.date)}>{isodate(a.date)}</time>
                   </div>
                 </div>

@@ -1,6 +1,6 @@
 ---
 title: 入門HTTP
-thumbnail: /images/slide_thumb/http.jpg
+thumbnail: https://res.cloudinary.com/honai/image/upload/c_scale,f_auto,w_640/talks/http.jpg
 ---
 [CAMPHOR- DAY 2020](https://camphor.connpass.com/event/167947/) でHTTPについて発表しました。
 
