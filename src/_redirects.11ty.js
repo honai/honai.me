@@ -3,8 +3,8 @@
 
 const redirects = [
   { from: "/rss", to: "/blog/rss.xml" },
+  { from: "/blog/20:year/:slug", to: "/blog/post/:slug" },
   { from: "/post/*", to: "/blog/post/:splat" },
-  { from: "/blog/:year/:slug", to: "/blog/post/:slug" },
 ];
 
 class Redirects {
