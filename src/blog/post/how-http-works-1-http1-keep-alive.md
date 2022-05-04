@@ -2,11 +2,15 @@
 {
   "title": "連載「入門 HTTP」(1) HTTP/1.xとKeep Alive",
   "date": "2020-04-21",
+  "updated": "2022-05-04",
   "description": "みなさんこんにちは、ほないです。 CAMPHOR-のオンライン配信のイベントCAMPHOR- Dayにて「入門 HTTP」というタイトルで発表した内容をブログにまとめようと思います。  CAMPHOR- カンファー : 京都のIT系学生コミュニティ 【ライブ配信】CAMPHOR- DAY 2020 - connpass",
   "thumbnail_url": "https://res.cloudinary.com/honai/image/upload/ctf/ogp.jpg",
   "large_card": true
 }
 ---
+
+**更新履歴**
+- 2022-05-04 一部リンクの修正
 
 みなさんこんにちは、ほないです。
 CAMPHOR-のオンライン配信のイベントCAMPHOR- Dayにて「入門 HTTP」というタイトルで発表した内容をブログにまとめようと思います。
@@ -14,7 +18,12 @@ CAMPHOR-のオンライン配信のイベントCAMPHOR- Dayにて「入門 HTTP�
 - [CAMPHOR- カンファー : 京都のIT系学生コミュニティ](https://camph.net/)
 - [【ライブ配信】CAMPHOR- DAY 2020 - connpass](https://camphor.connpass.com/event/167947/)
 - [CAMPHOR- DAY 2020 - YouTube](https://www.youtube.com/watch?v=MJQr59XrAbo)
-- [入門 HTTP ― CAMPHOR- Day 2020 - Speaker Deck](https://speakerdeck.com/_honai/ru-men-http-camphor-day-2020)
+
+登壇は以下のページから見れます
+
+![入門HTTP](https://res.cloudinary.com/honai/image/upload/c_scale,f_auto,w_320/talks/http.jpg)
+
+https://www.honai.me/talks/introducing-http/
 
 発表では時間の都合で解説できなかった部分も載せようと思います。
 量が多くなるので、連載形式でやっていきます。完走したい。
