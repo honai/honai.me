@@ -1,6 +1,6 @@
 ---
 title: JSXでJSなしの静的サイトをつくる
-thumbnail: /images/slide_thumb/11ty-jsx.jpg
+thumbnail: https://res.cloudinary.com/honai/image/upload/c_scale,f_auto,w_640/talks/11ty-jsx.jpg
 ---
 [全国学生エンジニア交流会「NSEEM」](https://zli.connpass.com/event/239501/) にてLTを行いました。このトークは、静的サイトジェネレータ [Eleventy](https://www.11ty.dev/) を使ってJSXでサイトを作ってみたという内容です。
 

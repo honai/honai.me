@@ -8,7 +8,7 @@ export default ({ page, content, title, thumbnail }) => {
       pageUrl={page.url}
       subTitle={title}
       description=""
-      thumbnailUrl={`https://www.honai.me${thumbnail}`}
+      thumbnailUrl={thumbnail}
     >
       <div
         class={css({

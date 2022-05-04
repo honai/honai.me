@@ -1,6 +1,6 @@
 ---
 title: pixivの選考インターンに行ってきた
-thumbnail: /images/slide_thumb/pixiv-intern.png
+thumbnail: https://www.honai.me/images/slide_thumb/pixiv-intern.png
 ---
 CAMPHOR-のイベント [インターン報告大会 2020](https://camphor.connpass.com/event/189734/) で、ピクシブ株式会社の選考インターンに参加したことについて発表しました。
 

@@ -1,6 +1,6 @@
 ---
 title: IPv6と日本のインターネット
-thumbnail: /images/slide_thumb/ipv6.jpg
+thumbnail: https://res.cloudinary.com/honai/image/upload/c_scale,f_auto,w_640/talks/ipv6.jpg
 ---
 
 [CAMPHOR- DAY 2021](https://camphor.connpass.com/event/206786/) にて、

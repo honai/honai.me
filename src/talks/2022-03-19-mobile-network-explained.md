@@ -1,6 +1,6 @@
 ---
 title: スマホがネットにつながる仕組み
-thumbnail: /images/slide_thumb/lte.jpg
+thumbnail: https://res.cloudinary.com/honai/image/upload/c_scale,f_auto,w_640/talks/lte.jpg
 ---
 [CAMPHOR- DAY 2022](https://camphor.connpass.com/event/240762) にて、
 LTEのコアネットワークや5Gに関するトークを行いました。
