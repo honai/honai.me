@@ -21,7 +21,7 @@ CAMPHOR-のオンライン配信のイベントCAMPHOR- Dayにて「入門 HTTP�
 
 登壇は以下のページから見れます
 
-![入門HTTP](https://res.cloudinary.com/honai/image/upload/c_scale,f_auto,w_320/talks/http.jpg)
+[![入門HTTP](https://res.cloudinary.com/honai/image/upload/c_scale,f_auto,w_320/talks/http.jpg)](https://www.honai.me/talks/introducing-http/)
 
 https://www.honai.me/talks/introducing-http/
 
