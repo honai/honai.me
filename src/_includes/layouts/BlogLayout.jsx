@@ -30,6 +30,8 @@ export const BlogLayout = ({
   return (
     <html lang="ja">
       <head>
+        <meta charSet="UTF-8" />
+        <meta name="viewport" content="width=device-width" />
         <Seo
           pageUrl={pageUrl}
           title={title}
