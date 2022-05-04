@@ -29,6 +29,8 @@ export const PortfolioLayout = ({
   return (
     <html lang="ja">
       <head>
+        <meta charSet="UTF-8" />
+        <meta name="viewport" content="width=device-width" />
         {!noSeo && (
           <Seo
             title={!!subTitle ? `${subTitle} | honai.me` : "honai.me"}

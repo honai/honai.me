@@ -20,9 +20,6 @@ export const Seo = ({ title, pageUrl, description, thumbnailUrl }) => {
   const ogImage = thumbnailUrl || "https://www.honai.me/images/profile.png";
   return (
     <>
-      <meta charSet="UTF-8" />
-      <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-
       <link rel="canonical" href={canonicalUrl} />
       <title>{title}</title>
       {!!description && <meta name="description" content={description} />}
