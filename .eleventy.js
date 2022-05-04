@@ -55,7 +55,7 @@ module.exports = (eleventyConfig) => {
   });
 
   // markdown customize
-  const mdLib = markdownIt({ html: true })
+  const mdLib = markdownIt({ html: true, linkify: true })
     .use(markdownItAnchor)
     .use(markdownItKatex)
     .use(markdownItLinkAttrs, {
