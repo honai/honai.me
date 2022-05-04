@@ -14,7 +14,7 @@ class Redirects {
     };
   }
   render() {
-    return redirects.map(({ from, to }) => `${from} ${to} 301`).join("\n");
+    return redirects.map(({ from, to }) => `${from} ${to} 308`).join("\n");
   }
 }
 
