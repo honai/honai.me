@@ -38,6 +38,13 @@ export const BlogLayout = ({
           description={description}
           thumbnailUrl={thumbnailUrl}
         />
+        <link
+          rel="alternate"
+          href="/blog/rss.xml"
+          type="application/rss+xml"
+          title="Honai's Blog"
+        />
+        {/* 相対画像のため。deprecated */}
         <base href={pageUrl} />
         {(styleSheets || []).map(({ href, integrity, async }) =>
           async ? (
