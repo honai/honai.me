@@ -6,7 +6,7 @@ on:
       - "src/slides/*.pdf"
 
 jobs:
-  build-deploy:
+  generate-slide-images:
     runs-on: ubuntu-20.04
     permissions:
       contents: write
