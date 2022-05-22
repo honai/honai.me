@@ -1,7 +1,23 @@
-require "json"
+require "date"
 require "fileutils"
+require "json"
 
 require "pdf-reader"
+
+
+def parseDateFile(basename)
+	p basename
+	splited = basename.split("-", 4)
+	date_str = splited[0...3].join("-")
+	# パースできるか確認
+	begin
+		Date.strptime(date_str, "%Y-%m-%d")
+	rescue => e
+		raise e
+	end
+	return { :stem => splited[3], :date => date_str }
+end
+
 
 def pdfToPngAndJson(in_pdf, out_dir_base, image_link_base, size)
 	# pdftoppm
@@ -26,7 +42,8 @@ def pdfToPngAndJson(in_pdf, out_dir_base, image_link_base, size)
 			"image" => "#{image_link_base}/#{file_prefix}-#{page.number.to_s.rjust(pad_length, "0")}.png",
 			"width" => page.width,
 			"height" => page.height,
-			"links" => []
+			"links" => [],
+			"text" => page.text
 		}
 		anno_refs = page.attributes[:Annots]
 		if anno_refs != nil
@@ -48,27 +65,27 @@ def pdfToPngAndJson(in_pdf, out_dir_base, image_link_base, size)
 		"pages" => pages_result
 	}
 
-	return JSON.generate(result)
+	return result
 end
 
 def main
 	src = Pathname("#{__dir__}/src")
 	image_base = src.join("images/slides")
 	data_dir = src.join("_data/slides")
-	p src
 	src.join("slides").glob("*.pdf").each do |pdf_file|
-		p pdf_file
-		pdf_stem = pdf_file.basename(".pdf")
+		pdf_stem, date = parseDateFile(pdf_file.basename(".pdf").to_s).values_at(:stem, :date)
 		json_path = data_dir.join("#{pdf_stem}.json")
 		if json_path.exist?
+			puts "Skipped #{pdf_file}"
 			next
-			p "skip"
 		end
 		image_dir = image_base.join(pdf_stem)
 		FileUtils.mkdir_p(image_dir)
 		res = pdfToPngAndJson(pdf_file, image_dir, "/images/slides/#{pdf_stem}", 1280)
+		res["date"] = date
+		res["pdf"] = "/slides/#{pdf_file.basename()}"
 		FileUtils.mkdir_p(data_dir)
-		File.write(json_path, res)
+		File.write(json_path, JSON.generate(res))
 	end
 end
 
