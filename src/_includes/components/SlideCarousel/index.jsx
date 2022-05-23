@@ -64,7 +64,7 @@ const SlideCarouselItem = ({ idx, total, width, height, imageUrl, links }) => {
     next: idx + 1 < total ? slideId(idx + 1, true) : undefined,
   };
   return (
-    <div id={slideId(idx)} class={slideWrap()}>
+    <div id={slideId(idx)} class={slideWrap()} tabIndex={0}>
       <div class={css({ position: "relative" })()}>
         <img
           src={imageUrl}
@@ -103,14 +103,16 @@ const slideWrap = css({
 });
 
 const slidesWrap = css({
+  border: "1px solid $border",
   display: "flex",
   flexFlow: "row nowrap",
   overflowX: "scroll",
   scrollSnapType: "x mandatory",
+  scrollBehavior: "auto",
   gap: "1rem",
   // 高さが100vhを超えないようにする
   // var(, 100) は未定義フォールバック
-  $$slideWidth: "min(90%, 72rem, 100vh * var(--slide-ratio, 100))",
+  $$slideWidth: "min(100%, (100vh - 3.6rem) * var(--slide-ratio, 100))",
   $$slideMargin: "calc((100% - $$slideWidth) / 2)",
   scrollPadding: "0 $$slideMargin",
   [`& > .${slideWrap}`]: {

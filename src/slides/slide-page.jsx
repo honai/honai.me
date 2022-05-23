@@ -20,13 +20,11 @@ export default ({ slideKey, slides, page }) => {
     >
       <div
         class={css({
-          width: "min(100% - 2rem, 72rem)",
+          width: "min(100% - 2rem, 96rem)",
           marginInline: "auto",
         })()}
       >
         <TitleDate title={title} date={date} />
-      </div>
-      <div>
         <SlideCarousel pages={slidePages} />
       </div>
     </PortfolioLayout>
