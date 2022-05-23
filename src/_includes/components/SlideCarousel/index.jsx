@@ -112,7 +112,8 @@ const slidesWrap = css({
   gap: "1rem",
   // 高さが100vhを超えないようにする
   // var(, 100) は未定義フォールバック
-  $$slideWidth: "min(100%, (100vh - 3.6rem) * var(--slide-ratio, 100))",
+  // 100%だとlazy-imgで先読みされなくなるので90%
+  $$slideWidth: "min(90%, (100vh - 3.6rem) * var(--slide-ratio, 100))",
   $$slideMargin: "calc((100% - $$slideWidth) / 2)",
   scrollPadding: "0 $$slideMargin",
   [`& > .${slideWrap}`]: {
