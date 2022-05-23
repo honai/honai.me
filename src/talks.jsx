@@ -28,7 +28,7 @@ export default ({ page, collections }) => {
       <div
         class={css({
           width: "min(100% - 2rem, 72rem)",
-          margin: "0 auto",
+          marginInline: "auto",
         })()}
       >
         <SlideList slides={talks} />
