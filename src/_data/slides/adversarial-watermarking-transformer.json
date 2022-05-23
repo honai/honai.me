@@ -1,1 +1,368 @@
-{"title":"Adversarial Watermarking T  ransformer:","pages":[{"image":"/images/slides/adversarial-watermarking-transformer/s-01.png","width":960,"height":540,"links":[{"rect":[461.71,75.48,598.63,96.96],"url":"https://www.honai.me/"}],"text":"      Adversarial Watermarking T  ransformer:\n\nTowards T racing Text Provenance with Data Hiding\n               Sahar Abdelnabi, Mario Fritz\n\n       CISPA Helmholtz Center for Information Security\n\n             arXiv (Submitted on 7 Sep 2020)\n\n\n                  Slides by Honai Ueoka\n                                                       1"},{"image":"/images/slides/adversarial-watermarking-transformer/s-02.png","width":960,"height":540,"links":[],"text":"Summary\n\n• This paper proposed Transformer based watermarking model\n\n• Discriminator as adversarial training improved the Watermarking system\n\n• Fine-tuning with multiple language loss improved the output text quality\n\n\n\n\n\n\n\n\n\n\n\n                                                                                    2"},{"image":"/images/slides/adversarial-watermarking-transformer/s-03.png","width":960,"height":540,"links":[],"text":"Related Work\n\n• Language Watermarking\n\n• Linguistic Steganography\n\n• Sequence-to-sequence Model\n• Model Watermarking\n\n• Neural Text Detection\n\n\n\n\n\n\n\n\n                                                                              3"},{"image":"/images/slides/adversarial-watermarking-transformer/s-04.png","width":960,"height":540,"links":[],"text":"                         • About Watermarking\nContents                 • Motivation\n\n                         • Proposed Method\n\n                         • Evaluation\n\n                         • Conclusion\n\n\n\n\n                                                             4"},{"image":"/images/slides/adversarial-watermarking-transformer/s-05.png","width":960,"height":540,"links":[{"rect":[53.52,106.82,460.03,122.66],"url":"https://www.boj.or.jp/note_tfjgs/note/security/miwake.pdf"},{"rect":[508.75,45.84,858.84,61.56],"url":"https://helpx.adobe.com/jp/acrobat/kb/3242.html"}],"text":"What is Watermarking (透かし)?\n\n\n    Visible (recognizable) watermarking (Physical & Digital)\n\n\n\n\n\n\n\n\n\n\n\n\n   https://www.boj.or.jp/note_tfjgs/note/security/miwake.pdf\n\n\n                                                    https://helpx.adobe.com/jp/acrobat/kb/3242.html\n                                                                                                5"},{"image":"/images/slides/adversarial-watermarking-transformer/s-06.png","width":960,"height":540,"links":[{"rect":[608.59,31.8,809.52,49.44],"url":"https://www.imatag.com/"},{"rect":[41.88,31.8,426.29,47.52],"url":"https://www.hitachi-sis.co.jp/service/security/eshimon/"}],"text":"What is Watermarking (透かし)?\n\n\n  Invisible (unrecognizable) watermarking (Physical & Digital)\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n  https://www.hitachi-sis.co.jp/service/security/eshimon/MATAG https://www.imatag.com/\n                                                                                                6"},{"image":"/images/slides/adversarial-watermarking-transformer/s-07.png","width":960,"height":540,"links":[{"rect":[131.54,85.32,285.89,102.96],"url":"https://www.mitpressjournals.org/doi/full/10.1162/COLI_a_00176"},{"rect":[294.65,85.32,446.59,102.96],"url":"https://www.aclweb.org/anthology/D19-1115.pdf"}],"text":"Difference from Cryptography (暗号), Steganography\n\n\n                                   Watermarking                Steganography                Cryptography\n\n                                                         Hiding the existence of\n                             Hiding some data in a\n Goal                        media, the data is related  the data over other media   Hiding the content of the\n                                                         (data is not always related data\n                             to the media                to the media)\n\n Required decoding           Depends on the case\n                                                                                     100%\n accuracy                    (trade-off with robustness or media quality)\n\n Robustness against          Required (suppose attacks\n modifying the media /                                   Usually not required\n data                        to remove the watermark)\n\n\n  References: [Chang, Clark 2014], [Ziegler et al. 2019]\n\n\n\n                                                                                                              7"},{"image":"/images/slides/adversarial-watermarking-transformer/s-08.png","width":960,"height":540,"links":[],"text":"Language Watermarking\n\n\nEdit text with some rule to embed information\n\n\n\n\n\n\n                            Encoding                       Decoding   Decoded message\n\n                                                                          1010\n          Input message\n\n             1010\n\n\n    It also should be robust to\n\n                                                                                        8"},{"image":"/images/slides/adversarial-watermarking-transformer/s-09.png","width":960,"height":540,"links":[],"text":"                       • About Watermarking\nContents               • Motivation\n\n                       • Proposed Method\n\n                       • Evaluation\n\n                       • Conclusion\n\n\n\n\n                                                          9"},{"image":"/images/slides/adversarial-watermarking-transformer/s-10.png","width":960,"height":540,"links":[],"text":"Motivation\n\n• Recent advances in natural language generation\n\n   • Powerful language models with high-quality output text (like GPT-*)\n\n• Concern about using the models for malicious purpose\n   • Spreading neural-generated fake news / misinformation\n\n• Language watermarking as a better mark and trace the provenance of text\n\n\n\n\n\n\n\n\n\n                                                                                    10"},{"image":"/images/slides/adversarial-watermarking-transformer/s-11.png","width":960,"height":540,"links":[],"text":" Usage Scenario\n\n\n    Language Tool\n    (text generation, translation, …)\n\n\n\n\n\n\n\n\n\n                                                                                 Fake news?\n\n                                                                                 Machine-generated?\n\n\n                  Tool output                                Internet\nTool users\n(malicious)\n\n\n                                                                                                          11"},{"image":"/images/slides/adversarial-watermarking-transformer/s-12.png","width":960,"height":540,"links":[],"text":" Usage Scenario\n\n    Language Tool\n    (text generation, translation, …)\n                                                             This text is\n                                                            generated by\n            Model                                            our model\n         (e.g., GPT-3)\n                                             Tool Owner\n               Model output\n\n     Watermark Encoder         Watermark             Decoded         Watermark Decoder\n                                message              message\n\n                         Black-box for users                                   Fake news?\n                                                                               Machine-generated?\n\n\n\n                 Tool output (watermarked)                Internet\nTool users\n(malicious)\n\n\n                                                                                                      12"},{"image":"/images/slides/adversarial-watermarking-transformer/s-13.png","width":960,"height":540,"links":[{"rect":[834.6,340.51,878.16,358.27],"url":"https://arxiv.org/abs/2008.09194"}],"text":" Usage Scenario\n\n    Language Tool                                                   News platforms can cooperate with\n    (text generation, translation, …)                               tool owner to detect machine-\n\n                                                                    generated articles\n            Model                                                   Watermark also can be used for\n         (e.g., GPT-3)                                              denial [Zhang et al. 2020] arXiv\n\n                                             Tool Owner\n               Model output\n                               Watermark             Decoded\n     Watermark Encoder          message              message     News Platform\n                                                                    Owner\n                         Black-box for users\n\n\n\n\n                 Tool output (watermarked)          Watermark Decoder                   Internet\nTool users\n(malicious)\n                                                  News Platform\n\n                                                                                                      13"},{"image":"/images/slides/adversarial-watermarking-transformer/s-14.png","width":960,"height":540,"links":[],"text":"Existing Approaches\n\n\n• Rule-based language watermarking\n    • e.g., synonym substitution\n\n    • They evaluates synonym substitution method as a baseline\n\n• Data hiding with neural model\n    • There are some works on the image classification model\n\n    • No previous work with language model\n\n• Neural text detection\n    • Train classifier to detect the machine-generated text\n\n    • Easily dropped by future progress in language models, like arms race (軍拡競争、いたちごっこ)\n\n\n\n\n                                                                                           14"},{"image":"/images/slides/adversarial-watermarking-transformer/s-15.png","width":960,"height":540,"links":[],"text":"                         • About Watermarking\nContents                 • Motivation\n\n                         • Proposed Method\n\n                         • Evaluation\n\n                         • Conclusion\n\n\n\n\n                                                             15"},{"image":"/images/slides/adversarial-watermarking-transformer/s-16.png","width":960,"height":540,"links":[],"text":"AWT: Adversarial Watermarking T ransformer\n\n\n\n\n\n\n\n\n\n\n\n\n\n                                                      16"},{"image":"/images/slides/adversarial-watermarking-transformer/s-17.png","width":960,"height":540,"links":[],"text":"AWT: Adversarial Watermarking T                          ransformer\n\n\n        Data Hiding Network             Data Revealing Network  Discriminator      Fine-tuning Loss\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n                                                                                               17"},{"image":"/images/slides/adversarial-watermarking-transformer/s-18.png","width":960,"height":540,"links":[{"rect":[759.46,88.08,798.34,104.18],"url":"https://arxiv.org/abs/1807.09937"},{"rect":[23.04,97.32,54.6,112.82],"url":"https://www.usenix.org/system/files/conference/usenixsecurity18/sec18-shetty.pdf"}],"text":"AWT – Similar Architecture                             [Shetty et al. 2018], [Zhu et al. 2018]\n\n\n\n\n\n\n\n\n\n\n\n\n\n\nR. Shetty, B. Schiele, and M. Fritz, “A4nt: author\nattribute anonymity by adversarial training of\nneural machine translation,” in 27th USENIX\nSecurity Symposium (USENIX Security 18), 2018.             J. Zhu, R. Kaplan, J. Johnson, and L. Fei-Fei, “HiDDeN:\nPDF                                                        Hiding data with deep networks,” in European Conference\n                                                           on Computer Vision (ECCV), 2018. arXiv\n\n\n                                                                                                                  18"},{"image":"/images/slides/adversarial-watermarking-transformer/s-19.png","width":960,"height":540,"links":[],"text":"AWT – Input / Output Flow\n\n\n  Input message\n      1010                               Output sentence\n                       Data Hiding                             Data Revealing         Decoded message\n                         Network                                                            1010\n                                                                  Network\n  Input sentence\n                                            (watermarked)\n\n                                                                                      Binary Classification\n                                                                Discriminator            watermarked\n                                                                                        not watermarked\n  (not watermarked)\n\n\n\n\n                                    InferSent     AWD-LSTM\n\n                                        Fine-tuning Loss\n\n\n                                                                                                      19"},{"image":"/images/slides/adversarial-watermarking-transformer/s-20.png","width":960,"height":540,"links":[],"text":"AWT – 1. Discriminator\n\n\n• Classify if the sentence is                                                  watermarked / not watermarked\n\n                    or\n\n• Trained with binary cross-entropy loss\n\n\n\n\n    𝐴 : discriminator\n    𝑆 : input (not watermarked) sentence\n    𝑆 : output (watermarked) sentence\n\n\n\n   Adversarial loss A is\n\n\n\n   for training data hiding network\n\n                                                                                                                20"},{"image":"/images/slides/adversarial-watermarking-transformer/s-21.png","width":960,"height":540,"links":[],"text":"AWT – 1. Discriminator – T                    raining\n\n\n  Input message\n                                        Output sentence\n      1010\n                      Data Hiding                            Data Revealing\n                        Network                                 Network\n\n  Input sentence                          (watermarked)\n\n                                                                                   Binary Classification\n                                                             Discriminator             watermarked\n                                                                                     not watermarked\n  (not watermarked)\n\n\n                                                                 Binary cross-entropy loss\n\n\n\n\n   Fine-tuning Loss  is not used\n                                                                                                   21"},{"image":"/images/slides/adversarial-watermarking-transformer/s-22.png","width":960,"height":540,"links":[],"text":"AWT – 2. Data Revealing Network\n\n• Output dimension: q (= message length)\n\n• Similar to Transformer-based multi-class classifier\n\n\n\n• Message reconstruction loss L im binary cross-entropy\n  loss over all bits\n\n\n\n\n\n\n\n\n\n                                                                                   22"},{"image":"/images/slides/adversarial-watermarking-transformer/s-23.png","width":960,"height":540,"links":[],"text":"AWT – 2. Data Revealing Network – T                             raining\n\n\n Input message\n                                        Output sentence\n      1010                                                                        Decoded message\n                      Data Hiding                           Data Revealing\n                       Network                                 Network                  1011\n\n  Input sentence                          (watermarked)\n\n                                                              Message reconstruction loss\n\n\n  (not watermarked)\n\n\n\n\n\n\n\n  Fine-tuning Loss   Discriminator  are not used\n                                                                                                 23"},{"image":"/images/slides/adversarial-watermarking-transformer/s-24.png","width":960,"height":540,"links":[],"text":"AWT – 3. Data Hiding Network\n\nA)Add input message to encoded\n                                           A\n   embeddings\n                                                                         C\nB) Transformer auto-encoder (the\n   decoder takes shifted input sentence)\n\nC) Gumbel-softmax to train jointly with\n   other components\n\n\n Text reconstruction loss rec\n\n\n\n cross entropy loss of input & output sequence                          B\n\n                                                                                   24"},{"image":"/images/slides/adversarial-watermarking-transformer/s-25.png","width":960,"height":540,"links":[],"text":"AWT – 3. Data Hiding Network – T                         raining\n\n  Input message\n                                      Output sentence\n      1010                                                                      Decoded message\n                     Data Hiding                          Data Revealing\n                       Network                               Network                  1010\n  Input sentence\n                                        (watermarked)\n\n                                                                               Binary Classification\n                                                           Discriminator           watermarked\n  (not watermarked)                                                              not watermarked\n\n\n                         𝐿 1 𝑤     𝑟𝑒𝑐  𝐿 𝑟𝑒𝑐  + 𝑤 𝐿𝑚+ 𝑤 𝑚        𝐴   𝐴\n\n                                                    𝑤∗is weight for each loss\n\n  Trained to 1) Reconstruct the input sentence , 2) Reconstruct the message and\n  3) Fooling the adversary . These losses are competing.\n                                                                                              25"},{"image":"/images/slides/adversarial-watermarking-transformer/s-26.png","width":960,"height":540,"links":[],"text":"AWT – 4. Fine-tuning Loss\n\n\n\n\n\n                                                          Watermarked\n                                                              sentence                              Loss\n                                                      Not watermarked\n                                                              sentence\n\n      𝑆 : input (not watermarked) sentence\n      𝑆 : output (watermarked) sentence\n\n\nB) Preserving Sentence Correctness\n\n    ASGD Weight-Dropped LSTM,\n    independently trained on the dataset used\n\n    as input texts (not watermarked texts)                Watermarked                              Loss\n                                                              sentence\n\n\n\n     𝑊 : the itword in watermarked sentence\n      𝑖                                                                                                  26"},{"image":"/images/slides/adversarial-watermarking-transformer/s-27.png","width":960,"height":540,"links":[],"text":"AWT – Fine-tuning\n\n\n\n  Input message                        Output sentence\n      1010\n                     Data Hiding                           Data Revealing        Decoded message\n                       Network                                Network                 1010\n\n  Input sentence                         (watermarked)\n\n                                                                                Binary Classification\n\n                                                            Discriminator           watermarked\n  (not watermarked)                                                               not watermarked\n\n\n                                                                Fine-tuned to:\n                                  InferSent   AWD-LSTM          1) Reconstruct input sentence\n                                                                2) Reconstruct message\n                                                                3) Fool the adversary\n                   𝐿 = 𝐿 + 𝑤            𝐿     + 𝑤      𝐿        4) Preserve semantic\n                     2      1     𝑠𝑒𝑚    𝑠𝑒𝑚       𝐿𝑀    𝐿𝑀     5) Preserve grammar, structure\n\n                                                                                               27"},{"image":"/images/slides/adversarial-watermarking-transformer/s-28.png","width":960,"height":540,"links":[],"text":"                          • About Watermarking\nContents                  • Motivation\n\n                          • Proposed Method\n\n                          • Evaluation\n                             1. Effectiveness\n                             2. Secrecy\n                             3. Robustness\n\n                             4. Human\n                          • Conclusion\n\n\n                                                                28"},{"image":"/images/slides/adversarial-watermarking-transformer/s-29.png","width":960,"height":540,"links":[],"text":"Experiment Setup\n\n\n• Dataset\n    • WikiText-2 (Wikipedia)\n\n    • 2 million words in the training set\n• Implementation\n\n    • Dimension size = 512\n    • Transformer blocks: 3 identical layers, 4 attention heads\n\n\n\n\n\n\n\n\n\n                                                                                               29"},{"image":"/images/slides/adversarial-watermarking-transformer/s-30.png","width":960,"height":540,"links":[],"text":"Evaluation Methods\n\n\n1. Effectiveness Evaluation\n    By evaluating text utility & message bit accuracy\n\n2. Secrecy Evaluation\n    By training watermark classifier\n\n3. Robustness Evaluation\n\n    By performing 3 attacks:\n       Random word replace\n\n       Random word removing\n       Denoising autoencoder\n\n4. Human Evaluation\n\n\n                                                                                        30"},{"image":"/images/slides/adversarial-watermarking-transformer/s-31.png","width":960,"height":540,"links":[],"text":"1. Effectiveness Evaluation\n\n\n• Text Utility (テキストの可用性)\n    • Watermarking should not change the text semantic\n\n    • Meteor (higher is better)\n    • SBERT distance (Lower is better)\n\n• Bit Accuracy\n\n    • Bitwise message accuracy averaged across all test dataset\n    • Random Chance: 50%\n\n\n\n\n\n\n\n\n                                                                                               31"},{"image":"/images/slides/adversarial-watermarking-transformer/s-32.png","width":960,"height":540,"links":[],"text":"1. Effectiveness Evaluation – Result\n\n Model                                 Bit accuracy      Meteor      SBERT distance\n\n Base + Discriminator + Fine-tuning (AWT) 97%          A  0.96            1.25\n Base + Discriminator                     96%             0.94            1.73\n Base                                     95%             0.94            2.28  B\n\n\n A) Fine-tuning improved both metrics\n\n    → Helps to preserve text semantic\n\n B) Discriminator decreases SBERT distance\n    → Discriminator helps to improve the output’s quality, in addition to\n\n    its secrecy advantages\n\n\n\n                                                                                 32"},{"image":"/images/slides/adversarial-watermarking-transformer/s-33.png","width":960,"height":540,"links":[],"text":"1. Effectiveness Evaluation – vs. Baseline\n\n\n\n\n\n\n\n\n• Baseline by [Topkara et al. 2006]\n  Watermarking texts with synonym substitution with WordNet\n\n\n\n\n\n\n\n                                                                                 33"},{"image":"/images/slides/adversarial-watermarking-transformer/s-34.png","width":960,"height":540,"links":[],"text":"1. Effectiveness Evaluation –                     Contribution of Discriminator\n\n\n                                                            ← Systematic fixed changes that\n                                                            inserts less likely tokens, seen in\n                                                            the model without discriminator\n\n\n\n                                                            ← Top words count\n                                                               Original Dataset\n\n                                                               Output of AWT (Base + Disc + FT)\n                                                               Output of AWT (Base only)\n\n\n\n\n\n\n                                                                                                   34"},{"image":"/images/slides/adversarial-watermarking-transformer/s-35.png","width":960,"height":540,"links":[],"text":"1. Effectiveness Evaluation –    Contribution of Fine-tuning\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n                                                                 35"},{"image":"/images/slides/adversarial-watermarking-transformer/s-36.png","width":960,"height":540,"links":[],"text":"1. Effectiveness Evaluation – Visualization\n\n\n\n\n\n\n\n\n\n\n\n\n\n                                               Words are not fixedly replaced\n\n\n                                                                                      36"},{"image":"/images/slides/adversarial-watermarking-transformer/s-37.png","width":960,"height":540,"links":[],"text":"2. Secrecy Evaluation\n\n\n\n\n\n             Base only\n\n\n\n\n  Base + Discriminator\n\n  Base + Discriminator\n         + Fine-tuning\n\n\n• Discriminator decreases the F1 score (improves secrecy)\n\n\n\n\n                                                                                                               37"},{"image":"/images/slides/adversarial-watermarking-transformer/s-38.png","width":960,"height":540,"links":[],"text":"2. Secrecy Evaluation – vs. Baseline\n\n\n\n\n\n\n\n\n• Baseline by [Topkara et al. 2006]\n  Watermarking texts with synonym substitution with WordNet\n\n\n\n\n\n\n\n                                                                                 38"},{"image":"/images/slides/adversarial-watermarking-transformer/s-39.png","width":960,"height":540,"links":[],"text":"3. Robustness Evaluation\n\n\n• Random changes\n    • Replace / Remove words randomly in a watermarked sentence\n\n• Training counter-models\n\n    • Trained transformer-based denoising autoencoder (DAE)\n    • Apply 2 types of noise to the input (watermarked) sentence\n\n        • Embedding dropout\n        • Random word replacement\n\n\n\n\n\n\n\n\n                                                                                               39"},{"image":"/images/slides/adversarial-watermarking-transformer/s-40.png","width":960,"height":540,"links":[],"text":"3. Robustness Evaluation – Result\n\n\n\n                                                       How to read the graph\n\n                                                                                     ←\n                                                                                     e\n                                                                                     m\n                                                                                     n\n                                                                                     c\n                                                                                     s\n                                                                                     s\n                                                                                     t\n\n                                                                                        Watermarked\n                                                            ← Watermark is lost             Text\n\n Bit accuracy is decreased a bit,                        The goal of attack is “remove the watermark\n                                                         with minimal changes to the text”\n SBERT distance is increased significantly\n → Robust to the attacks\n\n\n                                                                                                      40"},{"image":"/images/slides/adversarial-watermarking-transformer/s-41.png","width":960,"height":540,"links":[],"text":"3. Robustness Evaluation – vs. Baseline\n\n\n\n\n\n\n\n\n\n\n\n\n      AWT keeps higher bit accuracy after remove / replace attacks\n      compared to synonym substitution baseline.\n\n                                                                       41"},{"image":"/images/slides/adversarial-watermarking-transformer/s-42.png","width":960,"height":540,"links":[],"text":"4. Human Evaluation\n\n\n    Asked 6 judges to rate the sentence.\n    Sentence is randomly selected from non-watermarked text, AWT output, synonym baseline\n    output.\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n                                                                                                   42"},{"image":"/images/slides/adversarial-watermarking-transformer/s-43.png","width":960,"height":540,"links":[],"text":"4. Human Evaluation – Result\n\n                                                • AWT output texts are rated highly\n\n                                                  than baseline texts.\n\n\n\n\n\n\n\n\n\n\n\n\n\n                                                                                       43"},{"image":"/images/slides/adversarial-watermarking-transformer/s-44.png","width":960,"height":540,"links":[],"text":"                        • About Watermarking\nContents                • Motivation\n\n                        • Proposed Method\n\n                        • Evaluation\n\n                        • Conclusion\n\n\n\n\n                                                          44"},{"image":"/images/slides/adversarial-watermarking-transformer/s-45.png","width":960,"height":540,"links":[],"text":"Conclusion\n\n• New framework for language watermarking as a solution towards marking and\n\n  tracing the provenance of machine-generated text\n• First end-to-end data hiding solution for natural text.\n\n• Discriminator as an adversary improved the watermark system.\n\n• Fine-tuning with additional language losses improved the output text quality.\n\n\n\n\n\n\n\n\n                                                                                   45"}],"date":"2020-11-02","pdf":"/slides/2020-11-02-adversarial-watermarking-transformer.pdf"}
+{
+  "title": "Adversarial Watermarking Transformer",
+  "pages": [
+    {
+      "image": "/images/slides/adversarial-watermarking-transformer/s-01.png",
+      "width": 960,
+      "height": 540,
+      "links": [
+        {
+          "rect": [461.71, 75.48, 598.63, 96.96],
+          "url": "https://www.honai.me/"
+        }
+      ],
+      "text": "Adversarial Watermarking T  ransformer:\n\nTowards T racing Text Provenance with Data Hiding\n               Sahar Abdelnabi, Mario Fritz\n\n       CISPA Helmholtz Center for Information Security\n\n             arXiv (Submitted on 7 Sep 2020)\n\n\n                  Slides by Honai Ueoka\n                                                       1"
+    },
+    {
+      "image": "/images/slides/adversarial-watermarking-transformer/s-02.png",
+      "width": 960,
+      "height": 540,
+      "links": [],
+      "text": "Summary\n\n• This paper proposed Transformer based watermarking model\n\n• Discriminator as adversarial training improved the Watermarking system\n\n• Fine-tuning with multiple language loss improved the output text quality\n\n\n\n\n\n\n\n\n\n\n\n                                                                                    2"
+    },
+    {
+      "image": "/images/slides/adversarial-watermarking-transformer/s-03.png",
+      "width": 960,
+      "height": 540,
+      "links": [],
+      "text": "Related Work\n\n• Language Watermarking\n\n• Linguistic Steganography\n\n• Sequence-to-sequence Model\n• Model Watermarking\n\n• Neural Text Detection\n\n\n\n\n\n\n\n\n                                                                              3"
+    },
+    {
+      "image": "/images/slides/adversarial-watermarking-transformer/s-04.png",
+      "width": 960,
+      "height": 540,
+      "links": [],
+      "text": "• About Watermarking\nContents                 • Motivation\n\n                         • Proposed Method\n\n                         • Evaluation\n\n                         • Conclusion\n\n\n\n\n                                                             4"
+    },
+    {
+      "image": "/images/slides/adversarial-watermarking-transformer/s-05.png",
+      "width": 960,
+      "height": 540,
+      "links": [
+        {
+          "rect": [53.52, 106.82, 460.03, 122.66],
+          "url": "https://www.boj.or.jp/note_tfjgs/note/security/miwake.pdf"
+        },
+        {
+          "rect": [508.75, 45.84, 858.84, 61.56],
+          "url": "https://helpx.adobe.com/jp/acrobat/kb/3242.html"
+        }
+      ],
+      "text": "What is Watermarking (透かし)?\n\n\n    Visible (recognizable) watermarking (Physical & Digital)\n\n\n\n\n\n\n\n\n\n\n\n\n   https://www.boj.or.jp/note_tfjgs/note/security/miwake.pdf\n\n\n                                                    https://helpx.adobe.com/jp/acrobat/kb/3242.html\n                                                                                                5"
+    },
+    {
+      "image": "/images/slides/adversarial-watermarking-transformer/s-06.png",
+      "width": 960,
+      "height": 540,
+      "links": [
+        {
+          "rect": [608.59, 31.8, 809.52, 49.44],
+          "url": "https://www.imatag.com/"
+        },
+        {
+          "rect": [41.88, 31.8, 426.29, 47.52],
+          "url": "https://www.hitachi-sis.co.jp/service/security/eshimon/"
+        }
+      ],
+      "text": "What is Watermarking (透かし)?\n\n\n  Invisible (unrecognizable) watermarking (Physical & Digital)\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n  https://www.hitachi-sis.co.jp/service/security/eshimon/MATAG https://www.imatag.com/\n                                                                                                6"
+    },
+    {
+      "image": "/images/slides/adversarial-watermarking-transformer/s-07.png",
+      "width": 960,
+      "height": 540,
+      "links": [
+        {
+          "rect": [131.54, 85.32, 285.89, 102.96],
+          "url": "https://www.mitpressjournals.org/doi/full/10.1162/COLI_a_00176"
+        },
+        {
+          "rect": [294.65, 85.32, 446.59, 102.96],
+          "url": "https://www.aclweb.org/anthology/D19-1115.pdf"
+        }
+      ],
+      "text": "Difference from Cryptography (暗号), Steganography\n\n\n                                   Watermarking                Steganography                Cryptography\n\n                                                         Hiding the existence of\n                             Hiding some data in a\n Goal                        media, the data is related  the data over other media   Hiding the content of the\n                                                         (data is not always related data\n                             to the media                to the media)\n\n Required decoding           Depends on the case\n                                                                                     100%\n accuracy                    (trade-off with robustness or media quality)\n\n Robustness against          Required (suppose attacks\n modifying the media /                                   Usually not required\n data                        to remove the watermark)\n\n\n  References: [Chang, Clark 2014], [Ziegler et al. 2019]\n\n\n\n                                                                                                              7"
+    },
+    {
+      "image": "/images/slides/adversarial-watermarking-transformer/s-08.png",
+      "width": 960,
+      "height": 540,
+      "links": [],
+      "text": "Language Watermarking\n\n\nEdit text with some rule to embed information\n\n\n\n\n\n\n                            Encoding                       Decoding   Decoded message\n\n                                                                          1010\n          Input message\n\n             1010\n\n\n    It also should be robust to\n\n                                                                                        8"
+    },
+    {
+      "image": "/images/slides/adversarial-watermarking-transformer/s-09.png",
+      "width": 960,
+      "height": 540,
+      "links": [],
+      "text": "• About Watermarking\nContents               • Motivation\n\n                       • Proposed Method\n\n                       • Evaluation\n\n                       • Conclusion\n\n\n\n\n                                                          9"
+    },
+    {
+      "image": "/images/slides/adversarial-watermarking-transformer/s-10.png",
+      "width": 960,
+      "height": 540,
+      "links": [],
+      "text": "Motivation\n\n• Recent advances in natural language generation\n\n   • Powerful language models with high-quality output text (like GPT-*)\n\n• Concern about using the models for malicious purpose\n   • Spreading neural-generated fake news / misinformation\n\n• Language watermarking as a better mark and trace the provenance of text\n\n\n\n\n\n\n\n\n\n                                                                                    10"
+    },
+    {
+      "image": "/images/slides/adversarial-watermarking-transformer/s-11.png",
+      "width": 960,
+      "height": 540,
+      "links": [],
+      "text": "Usage Scenario\n\n\n    Language Tool\n    (text generation, translation, …)\n\n\n\n\n\n\n\n\n\n                                                                                 Fake news?\n\n                                                                                 Machine-generated?\n\n\n                  Tool output                                Internet\nTool users\n(malicious)\n\n\n                                                                                                          11"
+    },
+    {
+      "image": "/images/slides/adversarial-watermarking-transformer/s-12.png",
+      "width": 960,
+      "height": 540,
+      "links": [],
+      "text": "Usage Scenario\n\n    Language Tool\n    (text generation, translation, …)\n                                                             This text is\n                                                            generated by\n            Model                                            our model\n         (e.g., GPT-3)\n                                             Tool Owner\n               Model output\n\n     Watermark Encoder         Watermark             Decoded         Watermark Decoder\n                                message              message\n\n                         Black-box for users                                   Fake news?\n                                                                               Machine-generated?\n\n\n\n                 Tool output (watermarked)                Internet\nTool users\n(malicious)\n\n\n                                                                                                      12"
+    },
+    {
+      "image": "/images/slides/adversarial-watermarking-transformer/s-13.png",
+      "width": 960,
+      "height": 540,
+      "links": [
+        {
+          "rect": [834.6, 340.51, 878.16, 358.27],
+          "url": "https://arxiv.org/abs/2008.09194"
+        }
+      ],
+      "text": "Usage Scenario\n\n    Language Tool                                                   News platforms can cooperate with\n    (text generation, translation, …)                               tool owner to detect machine-\n\n                                                                    generated articles\n            Model                                                   Watermark also can be used for\n         (e.g., GPT-3)                                              denial [Zhang et al. 2020] arXiv\n\n                                             Tool Owner\n               Model output\n                               Watermark             Decoded\n     Watermark Encoder          message              message     News Platform\n                                                                    Owner\n                         Black-box for users\n\n\n\n\n                 Tool output (watermarked)          Watermark Decoder                   Internet\nTool users\n(malicious)\n                                                  News Platform\n\n                                                                                                      13"
+    },
+    {
+      "image": "/images/slides/adversarial-watermarking-transformer/s-14.png",
+      "width": 960,
+      "height": 540,
+      "links": [],
+      "text": "Existing Approaches\n\n\n• Rule-based language watermarking\n    • e.g., synonym substitution\n\n    • They evaluates synonym substitution method as a baseline\n\n• Data hiding with neural model\n    • There are some works on the image classification model\n\n    • No previous work with language model\n\n• Neural text detection\n    • Train classifier to detect the machine-generated text\n\n    • Easily dropped by future progress in language models, like arms race (軍拡競争、いたちごっこ)\n\n\n\n\n                                                                                           14"
+    },
+    {
+      "image": "/images/slides/adversarial-watermarking-transformer/s-15.png",
+      "width": 960,
+      "height": 540,
+      "links": [],
+      "text": "• About Watermarking\nContents                 • Motivation\n\n                         • Proposed Method\n\n                         • Evaluation\n\n                         • Conclusion\n\n\n\n\n                                                             15"
+    },
+    {
+      "image": "/images/slides/adversarial-watermarking-transformer/s-16.png",
+      "width": 960,
+      "height": 540,
+      "links": [],
+      "text": "AWT: Adversarial Watermarking T ransformer\n\n\n\n\n\n\n\n\n\n\n\n\n\n                                                      16"
+    },
+    {
+      "image": "/images/slides/adversarial-watermarking-transformer/s-17.png",
+      "width": 960,
+      "height": 540,
+      "links": [],
+      "text": "AWT: Adversarial Watermarking T                          ransformer\n\n\n        Data Hiding Network             Data Revealing Network  Discriminator      Fine-tuning Loss\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n                                                                                               17"
+    },
+    {
+      "image": "/images/slides/adversarial-watermarking-transformer/s-18.png",
+      "width": 960,
+      "height": 540,
+      "links": [
+        {
+          "rect": [759.46, 88.08, 798.34, 104.18],
+          "url": "https://arxiv.org/abs/1807.09937"
+        },
+        {
+          "rect": [23.04, 97.32, 54.6, 112.82],
+          "url": "https://www.usenix.org/system/files/conference/usenixsecurity18/sec18-shetty.pdf"
+        }
+      ],
+      "text": "AWT – Similar Architecture                             [Shetty et al. 2018], [Zhu et al. 2018]\n\n\n\n\n\n\n\n\n\n\n\n\n\n\nR. Shetty, B. Schiele, and M. Fritz, “A4nt: author\nattribute anonymity by adversarial training of\nneural machine translation,” in 27th USENIX\nSecurity Symposium (USENIX Security 18), 2018.             J. Zhu, R. Kaplan, J. Johnson, and L. Fei-Fei, “HiDDeN:\nPDF                                                        Hiding data with deep networks,” in European Conference\n                                                           on Computer Vision (ECCV), 2018. arXiv\n\n\n                                                                                                                  18"
+    },
+    {
+      "image": "/images/slides/adversarial-watermarking-transformer/s-19.png",
+      "width": 960,
+      "height": 540,
+      "links": [],
+      "text": "AWT – Input / Output Flow\n\n\n  Input message\n      1010                               Output sentence\n                       Data Hiding                             Data Revealing         Decoded message\n                         Network                                                            1010\n                                                                  Network\n  Input sentence\n                                            (watermarked)\n\n                                                                                      Binary Classification\n                                                                Discriminator            watermarked\n                                                                                        not watermarked\n  (not watermarked)\n\n\n\n\n                                    InferSent     AWD-LSTM\n\n                                        Fine-tuning Loss\n\n\n                                                                                                      19"
+    },
+    {
+      "image": "/images/slides/adversarial-watermarking-transformer/s-20.png",
+      "width": 960,
+      "height": 540,
+      "links": [],
+      "text": "AWT – 1. Discriminator\n\n\n• Classify if the sentence is                                                  watermarked / not watermarked\n\n                    or\n\n• Trained with binary cross-entropy loss\n\n\n\n\n    𝐴 : discriminator\n    𝑆 : input (not watermarked) sentence\n    𝑆 : output (watermarked) sentence\n\n\n\n   Adversarial loss A is\n\n\n\n   for training data hiding network\n\n                                                                                                                20"
+    },
+    {
+      "image": "/images/slides/adversarial-watermarking-transformer/s-21.png",
+      "width": 960,
+      "height": 540,
+      "links": [],
+      "text": "AWT – 1. Discriminator – T                    raining\n\n\n  Input message\n                                        Output sentence\n      1010\n                      Data Hiding                            Data Revealing\n                        Network                                 Network\n\n  Input sentence                          (watermarked)\n\n                                                                                   Binary Classification\n                                                             Discriminator             watermarked\n                                                                                     not watermarked\n  (not watermarked)\n\n\n                                                                 Binary cross-entropy loss\n\n\n\n\n   Fine-tuning Loss  is not used\n                                                                                                   21"
+    },
+    {
+      "image": "/images/slides/adversarial-watermarking-transformer/s-22.png",
+      "width": 960,
+      "height": 540,
+      "links": [],
+      "text": "AWT – 2. Data Revealing Network\n\n• Output dimension: q (= message length)\n\n• Similar to Transformer-based multi-class classifier\n\n\n\n• Message reconstruction loss L im binary cross-entropy\n  loss over all bits\n\n\n\n\n\n\n\n\n\n                                                                                   22"
+    },
+    {
+      "image": "/images/slides/adversarial-watermarking-transformer/s-23.png",
+      "width": 960,
+      "height": 540,
+      "links": [],
+      "text": "AWT – 2. Data Revealing Network – T                             raining\n\n\n Input message\n                                        Output sentence\n      1010                                                                        Decoded message\n                      Data Hiding                           Data Revealing\n                       Network                                 Network                  1011\n\n  Input sentence                          (watermarked)\n\n                                                              Message reconstruction loss\n\n\n  (not watermarked)\n\n\n\n\n\n\n\n  Fine-tuning Loss   Discriminator  are not used\n                                                                                                 23"
+    },
+    {
+      "image": "/images/slides/adversarial-watermarking-transformer/s-24.png",
+      "width": 960,
+      "height": 540,
+      "links": [],
+      "text": "AWT – 3. Data Hiding Network\n\nA)Add input message to encoded\n                                           A\n   embeddings\n                                                                         C\nB) Transformer auto-encoder (the\n   decoder takes shifted input sentence)\n\nC) Gumbel-softmax to train jointly with\n   other components\n\n\n Text reconstruction loss rec\n\n\n\n cross entropy loss of input & output sequence                          B\n\n                                                                                   24"
+    },
+    {
+      "image": "/images/slides/adversarial-watermarking-transformer/s-25.png",
+      "width": 960,
+      "height": 540,
+      "links": [],
+      "text": "AWT – 3. Data Hiding Network – T                         raining\n\n  Input message\n                                      Output sentence\n      1010                                                                      Decoded message\n                     Data Hiding                          Data Revealing\n                       Network                               Network                  1010\n  Input sentence\n                                        (watermarked)\n\n                                                                               Binary Classification\n                                                           Discriminator           watermarked\n  (not watermarked)                                                              not watermarked\n\n\n                         𝐿 1 𝑤     𝑟𝑒𝑐  𝐿 𝑟𝑒𝑐  + 𝑤 𝐿𝑚+ 𝑤 𝑚        𝐴   𝐴\n\n                                                    𝑤∗is weight for each loss\n\n  Trained to 1) Reconstruct the input sentence , 2) Reconstruct the message and\n  3) Fooling the adversary . These losses are competing.\n                                                                                              25"
+    },
+    {
+      "image": "/images/slides/adversarial-watermarking-transformer/s-26.png",
+      "width": 960,
+      "height": 540,
+      "links": [],
+      "text": "AWT – 4. Fine-tuning Loss\n\n\n\n\n\n                                                          Watermarked\n                                                              sentence                              Loss\n                                                      Not watermarked\n                                                              sentence\n\n      𝑆 : input (not watermarked) sentence\n      𝑆 : output (watermarked) sentence\n\n\nB) Preserving Sentence Correctness\n\n    ASGD Weight-Dropped LSTM,\n    independently trained on the dataset used\n\n    as input texts (not watermarked texts)                Watermarked                              Loss\n                                                              sentence\n\n\n\n     𝑊 : the itword in watermarked sentence\n      𝑖                                                                                                  26"
+    },
+    {
+      "image": "/images/slides/adversarial-watermarking-transformer/s-27.png",
+      "width": 960,
+      "height": 540,
+      "links": [],
+      "text": "AWT – Fine-tuning\n\n\n\n  Input message                        Output sentence\n      1010\n                     Data Hiding                           Data Revealing        Decoded message\n                       Network                                Network                 1010\n\n  Input sentence                         (watermarked)\n\n                                                                                Binary Classification\n\n                                                            Discriminator           watermarked\n  (not watermarked)                                                               not watermarked\n\n\n                                                                Fine-tuned to:\n                                  InferSent   AWD-LSTM          1) Reconstruct input sentence\n                                                                2) Reconstruct message\n                                                                3) Fool the adversary\n                   𝐿 = 𝐿 + 𝑤            𝐿     + 𝑤      𝐿        4) Preserve semantic\n                     2      1     𝑠𝑒𝑚    𝑠𝑒𝑚       𝐿𝑀    𝐿𝑀     5) Preserve grammar, structure\n\n                                                                                               27"
+    },
+    {
+      "image": "/images/slides/adversarial-watermarking-transformer/s-28.png",
+      "width": 960,
+      "height": 540,
+      "links": [],
+      "text": "• About Watermarking\nContents                  • Motivation\n\n                          • Proposed Method\n\n                          • Evaluation\n                             1. Effectiveness\n                             2. Secrecy\n                             3. Robustness\n\n                             4. Human\n                          • Conclusion\n\n\n                                                                28"
+    },
+    {
+      "image": "/images/slides/adversarial-watermarking-transformer/s-29.png",
+      "width": 960,
+      "height": 540,
+      "links": [],
+      "text": "Experiment Setup\n\n\n• Dataset\n    • WikiText-2 (Wikipedia)\n\n    • 2 million words in the training set\n• Implementation\n\n    • Dimension size = 512\n    • Transformer blocks: 3 identical layers, 4 attention heads\n\n\n\n\n\n\n\n\n\n                                                                                               29"
+    },
+    {
+      "image": "/images/slides/adversarial-watermarking-transformer/s-30.png",
+      "width": 960,
+      "height": 540,
+      "links": [],
+      "text": "Evaluation Methods\n\n\n1. Effectiveness Evaluation\n    By evaluating text utility & message bit accuracy\n\n2. Secrecy Evaluation\n    By training watermark classifier\n\n3. Robustness Evaluation\n\n    By performing 3 attacks:\n       Random word replace\n\n       Random word removing\n       Denoising autoencoder\n\n4. Human Evaluation\n\n\n                                                                                        30"
+    },
+    {
+      "image": "/images/slides/adversarial-watermarking-transformer/s-31.png",
+      "width": 960,
+      "height": 540,
+      "links": [],
+      "text": "1. Effectiveness Evaluation\n\n\n• Text Utility (テキストの可用性)\n    • Watermarking should not change the text semantic\n\n    • Meteor (higher is better)\n    • SBERT distance (Lower is better)\n\n• Bit Accuracy\n\n    • Bitwise message accuracy averaged across all test dataset\n    • Random Chance: 50%\n\n\n\n\n\n\n\n\n                                                                                               31"
+    },
+    {
+      "image": "/images/slides/adversarial-watermarking-transformer/s-32.png",
+      "width": 960,
+      "height": 540,
+      "links": [],
+      "text": "1. Effectiveness Evaluation – Result\n\n Model                                 Bit accuracy      Meteor      SBERT distance\n\n Base + Discriminator + Fine-tuning (AWT) 97%          A  0.96            1.25\n Base + Discriminator                     96%             0.94            1.73\n Base                                     95%             0.94            2.28  B\n\n\n A) Fine-tuning improved both metrics\n\n    → Helps to preserve text semantic\n\n B) Discriminator decreases SBERT distance\n    → Discriminator helps to improve the output’s quality, in addition to\n\n    its secrecy advantages\n\n\n\n                                                                                 32"
+    },
+    {
+      "image": "/images/slides/adversarial-watermarking-transformer/s-33.png",
+      "width": 960,
+      "height": 540,
+      "links": [],
+      "text": "1. Effectiveness Evaluation – vs. Baseline\n\n\n\n\n\n\n\n\n• Baseline by [Topkara et al. 2006]\n  Watermarking texts with synonym substitution with WordNet\n\n\n\n\n\n\n\n                                                                                 33"
+    },
+    {
+      "image": "/images/slides/adversarial-watermarking-transformer/s-34.png",
+      "width": 960,
+      "height": 540,
+      "links": [],
+      "text": "1. Effectiveness Evaluation –                     Contribution of Discriminator\n\n\n                                                            ← Systematic fixed changes that\n                                                            inserts less likely tokens, seen in\n                                                            the model without discriminator\n\n\n\n                                                            ← Top words count\n                                                               Original Dataset\n\n                                                               Output of AWT (Base + Disc + FT)\n                                                               Output of AWT (Base only)\n\n\n\n\n\n\n                                                                                                   34"
+    },
+    {
+      "image": "/images/slides/adversarial-watermarking-transformer/s-35.png",
+      "width": 960,
+      "height": 540,
+      "links": [],
+      "text": "1. Effectiveness Evaluation –    Contribution of Fine-tuning\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n                                                                 35"
+    },
+    {
+      "image": "/images/slides/adversarial-watermarking-transformer/s-36.png",
+      "width": 960,
+      "height": 540,
+      "links": [],
+      "text": "1. Effectiveness Evaluation – Visualization\n\n\n\n\n\n\n\n\n\n\n\n\n\n                                               Words are not fixedly replaced\n\n\n                                                                                      36"
+    },
+    {
+      "image": "/images/slides/adversarial-watermarking-transformer/s-37.png",
+      "width": 960,
+      "height": 540,
+      "links": [],
+      "text": "2. Secrecy Evaluation\n\n\n\n\n\n             Base only\n\n\n\n\n  Base + Discriminator\n\n  Base + Discriminator\n         + Fine-tuning\n\n\n• Discriminator decreases the F1 score (improves secrecy)\n\n\n\n\n                                                                                                               37"
+    },
+    {
+      "image": "/images/slides/adversarial-watermarking-transformer/s-38.png",
+      "width": 960,
+      "height": 540,
+      "links": [],
+      "text": "2. Secrecy Evaluation – vs. Baseline\n\n\n\n\n\n\n\n\n• Baseline by [Topkara et al. 2006]\n  Watermarking texts with synonym substitution with WordNet\n\n\n\n\n\n\n\n                                                                                 38"
+    },
+    {
+      "image": "/images/slides/adversarial-watermarking-transformer/s-39.png",
+      "width": 960,
+      "height": 540,
+      "links": [],
+      "text": "3. Robustness Evaluation\n\n\n• Random changes\n    • Replace / Remove words randomly in a watermarked sentence\n\n• Training counter-models\n\n    • Trained transformer-based denoising autoencoder (DAE)\n    • Apply 2 types of noise to the input (watermarked) sentence\n\n        • Embedding dropout\n        • Random word replacement\n\n\n\n\n\n\n\n\n                                                                                               39"
+    },
+    {
+      "image": "/images/slides/adversarial-watermarking-transformer/s-40.png",
+      "width": 960,
+      "height": 540,
+      "links": [],
+      "text": "3. Robustness Evaluation – Result\n\n\n\n                                                       How to read the graph\n\n                                                                                     ←\n                                                                                     e\n                                                                                     m\n                                                                                     n\n                                                                                     c\n                                                                                     s\n                                                                                     s\n                                                                                     t\n\n                                                                                        Watermarked\n                                                            ← Watermark is lost             Text\n\n Bit accuracy is decreased a bit,                        The goal of attack is “remove the watermark\n                                                         with minimal changes to the text”\n SBERT distance is increased significantly\n → Robust to the attacks\n\n\n                                                                                                      40"
+    },
+    {
+      "image": "/images/slides/adversarial-watermarking-transformer/s-41.png",
+      "width": 960,
+      "height": 540,
+      "links": [],
+      "text": "3. Robustness Evaluation – vs. Baseline\n\n\n\n\n\n\n\n\n\n\n\n\n      AWT keeps higher bit accuracy after remove / replace attacks\n      compared to synonym substitution baseline.\n\n                                                                       41"
+    },
+    {
+      "image": "/images/slides/adversarial-watermarking-transformer/s-42.png",
+      "width": 960,
+      "height": 540,
+      "links": [],
+      "text": "4. Human Evaluation\n\n\n    Asked 6 judges to rate the sentence.\n    Sentence is randomly selected from non-watermarked text, AWT output, synonym baseline\n    output.\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n                                                                                                   42"
+    },
+    {
+      "image": "/images/slides/adversarial-watermarking-transformer/s-43.png",
+      "width": 960,
+      "height": 540,
+      "links": [],
+      "text": "4. Human Evaluation – Result\n\n                                                • AWT output texts are rated highly\n\n                                                  than baseline texts.\n\n\n\n\n\n\n\n\n\n\n\n\n\n                                                                                       43"
+    },
+    {
+      "image": "/images/slides/adversarial-watermarking-transformer/s-44.png",
+      "width": 960,
+      "height": 540,
+      "links": [],
+      "text": "• About Watermarking\nContents                • Motivation\n\n                        • Proposed Method\n\n                        • Evaluation\n\n                        • Conclusion\n\n\n\n\n                                                          44"
+    },
+    {
+      "image": "/images/slides/adversarial-watermarking-transformer/s-45.png",
+      "width": 960,
+      "height": 540,
+      "links": [],
+      "text": "Conclusion\n\n• New framework for language watermarking as a solution towards marking and\n\n  tracing the provenance of machine-generated text\n• First end-to-end data hiding solution for natural text.\n\n• Discriminator as an adversary improved the watermark system.\n\n• Fine-tuning with additional language losses improved the output text quality.\n\n\n\n\n\n\n\n\n                                                                                   45"
+    }
+  ],
+  "date": "2020-11-02",
+  "pdf": "/slides/2020-11-02-adversarial-watermarking-transformer.pdf"
+}
