@@ -1,7 +1,7 @@
 ---
 title: 連載「入門 HTTP」(2) TLSとHTTP - TLSの概要
 date: 2020-04-28
-updated: 
+updated: 2022-05-23
 description: 「入門HTTP」2回目の記事です。TLSの概要とHTTPの関係について説明しています。
 thumbnail_url: https://res.cloudinary.com/honai/image/upload/ctf/ogp-tls.png
 large_card: true
