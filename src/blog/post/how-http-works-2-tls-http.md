@@ -1,15 +1,17 @@
----json
-{
-  "title": "連載「入門 HTTP」(2) TLSとHTTP - TLSの概要",
-  "date": "2020-04-28",
-  "description": "こんにちは。ほないです。 「入門 HTTP」( SpeakerDeck を連載としてブログに投稿しています。 こちらは第2回の記事となります。  CAMPHOR- Day での発表の時は時間の関係で（~~自分の勉強不足もあり~~）3枚のスライドですっ飛ばしてしまったTLSの話ですが、",
-  "thumbnail_url": "https://res.cloudinary.com/honai/image/upload/ctf/ogp-tls.png",
-  "large_card": true
-}
+---
+title: 連載「入門 HTTP」(2) TLSとHTTP - TLSの概要
+date: 2020-04-28
+updated: 
+description: 「入門HTTP」2回目の記事です。TLSの概要とHTTPの関係について説明しています。
+thumbnail_url: https://res.cloudinary.com/honai/image/upload/ctf/ogp-tls.png
+large_card: true
 ---
 
+**更新履歴**
+- 2022-05-23 資料のURLを修正しました
+
 こんにちは。ほないです。
-「入門 HTTP」( [SpeakerDeck](https://speakerdeck.com/_honai/ru-men-http-camphor-day-2020) ) を連載としてブログに投稿しています。
+「入門 HTTP」( [資料と動画](/talks/introducing-http/) ) を連載としてブログに投稿しています。
 こちらは第2回の記事となります。
 
 CAMPHOR- Day での発表の時は時間の関係で（~~自分の勉強不足もあり~~）3枚のスライドですっ飛ばしてしまったTLSの話ですが、
