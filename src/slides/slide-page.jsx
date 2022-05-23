@@ -26,6 +26,15 @@ export default ({ slideKey, slides, page }) => {
       >
         <TitleDate title={title} date={date} />
         <SlideCarousel pages={slidePages} />
+        <div class={css({ marginTop: "12rem" })()}>
+          <h3>スクリプト</h3>
+          <p>PDFから抽出されているため不自然な場合があります</p>
+          <ol>
+            {slidePages.map(({ text }) => (
+              <li>{text}</li>
+            ))}
+          </ol>
+        </div>
       </div>
     </PortfolioLayout>
   );

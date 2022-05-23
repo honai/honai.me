@@ -6,6 +6,7 @@ import { Nav } from "./Nav.jsx";
  * @prop {{rect: number[], url: string}[]} links
  * @prop {number} width
  * @prop {number} height
+ * @prop {string} text
  * @prop {string} imageUrl
  */
 
@@ -20,6 +21,7 @@ export const SlideCarousel = ({ pages }) => {
     });
     return {
       ...s,
+      alt: s.text.split("\n")[0].trim(),
       links,
     };
   });
@@ -54,7 +56,15 @@ const SlideNav = ({ slideElmId, slideCount }) => (
   </div>
 );
 
-const SlideCarouselItem = ({ idx, total, width, height, imageUrl, links }) => {
+const SlideCarouselItem = ({
+  idx,
+  total,
+  width,
+  height,
+  imageUrl,
+  alt,
+  links,
+}) => {
   const navProps = {
     current: idx,
     total,
@@ -70,6 +80,7 @@ const SlideCarouselItem = ({ idx, total, width, height, imageUrl, links }) => {
           src={imageUrl}
           width={width}
           height={height}
+          alt={alt}
           loading="lazy"
           class={slideImg()}
         />
