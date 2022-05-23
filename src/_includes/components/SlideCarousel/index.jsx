@@ -36,7 +36,12 @@ export const SlideCarousel = ({ pages }) => {
         style={`--slide-ratio: ${slideRatio};`}
       >
         {slides.map((s, i) => (
-          <SlideCarouselItem idx={i} total={slides.length} {...s} />
+          <SlideCarouselItem
+            idx={i}
+            total={slides.length}
+            lazy={i > 0}
+            {...s}
+          />
         ))}
       </div>
       <SlideNav slideElmId={slideElmId} slideCount={slides.length} />
@@ -64,6 +69,7 @@ const SlideCarouselItem = ({
   imageUrl,
   alt,
   links,
+  lazy,
 }) => {
   const navProps = {
     current: idx,
@@ -81,7 +87,7 @@ const SlideCarouselItem = ({
           width={width}
           height={height}
           alt={alt}
-          loading="lazy"
+          loading={lazy ? "lazy" : "eager"}
           class={slideImg()}
         />
         <>
