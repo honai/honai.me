@@ -10,7 +10,7 @@ export default ({ slides, page }) => {
       url: `/slides/${k}/`,
       thumb: slides[k].pages[0].image,
     }))
-    .sort((a, b) => new Date(a.date).getTime() - new Date(b.date).getTime());
+    .sort((a, b) => new Date(b.date).getTime() - new Date(a.date).getTime());
 
   return (
     <PortfolioLayout pageUrl={page.url} subTitle="Slides">
