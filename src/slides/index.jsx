@@ -13,7 +13,7 @@ export default ({ slides, page }) => {
     ...s,
     url: `/slides/${s.slug}/`,
     // TODO
-    thumb: s.pages[0].imageUrl,
+    thumb: s.thumbnail,
     subtitle: "",
   }));
 

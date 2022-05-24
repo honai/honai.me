@@ -35,4 +35,5 @@ type SlidePage = Omit<SlidePageRes, "image"> & {
 
 export interface Slide extends SlideRes {
   pages: SlidePage[]
+  thumbnail: string
 }
