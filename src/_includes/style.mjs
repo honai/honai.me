@@ -139,6 +139,11 @@ const uc = {
     paddingLeft: "0",
     listStyle: "none",
   })(),
+  emojiFont: css({
+    "-webkit-locale": "'en'",
+    fontFamily:
+      "apple color emoji,segoe ui emoji,noto color emoji,android emoji,segoe ui symbol",
+  })(),
 };
 
 const getCssText = () => {

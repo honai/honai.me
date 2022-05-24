@@ -12,12 +12,11 @@ export const Seo = ({ title, pageUrl, description, thumbnailUrl }) => {
   if (!pageUrl.startsWith("/")) {
     throw new Error(`Invalid pageUrl: ${pageUrl}`);
   }
-  if (!!thumbnailUrl && !/^https?:\/\//.test(thumbnailUrl)) {
-    throw new Error(`Invalid ogp image url: ${thumbnailUrl}`);
-  }
   const canonicalUrl = `https://www.honai.me${pageUrl}`;
   const isLargeCard = !!thumbnailUrl;
-  const ogImage = thumbnailUrl || "https://www.honai.me/images/profile.png";
+  const ogImage = thumbnailUrl
+    ? ogpImage(thumbnailUrl)
+    : "https://www.honai.me/images/profile.png";
   return (
     <>
       <link rel="canonical" href={canonicalUrl} />
@@ -43,3 +42,14 @@ export const Seo = ({ title, pageUrl, description, thumbnailUrl }) => {
     </>
   );
 };
+
+/** @param {string} url */
+function ogpImage(url) {
+  if (/^https?:\/\//.test(url)) {
+    return url;
+  }
+  if (url.startsWith("/")) {
+    return `https://www.honai.me${url}`;
+  }
+  throw Error(`Invalid OGP Image: ${url}`);
+}

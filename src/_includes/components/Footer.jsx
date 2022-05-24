@@ -19,6 +19,9 @@ export const Footer = () => (
       <a href="/talks/" class={uc.uncolor}>
         Talks
       </a>
+      <a href="/slides/" class={uc.uncolor}>
+        Slides
+      </a>
       <a href="/blog/" class={uc.uncolor}>
         Blog
       </a>
