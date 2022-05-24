@@ -110,7 +110,8 @@ const SlideCarouselItem = ({
               style={{
                 ...l.position,
               }}
-            ></a>
+              title={l.url}
+            />
           ))}
         </>
       </div>
