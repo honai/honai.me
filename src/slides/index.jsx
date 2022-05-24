@@ -5,15 +5,15 @@ import { css } from "../_includes/style.mjs";
 
 /**
  * @param {object} p
- * @param {import("../../types").SlideRes[]} p.slides
+ * @param {import("../../types").Slide[]} p.slides
  * @param {import("../../types").EleventyPage} p.page
  */
 export default ({ slides, page }) => {
   const sortedSlides = slides.map((s) => ({
     ...s,
-    url: `/${s.slug}/`,
+    url: `/slides/${s.slug}/`,
     // TODO
-    thumb: `https://www.honai.me/images/profile.png`,
+    thumb: s.pages[0].imageUrl,
     subtitle: "",
   }));
 
