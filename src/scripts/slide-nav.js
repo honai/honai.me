@@ -82,6 +82,7 @@ class SlideNav extends HTMLElement {
     super();
     this.attachShadow({ mode: "open" });
 
+    /** @type {HTMLDivElement} */
     const slideElm = document.getElementById(this.dataset.slideId);
     const slideCount = parseInt(this.dataset.slideCount);
 
@@ -99,15 +100,28 @@ class SlideNav extends HTMLElement {
     });
 
     let currentSlideIdx = 1;
+    let maxSlideIdx = 0;
     const slideNumElm = ce("span", {}, currentSlideIdx.toString());
     /** @param {HTMLElement} elm */
     const updateSlideNum = (elm) => {
       const idx = Math.round(elm.scrollLeft / slideWidth) + 1;
-      if (idx === currentSlideIdx) {
-        return;
+      if (idx !== currentSlideIdx) {
+        slideNumElm.textContent = idx.toString();
+        currentSlideIdx = idx;
       }
-      slideNumElm.textContent = idx.toString();
-      currentSlideIdx = idx;
+      if (idx > maxSlideIdx) {
+        maxSlideIdx = idx;
+        const children = slideElm.children;
+        // 3ページほど先読み
+        if (idx === 1) {
+          [1, 2].forEach((i) => {
+            children[idx - 1 + i]
+              ?.querySelector("img")
+              ?.removeAttribute("loading");
+          });
+        }
+        children[idx - 1 + 3]?.querySelector("img")?.removeAttribute("loading");
+      }
     };
     updateSlideNum(slideElm);
 
