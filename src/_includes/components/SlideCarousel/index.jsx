@@ -1,4 +1,4 @@
-import { css, uc } from "../../style.mjs";
+import { css, cx, uc } from "../../style.mjs";
 import { Nav } from "./Nav.jsx";
 
 /**
@@ -20,10 +20,11 @@ import { Nav } from "./Nav.jsx";
 
 /**
  * @param {object} p
- * @param {SlidePage[]} p.pages
+ * @param {import("../../../../types").Slide} p.slide
+ * @param {boolean} [p.embed]
  */
-export const SlideCarousel = ({ pages }) => {
-  const slides = pages.map((s) => {
+export const SlideCarousel = ({ slide, embed }) => {
+  const slides = slide.pages.map((s) => {
     const links = s.links.map(({ url, ...rect }) => {
       return { position: rectToPos(rect, s.width, s.height), url };
     });
@@ -52,23 +53,41 @@ export const SlideCarousel = ({ pages }) => {
           />
         ))}
       </div>
-      <SlideNav slideElmId={slideElmId} slideCount={slides.length} />
+      <div
+        class={css({
+          display: "flex",
+          justifyContent: "space-between",
+          alignItems: "center",
+          padding: "0 3.6rem",
+        })()}
+      >
+        {/* @ts-ignore */}
+        <slide-nav
+          class={cx(uc.emojiFont, flexNoShrink())}
+          data-slide-id={slideElmId}
+          data-slide-count={slides.length}
+        />
+        {embed && (
+          <div class={flexShrink()}>
+            <a href={`/slides/${slide.slug}/`} class={uc.uncolor}>
+              {slide.title}
+            </a>
+          </div>
+        )}
+        <script type="module" src="/scripts/slide-nav.js" />
+      </div>
     </div>
   );
 };
 
-/** @param {{slideElmId: string; slideCount: number}} props */
-const SlideNav = ({ slideElmId, slideCount }) => (
-  <div class={css({ display: "flex", justifyContent: "center" })()}>
-    {/* @ts-ignore */}
-    <slide-nav
-      class={uc.emojiFont}
-      data-slide-id={slideElmId}
-      data-slide-count={slideCount}
-    />
-    <script type="module" src="/scripts/slide-nav.js" />
-  </div>
-);
+const flexNoShrink = css({ flex: "0 0 auto" });
+const flexShrink = css({
+  flex: "0 1 auto",
+  whiteSpace: "nowrap",
+  overflowInline: "hidden",
+  textOverflow: "ellipsis",
+  color: "$textSecondary",
+});
 
 /**
  * @param {any} p

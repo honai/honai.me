@@ -34,7 +34,7 @@ export default ({ slide, page, SITE_DOMAIN }) => {
         })()}
       >
         <TitleDate title={title} date={date} />
-        <SlideCarousel pages={pages} />
+        <SlideCarousel slide={slide} />
         <div>
           <h2 class={heading()}>埋め込みコード (iframe)</h2>
           <textarea

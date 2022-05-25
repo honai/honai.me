@@ -12,7 +12,7 @@ export const data = {
  * @param {string } p.SITE_DOMAIN
  */
 export default ({ slide, SITE_DOMAIN }) => {
-  const { title, slug, pages } = slide;
+  const { title, slug } = slide;
   return (
     <html lang="ja">
       <head>
@@ -23,7 +23,7 @@ export default ({ slide, SITE_DOMAIN }) => {
         <link rel="stylesheet" href="/index.css" />
       </head>
       <body>
-        <SlideCarousel pages={pages} />
+        <SlideCarousel slide={slide} embed />
       </body>
     </html>
   );
