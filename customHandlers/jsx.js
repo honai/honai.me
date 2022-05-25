@@ -30,7 +30,18 @@ module.exports = {
     return require(resolveInputPath(inputPath)).data;
   },
   compileOptions: {
-    permalink: "raw",
+    permalink: (_, inputPath) => {
+      const { data } = require(resolveInputPath(inputPath));
+      if (!data || !data.permalink) {
+        return;
+      }
+      if (typeof data.permalink === "string") {
+        return () => data.permalink;
+      }
+      if (typeof data.permalink === "function") {
+        return (arg) => data.permalink(arg);
+      }
+    },
   },
 };
 

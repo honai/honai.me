@@ -4,7 +4,8 @@
     "moduleResolution": "node",
     "jsx": "react-jsx",
     "jsxImportSource": "preact",
-    "checkJs": true
+    "checkJs": true,
+    "strict": true
   },
-  "include": ["./src/**/*.jsx", "./customHandlers/*.js"]
+  "include": ["./src/**/*.jsx", "./src/**/*.js", "./customHandlers/*.js"]
 }
