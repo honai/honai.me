@@ -27,6 +27,5 @@ module.exports = async () => {
         fetch_format: "auto",
       }),
     }));
-  console.log(t[0]);
   return t;
 };
