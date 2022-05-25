@@ -11,8 +11,14 @@ const yaml = require("js-yaml");
 
 const jsx = require("./customHandlers/jsx");
 
+const globalVals = [["SITE_DOMAIN", "www.honai.me"]];
+
 module.exports = (eleventyConfig) => {
   eleventyConfig.setTemplateFormats(["jsx", "scss", "md", "11ty.js", "css"]);
+
+  globalVals.forEach(([k, v]) => {
+    eleventyConfig.addGlobalData(k, v);
+  });
 
   // static file copy
   const fileCopies = ["images", "favicon.ico", "scripts"];

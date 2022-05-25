@@ -9,8 +9,9 @@ export const data = {
  * @param {object} p
  * @param {import("../../types").Slide} p.slide
  * @param {import("../../types").EleventyPage} p.page
+ * @param {string } p.SITE_DOMAIN
  */
-export default ({ slide }) => {
+export default ({ slide, SITE_DOMAIN }) => {
   const { title, slug, pages } = slide;
   return (
     <html lang="ja">
@@ -18,7 +19,7 @@ export default ({ slide }) => {
         <meta charSet="UTF-8" />
         <meta name="viewport" content="width=device-width" />
         <title>{title}</title>
-        <link rel="canonical" href={`https://www.honai.me/slides/${slug}/`} />
+        <link rel="canonical" href={`https://${SITE_DOMAIN}/slides/${slug}/`} />
         <link rel="stylesheet" href="/index.css" />
       </head>
       <body>
