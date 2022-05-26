@@ -2,20 +2,22 @@ import { html, render } from "lit-html";
 
 /**
  * usage
- * <slide-nav target="slide-elm-id" slide-count="30" />
+ * <slide-nav
+ *   target="slide-elm-id"
+ *   slug="slide-slug" />
  */
 export class SlideNav extends HTMLElement {
   constructor() {
     super();
     this.attachShadow({ mode: "open" });
     this.target = this.getAttribute("target");
-    console.log(this.target);
-    this.slideCount = parseInt(this.getAttribute("slide-count"));
+    this.slug = this.getAttribute("slug");
     this._currentSlideIdx = 0;
     this._maxSlideIdx = 0;
     this._slieWidth = 0;
     this._slideElm = document.getElementById(this.target);
-    console.log(this._slideElm);
+    this._slideCount = this._slideElm.children.length;
+    this._isIframe = window.parent !== window;
     this.render();
   }
 
@@ -29,7 +31,7 @@ export class SlideNav extends HTMLElement {
   _calcSlideWidth = () => {
     this._slideWidth =
       (this._slideElm.scrollWidth - this._slideElm.clientWidth) /
-      (this.slideCount - 1);
+      (this._slideCount - 1);
   };
 
   _loadSlideImage = (idx) => {
@@ -52,6 +54,10 @@ export class SlideNav extends HTMLElement {
     }
   };
 
+  _slideLink = (idx) => {
+    return `/slides/${this.slug}/#slide-${idx + 1}`;
+  };
+
   _next = () => {
     this._slideElm.scrollBy({ left: this._slideWidth });
   };
@@ -69,13 +75,14 @@ export class SlideNav extends HTMLElement {
   };
 
   _handleKeyDown = (e) => {
-    e.preventDefault();
     switch (e.key) {
       case "ArrowLeft": {
+        e.preventDefault();
         this._prev();
         break;
       }
       case "ArrowRight": {
+        e.preventDefault();
         this._next();
         break;
       }
@@ -86,7 +93,6 @@ export class SlideNav extends HTMLElement {
   };
 
   connectedCallback() {
-    console.log("connected");
     this._hideHtmlNav();
 
     this._calcSlideWidth();
@@ -97,27 +103,32 @@ export class SlideNav extends HTMLElement {
 
     this._slideElm.addEventListener("scroll", this._updateSlideIdx);
 
-    addEventListener("keydown", this._handleKeyDown);
+    this.addEventListener("keydown", this._handleKeyDown);
   }
 
   disconnectedCallback() {
-    console.log("disconnect");
     window.removeEventListener("resize", this._calcSlideWidth);
     removeEventListener("keydown", this._handleKeyDown);
   }
 
   render() {
-    console.log("render");
+    const idx = this._currentSlideIdx;
     render(
       html`
         <div class="wrap">
+          <a
+            href="${this._slideLink(idx)}"
+            title="このスライド(${idx + 1}ページ)へのリンク"
+            target="${this._isIframe ? "_blank" : null}"
+            >🔗</a
+          >&ensp;
           <span class="page"
-            >${this._currentSlideIdx + 1}/${this.slideCount}</span
+            >${this._currentSlideIdx + 1}/${this._slideCount}</span
           >
-          <button @click="${this._first}">⏮️</button>
-          <button @click="${this._prev}">◀️</button>
-          <button @click="${this._next}">▶️</button>
-          <button @click="${this._last}">⏭️</button>
+          <button @click="${this._first}" title="最初のスライド">⏮️</button>
+          <button @click="${this._prev}" title="前のスライド">◀️</button>
+          <button @click="${this._next}" title="次のスライド">▶️</button>
+          <button @click="${this._last}" title="最後のスライド">⏭️</button>
           <style>
             .wrap {
               line-height: 1;

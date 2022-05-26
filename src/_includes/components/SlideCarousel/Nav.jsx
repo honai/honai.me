@@ -24,7 +24,7 @@ export const Nav = ({ next, prev, first, last, total, current }) => {
       <a href={last} title="最後のスライド">
         ⏭️
       </a>
-      <span class={css({ fontFamily: "monospace" })()}>
+      <span class={css({ fontFamily: "sans-serif" })()}>
         {current + 1} / {total}
       </span>
     </div>

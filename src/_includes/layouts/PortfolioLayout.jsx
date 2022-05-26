@@ -44,6 +44,7 @@ export const PortfolioLayout = ({
         ))}
 
         <link rel="stylesheet" href="/index.css" />
+        <link rel="preload" as="image" href="/images/open_in_new.svg" />
 
         {/* 遅延読み込みするStyleSheet */}
         {asyncStylesheets.map((href) => (

@@ -20,6 +20,7 @@ const {
   globalCss,
   createTheme,
   theme: lightTheme,
+  keyframes,
 } = createStitches({
   media: {
     sm: minWidthMedia(576),
@@ -71,6 +72,24 @@ const darkTheme = createTheme({
   },
 });
 
+/** @param {"start" | "end"} d */
+const openInNewPseudo = (d) => ({
+  [d === "start" ? `&::before` : `&::after`]: {
+    $$image: "url('/images/open_in_new.svg')",
+    content: "",
+    maskImage: "$$image",
+    backgroundColor: "currentColor",
+    display: "inline-block",
+    opacity: 0.75,
+    width: "0.9em",
+    height: "0.9em",
+    verticalAlign: "middle",
+    marginInline: d === "start" ? "0 0.2em" : "0.2em 0",
+  },
+});
+
+const newIconStartClass = "newiconstart";
+
 const normalizeStyle = globalCss({
   "*, *::before, *::after": {
     boxSizing: "border-box",
@@ -110,20 +129,8 @@ const normalizeStyle = globalCss({
   a: {
     color: "$link",
     "&:visited": { color: "$linkVisited" },
-    "&[target]": {
-      "&::after": {
-        $$image: "url('/images/open_in_new.svg')",
-        content: "",
-        maskImage: "$$image",
-        backgroundColor: "currentColor",
-        display: "inline-block",
-        opacity: 0.75,
-        width: "0.9em",
-        height: "0.9em",
-        marginLeft: "0.2em",
-        verticalAlign: "middle",
-      },
-    },
+    [`&[target]:not(.${newIconStartClass})`]: openInNewPseudo("end"),
+    [`&[target].${newIconStartClass}`]: openInNewPseudo("start"),
   },
 });
 
@@ -144,6 +151,8 @@ const uc = {
     fontFamily:
       "apple color emoji,segoe ui emoji,noto color emoji,android emoji,segoe ui symbol",
   })(),
+  anchorNewIconStart: newIconStartClass,
+  anchorNewIconDisable: noNewIconClass,
 };
 
 const getCssText = () => {
@@ -155,4 +164,4 @@ const getCssText = () => {
 /** @type {(...classNames: string[]) => string} */
 const cx = (...classNames) => classNames.join(" ");
 
-export { css, getCssText, cx, uc, darkTheme, lightTheme };
+export { css, getCssText, keyframes, cx, uc, darkTheme, lightTheme };

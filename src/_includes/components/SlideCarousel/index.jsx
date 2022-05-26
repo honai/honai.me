@@ -75,7 +75,13 @@ export const SlideCarousel = ({ slide, embed }) => {
       >
         <div class={flexShrink()}>
           {embed && (
-            <a href={`/slides/${slide.slug}/`} class={uc.uncolor}>
+            <a
+              href={`/slides/${slide.slug}/`}
+              title={slide.title}
+              class={cx(uc.uncolor, uc.anchorNewIconStart)}
+              // サイト内でiframeするときもblankにしたいのでLinkを使わない
+              target="_blank"
+            >
               {slide.title}
             </a>
           )}
@@ -84,7 +90,7 @@ export const SlideCarousel = ({ slide, embed }) => {
         <slide-nav
           class={cx(uc.emojiFont, flexNoShrink())}
           target={slideElmId}
-          slide-count={slides.length}
+          slug={slide.slug}
         />
         <script type="module" src="/js/slide-nav.js" />
       </div>
@@ -154,14 +160,15 @@ const slideImg = css({
   display: "block",
   width: "100%",
   height: "auto",
-  $$border: "1px solid rgba(255, 255, 255, 0.6)",
-  borderLeft: "$$border",
-  borderRight: "$$border",
 });
 
 const slideWrap = css({
-  // linkのpositioningのため
-  position: "relative",
+  $$border: "1px solid rgba(255, 255, 255, 0.6)",
+  borderLeft: "$$border",
+  borderRight: "$$border",
+  "&:target": {
+    border: "4px solid $link",
+  },
 });
 
 const slidesWrap = css({
