@@ -33,7 +33,7 @@
     "fast-xml-parser": "^4.0.7",
     "feed": "^4.2.2",
     "js-yaml": "^4.1.0",
-    "lit": "^2.2.5",
+    "lit-html": "^2.2.5",
     "markdown-it": "^13.0.0",
     "markdown-it-anchor": "^8.6.2",
     "markdown-it-link-attributes": "^4.0.0",
