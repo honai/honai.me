@@ -10,11 +10,12 @@ const pluginTOC = require("eleventy-plugin-nesting-toc");
 const yaml = require("js-yaml");
 
 const jsx = require("./customHandlers/jsx");
+const jsBundler = require("./customHandlers/jsBundle");
 
 const globalVals = [["SITE_DOMAIN", "www.honai.me"]];
 
 module.exports = (eleventyConfig) => {
-  eleventyConfig.setTemplateFormats(["jsx", "scss", "md", "11ty.js", "css"]);
+  eleventyConfig.setTemplateFormats(["jsx", "mjs", "md", "11ty.js"]);
 
   globalVals.forEach(([k, v]) => {
     eleventyConfig.addGlobalData(k, v);
@@ -34,6 +35,9 @@ module.exports = (eleventyConfig) => {
     extensions: [".jsx", ".mjs"],
   });
   eleventyConfig.addExtension("jsx", jsx);
+
+  // client js
+  eleventyConfig.addExtension("mjs", jsBundler);
 
   eleventyConfig.addPlugin(syntaxHighlight);
 
@@ -82,8 +86,15 @@ module.exports = (eleventyConfig) => {
     });
   eleventyConfig.setLibrary("md", mdLib);
 
-  // after
+  eleventyConfig.on("eleventy.before", async () => {
+    const runMode = process.env.npm_lifecycle_event;
+    if (runMode === "build" && process.env.NODE_ENV !== "production") {
+      console.warn("building on non-production mode");
+    }
+  });
+
   eleventyConfig.on("eleventy.after", async () => {
+    // build js
     const { getCssText } = require("./src/_includes/style.mjs");
     await fs.promises.writeFile("build/index.css", getCssText());
   });

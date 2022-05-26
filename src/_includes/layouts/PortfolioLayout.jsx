@@ -44,6 +44,7 @@ export const PortfolioLayout = ({
         ))}
 
         <link rel="stylesheet" href="/index.css" />
+        <link rel="preload" as="image" href="/images/open_in_new.svg" />
 
         {/* 遅延読み込みするStyleSheet */}
         {asyncStylesheets.map((href) => (
@@ -62,7 +63,7 @@ export const PortfolioLayout = ({
         </noscript>
 
         {/* theme-toggle */}
-        <script type="module" src="/scripts/theme-toggle.mjs"></script>
+        <script type="module" src="/scripts/theme-toggle.js"></script>
       </head>
 
       <body>

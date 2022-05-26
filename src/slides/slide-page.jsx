@@ -20,6 +20,14 @@ export default ({ slide, page, SITE_DOMAIN }) => {
   const embedUrl = `https://${SITE_DOMAIN}/slides/embed/${slug}/`;
   const encodedTitle = title.replaceAll('"', "&quot;");
   const embedCode = `<iframe src="${embedUrl}" title="${encodedTitle}" width="100%" style="aspect-ratio:${ratio}" frameborder="0" allowfullscreen></iframe>`;
+  const scriptListItems = pages.map(({ imageUrl, text }) => {
+    const [alt, ...rest] = text.split("\n");
+    return (
+      <li>
+        <a href={imageUrl}>{alt}</a> {rest.join(" ")}
+      </li>
+    );
+  });
   // TODO imageUrl
   return (
     <PortfolioLayout
@@ -46,13 +54,10 @@ export default ({ slide, page, SITE_DOMAIN }) => {
           />
         </div>
         <div>
-          <h2 class={heading()}>スクリプト</h2>
-          <p>PDFから抽出されているため不自然な場合があります</p>
-          <ol class={scriptOl()}>
-            {pages.map(({ text }) => (
-              <li>{text}</li>
-            ))}
-          </ol>
+          <article>
+            <h2 class={heading()}>{title} のスクリプト</h2>
+            <ol class={scriptOl()}>{scriptListItems}</ol>
+          </article>
         </div>
       </div>
     </PortfolioLayout>
@@ -61,7 +66,7 @@ export default ({ slide, page, SITE_DOMAIN }) => {
 
 const heading = css({
   fontSize: "2rem",
-  marginTop: "2rem",
+  marginTop: "3rem",
 });
 
 const embedUrlInput = css({
@@ -73,4 +78,5 @@ const embedUrlInput = css({
 
 const scriptOl = css({
   overflowWrap: "break-word",
+  fontSize: "1.4rem",
 });
