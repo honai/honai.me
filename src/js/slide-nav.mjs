@@ -18,7 +18,7 @@ export class SlideNav extends HTMLElement {
     this._slideElm = document.getElementById(this.target);
     this._slideCount = this._slideElm.children.length;
     this._isIframe = window.parent !== window;
-    this._isRangeMoving = false;
+    this._rangeMoveTimer = null;
     this.render();
   }
 
@@ -47,7 +47,7 @@ export class SlideNav extends HTMLElement {
     }
     this._currentSlideIdx = idx;
     this.render();
-    if (!this._isRangeMoving) {
+    if (this._rangeMoveTimer === null) {
       this.shadowRoot.querySelector("input[name=page]").value =
         this._currentSlideIdx + 1;
     }
@@ -87,18 +87,24 @@ export class SlideNav extends HTMLElement {
 
   _handleRangeChange = (e) => {
     // e.preventDefault();
+    if (this._rangeMoveTimer === null) {
+      this._handleRangeMoveStart();
+    } else {
+      window.clearTimeout(this._rangeMoveTimer);
+    }
     const idx = parseInt(e.target.value) - 1;
     this._scrollTo(idx);
+    this._rangeMoveTimer = window.setTimeout(this._handleRangeMoveEnd, 1000);
   };
 
   _handleRangeMoveStart = (ev) => {
-    this._isRangeMoving = true;
     this._slideImgs.forEach((e) => (e.style.display = "none"));
   };
 
   _handleRangeMoveEnd = (ev) => {
-    this._isRangeMoving = false;
-    this._slideImgs.forEach((e, i) => (e.style.display = "block"));
+    this._slideImgs.forEach((e) => (e.style.display = "block"));
+    window.clearTimeout(this._rangeMoveTimer);
+    this._rangeMoveTimer = null;
   };
 
   _handleKeyDown = (e) => {
@@ -137,6 +143,7 @@ export class SlideNav extends HTMLElement {
   disconnectedCallback() {
     window.removeEventListener("resize", this._calcSlideWidth);
     removeEventListener("keydown", this._handleKeyDown);
+    this._slideElm.removeEventListener("scroll", this._handleScroll);
   }
 
   render() {
@@ -152,9 +159,7 @@ export class SlideNav extends HTMLElement {
             min="1"
             max="${this._slideCount}"
             @input="${this._handleRangeChange}"
-            @touchstart="${this._handleRangeMoveStart}"
             @touchend="${this._handleRangeMoveEnd}"
-            @mousedown="${this._handleRangeMoveStart}"
             @mouseup="${this._handleRangeMoveEnd}"
           />
           <div class="buttons">
