@@ -9,4 +9,4 @@ LTEのコアネットワークや5Gに関するトークを行いました。
 
 ## 発表資料
 
-<iframe src="https://speakerdeck.com/player/2a6b5b5e2c48485d8d5470b94d6766b5" title="スマホがネットにつながる仕組み" style="aspect-ratio:4/3;" frameborder="0" allowfullscreen="true" mozallowfullscreen="true" webkitallowfullscreen="true" data-ratio="1.3333333333333333" frameborder="0"></iframe>
+<iframe src="https://www.honai.me/slides/embed/mobile-network-explained/" title="スマホがネットにつながる仕組み" width="100%" style="aspect-ratio:1.333" frameborder="0" allowfullscreen></iframe>

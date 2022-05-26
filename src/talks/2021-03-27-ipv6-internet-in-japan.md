@@ -10,4 +10,4 @@ thumbnail: https://res.cloudinary.com/honai/image/upload/c_scale,f_auto,w_640/ta
 
 ## 発表資料
 
-<iframe src="https://speakerdeck.com/player/cd5c4e4810234718a9fe7b398dc4ed14" title="IPv6と日本のインターネット / IPv6 Internet in Japan" frameborder="0" style="aspect-ratio:4/3;" allowfullscreen="true" mozallowfullscreen="true" webkitallowfullscreen="true" data-ratio="1.3333333333333333" frameborder="0"></iframe>
+<iframe src="http://www.honai.me/slides/embed/ipv6-internet-in-japan/" title="IPv6と日本のインターネット" width="100%" style="aspect-ratio:1.333" frameborder="0" allowfullscreen></iframe>

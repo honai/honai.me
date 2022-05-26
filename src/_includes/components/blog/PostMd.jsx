@@ -1,18 +1,27 @@
-import { css, lightTheme } from "../../style.mjs";
+import { css } from "../../style.mjs";
 
+/** @param {{content: string}} props */
 export const PostMd = ({ content }) => (
   <div dangerouslySetInnerHTML={{ __html: content }} class={mdStyle()} />
 );
 
 const mdStyle = css({
-  "> h2": { borderBottom: "1px solid rgba(0, 0, 0, 0.2)" },
-  "> h3": {
-    lineHeight: 1.5,
-    margin: "3.2rem 0 2.4rem",
-    paddingLeft: "1rem",
-    borderLeft: "4px solid $primary",
+  "h2, h3, h4": {
+    marginBlockStart: "2.4rem",
+    marginBlockEnd: "1.6rem",
+    fontWeight: 600,
   },
-  p: { margin: "1.6rem 0" },
+  h2: { borderBlockEnd: "1px solid rgba(0, 0, 0, 0.2)" },
+  h3: {
+    lineHeight: 1.5,
+    marginBlock: "3.2rem 2.4rem",
+    paddingInlineStart: "1rem",
+    borderInlineStart: "4px solid $primary",
+  },
+  h4: {
+    fontSize: "1.8rem",
+  },
+  p: { marginBlock: "1.6rem" },
   ul: { margin: "1.6rem 0" },
   img: { boxShadow: "0 1px 3px rgba(0, 0, 0, 0.3)" },
   ".img-row-wrap": {
@@ -39,6 +48,6 @@ const mdStyle = css({
     margin: "0",
     padding: "0 1em",
     color: "#6a737d",
-    borderLeft: "0.25em solid #dfe2e5",
+    borderInlineStart: "0.25em solid #dfe2e5",
   },
 });

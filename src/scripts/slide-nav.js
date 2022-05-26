@@ -65,7 +65,7 @@ class SlideNav extends HTMLElement {
       line-height: 1;
       padding: 0.6rem 0;
       display: flex;
-      align-items: flex-end;
+      align-items: center;
     }
     button {
       appearance: none;
@@ -171,14 +171,14 @@ class SlideNav extends HTMLElement {
     );
 
     const pageIndicator = ce("span", { class: "page" }, "");
-    pageIndicator.append(slideNumElm, ` / ${slideCount}`);
+    pageIndicator.append(slideNumElm, `/${slideCount}`);
 
     wrap.append(
+      pageIndicator,
       first,
       prev,
       next,
       last,
-      pageIndicator,
       ce("style", {}, this.#css)
     );
     document.addEventListener("keydown", (e) => {

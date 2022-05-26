@@ -1,4 +1,5 @@
 import { SlideCarousel } from "../_includes/components/SlideCarousel";
+import { css, darkTheme } from "../_includes/style.mjs";
 
 export const data = {
   pagination: { data: "slides", size: 1, alias: "slide" },
@@ -22,7 +23,7 @@ export default ({ slide, SITE_DOMAIN }) => {
         <link rel="canonical" href={`https://${SITE_DOMAIN}/slides/${slug}/`} />
         <link rel="stylesheet" href="/index.css" />
       </head>
-      <body>
+      <body class={css({ backgroundColor: "$bg" })()}>
         <SlideCarousel slide={slide} embed />
       </body>
     </html>

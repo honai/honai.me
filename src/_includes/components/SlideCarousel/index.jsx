@@ -1,4 +1,4 @@
-import { css, cx, uc } from "../../style.mjs";
+import { css, cx, darkTheme, uc } from "../../style.mjs";
 import { Link } from "../Link.jsx";
 import { Nav } from "./Nav.jsx";
 
@@ -39,7 +39,16 @@ export const SlideCarousel = ({ slide, embed }) => {
   const slideElmId = "slide-scroll";
   const slideRatio = `${slides[0].width} / ${slides[0].height}`;
   return (
-    <div>
+    // 埋め込みなどを考慮するとデフォでダークに固定したい
+    <div
+      class={cx(
+        darkTheme,
+        css({
+          color: "$text",
+          backgroundColor: "$bg",
+        })()
+      )}
+    >
       <div
         id={slideElmId}
         class={slidesWrap()}
@@ -59,22 +68,24 @@ export const SlideCarousel = ({ slide, embed }) => {
           display: "flex",
           justifyContent: "space-between",
           alignItems: "center",
-          padding: "0 3.6rem",
+          padding: "0 1rem",
+          gap: "1rem",
+          backgroundColor: "$primary",
         })()}
       >
+        <div class={flexShrink()}>
+          {embed && (
+            <a href={`/slides/${slide.slug}/`} class={uc.uncolor}>
+              {slide.title}
+            </a>
+          )}
+        </div>
         {/* @ts-ignore */}
         <slide-nav
           class={cx(uc.emojiFont, flexNoShrink())}
           data-slide-id={slideElmId}
           data-slide-count={slides.length}
         />
-        {embed && (
-          <div class={flexShrink()}>
-            <a href={`/slides/${slide.slug}/`} class={uc.uncolor}>
-              {slide.title}
-            </a>
-          </div>
-        )}
         <script type="module" src="/scripts/slide-nav.js" />
       </div>
     </div>
@@ -87,7 +98,6 @@ const flexShrink = css({
   whiteSpace: "nowrap",
   overflowInline: "hidden",
   textOverflow: "ellipsis",
-  color: "$textSecondary",
 });
 
 /**
@@ -144,7 +154,9 @@ const slideImg = css({
   display: "block",
   width: "100%",
   height: "auto",
-  border: "1px solid $border",
+  $$border: "1px solid rgba(255, 255, 255, 0.6)",
+  borderLeft: "$$border",
+  borderRight: "$$border",
 });
 
 const slideWrap = css({
@@ -157,13 +169,15 @@ const slidesWrap = css({
   display: "flex",
   flexFlow: "row nowrap",
   overflowX: "scroll",
+  overflowY: "hidden",
   scrollSnapType: "x mandatory",
   scrollBehavior: "auto",
   gap: "1rem",
   // 高さが100vhを超えないようにする
+  // 3.6rem: コントロール, 2px: ボーダー
   // var(, 100) は未定義フォールバック
   // 100%だとlazy-imgで先読みされなくなるので90%
-  $$slideWidth: "min(90%, (100vh - 3.6rem) * var(--slide-ratio, 100))",
+  $$slideWidth: "min(90%, (100vh - 3.6rem - 2px) * var(--slide-ratio, 100))",
   $$slideMargin: "calc((100% - $$slideWidth) / 2)",
   scrollPadding: "0 $$slideMargin",
   [`& > .${slideWrap}`]: {

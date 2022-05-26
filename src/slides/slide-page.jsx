@@ -19,7 +19,7 @@ export default ({ slide, page, SITE_DOMAIN }) => {
   const ratio = (pages[0].width / pages[0].height).toPrecision(4);
   const embedUrl = `https://${SITE_DOMAIN}/slides/embed/${slug}/`;
   const encodedTitle = title.replaceAll('"', "&quot;");
-  const embedCode = `<iframe src="${embedUrl}" title="${encodedTitle}" style="aspect-ratio:${ratio}" frameborder="0" allowfullscreen></iframe>`;
+  const embedCode = `<iframe src="${embedUrl}" title="${encodedTitle}" width="100%" style="aspect-ratio:${ratio}" frameborder="0" allowfullscreen></iframe>`;
   // TODO imageUrl
   return (
     <PortfolioLayout
