@@ -102,7 +102,7 @@ const flexNoShrink = css({ flex: "0 0 auto" });
 const flexShrink = css({
   flex: "0 1 auto",
   whiteSpace: "nowrap",
-  overflowInline: "hidden",
+  overflowX: "hidden",
   textOverflow: "ellipsis",
 });
 
