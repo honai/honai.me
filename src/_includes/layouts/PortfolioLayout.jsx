@@ -62,7 +62,7 @@ export const PortfolioLayout = ({
         </noscript>
 
         {/* theme-toggle */}
-        <script type="module" src="/scripts/theme-toggle.mjs"></script>
+        <script type="module" src="/scripts/theme-toggle.js"></script>
       </head>
 
       <body>

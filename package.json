@@ -10,7 +10,8 @@
     "clean": "rimraf build",
     "dev": "eleventy --serve",
     "format:check": "prettier --check --ignore-path .gitignore \"**/*.{js,jsx,json,yaml,scss,css}\"",
-    "format": "prettier --write --ignore-path .gitignore \"**/*.{js,jsx,json,yaml,scss,css}\""
+    "format": "prettier --write --ignore-path .gitignore \"**/*.{js,jsx,json,yaml,scss,css}\"",
+    "check-env": "node -e \"console.log(process.env)\""
   },
   "devDependencies": {
     "prettier": "^2.6.2",

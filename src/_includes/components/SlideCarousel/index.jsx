@@ -83,10 +83,10 @@ export const SlideCarousel = ({ slide, embed }) => {
         {/* @ts-ignore */}
         <slide-nav
           class={cx(uc.emojiFont, flexNoShrink())}
-          data-slide-id={slideElmId}
-          data-slide-count={slides.length}
+          target={slideElmId}
+          slide-count={slides.length}
         />
-        <script type="module" src="/scripts/slide-nav.js" />
+        <script type="module" src="/js/slide-nav.js" />
       </div>
     </div>
   );
