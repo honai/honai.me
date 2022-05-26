@@ -4,14 +4,16 @@ module.exports = {
   outputFileExtension: "js",
   init() {},
   compile: async (_, inputPath) => {
-    const isProd = process.env.NODE_ENV === "production";
+    const isDev =
+      process.env.NODE_ENV === "development" ||
+      process.env.npm_lifecycle_event === "dev";
     const res = await esbuild.build({
       entryPoints: [inputPath],
       write: false,
       bundle: true,
       format: "esm",
-      minify: isProd,
-      sourcemap: isProd ? false : "inline",
+      minify: !isDev,
+      sourcemap: isDev ? "inline" : false,
     });
     if (res.outputFiles.length !== 1) {
       throw new Error("esbuild multiple output");

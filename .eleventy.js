@@ -86,8 +86,15 @@ module.exports = (eleventyConfig) => {
     });
   eleventyConfig.setLibrary("md", mdLib);
 
-  // after
+  eleventyConfig.on("eleventy.before", async () => {
+    const runMode = process.env.npm_lifecycle_event;
+    if (runMode === "build" && process.env.NODE_ENV !== "production") {
+      console.warn("building on non-production mode");
+    }
+  });
+
   eleventyConfig.on("eleventy.after", async () => {
+    // build js
     const { getCssText } = require("./src/_includes/style.mjs");
     await fs.promises.writeFile("build/index.css", getCssText());
   });
