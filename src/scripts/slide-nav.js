@@ -78,6 +78,7 @@ class SlideNav extends HTMLElement {
       padding: 0 0.5rem;
       margin: 0;
       color: inherit;
+      touch-action: manipulation;
     }
     .page {
       font-family: sans-serif;
