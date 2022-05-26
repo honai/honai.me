@@ -18,6 +18,7 @@ export class SlideNav extends HTMLElement {
     this._slideElm = document.getElementById(this.target);
     this._slideCount = this._slideElm.children.length;
     this._isIframe = window.parent !== window;
+    this._isRangeMoving = false;
     this.render();
   }
 
@@ -41,13 +42,15 @@ export class SlideNav extends HTMLElement {
   };
 
   _updateSlideIdx = (idx) => {
-    console.log(idx, this._currentSlideIdx);
     if (this._currentSlideIdx === idx) {
       return;
     }
     this._currentSlideIdx = idx;
     this.render();
-    console.log("update");
+    if (!this._isRangeMoving) {
+      this.shadowRoot.querySelector("input[name=page]").value =
+        this._currentSlideIdx + 1;
+    }
   };
 
   _slideLink = (idx) => {
@@ -71,7 +74,7 @@ export class SlideNav extends HTMLElement {
   };
 
   _scrollTo = (idx) => {
-    this._slideElm.scrollTo({
+    this._slideElm.scroll({
       left: this._slideWidth * idx,
       behavior: "smooth",
     });
@@ -83,19 +86,19 @@ export class SlideNav extends HTMLElement {
   };
 
   _handleRangeChange = (e) => {
+    // e.preventDefault();
     const idx = parseInt(e.target.value) - 1;
     this._scrollTo(idx);
   };
 
   _handleRangeMoveStart = (ev) => {
-    console.log("start", ev);
+    this._isRangeMoving = true;
     this._slideImgs.forEach((e) => (e.style.display = "none"));
   };
 
   _handleRangeMoveEnd = (ev) => {
-    console.log("end", ev.target);
+    this._isRangeMoving = false;
     this._slideImgs.forEach((e, i) => (e.style.display = "block"));
-    // this._loadSlideImage(parseInt(ev.target.value) - 1);
   };
 
   _handleKeyDown = (e) => {
@@ -120,17 +123,15 @@ export class SlideNav extends HTMLElement {
     this._hideHtmlNav();
 
     this._calcSlideWidth();
-
-    window.addEventListener("resize", this._calcSlideWidth);
+    this._slideElm.addEventListener("scroll", this._handleScroll);
 
     this._handleScroll();
 
-    this._slideElm.addEventListener("scroll", this._handleScroll);
+    this._slideImgs = this._slideElm.querySelectorAll("img");
 
     this.addEventListener("keydown", this._handleKeyDown);
 
-    this._slideImgs = this._slideElm.querySelectorAll("img");
-    this._imgSrcs = Array.from(this._slideImgs).map((e) => e.src);
+    window.addEventListener("resize", this._calcSlideWidth);
   }
 
   disconnectedCallback() {
@@ -145,31 +146,41 @@ export class SlideNav extends HTMLElement {
         <div class="wrap">
           <input
             type="range"
+            name="page"
+            class="slider"
             step="1"
             min="1"
             max="${this._slideCount}"
-            .value="${this._currentSlideIdx + 1}"
             @input="${this._handleRangeChange}"
             @touchstart="${this._handleRangeMoveStart}"
             @touchend="${this._handleRangeMoveEnd}"
             @mousedown="${this._handleRangeMoveStart}"
             @mouseup="${this._handleRangeMoveEnd}"
           />
-          <a
-            href="${this._slideLink(idx)}"
-            title="このスライド(${idx + 1}ページ)へのリンク"
-            target="${this._isIframe ? "_blank" : null}"
-            >🔗</a
-          >&ensp;
-          <span class="page"
-            >${this._currentSlideIdx + 1}/${this._slideCount}</span
-          >
-          <button @click="${this._first}" title="最初のスライド">⏮️</button>
-          <button @click="${this._prev}" title="前のスライド">◀️</button>
-          <button @click="${this._next}" title="次のスライド">▶️</button>
-          <button @click="${this._last}" title="最後のスライド">⏭️</button>
+          <div class="buttons">
+            <a
+              href="${this._slideLink(idx)}"
+              title="このスライド(${idx + 1}ページ)へのリンク"
+              target="${this._isIframe ? "_blank" : null}"
+              >🔗</a
+            >&ensp;
+            <span class="page"
+              >${this._currentSlideIdx + 1}/${this._slideCount}</span
+            >
+            <button @click="${this._prev}" title="前のスライド">◀️</button>
+            <button @click="${this._next}" title="次のスライド">▶️</button>
+          </div>
           <style>
             .wrap {
+              padding: 0 1rem;
+              display: flex;
+              gap: 1rem;
+            }
+            .slider {
+              flex: 1 1 auto;
+            }
+            .buttons {
+              flex: 0 1 auto;
               line-height: 1;
               padding: 0.6rem 0;
               display: flex;
@@ -183,7 +194,7 @@ export class SlideNav extends HTMLElement {
               font-size: 2.4rem;
               line-height: 1;
               cursor: pointer;
-              padding: 0 0.5rem;
+              padding: 0 0.25rem;
               margin: 0;
               color: inherit;
               touch-action: manipulation;
