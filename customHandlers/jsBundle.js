@@ -5,7 +5,6 @@ module.exports = {
   init() {},
   compile: async (_, inputPath) => {
     const isProd = process.env.NODE_ENV === "production";
-    console.log(isProd ? "prod!!" : "dev!!", inputPath);
     const res = await esbuild.build({
       entryPoints: [inputPath],
       write: false,
