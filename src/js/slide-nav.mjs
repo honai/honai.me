@@ -12,7 +12,7 @@ export class SlideNav extends HTMLElement {
     this.attachShadow({ mode: "open" });
     this.target = this.getAttribute("target");
     this.slug = this.getAttribute("slug");
-    this._currentSlideIdx = 0;
+    this._currentSlideIdx = -1;
     this._maxSlideIdx = 0;
     this._slieWidth = 0;
     this._slideElm = document.getElementById(this.target);
@@ -35,23 +35,19 @@ export class SlideNav extends HTMLElement {
   };
 
   _loadSlideImage = (idx) => {
-    this._slideElm.children[idx]
-      ?.querySelector("img")
-      ?.setAttribute("loading", "eager");
+    const img = this._slideElm.children[idx]?.querySelector("img");
+    // img && img.setAttribute("loading", "eager");
+    img && (img.src = this._imgSrcs[idx]);
   };
 
-  _updateSlideIdx = () => {
-    const idx = Math.round(this._slideElm.scrollLeft / this._slideWidth);
+  _updateSlideIdx = (idx) => {
+    console.log(idx, this._currentSlideIdx);
     if (this._currentSlideIdx === idx) {
       return;
     }
     this._currentSlideIdx = idx;
     this.render();
-    if (idx > this._maxSlideIdx) {
-      this._maxSlideIdx = idx;
-      // 3枚先読み
-      this._loadSlideImage(idx + 3);
-    }
+    console.log("update");
   };
 
   _slideLink = (idx) => {
@@ -72,6 +68,34 @@ export class SlideNav extends HTMLElement {
 
   _last = () => {
     this._slideElm.scroll({ left: this._slideElm.scrollWidth });
+  };
+
+  _scrollTo = (idx) => {
+    this._slideElm.scrollTo({
+      left: this._slideWidth * idx,
+      behavior: "smooth",
+    });
+  };
+
+  _handleScroll = () => {
+    const idx = Math.round(this._slideElm.scrollLeft / this._slideWidth);
+    this._updateSlideIdx(idx);
+  };
+
+  _handleRangeChange = (e) => {
+    const idx = parseInt(e.target.value) - 1;
+    this._scrollTo(idx);
+  };
+
+  _handleRangeMoveStart = (ev) => {
+    console.log("start", ev);
+    this._slideImgs.forEach((e) => (e.style.display = "none"));
+  };
+
+  _handleRangeMoveEnd = (ev) => {
+    console.log("end", ev.target);
+    this._slideImgs.forEach((e, i) => (e.style.display = "block"));
+    // this._loadSlideImage(parseInt(ev.target.value) - 1);
   };
 
   _handleKeyDown = (e) => {
@@ -99,11 +123,14 @@ export class SlideNav extends HTMLElement {
 
     window.addEventListener("resize", this._calcSlideWidth);
 
-    this._updateSlideIdx();
+    this._handleScroll();
 
-    this._slideElm.addEventListener("scroll", this._updateSlideIdx);
+    this._slideElm.addEventListener("scroll", this._handleScroll);
 
     this.addEventListener("keydown", this._handleKeyDown);
+
+    this._slideImgs = this._slideElm.querySelectorAll("img");
+    this._imgSrcs = Array.from(this._slideImgs).map((e) => e.src);
   }
 
   disconnectedCallback() {
@@ -116,6 +143,18 @@ export class SlideNav extends HTMLElement {
     render(
       html`
         <div class="wrap">
+          <input
+            type="range"
+            step="1"
+            min="1"
+            max="${this._slideCount}"
+            .value="${this._currentSlideIdx + 1}"
+            @input="${this._handleRangeChange}"
+            @touchstart="${this._handleRangeMoveStart}"
+            @touchend="${this._handleRangeMoveEnd}"
+            @mousedown="${this._handleRangeMoveStart}"
+            @mouseup="${this._handleRangeMoveEnd}"
+          />
           <a
             href="${this._slideLink(idx)}"
             title="このスライド(${idx + 1}ページ)へのリンク"

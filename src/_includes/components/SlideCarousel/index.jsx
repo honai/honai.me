@@ -127,9 +127,16 @@ const SlideCarouselItem = ({
     prev: idx > 0 ? slideId(idx - 1, true) : undefined,
     next: idx + 1 < total ? slideId(idx + 1, true) : undefined,
   };
+  const pad = total.toString().length;
   return (
     <div id={slideId(idx)} class={slideWrap()} tabIndex={0}>
-      <div class={css({ position: "relative" })()}>
+      <div
+        class={slidePositioning()}
+        style={{
+          backgroundPosition: `0 calc(100% / ${total - 1} * ${idx})`,
+          aspectRatio: `${width}/${height}`,
+        }}
+      >
         <img
           src={imageUrl}
           width={width}
@@ -160,6 +167,13 @@ const slideImg = css({
   display: "block",
   width: "100%",
   height: "auto",
+});
+
+const slidePositioning = css({
+  position: "relative",
+  backgroundSize: "cover",
+  backgroundImage:
+    "url(https://res.cloudinary.com/honai/image/sprite/w_150,c_limit/v1653597915/adversarial-watermarking-transformer.webp)",
 });
 
 const slideWrap = css({
