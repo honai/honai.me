@@ -41,7 +41,8 @@ export default ({ slide, page, SITE_DOMAIN }) => {
             readOnly
             value={embedCode}
             class={embedUrlInput()}
-            onClick="this.select();"
+            // URLをコピーしやすいように、かつ後から部分選択もしたい
+            onClick="this.select();this.onclick=null"
           />
         </div>
         <div>
