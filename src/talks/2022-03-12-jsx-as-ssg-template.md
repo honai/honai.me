@@ -8,4 +8,4 @@ thumbnail: https://res.cloudinary.com/honai/image/upload/c_scale,f_auto,w_640/ta
 
 ## 発表資料
 
-<iframe src="https://speakerdeck.com/player/107bc135e7b74c06bb1a6ad437e510ca" title="JSX as SSG Template / JSXでJSなしの静的サイトをつくる" style="aspect-ratio:16/9;" frameborder="0" allowfullscreen="true" mozallowfullscreen="true" webkitallowfullscreen="true" data-ratio="1.3333333333333333" frameborder="0"></iframe>
+<iframe src="https://www.honai.me/slides/embed/jsx-as-ssg-template/" title="JSXでJSなしの静的サイトをつくる" width="100%" style="aspect-ratio:1.778" frameborder="0" allowfullscreen></iframe>
