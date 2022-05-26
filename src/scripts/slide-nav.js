@@ -64,6 +64,8 @@ class SlideNav extends HTMLElement {
     .wrap {
       line-height: 1;
       padding: 0.6rem 0;
+      display: flex;
+      align-items: flex-end;
     }
     button {
       appearance: none;
@@ -76,6 +78,9 @@ class SlideNav extends HTMLElement {
       padding: 0 0.5rem;
       margin: 0;
       color: inherit;
+    }
+    .page {
+      font-family: sans-serif;
     }
   `;
   constructor() {

@@ -8,6 +8,9 @@ const isExternalLink = (href) => {
   return !/^(https?:)?\/\/[^\/]*honai\.me($|[^.])/.test(href);
 };
 
+/**
+ * @param {import("preact/src/jsx").JSXInternal.HTMLAttributes<HTMLAnchorElement>} p
+ */
 export const Link = ({ href, children, ...attrs }) => {
   if (isExternalLink(href)) {
     return (

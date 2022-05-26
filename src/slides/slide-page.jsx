@@ -12,9 +12,14 @@ export const data = {
  * @param {object} p
  * @param {import("../../types").Slide} p.slide
  * @param {import("../../types").EleventyPage} p.page
+ * @param {string} p.SITE_DOMAIN
  */
-export default ({ slide, page }) => {
-  const { title, date, pages } = slide;
+export default ({ slide, page, SITE_DOMAIN }) => {
+  const { title, date, pages, slug } = slide;
+  const ratio = (pages[0].width / pages[0].height).toPrecision(4);
+  const embedUrl = `https://${SITE_DOMAIN}/slides/embed/${slug}/`;
+  const encodedTitle = title.replaceAll('"', "&quot;");
+  const embedCode = `<iframe src="${embedUrl}" title="${encodedTitle}" style="aspect-ratio:${ratio}" frameborder="0" allowfullscreen></iframe>`;
   // TODO imageUrl
   return (
     <PortfolioLayout
@@ -29,12 +34,22 @@ export default ({ slide, page }) => {
         })()}
       >
         <TitleDate title={title} date={date} />
-        <SlideCarousel pages={slide.pages} />
-        <div class={css({ marginTop: "12rem" })()}>
-          <h3>スクリプト</h3>
+        <SlideCarousel slide={slide} />
+        <div>
+          <h2 class={heading()}>埋め込みコード (iframe)</h2>
+          <textarea
+            readOnly
+            value={embedCode}
+            class={embedUrlInput()}
+            // URLをコピーしやすいように、かつ後から部分選択もしたい
+            onClick="this.select();this.onclick=null"
+          />
+        </div>
+        <div>
+          <h2 class={heading()}>スクリプト</h2>
           <p>PDFから抽出されているため不自然な場合があります</p>
           <ol class={scriptOl()}>
-            {slide.pages.map(({ text }) => (
+            {pages.map(({ text }) => (
               <li>{text}</li>
             ))}
           </ol>
@@ -43,6 +58,18 @@ export default ({ slide, page }) => {
     </PortfolioLayout>
   );
 };
+
+const heading = css({
+  fontSize: "2rem",
+  marginTop: "2rem",
+});
+
+const embedUrlInput = css({
+  width: "100%",
+  height: "2em",
+  lineHeight: "1",
+  resize: "vertical",
+});
 
 const scriptOl = css({
   overflowWrap: "break-word",

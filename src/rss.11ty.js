@@ -7,12 +7,12 @@ class Rss {
     };
   }
   render(data) {
-    const domain = "https://www.honai.me";
+    const domain = data.SITE_DOMAIN;
     const feed = new Feed({
       title: "Honai's Blog",
-      link: `${domain}/`,
+      link: `https://${domain}/`,
       description: "ほないのブログです",
-      id: `${domain}/`,
+      id: `https://${domain}/`,
       copyright: "Honai Ueoka",
     });
     for (const post of data.collections.posts.sort((a, b) => b.date - a.date)) {

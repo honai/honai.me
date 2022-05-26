@@ -8,10 +8,13 @@ let Provider;
 module.exports = {
   outputFileExtension: "html",
   init() {
-    const jsFuncs = this.config.javascriptFunctions;
+    const { javascriptFunctions: jsFuncs, globalData } = this.config;
     const ProviderFC = require("../src/_includes/EleventyContext.jsx").default;
     Provider = ({ otherValue, children }) =>
-      jsx(ProviderFC, { value: { ...jsFuncs, ...otherValue }, children });
+      jsx(ProviderFC, {
+        value: { ...jsFuncs, ...globalData, ...otherValue },
+        children,
+      });
   },
   compile(_, inputPath) {
     return function (data) {

@@ -10,6 +10,7 @@ import { useContext } from "preact/hooks";
  * @prop {(content: string) => string} toc
  * @prop {(collection: unknown, page: unknown) => any} getPreviousCollectionItem
  * @prop {(collection: unknown, page: unknown) => any} getNextCollectionItem
+ * @prop {string} SITE_DOMAIN
  */
 
 /** @type {EleventyContextVal} */

@@ -1,3 +1,5 @@
+import { useEleventy } from "../EleventyContext";
+
 /**
  * @param {object} props
  * @param {string} props.title
@@ -5,18 +7,13 @@
  * @param {string} props.description
  * @param {string} [props.thumbnailUrl]
  */
-export const Seo = ({ title, pageUrl, description, thumbnailUrl }) => {
-  if (!pageUrl) {
-    return;
-  }
-  if (!pageUrl.startsWith("/")) {
-    throw new Error(`Invalid pageUrl: ${pageUrl}`);
-  }
-  const canonicalUrl = `https://www.honai.me${pageUrl}`;
+export const Seo = ({ title, description, thumbnailUrl }) => {
+  const { page, SITE_DOMAIN } = useEleventy();
+  const canonicalUrl = `https://${SITE_DOMAIN}${page.url}`;
   const isLargeCard = !!thumbnailUrl;
-  const ogImage = thumbnailUrl
-    ? ogpImage(thumbnailUrl)
-    : "https://www.honai.me/images/profile.png";
+  const ogpImageUrl = thumbnailUrl
+    ? ogpImage(thumbnailUrl, SITE_DOMAIN)
+    : `https://${SITE_DOMAIN}/images/profile.png`;
   return (
     <>
       <link rel="canonical" href={canonicalUrl} />
@@ -28,7 +25,7 @@ export const Seo = ({ title, pageUrl, description, thumbnailUrl }) => {
       {!!description && (
         <meta property="og:description" content={description} />
       )}
-      <meta property="og:image" content={ogImage} />
+      <meta property="og:image" content={ogpImageUrl} />
       <meta property="fb:app_id" content="1144529745735811" />
       <meta property="og:locale" content="ja_JP" />
 
@@ -43,13 +40,13 @@ export const Seo = ({ title, pageUrl, description, thumbnailUrl }) => {
   );
 };
 
-/** @param {string} url */
-function ogpImage(url) {
+/** @param {string} url @param {string} domain */
+function ogpImage(url, domain) {
   if (/^https?:\/\//.test(url)) {
     return url;
   }
   if (url.startsWith("/")) {
-    return `https://www.honai.me${url}`;
+    return `https://${domain}${url}`;
   }
   throw Error(`Invalid OGP Image: ${url}`);
 }
