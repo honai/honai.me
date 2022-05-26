@@ -1,4 +1,5 @@
 import { css, cx, uc } from "../../style.mjs";
+import { Link } from "../Link.jsx";
 import { Nav } from "./Nav.jsx";
 
 /**
@@ -123,7 +124,7 @@ const SlideCarouselItem = ({
         />
         <>
           {links.map((/** @type {{url: string; position: any}} */ l) => (
-            <a
+            <Link
               href={l.url}
               class={linkOverlay()}
               style={{
