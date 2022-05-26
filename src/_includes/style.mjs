@@ -152,7 +152,6 @@ const uc = {
       "apple color emoji,segoe ui emoji,noto color emoji,android emoji,segoe ui symbol",
   })(),
   anchorNewIconStart: newIconStartClass,
-  anchorNewIconDisable: noNewIconClass,
 };
 
 const getCssText = () => {
