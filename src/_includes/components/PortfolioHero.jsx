@@ -40,5 +40,8 @@ const Nav = () => (
     <a href="/blog/" class={uc.uncolor}>
       Blog
     </a>
+    <a href="/slides/" class={uc.uncolor}>
+      Slides
+    </a>
   </nav>
 );
