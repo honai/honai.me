@@ -16,6 +16,7 @@ const styleSheets = [
   {
     href: "https://cdnjs.cloudflare.com/ajax/libs/prism/1.20.0/themes/prism-tomorrow.min.css",
     integrity: "sha256-xevuwyBEb2ZYh4nDhj0g3Z/rDBnM569hg9Vq6gEw/Sg=",
+    async: true,
   },
   {
     href: "https://cdn.jsdelivr.net/npm/katex@0.12.0/dist/katex.min.css",
