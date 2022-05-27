@@ -65,30 +65,12 @@ export const SlideCarousel = ({ slide, embed }) => {
       </div>
       <div
         class={css({
-          display: "flex",
-          justifyContent: "space-between",
-          alignItems: "center",
-          padding: "0 1rem",
-          gap: "1rem",
           backgroundColor: "$primary",
         })()}
       >
-        <div class={flexShrink()}>
-          {embed && (
-            <a
-              href={`/slides/${slide.slug}/`}
-              title={slide.title}
-              class={cx(uc.uncolor, uc.anchorNewIconStart)}
-              // サイト内でiframeするときもblankにしたいのでLinkを使わない
-              target="_blank"
-            >
-              {slide.title}
-            </a>
-          )}
-        </div>
         {/* @ts-ignore */}
         <slide-nav
-          class={cx(uc.emojiFont, flexNoShrink())}
+          class={cx(uc.emojiFont)}
           target={slideElmId}
           slug={slide.slug}
         />
@@ -97,14 +79,6 @@ export const SlideCarousel = ({ slide, embed }) => {
     </div>
   );
 };
-
-const flexNoShrink = css({ flex: "0 0 auto" });
-const flexShrink = css({
-  flex: "0 1 auto",
-  whiteSpace: "nowrap",
-  overflowX: "hidden",
-  textOverflow: "ellipsis",
-});
 
 /**
  * @param {any} p
