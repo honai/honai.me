@@ -12,6 +12,9 @@ export class SlideNav extends HTMLElement {
     this.attachShadow({ mode: "open" });
     this.target = this.getAttribute("target");
     this.slug = this.getAttribute("slug");
+    this.title = this.getAttribute("title");
+    this.embed = this.getAttribute("embed") !== null;
+    this._isTouch = typeof this.ontouchstart !== "undefined";
     this._currentSlideIdx = -1;
     this._previewSlideIdx = 0;
     this._slideThumbUrls = [];
@@ -19,7 +22,6 @@ export class SlideNav extends HTMLElement {
     this._slieWidth = 0;
     this._slideElm = document.getElementById(this.target);
     this._slideCount = this._slideElm.children.length;
-    this._isIframe = window.parent !== window;
     this._isPreview = false;
     this.render();
   }
@@ -56,6 +58,9 @@ export class SlideNav extends HTMLElement {
   };
 
   _slideLink = (idx) => {
+    if (typeof idx !== "number") {
+      return `/slides/${this.slug}/`;
+    }
     return `/slides/${this.slug}/#slide-${idx + 1}`;
   };
 
@@ -124,8 +129,23 @@ export class SlideNav extends HTMLElement {
     }
   };
 
+  _adjastScrollbarSize() {
+    const elm = document.createElement("div");
+    elm.style.overflowX = "scroll";
+    document.body.appendChild(elm);
+    const scrollBarSize = elm.offsetHeight;
+    document.body.removeChild(elm);
+    this._slideElm.setAttribute(
+      "style",
+      `${this._slideElm.getAttribute(
+        "style"
+      )};--scrollbar-size:${scrollBarSize}px`
+    );
+  }
+
   connectedCallback() {
     this._hideHtmlNav();
+    this._adjastScrollbarSize();
 
     this._calcSlideWidth();
     this._slideElm.addEventListener("scroll", this._handleScroll);
@@ -153,17 +173,15 @@ export class SlideNav extends HTMLElement {
     render(
       html`
         <div class="wrap">
-          <div
-            title="スライドのサムネイル"
-            class="preview ${this._isPreview ? "" : "hide"}"
-            style="background-image: url('${this._slideThumbUrls[
-              this._previewSlideIdx
-            ]}');"
-          ></div>
+          ${this.embed
+            ? html`<div class="title">
+                <a href=${this._slideLink()} target="_blank">${this.title}</a>
+              </div>`
+            : ""}
           <input
             type="range"
             name="page"
-            class="slider"
+            class="slider ${this._isTouch ? "touch" : ""}"
             step="1"
             min="1"
             max="${this._slideCount}"
@@ -178,7 +196,7 @@ export class SlideNav extends HTMLElement {
             <a
               href="${this._slideLink(idx)}"
               title="このスライド(${idx + 1}ページ)へのリンク"
-              target="${this._isIframe ? "_blank" : null}"
+              target="${this.embed ? "_blank" : null}"
               >🔗</a
             >&ensp;
             <span class="page"
@@ -187,31 +205,34 @@ export class SlideNav extends HTMLElement {
             <button @click="${this._prev}" title="前のスライド">◀️</button>
             <button @click="${this._next}" title="次のスライド">▶️</button>
           </div>
+          <div
+            title="スライドのサムネイル"
+            class="preview ${this._isPreview ? "" : "hide"}"
+            style="background-image: url('${this._slideThumbUrls[
+              this._previewSlideIdx
+            ]}');"
+          ></div>
           <style>
             .wrap {
-              padding: 0 1rem;
+              height: 3.6rem;
+              padding: 0 10px;
               display: flex;
-              gap: 1rem;
+              justify-content: flex-end;
+              align-items: center;
+              gap: 10px;
               position: relative;
             }
-            .preview {
-              background: no-repeat center/contain url("");
-              position: absolute;
-              width: min(100%, 320px);
-              /* todo: aspect-ratio */
-              height: 240px;
-              border: 1px solid gray;
-              background-color: gray;
-              bottom: 100%;
-            }
-            .preview.hide {
-              display: none;
-            }
-            .slider {
+            .title {
               flex: 1 1 auto;
+              white-space: nowrap;
+              overflow-x: hidden;
+              text-overflow: ellipsis;
+            }
+            .title > a {
+              color: inherit;
             }
             .buttons {
-              flex: 0 1 auto;
+              flex: 0 0 auto;
               line-height: 1;
               padding: 0.6rem 0;
               display: flex;
@@ -232,6 +253,46 @@ export class SlideNav extends HTMLElement {
             }
             .page {
               font-family: sans-serif;
+            }
+            .slider {
+              flex: 0 1 360px;
+            }
+            .slider.touch {
+              --height: 20px;
+              --margin: 10%;
+              position: absolute;
+              width: calc(100% - var(--margin) * 2);
+              height: var(--heigth);
+              top: calc(var(--height) / -2);
+              left: var(--margin);
+              z-index: 2;
+              touch-action: none;
+            }
+            .preview {
+              --idx: ${this._previewSlideIdx};
+              --len: ${this._slideImgs ? this._slideImgs.length - 1 : 0};
+              --bg-color: rgba(255, 255, 255, 0.25);
+              --border: 1px;
+              --width: min(100%, 320px);
+              --margin: 10px;
+              background: no-repeat center/contain none;
+              position: absolute;
+              width: var(--width);
+              /* todo: aspect-ratio */
+              height: 240px;
+              background-color: var(--bg-color);
+              border: var(--border) solid var(--bg-color);
+              box-shadow: 0 0 5px rgba(0, 0, 0, 0.5);
+              background-color: gray;
+              left: calc(
+                var(--margin) + (100% - var(--width) - var(--margin) * 2) *
+                  var(--idx) / var(--len)
+              );
+              bottom: calc(100% + var(--margin));
+              z-index: 1;
+            }
+            .preview.hide {
+              display: none;
             }
           </style>
         </div>
