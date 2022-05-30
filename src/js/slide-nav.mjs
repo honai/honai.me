@@ -13,12 +13,14 @@ export class SlideNav extends HTMLElement {
     this.target = this.getAttribute("target");
     this.slug = this.getAttribute("slug");
     this._currentSlideIdx = -1;
-    this._maxSlideIdx = 0;
+    this._previewSlideIdx = 0;
+    this._slideThumbUrls = [];
+    this._maxSlideIdx = -1;
     this._slieWidth = 0;
     this._slideElm = document.getElementById(this.target);
     this._slideCount = this._slideElm.children.length;
     this._isIframe = window.parent !== window;
-    this._rangeMoveTimer = null;
+    this._isPreview = false;
     this.render();
   }
 
@@ -46,11 +48,11 @@ export class SlideNav extends HTMLElement {
       return;
     }
     this._currentSlideIdx = idx;
+    this._previewSlideIdx = idx;
     this.render();
-    if (this._rangeMoveTimer === null) {
-      this.shadowRoot.querySelector("input[name=page]").value =
-        this._currentSlideIdx + 1;
-    }
+    // 間引き必要
+    this.shadowRoot.querySelector("input[name=page]").value =
+      this._currentSlideIdx + 1;
   };
 
   _slideLink = (idx) => {
@@ -76,7 +78,6 @@ export class SlideNav extends HTMLElement {
   _scrollTo = (idx) => {
     this._slideElm.scroll({
       left: this._slideWidth * idx,
-      behavior: "smooth",
     });
   };
 
@@ -85,26 +86,24 @@ export class SlideNav extends HTMLElement {
     this._updateSlideIdx(idx);
   };
 
+  _handleRangeInput = (e) => {
+    this._previewSlideIdx = parseInt(e.target.value) - 1;
+    this.render();
+  };
+
   _handleRangeChange = (e) => {
-    // e.preventDefault();
-    if (this._rangeMoveTimer === null) {
-      this._handleRangeMoveStart();
-    } else {
-      window.clearTimeout(this._rangeMoveTimer);
-    }
     const idx = parseInt(e.target.value) - 1;
     this._scrollTo(idx);
-    this._rangeMoveTimer = window.setTimeout(this._handleRangeMoveEnd, 1000);
   };
 
   _handleRangeMoveStart = (ev) => {
-    this._slideImgs.forEach((e) => (e.style.display = "none"));
+    this._isPreview = true;
+    this.render();
   };
 
   _handleRangeMoveEnd = (ev) => {
-    this._slideImgs.forEach((e) => (e.style.display = "block"));
-    window.clearTimeout(this._rangeMoveTimer);
-    this._rangeMoveTimer = null;
+    this._isPreview = false;
+    this.render();
   };
 
   _handleKeyDown = (e) => {
@@ -134,6 +133,9 @@ export class SlideNav extends HTMLElement {
     this._handleScroll();
 
     this._slideImgs = this._slideElm.querySelectorAll("img");
+    this._slideImgs.forEach((img) => {
+      this._slideThumbUrls.push(img.dataset.thumb);
+    });
 
     this.addEventListener("keydown", this._handleKeyDown);
 
@@ -151,6 +153,13 @@ export class SlideNav extends HTMLElement {
     render(
       html`
         <div class="wrap">
+          <div
+            title="スライドのサムネイル"
+            class="preview ${this._isPreview ? "" : "hide"}"
+            style="background-image: url('${this._slideThumbUrls[
+              this._previewSlideIdx
+            ]}');"
+          ></div>
           <input
             type="range"
             name="page"
@@ -158,7 +167,10 @@ export class SlideNav extends HTMLElement {
             step="1"
             min="1"
             max="${this._slideCount}"
-            @input="${this._handleRangeChange}"
+            @change="${this._handleRangeChange}"
+            @input="${this._handleRangeInput}"
+            @touchstart="${this._handleRangeMoveStart}"
+            @mousedown="${this._handleRangeMoveStart}"
             @touchend="${this._handleRangeMoveEnd}"
             @mouseup="${this._handleRangeMoveEnd}"
           />
@@ -180,6 +192,20 @@ export class SlideNav extends HTMLElement {
               padding: 0 1rem;
               display: flex;
               gap: 1rem;
+              position: relative;
+            }
+            .preview {
+              background: no-repeat center/contain url("");
+              position: absolute;
+              width: min(100%, 320px);
+              /* todo: aspect-ratio */
+              height: 240px;
+              border: 1px solid gray;
+              background-color: gray;
+              bottom: 100%;
+            }
+            .preview.hide {
+              display: none;
             }
             .slider {
               flex: 1 1 auto;
