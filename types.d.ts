@@ -31,6 +31,7 @@ export interface SlideRes {
 
 type SlidePage = Omit<SlidePageRes, "image"> & {
   imageUrl: string
+  thumbUrl: string
 }
 
 export interface Slide extends SlideRes {
