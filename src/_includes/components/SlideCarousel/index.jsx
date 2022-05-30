@@ -75,6 +75,7 @@ export const SlideCarousel = ({ slide, embed }) => {
           slug={slide.slug}
           title={slide.title}
           embed={embed}
+          ratio={slideRatio}
         />
         <script type="module" src="/js/slide-nav.js" />
       </div>

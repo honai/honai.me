@@ -14,7 +14,7 @@ export class SlideNav extends HTMLElement {
     this.slug = this.getAttribute("slug");
     this.title = this.getAttribute("title");
     this.embed = this.getAttribute("embed") !== null;
-    this._isTouch = typeof this.ontouchstart !== "undefined";
+    this.ratio = this.getAttribute("ratio");
     this._currentSlideIdx = -1;
     this._previewSlideIdx = 0;
     this._slideThumbUrls = [];
@@ -173,15 +173,17 @@ export class SlideNav extends HTMLElement {
     render(
       html`
         <div class="wrap">
-          ${this.embed
-            ? html`<div class="title">
-                <a href=${this._slideLink()} target="_blank">${this.title}</a>
-              </div>`
-            : ""}
+          <div class="title">
+            ${this.embed
+              ? html`<a href=${this._slideLink()} target="_blank"
+                  >${this.title}</a
+                >`
+              : ""}
+          </div>
           <input
             type="range"
             name="page"
-            class="slider ${this._isTouch ? "touch" : ""}"
+            class="slider ${this.embed ? "embed" : ""}"
             step="1"
             min="1"
             max="${this._slideCount}"
@@ -206,12 +208,16 @@ export class SlideNav extends HTMLElement {
             <button @click="${this._next}" title="次のスライド">▶️</button>
           </div>
           <div
-            title="スライドのサムネイル"
             class="preview ${this._isPreview ? "" : "hide"}"
+            title="スライドのサムネイル"
             style="background-image: url('${this._slideThumbUrls[
               this._previewSlideIdx
             ]}');"
-          ></div>
+          >
+            <div class="count">
+              ${this._previewSlideIdx}/${this._slideCount}
+            </div>
+          </div>
           <style>
             .wrap {
               height: 3.6rem;
@@ -246,7 +252,7 @@ export class SlideNav extends HTMLElement {
               font-size: 2.4rem;
               line-height: 1;
               cursor: pointer;
-              padding: 0 0.25rem;
+              padding: 0 0.5rem;
               margin: 0;
               color: inherit;
               touch-action: manipulation;
@@ -257,20 +263,22 @@ export class SlideNav extends HTMLElement {
             .slider {
               flex: 0 1 360px;
             }
-            .slider.touch {
-              --height: 20px;
-              --margin: 10%;
-              position: absolute;
-              width: calc(100% - var(--margin) * 2);
-              height: var(--heigth);
-              top: calc(var(--height) / -2);
-              left: var(--margin);
-              z-index: 2;
-              touch-action: none;
+            @media screen and (max-width: 576px) {
+              .slider.embed {
+                --height: 20px;
+                --margin: 10%;
+                position: absolute;
+                width: calc(100% - var(--margin) * 2);
+                height: var(--heigth);
+                top: calc(var(--height) / -2);
+                left: var(--margin);
+                z-index: 2;
+                touch-action: none;
+              }
             }
             .preview {
               --idx: ${this._previewSlideIdx};
-              --len: ${this._slideImgs ? this._slideImgs.length - 1 : 0};
+              --len: ${this._slideCount - 1};
               --bg-color: rgba(255, 255, 255, 0.25);
               --border: 1px;
               --width: min(100%, 320px);
@@ -278,8 +286,8 @@ export class SlideNav extends HTMLElement {
               background: no-repeat center/contain none;
               position: absolute;
               width: var(--width);
-              /* todo: aspect-ratio */
-              height: 240px;
+              max-height: calc(100vh - 3.6rem - var(--margin) * 2);
+              aspect-ratio: ${this.ratio};
               background-color: var(--bg-color);
               border: var(--border) solid var(--bg-color);
               box-shadow: 0 0 5px rgba(0, 0, 0, 0.5);
@@ -290,9 +298,18 @@ export class SlideNav extends HTMLElement {
               );
               bottom: calc(100% + var(--margin));
               z-index: 1;
+              display: flex;
+              align-items: flex-end;
+              justify-content: center;
             }
             .preview.hide {
               display: none;
+            }
+            .preview > .count {
+              font-family: sans-serif;
+              padding: 0 5px;
+              background-color: rgba(0, 0, 0, 0.5);
+              color: #fff;
             }
           </style>
         </div>
