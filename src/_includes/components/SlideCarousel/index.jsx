@@ -65,46 +65,23 @@ export const SlideCarousel = ({ slide, embed }) => {
       </div>
       <div
         class={css({
-          display: "flex",
-          justifyContent: "space-between",
-          alignItems: "center",
-          padding: "0 1rem",
-          gap: "1rem",
           backgroundColor: "$primary",
         })()}
       >
-        <div class={flexShrink()}>
-          {embed && (
-            <a
-              href={`/slides/${slide.slug}/`}
-              title={slide.title}
-              class={cx(uc.uncolor, uc.anchorNewIconStart)}
-              // サイト内でiframeするときもblankにしたいのでLinkを使わない
-              target="_blank"
-            >
-              {slide.title}
-            </a>
-          )}
-        </div>
         {/* @ts-ignore */}
         <slide-nav
-          class={cx(uc.emojiFont, flexNoShrink())}
+          class={cx(uc.emojiFont)}
           target={slideElmId}
           slug={slide.slug}
+          title={slide.title}
+          embed={embed}
+          ratio={slideRatio}
         />
         <script type="module" src="/js/slide-nav.js" />
       </div>
     </div>
   );
 };
-
-const flexNoShrink = css({ flex: "0 0 auto" });
-const flexShrink = css({
-  flex: "0 1 auto",
-  whiteSpace: "nowrap",
-  overflowX: "hidden",
-  textOverflow: "ellipsis",
-});
 
 /**
  * @param {any} p
@@ -115,6 +92,7 @@ const SlideCarouselItem = ({
   width,
   height,
   imageUrl,
+  thumbUrl,
   alt,
   links,
   lazy,
@@ -127,11 +105,19 @@ const SlideCarouselItem = ({
     prev: idx > 0 ? slideId(idx - 1, true) : undefined,
     next: idx + 1 < total ? slideId(idx + 1, true) : undefined,
   };
+  const pad = total.toString().length;
   return (
     <div id={slideId(idx)} class={slideWrap()} tabIndex={0}>
-      <div class={css({ position: "relative" })()}>
+      <div
+        class={slidePositioning()}
+        style={{
+          backgroundPosition: `0 calc(100% / ${total - 1} * ${idx})`,
+          aspectRatio: `${width}/${height}`,
+        }}
+      >
         <img
           src={imageUrl}
+          data-thumb={thumbUrl}
           width={width}
           height={height}
           alt={alt}
@@ -162,6 +148,10 @@ const slideImg = css({
   height: "auto",
 });
 
+const slidePositioning = css({
+  position: "relative",
+});
+
 const slideWrap = css({
   $$border: "1px solid rgba(255, 255, 255, 0.6)",
   borderLeft: "$$border",
@@ -179,12 +169,16 @@ const slidesWrap = css({
   overflowY: "hidden",
   scrollSnapType: "x mandatory",
   scrollBehavior: "auto",
-  gap: "1rem",
+  gap: "5px",
+  // jsで後から上書き
   // 高さが100vhを超えないようにする
   // 3.6rem: コントロール, 2px: ボーダー
   // var(, 100) は未定義フォールバック
-  // 100%だとlazy-imgで先読みされなくなるので90%
-  $$slideWidth: "min(90%, (100vh - 3.6rem - 2px) * var(--slide-ratio, 100))",
+  // 100%だとlazy-imgで先読みされなくなる
+  $$slideWidth:
+    "min(95%, (100vh - 3.6rem - 2px - var(--scrollbar-size, 0px)) * var(--slide-ratio, 100))",
+  // $$slideWidth:
+  //   "min(90%, (100vh - 3.6rem - 2px - var(--scrollbar-size, 17px)) * var(--slide-ratio, 100))",
   $$slideMargin: "calc((100% - $$slideWidth) / 2)",
   scrollPadding: "0 $$slideMargin",
   [`& > .${slideWrap}`]: {

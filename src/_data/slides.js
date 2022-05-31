@@ -21,6 +21,11 @@ module.exports = async () => {
           transformation: { crop: "limit", width: 1280 },
           fetch_format: "auto",
         }),
+        thumbUrl: cloudinary.url(p.image, {
+          transformation: { crop: "limit", width: 320 },
+          fetch_format: "auto",
+          quality: "auto:low",
+        }),
       })),
       thumbnail: cloudinary.url(slide.pages[0].image, {
         transformation: { crop: "limit", width: 640 },
