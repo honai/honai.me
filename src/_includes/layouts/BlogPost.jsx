@@ -125,7 +125,12 @@ const articleLayout = css({
     padding: "2rem 3rem",
     gap: "2rem 6rem",
     "> .header": { gridArea: "header", maxWidth: "72rem", margin: "auto" },
-    "> .aside": { gridArea: "aside", maxHeight: "unset", border: "none" },
+    "> .aside": {
+      gridArea: "aside",
+      maxHeight: "unset",
+      border: "none",
+      overflowY: "visible",
+    },
     "> .main": { gridArea: "main" },
     "> .aside > .sticky": {
       position: "sticky",
