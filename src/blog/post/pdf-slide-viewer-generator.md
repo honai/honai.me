@@ -282,7 +282,10 @@ Can I use… によると、PC・モバイルともに主要ブラウザでサ�
 
 せっかくカルーセルにCSSのみで実現できるスクロールスナップを採用したので、リンクの描画もJavaScriptを使わずにシンプルに実現したいと考えました。そこで、ナイーブですが、パーセントによって座標を相対指定できる `position: absolute` によって `<a>` タグを描画するのが良いと考え、こちらを採用しました。
 
-先述したように、PDFから抽出したリンクの位置（Rectangle）は、長方形の各辺の位置を左下を原点とした座標で表したものなので、以下のように、RectangleからCSSのtop, left, bottom, rightのパーセント値に変換する必要があります。※サンプルコードはJSXですが、お使いのサイトジェネレータ等の言語で実装してください
+先述したように、PDFから抽出したリンクの位置（Rectangle）は、長方形の各辺の位置を左下を原点とした座標で表したものなので、下図のように、RectangleからCSSのtop, left, bottom, rightのパーセント値に変換する必要があります。
+
+
+![RectangleからCSSのposition値への変換](https://res.cloudinary.com/honai/image/upload/f_auto/v1654410145/blog/pdf-rect-to-css-position.png)
 
 ```jsx
 // JavaScript
@@ -343,7 +346,7 @@ console.log(html);
 //   <img src="slide.png" alt="" width="800" heigth="600">
 //   <a href="http://(略)"
 //      style="top:XX%; left:XX%; right: XX%; bottom: XX%;"
-//   ></a>
+//   ></a>w
 //   <a href="http://(略)" (...略)></a>
 //   ...
 // </div>
