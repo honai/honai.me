@@ -22,6 +22,9 @@ export class SlideNav extends HTMLElement {
     this._slideElm = document.getElementById(this.target);
     this._slideCount = this._slideElm.children.length;
     this._isPreview = false;
+    // 0枚目はeager
+    /** @type {Set<number>} */
+    this._imgLoadingEarger = new Set([0]);
     this.render();
   }
 
@@ -40,8 +43,10 @@ export class SlideNav extends HTMLElement {
 
   _loadSlideImage = (idx) => {
     const img = this._slideElm.children[idx]?.querySelector("img");
-    // img && img.setAttribute("loading", "eager");
-    img && (img.src = this._imgSrcs[idx]);
+    if (img && !this._imgLoadingEarger.has(idx)) {
+      img.setAttribute("loading", "eager");
+      this._imgLoadingEarger.add(idx);
+    }
   };
 
   _updateSlideIdx = (idx) => {
@@ -51,9 +56,11 @@ export class SlideNav extends HTMLElement {
     this._currentSlideIdx = idx;
     this._previewSlideIdx = idx;
     this.render();
-    // 間引き必要
     this.shadowRoot.querySelector("input[name=page]").value =
       this._currentSlideIdx + 1;
+    // 水平スクロールでのloading lazyはinviewまで読み込まれない
+    // 手動で2枚先を読み込む
+    [idx - 2, idx + 2].forEach((i) => this._loadSlideImage(i));
   };
 
   _slideLink = (idx) => {
@@ -69,14 +76,6 @@ export class SlideNav extends HTMLElement {
 
   _prev = () => {
     this._slideElm.scrollBy({ left: -this._slideWidth });
-  };
-
-  _first = () => {
-    this._slideElm.scroll({ left: 0 });
-  };
-
-  _last = () => {
-    this._slideElm.scroll({ left: this._slideElm.scrollWidth });
   };
 
   _scrollTo = (idx) => {
