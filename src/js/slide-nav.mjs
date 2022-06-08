@@ -12,7 +12,6 @@ export class SlideNav extends HTMLElement {
     this.attachShadow({ mode: "open" });
     this.target = this.getAttribute("target");
     this.slug = this.getAttribute("slug");
-    this.title = this.getAttribute("title");
     this.embed = this.getAttribute("embed") !== null;
     this.ratio = this.getAttribute("ratio");
     this._currentSlideIdx = -1;
@@ -23,6 +22,9 @@ export class SlideNav extends HTMLElement {
     this._slideElm = document.getElementById(this.target);
     this._slideCount = this._slideElm.children.length;
     this._isPreview = false;
+    // 0枚目はeager
+    /** @type {Set<number>} */
+    this._imgLoadingEarger = new Set([0]);
     this.render();
   }
 
@@ -41,8 +43,10 @@ export class SlideNav extends HTMLElement {
 
   _loadSlideImage = (idx) => {
     const img = this._slideElm.children[idx]?.querySelector("img");
-    // img && img.setAttribute("loading", "eager");
-    img && (img.src = this._imgSrcs[idx]);
+    if (img && !this._imgLoadingEarger.has(idx)) {
+      img.setAttribute("loading", "eager");
+      this._imgLoadingEarger.add(idx);
+    }
   };
 
   _updateSlideIdx = (idx) => {
@@ -52,9 +56,11 @@ export class SlideNav extends HTMLElement {
     this._currentSlideIdx = idx;
     this._previewSlideIdx = idx;
     this.render();
-    // 間引き必要
     this.shadowRoot.querySelector("input[name=page]").value =
       this._currentSlideIdx + 1;
+    // 水平スクロールでのloading lazyはinviewまで読み込まれない
+    // 手動で2枚先を読み込む
+    [idx - 2, idx + 2].forEach((i) => this._loadSlideImage(i));
   };
 
   _slideLink = (idx) => {
@@ -70,14 +76,6 @@ export class SlideNav extends HTMLElement {
 
   _prev = () => {
     this._slideElm.scrollBy({ left: -this._slideWidth });
-  };
-
-  _first = () => {
-    this._slideElm.scroll({ left: 0 });
-  };
-
-  _last = () => {
-    this._slideElm.scroll({ left: this._slideElm.scrollWidth });
   };
 
   _scrollTo = (idx) => {
@@ -132,15 +130,21 @@ export class SlideNav extends HTMLElement {
   _adjastScrollbarSize() {
     const elm = document.createElement("div");
     elm.style.overflowX = "scroll";
+    // elm.style.scrollbarWidth = "thin";
     document.body.appendChild(elm);
     const scrollBarSize = elm.offsetHeight;
-    document.body.removeChild(elm);
-    this._slideElm.setAttribute(
-      "style",
-      `${this._slideElm.getAttribute(
-        "style"
-      )};--scrollbar-size:${scrollBarSize}px`
-    );
+    if (scrollBarSize > 0) {
+      // console.log("scrollbar", scrollBarSize);
+      this._slideElm.classList.add("scrollbar-obtrusive");
+      // Mac safari scrollbar custom bug
+      const ua = window.navigator.userAgent.toLowerCase();
+      if (!ua.includes("chrome") && ua.includes("safari")) {
+        this._slideElm.style.overflowX = "hidden";
+        window.setTimeout(() => {
+          this._slideElm.style.overflowX = "scroll";
+        }, 1);
+      }
+    }
   }
 
   connectedCallback() {
@@ -173,13 +177,6 @@ export class SlideNav extends HTMLElement {
     render(
       html`
         <div class="wrap">
-          <div class="title">
-            ${this.embed
-              ? html`<a href=${this._slideLink()} target="_blank"
-                  >${this.title}</a
-                >`
-              : ""}
-          </div>
           <input
             type="range"
             name="page"
@@ -220,22 +217,13 @@ export class SlideNav extends HTMLElement {
           </div>
           <style>
             .wrap {
-              height: 3.6rem;
+              height: 3rem;
               padding: 0 10px;
               display: flex;
               justify-content: flex-end;
               align-items: center;
               gap: 10px;
               position: relative;
-            }
-            .title {
-              flex: 1 1 auto;
-              white-space: nowrap;
-              overflow-x: hidden;
-              text-overflow: ellipsis;
-            }
-            .title > a {
-              color: inherit;
             }
             .buttons {
               flex: 0 0 auto;
@@ -249,7 +237,7 @@ export class SlideNav extends HTMLElement {
               border: none;
               background-color: transparent;
               font-family: inherit;
-              font-size: 2.4rem;
+              font-size: 2rem;
               line-height: 1;
               cursor: pointer;
               padding: 0 0.5rem;
@@ -262,19 +250,6 @@ export class SlideNav extends HTMLElement {
             }
             .slider {
               flex: 0 1 360px;
-            }
-            @media screen and (max-width: 576px) {
-              .slider.embed {
-                --height: 20px;
-                --margin: 10%;
-                position: absolute;
-                width: calc(100% - var(--margin) * 2);
-                height: var(--heigth);
-                top: calc(var(--height) / -2);
-                left: var(--margin);
-                z-index: 2;
-                touch-action: none;
-              }
             }
             .preview {
               --idx: ${this._previewSlideIdx};

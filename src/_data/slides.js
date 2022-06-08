@@ -15,7 +15,7 @@ module.exports = async () => {
     }))
     .map((slide) => ({
       ...slide,
-      pages: slide.pages.map((p) => ({
+      pages: slide.pages.map((p, i) => ({
         ...p,
         imageUrl: cloudinary.url(p.image, {
           transformation: { crop: "limit", width: 1280 },
@@ -26,6 +26,7 @@ module.exports = async () => {
           fetch_format: "auto",
           quality: "auto:low",
         }),
+        slideId: `slide-${(i + 1).toString(10)}`,
       })),
       thumbnail: cloudinary.url(slide.pages[0].image, {
         transformation: { crop: "limit", width: 640 },

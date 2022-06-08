@@ -21,11 +21,11 @@ export default ({ slide, page, SITE_DOMAIN }) => {
   const embedUrl = `https://${SITE_DOMAIN}/slides/embed/${slug}/`;
   const encodedTitle = title.replaceAll('"', "&quot;");
   const embedCode = `<iframe src="${embedUrl}" title="${encodedTitle}" width="100%" style="aspect-ratio:${ratio}" frameborder="0" allowfullscreen></iframe>`;
-  const scriptListItems = pages.map(({ imageUrl, text }) => {
+  const scriptListItems = pages.map(({ text, slideId }, i) => {
     const [alt, ...rest] = text.split("\n");
     return (
       <li>
-        <a href={imageUrl}>{alt}</a> {rest.join(" ")}
+        <a href={`#${slideId}`}>{alt}</a> {rest.join(" ")}
       </li>
     );
   });
@@ -57,6 +57,7 @@ export default ({ slide, page, SITE_DOMAIN }) => {
             value={embedCode}
             class={embedUrlInput()}
             // URLをコピーしやすいように、かつ後から部分選択もしたい
+            // @ts-ignore
             onClick="this.select();this.onclick=null"
           />
         </div>
