@@ -96,7 +96,10 @@ export const SlideCarousel = ({ slide, embed }) => {
           embed={embed}
           ratio={slideRatio}
         />
-        <script type="module" src="/js/slide-nav.js" />
+        <script
+          type="module"
+          src={`/js/slide-nav.js?${new Date().getTime()}`}
+        />
       </div>
     </div>
   );
