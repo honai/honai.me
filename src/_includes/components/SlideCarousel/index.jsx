@@ -197,10 +197,10 @@ const slidesWrap = css({
   scrollBehavior: "auto",
   gap: "5px",
   // 高さが100vhを超えないようにする (スクロールバーは考慮しない)
-  // 3rem * 2: コントロール, 2px: ボーダー
-  // var(, 100) は未定義フォールバック
+  // 3rem * 2: コントロール, 2px: ボーダー, --scrollbar-size
   // 100%だとlazy-imgで先読みされなくなる
-  $$slideWidth: "min(95%, (100vh - 3rem * 2 - 2px) * var(--slide-ratio, 100))",
+  $$slideWidth:
+    "min(95%, (100vh - 3rem * 2 - 2px - var(--scrollbar-size, 0px)) * var(--slide-ratio))",
   $$slideMargin: "calc((100% - $$slideWidth) / 2)",
   scrollPadding: "0 $$slideMargin",
   [`& > .${slideWrap}`]: {
@@ -211,28 +211,6 @@ const slidesWrap = css({
     },
     "&:last-child": {
       marginRight: "$$slideMargin",
-    },
-  },
-  // scroll bar customize
-  // PC Firefox
-  scrollbarWidth: "thin",
-  // PC Webkit
-  [`&.scrollbar-obtrusive`]: {
-    "&::-webkit-scrollbar": {
-      height: "0.6rem",
-    },
-    "&::-webkit-scrollbar-track": {
-      backgroundColor: "transparent",
-    },
-    "&::-webkit-scrollbar-thumb": {
-      backgroundColor: "rgba(255, 255, 255, 0.5)",
-      borderRadius: "0.3rem",
-      "&:hover": {
-        backgroundColor: "rgba(255, 255, 255, 0.4)",
-      },
-      "&:active": {
-        backgroundColor: "rgba(255, 255, 255, 0.25)",
-      },
     },
   },
 });

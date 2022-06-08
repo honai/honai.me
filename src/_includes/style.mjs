@@ -139,6 +139,30 @@ const colorSchemeStyles = globalCss({
   "@dark": { ":root": themeToObjStyle(darkTheme) },
 });
 
+const customScrollbarStyles = globalCss({
+  ".scrollbar-thin": {
+    // firefox
+    scrollbarWidth: "thin",
+    // webkit
+    "&::-webkit-scrollbar": {
+      height: "0.6rem",
+    },
+    "&::-webkit-scrollbar-track": {
+      backgroundColor: "transparent",
+    },
+    "&::-webkit-scrollbar-thumb": {
+      backgroundColor: "rgba(255, 255, 255, 0.5)",
+      borderRadius: "0.3rem",
+      "&:hover": {
+        backgroundColor: "rgba(255, 255, 255, 0.4)",
+      },
+      "&:active": {
+        backgroundColor: "rgba(255, 255, 255, 0.25)",
+      },
+    },
+  },
+});
+
 /** utility classes */
 const uc = {
   uncolor: css({ color: "inherit !important" })(),
@@ -157,6 +181,7 @@ const uc = {
 const getCssText = () => {
   normalizeStyle();
   colorSchemeStyles();
+  customScrollbarStyles();
   return getCssTextInternal();
 };
 

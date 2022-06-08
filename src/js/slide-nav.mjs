@@ -128,14 +128,21 @@ export class SlideNav extends HTMLElement {
   };
 
   _adjastScrollbarSize() {
+    const scrollbarThinClass = "scrollbar-thin";
     const elm = document.createElement("div");
     elm.style.overflowX = "scroll";
-    // elm.style.scrollbarWidth = "thin";
+    elm.className = scrollbarThinClass;
     document.body.appendChild(elm);
     const scrollBarSize = elm.offsetHeight;
+    document.body.removeChild(elm);
     if (scrollBarSize > 0) {
-      // console.log("scrollbar", scrollBarSize);
-      this._slideElm.classList.add("scrollbar-obtrusive");
+      this._slideElm.classList.add(scrollbarThinClass);
+      this._slideElm.setAttribute(
+        "style",
+        `${this._slideElm.getAttribute(
+          "style"
+        )};--scrollbar-size:${scrollBarSize}px`
+      );
       // Mac safari scrollbar custom bug
       const ua = window.navigator.userAgent.toLowerCase();
       if (!ua.includes("chrome") && ua.includes("safari")) {

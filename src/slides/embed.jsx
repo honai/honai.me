@@ -23,7 +23,7 @@ export default ({ slide, SITE_DOMAIN }) => {
         <link rel="canonical" href={`https://${SITE_DOMAIN}/slides/${slug}/`} />
         <link rel="stylesheet" href="/index.css" />
       </head>
-      <body class={css({ backgroundColor: "$bg" })()}>
+      <body class={css({ backgroundColor: "$primary" })()}>
         <SlideCarousel slide={slide} embed />
       </body>
     </html>
