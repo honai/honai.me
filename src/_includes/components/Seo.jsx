@@ -5,9 +5,10 @@ import { useEleventy } from "../EleventyContext";
  * @param {string} props.title
  * @param {string} props.pageUrl
  * @param {string} props.description
+ * @param {import("../../../types").TwitterCardPlayer} [props.twitterCard]
  * @param {string} [props.thumbnailUrl]
  */
-export const Seo = ({ title, description, thumbnailUrl }) => {
+export const Seo = ({ title, description, thumbnailUrl, twitterCard }) => {
   const { page, SITE_DOMAIN } = useEleventy();
   const canonicalUrl = `https://${SITE_DOMAIN}${page.url}`;
   const isLargeCard = !!thumbnailUrl;
@@ -29,10 +30,25 @@ export const Seo = ({ title, description, thumbnailUrl }) => {
       <meta property="fb:app_id" content="1144529745735811" />
       <meta property="og:locale" content="ja_JP" />
 
-      <meta
-        name="twitter:card"
-        content={isLargeCard ? "summary_large_image" : "summary"}
-      />
+      {twitterCard && twitterCard.kind === "player" ? (
+        <>
+          <meta name="twitter:card" content="player" />
+          <meta name="twitter:player" content={twitterCard.iframeUrl} />
+          <meta
+            name="twitter:player:width"
+            content={twitterCard.width.toString()}
+          />
+          <meta
+            name="twitter:player:height"
+            content={twitterCard.height.toString()}
+          />
+        </>
+      ) : (
+        <meta
+          name="twitter:card"
+          content={isLargeCard ? "summary_large_image" : "summary"}
+        />
+      )}
       <meta name="twitter:site" content="@_honai" />
 
       <link rel="icon" href="/favicon.ico" />

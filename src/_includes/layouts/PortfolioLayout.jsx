@@ -16,6 +16,7 @@ const preconnectDomains = [
  * @param {string} props.pageUrl Absolute page path, "page.url" in data cascade
  * @param {string} [props.thumbnailUrl]
  * @param {boolean} [props.noSeo]
+ * @param {import("../../../types").TwitterCardPlayer} [props.twitterCard]
  * @param {any} props.children
  */
 export const PortfolioLayout = ({
@@ -24,6 +25,7 @@ export const PortfolioLayout = ({
   pageUrl,
   thumbnailUrl,
   noSeo,
+  twitterCard,
   children,
 }) => {
   return (
@@ -37,6 +39,7 @@ export const PortfolioLayout = ({
             description={description ?? "honaiのポートフォリオ・ブログ"}
             pageUrl={pageUrl}
             thumbnailUrl={thumbnailUrl}
+            twitterCard={twitterCard}
           />
         )}
         {preconnectDomains.map((domain) => (
