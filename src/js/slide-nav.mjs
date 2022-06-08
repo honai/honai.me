@@ -131,10 +131,21 @@ export class SlideNav extends HTMLElement {
   _adjastScrollbarSize() {
     const elm = document.createElement("div");
     elm.style.overflowX = "scroll";
+    // elm.style.scrollbarWidth = "thin";
     document.body.appendChild(elm);
     const scrollBarSize = elm.offsetHeight;
-    document.body.removeChild(elm);
-    this._slideElm.setAttribute("data-scrollbar-obtrusive", "");
+    if (scrollBarSize > 0) {
+      // console.log("scrollbar", scrollBarSize);
+      this._slideElm.classList.add("scrollbar-obtrusive");
+      // Mac safari scrollbar custom bug
+      const ua = window.navigator.userAgent.toLowerCase();
+      if (!ua.includes("chrome") && ua.includes("safari")) {
+        this._slideElm.style.overflowX = "hidden";
+        window.setTimeout(() => {
+          this._slideElm.style.overflowX = "scroll";
+        }, 1);
+      }
+    }
   }
 
   connectedCallback() {

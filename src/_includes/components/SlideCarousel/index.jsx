@@ -190,12 +190,11 @@ const slidesWrap = css({
   scrollSnapType: "x mandatory",
   scrollBehavior: "auto",
   gap: "5px",
-  // 高さが100vhを超えないようにする
-  // 3rem * 2: コントロール, 2px: ボーダー, 0.6rem: スクロール
+  // 高さが100vhを超えないようにする (スクロールバーは考慮しない)
+  // 3rem * 2: コントロール, 2px: ボーダー
   // var(, 100) は未定義フォールバック
   // 100%だとlazy-imgで先読みされなくなる
-  $$slideWidth:
-    "min(95%, (100vh - 3rem * 2 - 2px - 0.6rem) * var(--slide-ratio, 100))",
+  $$slideWidth: "min(95%, (100vh - 3rem * 2 - 2px) * var(--slide-ratio, 100))",
   $$slideMargin: "calc((100% - $$slideWidth) / 2)",
   scrollPadding: "0 $$slideMargin",
   [`& > .${slideWrap}`]: {
@@ -211,8 +210,8 @@ const slidesWrap = css({
   // scroll bar customize
   // PC Firefox
   scrollbarWidth: "thin",
-  // PC Chromium
-  "&[data-scrollbar-obtrusive]": {
+  // PC Webkit
+  [`&.scrollbar-obtrusive`]: {
     "&::-webkit-scrollbar": {
       height: "0.6rem",
     },
@@ -234,7 +233,10 @@ const slidesWrap = css({
 
 const linkOverlay = css({
   position: "absolute",
-  border: "1px dashed rgba(0, 0, 0, 0.5)",
+  border: "2px dashed $link",
+  "&:visited": {
+    borderColor: "$linkVisited",
+  },
 });
 
 /**
