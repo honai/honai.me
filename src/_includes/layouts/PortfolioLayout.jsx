@@ -1,3 +1,4 @@
+import * as AC from "../components/AvoidCache";
 import { Seo } from "../components/Seo";
 import { Footer } from "../components/Footer";
 import { Header } from "../components/Header";
@@ -46,7 +47,7 @@ export const PortfolioLayout = ({
           <link rel="preconnect" href={domain} />
         ))}
 
-        <link rel="stylesheet" href="/index.css" />
+        <AC.Link rel="stylesheet" href="/index.css" />
         <link rel="preload" as="image" href="/images/open_in_new.svg" />
 
         {/* 遅延読み込みするStyleSheet */}

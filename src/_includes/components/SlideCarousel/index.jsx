@@ -1,6 +1,7 @@
 import { css, cx, darkTheme, uc } from "../../style.mjs";
 import { Link } from "../Link.jsx";
 import { Nav } from "./Nav.jsx";
+import * as AC from "../AvoidCache";
 
 /**
  * @typedef Rect
@@ -96,10 +97,7 @@ export const SlideCarousel = ({ slide, embed }) => {
           embed={embed}
           ratio={slideRatio}
         />
-        <script
-          type="module"
-          src={`/js/slide-nav.js?${new Date().getTime()}`}
-        />
+        <AC.Script type="module" src="/js/slide-nav.js" />
       </div>
     </div>
   );
