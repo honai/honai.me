@@ -49,6 +49,18 @@ export const SlideCarousel = ({ slide, embed }) => {
         })()
       )}
     >
+      {embed && (
+        <div class={slideTitle()}>
+          <a
+            href={`/slides/${slide.slug}/`}
+            target="_blank"
+            rel="noopener"
+            class={uc.uncolor}
+          >
+            {slide.title}
+          </a>
+        </div>
+      )}
       <div
         id={slideElmId}
         class={slidesWrap()}
@@ -82,6 +94,14 @@ export const SlideCarousel = ({ slide, embed }) => {
     </div>
   );
 };
+
+const slideTitle = css({
+  backgroundColor: "$primary",
+  padding: "0 1rem",
+  height: "3rem",
+  display: "flex",
+  alignItems: "center",
+});
 
 /**
  * @param {any} p
@@ -170,15 +190,12 @@ const slidesWrap = css({
   scrollSnapType: "x mandatory",
   scrollBehavior: "auto",
   gap: "5px",
-  // jsで後から上書き
   // 高さが100vhを超えないようにする
-  // 3.6rem: コントロール, 2px: ボーダー
+  // 3rem * 2: コントロール, 2px: ボーダー, 0.6rem: スクロール
   // var(, 100) は未定義フォールバック
   // 100%だとlazy-imgで先読みされなくなる
   $$slideWidth:
-    "min(95%, (100vh - 3.6rem - 2px - var(--scrollbar-size, 0px)) * var(--slide-ratio, 100))",
-  // $$slideWidth:
-  //   "min(90%, (100vh - 3.6rem - 2px - var(--scrollbar-size, 17px)) * var(--slide-ratio, 100))",
+    "min(95%, (100vh - 3rem * 2 - 2px - 0.6rem) * var(--slide-ratio, 100))",
   $$slideMargin: "calc((100% - $$slideWidth) / 2)",
   scrollPadding: "0 $$slideMargin",
   [`& > .${slideWrap}`]: {
@@ -189,6 +206,28 @@ const slidesWrap = css({
     },
     "&:last-child": {
       marginRight: "$$slideMargin",
+    },
+  },
+  // scroll bar customize
+  // PC Firefox
+  scrollbarWidth: "thin",
+  // PC Chromium
+  "&[data-scrollbar-obtrusive]": {
+    "&::-webkit-scrollbar": {
+      height: "0.6rem",
+    },
+    "&::-webkit-scrollbar-track": {
+      backgroundColor: "transparent",
+    },
+    "&::-webkit-scrollbar-thumb": {
+      backgroundColor: "rgba(255, 255, 255, 0.5)",
+      borderRadius: "0.3rem",
+      "&:hover": {
+        backgroundColor: "rgba(255, 255, 255, 0.4)",
+      },
+      "&:active": {
+        backgroundColor: "rgba(255, 255, 255, 0.25)",
+      },
     },
   },
 });

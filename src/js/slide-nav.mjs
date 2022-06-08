@@ -12,7 +12,6 @@ export class SlideNav extends HTMLElement {
     this.attachShadow({ mode: "open" });
     this.target = this.getAttribute("target");
     this.slug = this.getAttribute("slug");
-    this.title = this.getAttribute("title");
     this.embed = this.getAttribute("embed") !== null;
     this.ratio = this.getAttribute("ratio");
     this._currentSlideIdx = -1;
@@ -135,12 +134,7 @@ export class SlideNav extends HTMLElement {
     document.body.appendChild(elm);
     const scrollBarSize = elm.offsetHeight;
     document.body.removeChild(elm);
-    this._slideElm.setAttribute(
-      "style",
-      `${this._slideElm.getAttribute(
-        "style"
-      )};--scrollbar-size:${scrollBarSize}px`
-    );
+    this._slideElm.setAttribute("data-scrollbar-obtrusive", "");
   }
 
   connectedCallback() {
@@ -173,13 +167,6 @@ export class SlideNav extends HTMLElement {
     render(
       html`
         <div class="wrap">
-          <div class="title">
-            ${this.embed
-              ? html`<a href=${this._slideLink()} target="_blank"
-                  >${this.title}</a
-                >`
-              : ""}
-          </div>
           <input
             type="range"
             name="page"
@@ -220,22 +207,13 @@ export class SlideNav extends HTMLElement {
           </div>
           <style>
             .wrap {
-              height: 3.6rem;
+              height: 3rem;
               padding: 0 10px;
               display: flex;
               justify-content: flex-end;
               align-items: center;
               gap: 10px;
               position: relative;
-            }
-            .title {
-              flex: 1 1 auto;
-              white-space: nowrap;
-              overflow-x: hidden;
-              text-overflow: ellipsis;
-            }
-            .title > a {
-              color: inherit;
             }
             .buttons {
               flex: 0 0 auto;
@@ -249,7 +227,7 @@ export class SlideNav extends HTMLElement {
               border: none;
               background-color: transparent;
               font-family: inherit;
-              font-size: 2.4rem;
+              font-size: 2rem;
               line-height: 1;
               cursor: pointer;
               padding: 0 0.5rem;
@@ -262,19 +240,6 @@ export class SlideNav extends HTMLElement {
             }
             .slider {
               flex: 0 1 360px;
-            }
-            @media screen and (max-width: 576px) {
-              .slider.embed {
-                --height: 20px;
-                --margin: 10%;
-                position: absolute;
-                width: calc(100% - var(--margin) * 2);
-                height: var(--heigth);
-                top: calc(var(--height) / -2);
-                left: var(--margin);
-                z-index: 2;
-                touch-action: none;
-              }
             }
             .preview {
               --idx: ${this._previewSlideIdx};
