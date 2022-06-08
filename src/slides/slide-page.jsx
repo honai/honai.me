@@ -16,7 +16,8 @@ export const data = {
  */
 export default ({ slide, page, SITE_DOMAIN }) => {
   const { title, date, pages, slug } = slide;
-  const ratio = (pages[0].width / pages[0].height).toPrecision(4);
+  const numRatio = pages[0].width / pages[0].height;
+  const ratio = numRatio.toPrecision(4);
   const embedUrl = `https://${SITE_DOMAIN}/slides/embed/${slug}/`;
   const encodedTitle = title.replaceAll('"', "&quot;");
   const embedCode = `<iframe src="${embedUrl}" title="${encodedTitle}" width="100%" style="aspect-ratio:${ratio}" frameborder="0" allowfullscreen></iframe>`;
@@ -28,12 +29,18 @@ export default ({ slide, page, SITE_DOMAIN }) => {
       </li>
     );
   });
-  // TODO imageUrl
+  const playerCardWidth = 320;
   return (
     <PortfolioLayout
       pageUrl={page.url}
       subTitle={title}
       thumbnailUrl={slide.pages[0].imageUrl}
+      twitterCard={{
+        kind: "player",
+        iframeUrl: embedUrl,
+        width: playerCardWidth,
+        height: playerCardWidth / numRatio,
+      }}
     >
       <div
         class={css({

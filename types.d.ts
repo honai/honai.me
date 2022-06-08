@@ -38,3 +38,10 @@ export interface Slide extends SlideRes {
   pages: SlidePage[]
   thumbnail: string
 }
+
+export interface TwitterCardPlayer {
+  kind: "player"
+  iframeUrl: string
+  width: number
+  height: number
+}
