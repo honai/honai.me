@@ -1,27 +1,22 @@
 import { css, cx, uc } from "../../style.mjs";
 
 /**
- * @param {object} p
- * @param {string} [p.prev]
- * @param {string} [p.next]
- * @param {string} p.first
- * @param {string} p.last
- * @param {number} p.total
- * @param {number} p.current 0-indexedでOK
+ * @param {import("../../../../types").SlideCarouselNavProps} p
  */
 export const Nav = ({ next, prev, first, last, total, current }) => {
+  const hashHref = (s) => (s ? { href: `#${s}` } : {});
   return (
     <div class={cx(slideNav(), uc.emojiFont)} data-hide-nav>
-      <a href={first} title="最初のスライド">
+      <a {...hashHref(first)} title="最初のスライド">
         ⏮️
       </a>
-      <a href={prev} title="前のスライド">
+      <a {...hashHref(prev)} title="前のスライド">
         ◀️
       </a>
-      <a href={next} title="次のスライド">
+      <a {...hashHref(next)} title="次のスライド">
         ▶️
       </a>
-      <a href={last} title="最後のスライド">
+      <a {...hashHref(last)} title="最後のスライド">
         ⏭️
       </a>
       <span class={css({ fontFamily: "sans-serif" })()}>

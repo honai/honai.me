@@ -68,10 +68,17 @@ export const SlideCarousel = ({ slide, embed }) => {
       >
         {slides.map((s, i) => (
           <SlideCarouselItem
-            idx={i}
-            total={slides.length}
-            lazy={i > 0}
             {...s}
+            id={s.slideId}
+            lazy={i > 0}
+            nav={{
+              prev: i > 0 ? slides[i - 1].slideId : undefined,
+              next: i < slides.length - 1 ? slides[i + 1].slideId : undefined,
+              first: slides[0].slideId,
+              last: slides.slice(-1)[0].slideId,
+              current: i,
+              total: slides.length,
+            }}
           />
         ))}
       </div>
@@ -104,11 +111,19 @@ const slideTitle = css({
 });
 
 /**
- * @param {any} p
+ * @param {object} p
+ * @param {string} p.id
+ * @param {string} p.imageUrl
+ * @param {string} p.thumbUrl
+ * @param {string} p.alt
+ * @param {number} p.width
+ * @param {number} p.height
+ * @param {boolean} p.lazy
+ * @param {unknown[]} p.links
+ * @param {import("../../../../types").SlideCarouselNavProps} p.nav
  */
 const SlideCarouselItem = ({
-  idx,
-  total,
+  id,
   width,
   height,
   imageUrl,
@@ -116,22 +131,13 @@ const SlideCarouselItem = ({
   alt,
   links,
   lazy,
+  nav,
 }) => {
-  const navProps = {
-    current: idx,
-    total,
-    first: slideId(0, true),
-    last: slideId(total - 1, true),
-    prev: idx > 0 ? slideId(idx - 1, true) : undefined,
-    next: idx + 1 < total ? slideId(idx + 1, true) : undefined,
-  };
-  const pad = total.toString().length;
   return (
-    <div id={slideId(idx)} class={slideWrap()} tabIndex={0}>
+    <div id={id} class={slideWrap()} tabIndex={0}>
       <div
         class={slidePositioning()}
         style={{
-          backgroundPosition: `0 calc(100% / ${total - 1} * ${idx})`,
           aspectRatio: `${width}/${height}`,
         }}
       >
@@ -157,7 +163,7 @@ const SlideCarouselItem = ({
           ))}
         </>
       </div>
-      <Nav {...navProps} />
+      <Nav {...nav} />
     </div>
   );
 };
@@ -257,9 +263,4 @@ function rectToPos(rect, width, height) {
 function toPercent(n, digits = 2) {
   const val = Math.round(n * 100 * 10 ** digits) / 10 ** digits;
   return `${val.toString()}%`;
-}
-
-/** @param {number} i @param {boolean} hash */
-function slideId(i, hash = false) {
-  return `${hash ? "#" : ""}slide-${i + 1}`;
 }
