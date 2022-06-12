@@ -11,7 +11,7 @@ SlideShareが2021年9月にScribd傘下となり、スライドをPDFとして�
 
 [https://blog.scribd.com/bringing-slideshare-scribd-communities-together/](https://blog.scribd.com/bringing-slideshare-scribd-communities-together/)
 
-さらに先日、スライドの閲覧にも上限が設けられたことが話題となりました。下図のように、有料サブスクリプションを案内するバナーやポップアップが表示されます（2022年5月現在）。
+さらに先日、スライドの閲覧にも上限が設けられたことが話題となりました。下図のように、有料サブスクリプションを案内するバナーやポップアップが表示されます（2022年6月現在）。
 
 ![SlideShareのスクリーンショット。サブスクリプションを案内するバナーやポップアップが表示されている](https://res.cloudinary.com/honai/image/upload/c_limit,f_auto,w_720/v1654081612/blog/slideshare-subscription-popup.png)
 
@@ -19,13 +19,40 @@ SlideShareが2021年9月にScribd傘下となり、スライドをPDFとして�
 
 筆者は、これまでの登壇資料はSlideShareではなくSpeaker Deckに投稿しており、こちらは今のところ無料機能の縮小はなさそうです。しかし、これを機に、PDFスライドを自サイト内で公開できるようにしたいなと思い、機能の検討と実装を行いました。
 
-### できたもの
+### できたもの①
 
 <iframe loading="lazy" src="https://www.honai.me/slides/embed/jsx-as-ssg-template/" title="JSXでJSなしの静的サイトをつくる" width="100%" style="aspect-ratio:1.778" frameborder="0" allowfullscreen></iframe>
 
 このように横スクロールでスライドを閲覧でき、**スライド上のハイパーリンクをクリックできる**（スライド2枚目参照）ようになっています。埋め込みではない [スライド単体のページ](https://www.honai.me/slides/jsx-as-ssg-template/) もあります。
 
 本記事では、筆者が作成したPDFを自サイト内で公開する仕組みとスライドビューアーについて解説します。
+
+### できたもの②: デモレポジトリ
+
+[honai/pdf-slide-viewer-generator](https://github.com/honai/pdf-slide-viewer-generator)
+
+今回筆者が自分のサイトに作成したPDFスライドビューアーは、
+レポジトリがサイト本体とPDF保管用の2つに分かれていたり、後者が非公開だったりと、
+実装を紹介するにはわかりづらいため、
+デモレポジトリを作成しました。
+
+デモレポジトリは、
+
+1. Fork または Use as template
+1. GitHub PagesとGitHub Actionsを有効にする
+1. PDFをアップロードする
+
+の**3ステップで簡単に個人用のスライド共有サイトができる**ようになっています！
+自分用のこういうサイトが欲しい方はぜひ自由に使ってください（MITライセンスです）。
+
+カルーセル自体やスライドの一覧にはスタイルを当てていますが、
+それ以外はほぼスタイルも当てておらず素朴になっているので、
+各自で拡張していただければと思います。
+
+手軽さを重視するためGitHub Pagesの仕組みに乗っかっており、
+Jekyllを利用しています。
+
+本記事の解説内で、適宜デモレポジトリの該当実装部分へのリンクを貼っているので参考にしてください。
 
 ## なぜスライドビューアーが必要なのか
 
@@ -167,7 +194,7 @@ p [reader.pages[0].width, reader.pages[1].height]  # ページの幅と高さ
 # => [960, 540]
 ```
 
-次はリンクの抽出です。 [AdobeによるPDF 1.7の仕様](https://opensource.adobe.com/dc-acrobat-sdk-docs/pdfstandards/PDF32000_2008.pdf) によると、PDF内でURL (URI) にアクセスする機能は、”Interactive Features” の “URI Actions” （12.6.4.7, 423ページ） として定義されています。さらに、このActionをPDFのページ上の位置と紐付けるのが、同じく “Interactive Features” の “Link Annotations” （12.5.6.13 405ページ） です。[注: PDF仕様を網羅したわけではないので、これ以外の機能でリンクが挿入されているかもしれません。筆者がPowerPointで出力したPDFは以下のコードで抽出できることを確認しています]
+次はリンクの抽出です。 [AdobeによるPDF 1.7の仕様](https://opensource.adobe.com/dc-acrobat-sdk-docs/pdfstandards/PDF32000_2008.pdf) によると、PDF内でURL (URI) にアクセスする機能は、”Interactive Features” の “URI Actions” （12.6.4.7, 423ページ） として定義されています。さらに、このActionをPDFのページ上の位置と紐付けるのが、同じく “Interactive Features” の “Link Annotations” （12.5.6.13 405ページ） です。^[PDF仕様を網羅したわけではないので、これ以外の機能でリンクが挿入されているかもしれません。筆者がPowerPointで出力したPDFからは正しく抽出できることを確認しています]
 
 あるページ上のリンクを抽出するコードは以下のようになります。（上のコードからの続きとして読んでください）
 
@@ -374,30 +401,75 @@ console.log(html);
 
 <iframe loading="lazy" src="https://github.honai.me/demos/pdf-slide-viewer/position-absolute-image-map/" width="100%" style="aspect-ratio:1;max-height:370px;"></iframe>
 
-[カルーセルとイメージマップを合わせたデモ](https://github.honai.me/demos/pdf-slide-viewer/slide-carousel/) も参照してください。
+### スライドカルーセルを便利にするUIの追加実装
 
-### ボタンでスライドを切り替えられるようにする
+#### ボタンでのスライド切り替え
 
 スクロールスナップを `mandatory` にしていても、大きくスクロールすると一度に2スナップ分スクロールされる場合があります。
 特にモバイルデバイスでスワイプ操作でスクロールするときにこうなることが多く、
 1スライドずつ閲覧したいときに不便です。
+そこで、 `<button>` 要素に
+カルーセルを1スライド分スクロールするイベントハンドラを設定することで、
+ボタンによるスライド切り替えを実現しています。
+デモレポジトリでの実装は以下のリンク先をご覧ください。
 
-### 素早くスライドを切り替えるスライダーを追加する
-逆に最初や最後にスライドの一気にジャンプしたい時もあります。
-PCブラウザではスクロールバーをドラッグして素早くスクロールできますが、スクロールバーをつかめないモバイルブラウザでは不便です
+- [HTML](https://github.com/honai/pdf-slide-viewer-generator/blob/main/_layouts/slide.html#L53)
+- [JavaScript](https://github.com/honai/pdf-slide-viewer-generator/blob/main/assets/scripts/carousel-control.js#L22)
+
+各スライドのHTML要素に `id` 属性を指定し、
+リンクとして実現もできますが、1スライドごとにブラウザの履歴ができてしまい、
+前のWebページに戻りづらくなるという欠点があります。
+
+
+#### キーボードでのスライド切り替え
+さらに、PCでは、一般的なスライドショーアプリのように、
+キーボードの左右キーでスライドを切り替えられたほうが便利です。
+そこで、カルーセルのコントロールにフォーカスがあるときにキーボードイベントを補足して、
+左右矢印キーのときはスライドを送ったり戻したりするようにしました。
+デモレポジトリでの実装は [このあたり](https://github.com/honai/pdf-slide-viewer-generator/blob/main/assets/scripts/carousel-control.js#L22) です。
+
+#### スライダーでのスライド切り替え
+
+![スライドを切り替えるスライダーUI](https://res.cloudinary.com/honai/image/upload/f_auto/v1655055374/blog/carousel-slider.png)
+
+カルーセルをCSSスクロールスナップで実装すると、
+PCブラウザではスクロールバーをドラッグして素早くスクロールできますが、
+スクロールバーをつかめないモバイルブラウザでは不便です
 （iOS版Safariではスクロールバーを直接ドラッグできるようです）。
 
 そこで、スクロールバーの代わりに、モバイルブラウザでもドラッグしてスライドを切り替えられるUIを実装しました。
 
 パーツとしては、ブラウザ標準の `<input type="range">` 要素を使いました。
+筆者のサイトのスライドビューアーでは、
+画像SaaSと組み合わせスライダーをドラッグ中にサムネイルを表示するようにしていますが、
+デモレポジトリではサムネイル表示は省略しています。
+デモレポジトリでの実装は [このあたり](https://github.com/honai/pdf-slide-viewer-generator/blob/main/assets/scripts/carousel-control.js#L21) です。
+筆者のサイトでの実装は [このファイル](https://github.com/honai/honai.me/blob/main/src/js/slide-nav.mjs) を参考にしてください。
+
 
 ### iframeによる埋め込みページの作成
 要件「別のページにスライドを埋め込める」を実現するために、iframeでの埋め込み用ページを作成しました。
 といっても、基本的には前節で説明したカルーセルをビューポートいっぱいに表示するようなページを作成するだけです。
 iframeの埋め込みコードに、 [CSSのaspect-ratio](https://developer.mozilla.org/ja/docs/Web/CSS/aspect-ratio) による縦横比指定を入れておくと、スライドの縦横比に合わせた埋め込み要素を作成できます。
 
-### Twitter CardのPlayerに対応する
+デモレポジトリではJekyllを使っていて、Jekyllでは「1つのデータから複数のHTMLページを出力する」ということがプラグインなしではできないようだったので、省略しています。
+Hugoは [“Custom Output Formats”](https://gohugo.io/templates/output-formats/) にてHTML形式の新しいフォーマットを定義すれば可能です。
+筆者のサイトで使っているEleventyでは [“Create pages from data”](https://www.11ty.dev/docs/pages-from-data/) のコンセプトを利用すれば可能です。
 
+### TwitterのPlayer Cardでツイートにスライドを埋め込む
+これはおまけなのですが、TwitterのPlayer Cardを利用すれば、
+ブラウザ版のTwitterやTweetdeckでツイート内にスライドビューアーを埋め込んで表示することができます。
+SlideShareがこのようなPlayer Cardに対応していたので、筆者もやってみました。
+
+![TwitterのPlayer Cardに作成したスライドビューアーを埋め込める](https://res.cloudinary.com/honai/image/upload/f_auto/v1655056137/blog/twitter-card-custom-player.png)
+
+対応は簡単で、 [Player Cardのドキュメント](https://developer.twitter.com/en/docs/twitter-for-websites/cards/overview/player-card) に従って、
+スライドページのHTMLに以下のようなmetaタグを指定します。
+
+- `<meta name="twitter:card" content="player">`
+- `<meta name="twitter:player" content="{埋め込みURL}">`
+
+他の `twitter:title` などのmetaタグが必要なのは通常の（サムネイル画像を表示させる）Twitter Cardと同じです。
 
 ## まとめ・感想
 この記事では、筆者が自身のサイト内で自身のスライドを公開・共有できるようにした仕組み・実装について解説しました。
