@@ -1,5 +1,4 @@
 import { css, cx, darkTheme, uc } from "../../style.mjs";
-import { Link } from "../Link.jsx";
 import { Nav } from "./Nav.jsx";
 import * as AC from "../AvoidCache";
 
@@ -153,13 +152,14 @@ const SlideCarouselItem = ({
         />
         <>
           {links.map((/** @type {{url: string; position: any}} */ l) => (
-            <Link
+            <a
               href={l.url}
               class={linkOverlay()}
               style={{
                 ...l.position,
               }}
               title={l.url}
+              target="_blank"
             />
           ))}
         </>
