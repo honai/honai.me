@@ -71,14 +71,15 @@ module.exports = (eleventyConfig) => {
     .use(markdownItAnchor)
     .use(markdownItKatex)
     .use(markdownItLinkAttrs, {
-      // 外部リンクを target blank
+      // 自サイトとブログ以外のリンクを target blank
       matcher(href, config) {
         const hasScheme = /^(https?:)?\/\//;
         if (!hasScheme.test(href)) {
           // 相対パス or 絶対パス or fragment
           return false;
         }
-        const sameDomainUrl = /^(https?:)?\/\/[^\/]*honai\.me($|[^.])/;
+        const sameDomainUrl =
+          /^(https?:)?\/\/((www\.)|(blog\.)|())honai\.me($|[^.])/;
         return !sameDomainUrl.test(href);
       },
       attrs: {

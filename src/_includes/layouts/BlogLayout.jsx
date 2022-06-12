@@ -1,5 +1,6 @@
 import { Script } from "../components/Script";
 import { Seo } from "../components/Seo";
+import * as AC from "../components/AvoidCache";
 
 const GTAG_ID = "UA-137251140-3";
 
@@ -66,7 +67,6 @@ export const BlogLayout = ({
             />
           )
         )}
-        {/* TODO: async fallback */}
         <link
           rel="stylesheet"
           href="https://use.typekit.net/bdo3rru.css"
@@ -74,8 +74,8 @@ export const BlogLayout = ({
           // @ts-ignore
           onload="this.media='all'"
         />
-        <link rel="stylesheet" href="/index.css" />
-        <script type="module" src="/scripts/theme-toggle.js"></script>
+        <AC.Link rel="stylesheet" href="/index.css" />
+        <AC.Script type="module" src="/scripts/theme-toggle.js" />
       </head>
 
       <body>
