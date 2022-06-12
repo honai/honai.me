@@ -3,6 +3,7 @@ const path = require("path");
 
 const syntaxHighlight = require("@11ty/eleventy-plugin-syntaxhighlight");
 const markdownIt = require("markdown-it");
+const mdItFootnote = require("markdown-it-footnote");
 const markdownItAnchor = require("markdown-it-anchor");
 const markdownItKatex = require("@iktakahiro/markdown-it-katex");
 const markdownItLinkAttrs = require("markdown-it-link-attributes");
@@ -66,6 +67,7 @@ module.exports = (eleventyConfig) => {
 
   // markdown customize
   const mdLib = markdownIt({ html: true, linkify: true })
+    .use(mdItFootnote)
     .use(markdownItAnchor)
     .use(markdownItKatex)
     .use(markdownItLinkAttrs, {
