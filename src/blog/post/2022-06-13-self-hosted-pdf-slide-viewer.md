@@ -10,7 +10,7 @@ thumbnail_url: https://res.cloudinary.com/honai/image/upload/v1655061582/blog/pd
 
 SlideShareが2021年9月にScribd傘下となり、スライドをPDFとしてダウンロードする機能が有料となったことがアナウンスされています。
 
-[https://blog.scribd.com/bringing-slideshare-scribd-communities-together/](https://blog.scribd.com/bringing-slideshare-scribd-communities-together/)
+[Bringing the SlideShare and Scribd communities together - Scribd Blog](https://blog.scribd.com/bringing-slideshare-scribd-communities-together/)
 
 さらに先日、スライドの閲覧にも上限が設けられたことが話題となりました。下図のように、有料サブスクリプションを案内するバナーやポップアップが表示されます（2022年6月現在）。
 
@@ -28,7 +28,7 @@ SlideShareが2021年9月にScribd傘下となり、スライドをPDFとして�
 
 本記事では、筆者が作成したPDFを自サイト内で公開する仕組みとスライドビューアーについて解説します。
 
-### できたもの②: デモレポジトリ
+### できたもの②
 
 [honai/pdf-slide-viewer-generator](https://github.com/honai/pdf-slide-viewer-generator)
 
@@ -163,7 +163,7 @@ PDFから抽出したい情報は主に
 の3つです。
 
 Rubyのサンプルコードを解説していきます。
-まずはPDFを読み込み、メタ情報やテキスト、ページサイズの抽出です。
+まずはPDFを読み込み、メタ情報やテキスト、ページサイズの抽出をします。
 以下のように簡単に行えます。
 
 ```rb
@@ -406,6 +406,9 @@ console.log(html);
 <iframe loading="lazy" src="https://github.honai.me/demos/pdf-slide-viewer/position-absolute-image-map/" width="100%" style="aspect-ratio:1;max-height:370px;"></iframe>
 
 [カルーセルとイメージマップを合わせたデモ](https://github.honai.me/demos/pdf-slide-viewer/slide-carousel/) も参照してください。
+
+デモレポジトリでは、 [このファイル](https://github.com/honai/pdf-slide-viewer-generator/blob/main/_layouts/slide.html) と
+[SCSSファイルたち](https://github.com/honai/pdf-slide-viewer-generator/tree/main/_sass/components) によって実装がなされています。
 
 ### スライドカルーセルを便利にするUIの追加実装
 本節では筆者がカルーセルに実装したUIについて簡単に解説します。
