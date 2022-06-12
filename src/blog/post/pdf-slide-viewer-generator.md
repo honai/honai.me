@@ -5,8 +5,7 @@ description: |
   自身のPDFスライドを筆者のサイト内で公開できるようにしました。
   この記事ではその仕組みや実装について解説します。
 date: 2022-06-01
-# thumbnail_url: https://res.cloudinary.com/honai/image/upload/sample.png  # optional
-# thumbnail_cld: sample.png  # cloudinary, optional
+thumbnail_url: https://res.cloudinary.com/honai/image/upload/v1655061582/blog/pdf-viewer-ogp.png
 ---
 ## はじめに
 
