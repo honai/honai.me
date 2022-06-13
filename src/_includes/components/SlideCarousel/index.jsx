@@ -222,6 +222,10 @@ const linkOverlay = css({
   "&:visited": {
     borderColor: "$linkVisited",
   },
+  "&::after": {
+    position: "absolute",
+    right: "-1.8rem",
+  },
 });
 
 /**
