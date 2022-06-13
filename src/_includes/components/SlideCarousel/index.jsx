@@ -223,8 +223,10 @@ const linkOverlay = css({
     borderColor: "$linkVisited",
   },
   "&::after": {
+    $$iconWidth: "0.9em",
     position: "absolute",
-    right: "-1.8rem",
+    right: "calc(-$$iconWidth - 3px)",
+    top: "calc(50% - $$iconWidth / 2)",
   },
 });
 
