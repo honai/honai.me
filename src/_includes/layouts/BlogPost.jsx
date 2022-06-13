@@ -108,6 +108,11 @@ export default ({
 const articleLayout = css({
   // FIXME: class直書き指定をやめる
   padding: "1rem",
+  "& > .aside": {
+    maxHeight: "50vh",
+    overflowY: "auto",
+    border: "1px solid $border",
+  },
   "@md": {
     display: "grid",
     gridTemplateAreas: `"header header"
@@ -120,7 +125,12 @@ const articleLayout = css({
     padding: "2rem 3rem",
     gap: "2rem 6rem",
     "> .header": { gridArea: "header", maxWidth: "72rem", margin: "auto" },
-    "> .aside": { gridArea: "aside" },
+    "> .aside": {
+      gridArea: "aside",
+      maxHeight: "unset",
+      border: "none",
+      overflowY: "visible",
+    },
     "> .main": { gridArea: "main" },
     "> .aside > .sticky": {
       position: "sticky",

@@ -7,11 +7,12 @@ export const PostMd = ({ content }) => (
 
 const mdStyle = css({
   "h2, h3, h4": {
-    marginBlockStart: "2.4rem",
-    marginBlockEnd: "1.6rem",
     fontWeight: 600,
   },
-  h2: { borderBlockEnd: "1px solid rgba(0, 0, 0, 0.2)" },
+  h2: {
+    borderBlockEnd: "1px solid rgba(0, 0, 0, 0.2)",
+    marginBlock: "4rem 3rem",
+  },
   h3: {
     lineHeight: 1.5,
     marginBlock: "3.2rem 2.4rem",
@@ -47,7 +48,16 @@ const mdStyle = css({
   "> blockquote": {
     margin: "0",
     padding: "0 1em",
-    color: "#6a737d",
+    color: "$textSecondary",
     borderInlineStart: "0.25em solid #dfe2e5",
+  },
+  ".footnote-item": {
+    border: "2px dashed transparent",
+    "&:target": {
+      borderColor: "blue",
+    },
+    "& > p": {
+      margin: 0,
+    },
   },
 });
