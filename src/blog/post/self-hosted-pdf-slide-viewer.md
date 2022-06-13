@@ -235,7 +235,7 @@ p links
 下図で表される $x_1$ から $y_2$ に対して、 `[x_1, y_1, x_2, y_2]` のように表されます。
 原点が左下になっていることに注意してください。
 
-![Link Annotationの位置を表すRectangleの説明](https://res.cloudinary.com/honai/image/upload/f_auto/v1654081611/blog/pdf-rectangle.png)
+![Link Annotationの位置を表すRectangleの説明](https://res.cloudinary.com/honai/image/upload/f_auto,h_360/v1654081611/blog/pdf-rectangle.png)
 
 このようにして、各ページのリンクの位置とリンク先を抽出することができます。後は、それらをJSON形式などで出力すれば良いでしょう。
 
@@ -326,7 +326,7 @@ PCやモバイルデバイスでの表示を考えると、スライドの画像
 先述したように、PDFから抽出したリンクの位置（Rectangle）は、長方形の各辺の位置を左下を原点とした座標で表したものなので、下図のように、RectangleからCSSのtop, left, bottom, rightのパーセント値に変換する必要があります。
 
 
-![RectangleからCSSのposition値への変換](https://res.cloudinary.com/honai/image/upload/f_auto/v1654410145/blog/pdf-rect-to-css-position.png)
+![RectangleからCSSのposition値への変換](https://res.cloudinary.com/honai/image/upload/f_auto,h_360/v1654410145/blog/pdf-rect-to-css-position.png)
 
 ```js
 // JavaScript
@@ -478,7 +478,7 @@ Hugoは [“Custom Output Formats”](https://gohugo.io/templates/output-formats
 ブラウザ版のTwitterやTweetdeckでツイート内にスライドビューアーを埋め込んで表示することができます。
 SlideShareがこのようなPlayer Cardに対応していたので、筆者もやってみました。
 
-![TwitterのPlayer Cardに作成したスライドビューアーを埋め込める](https://res.cloudinary.com/honai/image/upload/f_auto/v1655056137/blog/twitter-card-custom-player.png)
+![TwitterのPlayer Cardに作成したスライドビューアーを埋め込める](https://res.cloudinary.com/honai/image/upload/f_auto,w_500/v1655056137/blog/twitter-card-custom-player.png)
 
 対応は簡単で、 [Player Cardのドキュメント](https://developer.twitter.com/en/docs/twitter-for-websites/cards/overview/player-card) に従って、
 スライドページのHTMLに以下のようなmetaタグを指定します。
