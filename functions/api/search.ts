@@ -10,8 +10,10 @@ export async function onRequest(context) {
   const foundPosts: string[] = [];
   for (const post of blogIndex) {
     if (post.title.includes(query) || post.content.includes(query)) {
-      foundPosts.push(post.title, 1);
+      foundPosts.push(post.title);
     }
   }
-  return new Response(JSON.stringify(foundPosts));
+  return new Response(JSON.stringify(foundPosts), {
+    headers: { "content-type": "application/json" },
+  });
 }
