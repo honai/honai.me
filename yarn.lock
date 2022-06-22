@@ -1176,6 +1176,11 @@
     "@babel/helper-validator-identifier" "^7.16.7"
     to-fast-properties "^2.0.0"
 
+"@cloudflare/workers-types@^3.13.0":
+  version "3.13.0"
+  resolved "https://registry.yarnpkg.com/@cloudflare/workers-types/-/workers-types-3.13.0.tgz#4483374809e328535ff136a73fb9c51fa3423e01"
+  integrity sha512-oyhzfYlWBLgd9odJ/WHcsD/8B+IaAjSD+OcPEGLzX5kGRONjwcW3NY0WQfsVIhQzZ6AbPzjwkmj4D2VFwU1xRQ==
+
 "@cloudinary/url-gen@^1.8.0":
   version "1.8.0"
   resolved "https://registry.yarnpkg.com/@cloudinary/url-gen/-/url-gen-1.8.0.tgz#dcadd7de08314d79c225a710efb93a51b1fab413"
@@ -4261,6 +4266,11 @@ type-check@~0.3.2:
   integrity sha1-WITKtRLPHTVeP7eE8wgEsrUg23I=
   dependencies:
     prelude-ls "~1.1.2"
+
+typescript@^4.7.4:
+  version "4.7.4"
+  resolved "https://registry.yarnpkg.com/typescript/-/typescript-4.7.4.tgz#1a88596d1cf47d59507a1bcdfb5b9dfe4d488235"
+  integrity sha512-C0WQT0gezHuw6AdY1M2jxUO83Rjf0HP7Sk1DtXj6j1EwkQNZrHAg2XPWlq62oqEhYvONq5pkC2Y9oPljWToLmQ==
 
 ua-parser-js@1.0.2:
   version "1.0.2"
