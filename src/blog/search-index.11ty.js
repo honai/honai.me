@@ -8,7 +8,8 @@ class SearchIndex {
 
   render({ collections }) {
     const { posts } = collections;
-    const postIndex = posts.map(({ data, templateContent }) => ({
+    const postIndex = posts.map(({ data, templateContent, url }) => ({
+      url,
       title: data.title,
       content: templateContent.replace(/<[^>]+>/gm, "").replace(/\s+/gm, " "),
     }));
