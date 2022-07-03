@@ -1,4 +1,5 @@
 import { css, cx, uc } from "../../style.mjs";
+import { Search } from "../Search.jsx";
 import { ThemeToggle } from "../ThemeToggle.jsx";
 
 export const BlogHeader = () => (
@@ -10,6 +11,9 @@ export const BlogHeader = () => (
       >
         Honai's Blog
       </a>
+    </div>
+    <div class={search()}>
+      <Search />
     </div>
     <div>
       <ThemeToggle />
@@ -25,10 +29,16 @@ const header = css({
   display: "flex",
   alignItems: "center",
   justifyContent: "space-between",
+  gap: "1rem",
   padding: "0 2rem",
   lineHeight: 1,
 });
 
 const title = css({
   fontSize: "2rem",
+  flex: "1 0 auto",
+});
+
+const search = css({
+  flex: "0 1 300px",
 });
