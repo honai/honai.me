@@ -58,7 +58,10 @@ export class BlogSearch extends HTMLElement {
             ? html`<ul>
                 ${this._searchResults.map(
                   ({ url, title }) =>
-                    html`<li><a href="${url}">${title}</a></li>`
+                    html`<li>
+                      <h3><a href="${url}">${title}</a></h3>
+                      <div>詳細がここに</div>
+                    </li>`
                 )}
               </ul>`
             : ""}
@@ -78,6 +81,20 @@ export class BlogSearch extends HTMLElement {
             right: 0;
             background-color: #fff;
             border: 1px solid gray;
+            list-style: none;
+            padding: 10px;
+            display: flex;
+            flex-flow: column nowrap;
+            gap: 5px;
+          }
+          li {
+            border: 1px solid gray;
+            border-radius: 4px;
+            padding: 10px;
+          }
+          li > h3 {
+            margin: 0;
+            font-size: 1.6rem;
           }
         </style>`,
       this.shadowRoot
