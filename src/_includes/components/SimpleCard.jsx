@@ -35,6 +35,7 @@ const wrap = css({
 
 const heading = css({
   fontSize: "2rem",
+  lineHeight: 1.5,
   borderBottom: "1px solid $border",
   padding: "1.2rem",
   centuryGothic: true,
