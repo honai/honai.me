@@ -52,9 +52,8 @@ const mdStyle = css({
     borderInlineStart: "0.25em solid #dfe2e5",
   },
   ".footnote-item": {
-    border: "2px dashed transparent",
     "&:target": {
-      borderColor: "blue",
+      outline: "2px dashed blue",
     },
     "& > p": {
       margin: 0,
