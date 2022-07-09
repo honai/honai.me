@@ -28,7 +28,7 @@ const wrap = css({
   border: "1px solid $border",
   borderRadius: "$defaultRad",
   "&:target": {
-    border: "2px solid $borderTarget",
+    outline: "2px solid $borderTarget",
     boxShadow: "0 0 3px $shadow",
   },
 });
