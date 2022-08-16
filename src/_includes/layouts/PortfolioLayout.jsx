@@ -17,6 +17,7 @@ const preconnectDomains = [
  * @param {string} props.pageUrl Absolute page path, "page.url" in data cascade
  * @param {string} [props.thumbnailUrl]
  * @param {boolean} [props.noSeo]
+ * @param {string} [props.headerMaxWidth]
  * @param {import("../../../types").TwitterCardPlayer} [props.twitterCard]
  * @param {any} props.children
  */
@@ -26,6 +27,7 @@ export const PortfolioLayout = ({
   pageUrl,
   thumbnailUrl,
   noSeo,
+  headerMaxWidth,
   twitterCard,
   children,
 }) => {
@@ -72,7 +74,7 @@ export const PortfolioLayout = ({
 
       <body>
         <VerticalGrow>
-          <Header />
+          <Header maxWidth={headerMaxWidth || "72rem"} />
           <VerticalGrow.Grow>{children}</VerticalGrow.Grow>
           <Footer />
         </VerticalGrow>

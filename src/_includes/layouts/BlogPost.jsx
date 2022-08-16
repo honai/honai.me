@@ -1,5 +1,3 @@
-import { BlogHeader } from "../components/blog/BlogHeader";
-import { BlogLayout } from "./BlogLayout";
 import { useEleventy } from "../EleventyContext";
 import { Footer } from "../components/Footer";
 import { Script } from "../components/Script";
@@ -8,7 +6,7 @@ import { css } from "../style.mjs";
 import { PostMd } from "../components/blog/PostMd";
 import { Toc } from "../components/blog/Toc";
 import { PostNavigate } from "../components/blog/PostNavigate";
-import VerticalGrow from "../components/VerticalGrow";
+import { PortfolioLayout } from "./PortfolioLayout";
 
 const githubLinkBase = "https://github.com/honai/honai.me/blob/main/";
 const styleSheets = [
@@ -39,54 +37,48 @@ export default ({
   const newerPost = fn.getPreviousCollectionItem(collections.posts, page);
   const olderPost = fn.getNextCollectionItem(collections.posts, page);
   return (
-    <BlogLayout
+    <PortfolioLayout
       pageUrl={page.url}
-      title={title}
+      subTitle={title}
       description={description}
       thumbnailUrl={thumbnail_url}
-      styleSheets={styleSheets}
+      headerMaxWidth="120rem"
     >
-      <VerticalGrow>
-        <BlogHeader />
-        <VerticalGrow.Grow>
-          <article class={articleLayout()}>
-            <div class="header">
-              <ArticleHeader
-                title={title}
-                published={fn.isodate(page.date)}
-                updated={updated ?? fn.isodate(updated)}
-              />
+      <article class={articleLayout()}>
+        <div class="header">
+          <ArticleHeader
+            title={title}
+            published={fn.isodate(page.date)}
+            updated={updated ?? fn.isodate(updated)}
+          />
+        </div>
+        <aside class="aside">
+          <div class="sticky">
+            <Toc tocHtml={fn.toc(content)} />
+            <PostNavigate newerPost={newerPost} olderPost={olderPost} />
+            <div>
+              <a
+                href={`${githubLinkBase}${page.inputPath}`}
+                class={postEditLink()}
+              >
+                この記事の編集をリクエスト (GitHub)
+              </a>
             </div>
-            <aside class="aside">
-              <div class="sticky">
-                <Toc tocHtml={fn.toc(content)} />
-                <PostNavigate newerPost={newerPost} olderPost={olderPost} />
-                <div>
-                  <a
-                    href={`${githubLinkBase}${page.inputPath}`}
-                    class={postEditLink()}
-                  >
-                    この記事の編集をリクエスト (GitHub)
-                  </a>
-                </div>
-              </div>
-            </aside>
+          </div>
+        </aside>
 
-            <main class="main">
-              <PostMd content={content} />
-            </main>
-          </article>
-        </VerticalGrow.Grow>
-        <Footer />
-      </VerticalGrow>
-
+        <main class="main">
+          <PostMd content={content} />
+        </main>
+      </article>
+      <Footer />
       <script defer src="/scripts/blog-post.js"></script>
       {plugins.includes("twitter") && (
         <Script type="application/json" class="external-scripts-list">{`
           ["https://platform.twitter.com/widgets.js"]
         `}</Script>
       )}
-    </BlogLayout>
+    </PortfolioLayout>
   );
 };
 
