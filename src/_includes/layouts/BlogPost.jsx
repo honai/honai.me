@@ -76,20 +76,6 @@ export default ({
             <main class="main">
               <PostMd content={content} />
             </main>
-
-            <div class="ad">
-              <AdSenseWrap>
-                {/* 記事の下 */}
-                <ins
-                  class="adsbygoogle"
-                  style="display:block"
-                  data-ad-client="ca-pub-9155380222623167"
-                  data-ad-slot="4880052047"
-                  data-ad-format="auto"
-                  data-full-width-responsive="true"
-                ></ins>
-              </AdSenseWrap>
-            </div>
           </article>
         </VerticalGrow.Grow>
         <Footer />
@@ -116,12 +102,11 @@ const articleLayout = css({
   "@md": {
     display: "grid",
     gridTemplateAreas: `"header header"
-                        "main   aside"
-                        "ad     ."`,
+                        "main   aside"`,
     maxWidth: "120rem",
     margin: "0 auto",
     gridTemplateColumns: "minmax(0, 1fr) min(30rem, 30vw)",
-    gridTemplateRows: "18rem auto auto",
+    gridTemplateRows: "18rem auto",
     padding: "2rem 3rem",
     gap: "2rem 6rem",
     "> .header": { gridArea: "header", maxWidth: "72rem", margin: "auto" },
@@ -141,7 +126,6 @@ const articleLayout = css({
       maxHeight: "calc(100vh - 4rem)",
       overflowY: "auto",
     },
-    "> .ad": { gridArea: "ad", margin: "1rem" },
   },
 });
 
