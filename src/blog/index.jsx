@@ -13,7 +13,7 @@ export const data = {
   },
 };
 
-export default ({ page, pagination }) => {
+export default ({ pagination }) => {
   const { isodate } = useEleventy();
   const posts = pagination.items.map((p) => ({
     date: isodate(p.date),
@@ -28,14 +28,14 @@ export default ({ page, pagination }) => {
       : null,
   }));
   return (
-    <PortfolioLayout pageUrl={page.url} subTitle="Blog">
+    <PortfolioLayout subTitle="Blog">
       <PortfolioHero title="Blog" />
       <div class={postsLayout()}>
         {posts.map((p) => (
           <article class={article()}>
             <div class={thumb({ display: p.thumb ? null : "hideOnSm" })}>
               {p.thumb ? (
-                <a href={p.url}>
+                <a href={p.url} class={css({ width: "100%" })()}>
                   <img src={p.thumb.url} alt={p.thumb.alt} class={thumbImg()} />
                 </a>
               ) : (
@@ -85,19 +85,21 @@ const title = css({
 });
 
 const description = css({
+  $$fs: "1.4rem",
   $$lh: 1.75,
+  fontSize: "$$fs",
   lineHeight: "$$lh",
-  $$actualLh: "1.6rem * $$lh",
-  height: "calc($$actualLh * 3)",
+  $$actualLh: "calc($$fs * $$lh)",
+  height: "calc($$actualLh * 4)",
   overflowY: "hidden",
   position: "relative",
   "&::after": {
     content: "",
     display: "block",
     position: "absolute",
-    top: "calc($$actualLh * 2)",
+    top: "calc($$actualLh * 3)",
     right: "0",
-    height: "calc(1.6rem * $$lh)",
+    height: "$$actualLh",
     width: "min(100%, 5rem)",
     background: "linear-gradient(to right, transparent, $fg)",
   },

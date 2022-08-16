@@ -7,7 +7,7 @@ import { BaseHtml } from "./BaseHtml";
  * @param {Object} props
  * @param {string} [props.subTitle]
  * @param {string} [props.description] 空文字ならdescriptionなし、undefならデフォルトのテキスト
- * @param {string | undefined} props.thumbnailUrl
+ * @param {string} [props.thumbnailUrl]
  * @param {import("../../../types").TwitterCard} [props.twitterCard]
  * @param {string} [props.headerMaxWidth]
  * @param {any} props.children
