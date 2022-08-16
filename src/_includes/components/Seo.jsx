@@ -3,7 +3,6 @@ import { useEleventy } from "../EleventyContext";
 /**
  * @param {object} props
  * @param {string} props.title
- * @param {string} props.pageUrl
  * @param {string} props.description
  * @param {import("../../../types").TwitterCardPlayer} [props.twitterCard]
  * @param {string} [props.thumbnailUrl]

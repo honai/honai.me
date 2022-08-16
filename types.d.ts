@@ -56,3 +56,11 @@ export interface SlideCarouselNavProps {
   /** 0-indexed */
   current: number;
 }
+
+export interface BaseHtmlProps {
+  title: string;
+  description: string;
+  thumbnailUrl?: string;
+  twitterCard?: TwitterCardPlayer;
+  children: any;
+}
