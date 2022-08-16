@@ -3,7 +3,6 @@ import { BlogLayout } from "../layouts/BlogLayout";
 import { BlogPagination } from "../components/blog/BlogPagination";
 import { Footer } from "../components/Footer";
 import { Script } from "../components/Script";
-import { AdSenseWrap } from "../components/AdSenseWrap";
 import { PostList } from "../components/blog/PostList";
 import { css, cx } from "../style.mjs";
 import VerticalGrow from "../components/VerticalGrow";

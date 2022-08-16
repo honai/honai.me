@@ -3,7 +3,6 @@ import { BlogLayout } from "./BlogLayout";
 import { useEleventy } from "../EleventyContext";
 import { Footer } from "../components/Footer";
 import { Script } from "../components/Script";
-import { AdSenseWrap } from "../components/AdSenseWrap";
 import { ArticleHeader } from "../components/blog/ArticleHeader";
 import { css } from "../style.mjs";
 import { PostMd } from "../components/blog/PostMd";
