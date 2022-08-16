@@ -1,30 +1,16 @@
-import { BlogHeader } from "../components/blog/BlogHeader";
-import { BlogLayout } from "./BlogLayout";
 import { useEleventy } from "../EleventyContext";
 import { Footer } from "../components/Footer";
 import { Script } from "../components/Script";
-import { AdSenseWrap } from "../components/AdSenseWrap";
 import { ArticleHeader } from "../components/blog/ArticleHeader";
 import { css } from "../style.mjs";
 import { PostMd } from "../components/blog/PostMd";
 import { Toc } from "../components/blog/Toc";
 import { PostNavigate } from "../components/blog/PostNavigate";
+import { BaseHtml } from "./BaseHtml";
+import { Header } from "../components/Header";
 import VerticalGrow from "../components/VerticalGrow";
 
 const githubLinkBase = "https://github.com/honai/honai.me/blob/main/";
-const styleSheets = [
-  {
-    href: "https://cdnjs.cloudflare.com/ajax/libs/prism/1.20.0/themes/prism-tomorrow.min.css",
-    integrity: "sha256-xevuwyBEb2ZYh4nDhj0g3Z/rDBnM569hg9Vq6gEw/Sg=",
-    async: true,
-  },
-  {
-    href: "https://cdn.jsdelivr.net/npm/katex@0.12.0/dist/katex.min.css",
-    integrity:
-      "sha384-AfEj0r4/OFrOo5t7NnNe46zW/tFgW6x/bCJG8FqQCEo3+Aro6EYUG4+cU+KJWu/X",
-    async: true,
-  },
-];
 
 export default ({
   content,
@@ -40,15 +26,18 @@ export default ({
   const newerPost = fn.getPreviousCollectionItem(collections.posts, page);
   const olderPost = fn.getNextCollectionItem(collections.posts, page);
   return (
-    <BlogLayout
-      pageUrl={page.url}
+    <BaseHtml
       title={title}
       description={description}
-      thumbnailUrl={thumbnail_url}
-      styleSheets={styleSheets}
+      thumbnailUrl={thumbnail_url || "/images/profile.png"}
+      twitterCard={thumbnail_url ? { kind: "large" } : { kind: "normal" }}
+      lazyStylesheets={[
+        "https://cdnjs.cloudflare.com/ajax/libs/prism/1.20.0/themes/prism-tomorrow.min.css",
+        "https://cdn.jsdelivr.net/npm/katex@0.12.0/dist/katex.min.css",
+      ]}
     >
       <VerticalGrow>
-        <BlogHeader />
+        <Header maxWidth="120rem" />
         <VerticalGrow.Grow>
           <article class={articleLayout()}>
             <div class="header">
@@ -77,17 +66,16 @@ export default ({
               <PostMd content={content} />
             </main>
           </article>
+          <Footer />
         </VerticalGrow.Grow>
-        <Footer />
       </VerticalGrow>
-
       <script defer src="/scripts/blog-post.js"></script>
       {plugins.includes("twitter") && (
         <Script type="application/json" class="external-scripts-list">{`
           ["https://platform.twitter.com/widgets.js"]
         `}</Script>
       )}
-    </BlogLayout>
+    </BaseHtml>
   );
 };
 

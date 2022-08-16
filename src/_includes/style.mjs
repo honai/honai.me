@@ -23,6 +23,7 @@ const {
   keyframes,
 } = createStitches({
   media: {
+    smOnly: `screen and (max-width: 576px)`,
     sm: minWidthMedia(576),
     md: minWidthMedia(768),
     lg: minWidthMedia(992),

@@ -40,12 +40,25 @@ export interface Slide extends SlideRes {
   thumbnail: string;
 }
 
-export interface TwitterCardPlayer {
+interface TwitterCardPlayer {
   kind: "player";
   iframeUrl: string;
   width: number;
   height: number;
 }
+
+interface TwitterCardLarge {
+  kind: "large";
+}
+
+interface TwitterCardNormal {
+  kind: "normal";
+}
+
+export type TwitterCard =
+  | TwitterCardNormal
+  | TwitterCardLarge
+  | TwitterCardPlayer;
 
 export interface SlideCarouselNavProps {
   prev?: string;
@@ -55,4 +68,13 @@ export interface SlideCarouselNavProps {
   total: number;
   /** 0-indexed */
   current: number;
+}
+
+export interface BaseHtmlProps {
+  title: string;
+  description: string;
+  thumbnailUrl: string;
+  twitterCard: TwitterCard;
+  lazyStylesheets?: string[];
+  children: any;
 }

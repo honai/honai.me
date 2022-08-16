@@ -3,18 +3,14 @@ import { useEleventy } from "../EleventyContext";
 /**
  * @param {object} props
  * @param {string} props.title
- * @param {string} props.pageUrl
  * @param {string} props.description
- * @param {import("../../../types").TwitterCardPlayer} [props.twitterCard]
- * @param {string} [props.thumbnailUrl]
+ * @param {string} props.thumbnailUrl  // ドメインなしの絶対パス指定可
+ * @param {import("../../../types").TwitterCard} props.twitterCard
  */
 export const Seo = ({ title, description, thumbnailUrl, twitterCard }) => {
   const { page, SITE_DOMAIN } = useEleventy();
   const canonicalUrl = `https://${SITE_DOMAIN}${page.url}`;
-  const isLargeCard = !!thumbnailUrl;
-  const ogpImageUrl = thumbnailUrl
-    ? ogpImage(thumbnailUrl, SITE_DOMAIN)
-    : `https://${SITE_DOMAIN}/images/profile.png`;
+  const ogpImageUrl = ogpImage(thumbnailUrl, SITE_DOMAIN);
   return (
     <>
       <link rel="canonical" href={canonicalUrl} />
@@ -30,30 +26,47 @@ export const Seo = ({ title, description, thumbnailUrl, twitterCard }) => {
       <meta property="fb:app_id" content="1144529745735811" />
       <meta property="og:locale" content="ja_JP" />
 
-      {twitterCard && twitterCard.kind === "player" ? (
-        <>
-          <meta name="twitter:card" content="player" />
-          <meta name="twitter:player" content={twitterCard.iframeUrl} />
-          <meta
-            name="twitter:player:width"
-            content={twitterCard.width.toString()}
-          />
-          <meta
-            name="twitter:player:height"
-            content={twitterCard.height.toString()}
-          />
-        </>
-      ) : (
-        <meta
-          name="twitter:card"
-          content={isLargeCard ? "summary_large_image" : "summary"}
-        />
-      )}
-      <meta name="twitter:site" content="@_honai" />
+      <TwitterCard card={twitterCard} />
 
       <link rel="icon" href="/favicon.ico" />
     </>
   );
+};
+
+/**
+ * @param {Object} p
+ * @param {import("../../../types").TwitterCard} p.card
+ */
+const TwitterCard = ({ card }) => {
+  const common = <meta name="twitter:site" content="@_honai" />;
+  switch (card.kind) {
+    case "normal":
+      return (
+        <>
+          {common}
+          <meta name="twitter:card" content="summary" />
+        </>
+      );
+    case "large":
+      return (
+        <>
+          {common}
+          <meta name="twitter:card" content="summary_large_image" />
+        </>
+      );
+    case "player":
+      return (
+        <>
+          {common}
+          <meta name="twitter:card" content="player" />
+          <meta name="twitter:player" content={card.iframeUrl} />
+          <meta name="twitter:player:width" content={card.width.toString()} />
+          <meta name="twitter:player:height" content={card.height.toString()} />
+        </>
+      );
+    default:
+      throw new Error("Unknown TwitterCard kind");
+  }
 };
 
 /** @param {string} url @param {string} domain */
