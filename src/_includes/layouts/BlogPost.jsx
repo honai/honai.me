@@ -6,22 +6,11 @@ import { css } from "../style.mjs";
 import { PostMd } from "../components/blog/PostMd";
 import { Toc } from "../components/blog/Toc";
 import { PostNavigate } from "../components/blog/PostNavigate";
-import { PortfolioLayout } from "./PortfolioLayout";
+import { BaseHtml } from "./BaseHtml";
+import { Header } from "../components/Header";
+import VerticalGrow from "../components/VerticalGrow";
 
 const githubLinkBase = "https://github.com/honai/honai.me/blob/main/";
-const styleSheets = [
-  {
-    href: "https://cdnjs.cloudflare.com/ajax/libs/prism/1.20.0/themes/prism-tomorrow.min.css",
-    integrity: "sha256-xevuwyBEb2ZYh4nDhj0g3Z/rDBnM569hg9Vq6gEw/Sg=",
-    async: true,
-  },
-  {
-    href: "https://cdn.jsdelivr.net/npm/katex@0.12.0/dist/katex.min.css",
-    integrity:
-      "sha384-AfEj0r4/OFrOo5t7NnNe46zW/tFgW6x/bCJG8FqQCEo3+Aro6EYUG4+cU+KJWu/X",
-    async: true,
-  },
-];
 
 export default ({
   content,
@@ -37,48 +26,56 @@ export default ({
   const newerPost = fn.getPreviousCollectionItem(collections.posts, page);
   const olderPost = fn.getNextCollectionItem(collections.posts, page);
   return (
-    <PortfolioLayout
-      pageUrl={page.url}
-      subTitle={title}
+    <BaseHtml
+      title={title}
       description={description}
-      thumbnailUrl={thumbnail_url}
-      headerMaxWidth="120rem"
+      thumbnailUrl={thumbnail_url || "/images/profile.png"}
+      twitterCard={thumbnail_url ? { kind: "large" } : { kind: "normal" }}
+      lazyStylesheets={[
+        "https://cdnjs.cloudflare.com/ajax/libs/prism/1.20.0/themes/prism-tomorrow.min.css",
+        "https://cdn.jsdelivr.net/npm/katex@0.12.0/dist/katex.min.css",
+      ]}
     >
-      <article class={articleLayout()}>
-        <div class="header">
-          <ArticleHeader
-            title={title}
-            published={fn.isodate(page.date)}
-            updated={updated ?? fn.isodate(updated)}
-          />
-        </div>
-        <aside class="aside">
-          <div class="sticky">
-            <Toc tocHtml={fn.toc(content)} />
-            <PostNavigate newerPost={newerPost} olderPost={olderPost} />
-            <div>
-              <a
-                href={`${githubLinkBase}${page.inputPath}`}
-                class={postEditLink()}
-              >
-                この記事の編集をリクエスト (GitHub)
-              </a>
+      <VerticalGrow>
+        <Header maxWidth="120rem" />
+        <VerticalGrow.Grow>
+          <article class={articleLayout()}>
+            <div class="header">
+              <ArticleHeader
+                title={title}
+                published={fn.isodate(page.date)}
+                updated={updated ?? fn.isodate(updated)}
+              />
             </div>
-          </div>
-        </aside>
+            <aside class="aside">
+              <div class="sticky">
+                <Toc tocHtml={fn.toc(content)} />
+                <PostNavigate newerPost={newerPost} olderPost={olderPost} />
+                <div>
+                  <a
+                    href={`${githubLinkBase}${page.inputPath}`}
+                    class={postEditLink()}
+                  >
+                    この記事の編集をリクエスト (GitHub)
+                  </a>
+                </div>
+              </div>
+            </aside>
 
-        <main class="main">
-          <PostMd content={content} />
-        </main>
-      </article>
-      <Footer />
+            <main class="main">
+              <PostMd content={content} />
+            </main>
+          </article>
+          <Footer />
+        </VerticalGrow.Grow>
+      </VerticalGrow>
       <script defer src="/scripts/blog-post.js"></script>
       {plugins.includes("twitter") && (
         <Script type="application/json" class="external-scripts-list">{`
           ["https://platform.twitter.com/widgets.js"]
         `}</Script>
       )}
-    </PortfolioLayout>
+    </BaseHtml>
   );
 };
 

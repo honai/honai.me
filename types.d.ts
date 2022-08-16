@@ -75,5 +75,6 @@ export interface BaseHtmlProps {
   description: string;
   thumbnailUrl: string;
   twitterCard: TwitterCard;
+  lazyStylesheets?: string[];
   children: any;
 }
