@@ -7,8 +7,8 @@ import { BaseHtml } from "./BaseHtml";
  * @param {Object} props
  * @param {string} [props.subTitle]
  * @param {string} [props.description] 空文字ならdescriptionなし、undefならデフォルトのテキスト
- * @param {string} [props.thumbnailUrl]
- * @param {import("../../../types").TwitterCardPlayer} [props.twitterCard]
+ * @param {string | undefined} props.thumbnailUrl
+ * @param {import("../../../types").TwitterCard} [props.twitterCard]
  * @param {string} [props.headerMaxWidth]
  * @param {any} props.children
  */
@@ -17,8 +17,11 @@ export const PortfolioLayout = ({ headerMaxWidth, children, ...o }) => {
     <BaseHtml
       title={!!o.subTitle ? `${o.subTitle} | honai.me` : "honai.me"}
       description={o.description ?? "honaiのポートフォリオ・ブログ"}
-      thumbnailUrl={o.thumbnailUrl}
-      twitterCard={o.twitterCard}
+      thumbnailUrl={o.thumbnailUrl || "/images/profile.png"}
+      twitterCard={
+        o.twitterCard ||
+        (o.thumbnailUrl ? { kind: "large" } : { kind: "normal" })
+      }
     >
       <VerticalGrow>
         <Header maxWidth={headerMaxWidth || "72rem"} />
