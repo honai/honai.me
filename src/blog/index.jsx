@@ -1,3 +1,4 @@
+import { BlogPagination } from "../_includes/components/blog/BlogPagination";
 import { DateTag } from "../_includes/components/DateTag";
 import { PortfolioHero } from "../_includes/components/PortfolioHero";
 import { useEleventy } from "../_includes/EleventyContext";
@@ -7,7 +8,7 @@ import { css, uc } from "../_includes/style.mjs";
 export const data = {
   pagination: {
     data: "collections.posts",
-    size: 10,
+    size: 15,
     reverse: true,
   },
 };
@@ -72,6 +73,7 @@ export default ({ page, pagination }) => {
             </div>
           </article>
         ))}
+        <BlogPagination pagination={pagination} />
       </div>
     </PortfolioLayout>
   );
