@@ -78,37 +78,7 @@ export const BlogLayout = ({
         <AC.Script type="module" src="/scripts/theme-toggle.js" />
       </head>
 
-      <body>
-        {children}
-
-        <Script type="application/json" class="external-scripts-list">{`
-          [
-            "https://www.google-analytics.com/analytics.js",
-            "https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-9155380222623167"
-          ]
-        `}</Script>
-        <Script>{`
-          // polyfill
-          if (!window.requestIdleCallback) {
-            window.requestIdleCallback = (cb) => {
-              window.setTimeout(cb, 1)
-            }
-          }
-          window.requestIdleCallback(() => {
-            const elms = document.getElementsByClassName('external-scripts-list')
-            const scripts = Array.from(elms).map(e => JSON.parse(e.textContent)).flat()
-            scripts.map(s => {
-              var e = document.createElement('script')
-              e.src = s
-              document.body.appendChild(e)
-            })
-            window.ga=window.ga||function(){(ga.q=ga.q||[]).push(arguments)};ga.l=+new Date;
-            ga('create', '${GTAG_ID}', 'auto');
-            ga('send', 'pageview');
-            (adsbygoogle = window.adsbygoogle || []).push({});
-          })
-        `}</Script>
-      </body>
+      <body>{children}</body>
     </html>
   );
 };

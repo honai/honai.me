@@ -30,17 +30,6 @@ export const BlogIndex = ({ pageUrl, posts, pagination }) => {
             </h1>
             <PostList posts={posts} />
             <BlogPagination pagination={pagination} />
-            <AdSenseWrap>
-              {/* ブログ記事一覧下 */}
-              <ins
-                class="adsbygoogle"
-                style="display:block"
-                data-ad-client="ca-pub-9155380222623167"
-                data-ad-slot="3792188932"
-                data-ad-format="auto"
-                data-full-width-responsive="true"
-              ></ins>
-            </AdSenseWrap>
           </div>
         </VerticalGrow.Grow>
         <Footer />
