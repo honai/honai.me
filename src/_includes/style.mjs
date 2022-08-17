@@ -90,6 +90,7 @@ const openInNewPseudo = (d) => ({
 });
 
 const newIconStartClass = "newiconstart";
+const noNewIconClass = "no-new-icon";
 
 const normalizeStyle = globalCss({
   "*, *::before, *::after": {
@@ -130,8 +131,10 @@ const normalizeStyle = globalCss({
   a: {
     color: "$link",
     "&:visited": { color: "$linkVisited" },
-    [`&[target]:not(.${newIconStartClass})`]: openInNewPseudo("end"),
-    [`&[target].${newIconStartClass}`]: openInNewPseudo("start"),
+    [`&[target]:not(.${newIconStartClass}):not(.${noNewIconClass})`]:
+      openInNewPseudo("end"),
+    [`&[target].${newIconStartClass}:not(${noNewIconClass})`]:
+      openInNewPseudo("start"),
   },
 });
 
@@ -177,6 +180,7 @@ const uc = {
       "apple color emoji,segoe ui emoji,noto color emoji,android emoji,segoe ui symbol",
   })(),
   anchorNewIconStart: newIconStartClass,
+  anchorNoNewIcon: noNewIconClass,
 };
 
 const getCssText = () => {

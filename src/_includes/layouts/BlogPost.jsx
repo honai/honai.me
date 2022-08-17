@@ -2,13 +2,14 @@ import { useEleventy } from "../EleventyContext";
 import { Footer } from "../components/Footer";
 import { Script } from "../components/Script";
 import { ArticleHeader } from "../components/blog/ArticleHeader";
-import { css } from "../style.mjs";
+import { css, uc } from "../style.mjs";
 import { PostMd } from "../components/blog/PostMd";
 import { Toc } from "../components/blog/Toc";
 import { PostNavigate } from "../components/blog/PostNavigate";
 import { BaseHtml } from "./BaseHtml";
 import { Header } from "../components/Header";
 import VerticalGrow from "../components/VerticalGrow";
+import { TwitterShareIcon, TwitterShareLink } from "../components/TwitterShare";
 
 const githubLinkBase = "https://github.com/honai/honai.me/blob/main/";
 
@@ -50,22 +51,30 @@ export default ({
             <aside class="aside">
               <div class="sticky">
                 <Toc tocHtml={fn.toc(content)} />
-                <PostNavigate newerPost={newerPost} olderPost={olderPost} />
-                <div>
+                <div class={css({ color: "$textSecondary" })()}>
                   <a
                     href={`${githubLinkBase}${page.inputPath}`}
-                    class={postEditLink()}
+                    class={uc.uncolor}
                   >
                     この記事の編集をリクエスト (GitHub)
                   </a>
+                  <br />
+                  <TwitterShareLink path={page.url} title={title}>
+                    ツイート
+                  </TwitterShareLink>
                 </div>
+                <PostNavigate newerPost={newerPost} olderPost={olderPost} />
               </div>
             </aside>
-
-            <main class="main">
-              <PostMd content={content} />
-            </main>
+            <div className="main">
+              <main>
+                <PostMd content={content} />
+              </main>
+            </div>
           </article>
+          <div class={css({ textAlign: "center", marginBlockStart: "0rem" })()}>
+            <TwitterShareIcon path={page.url} title={title} />
+          </div>
           <Footer />
         </VerticalGrow.Grow>
       </VerticalGrow>
@@ -116,5 +125,3 @@ const articleLayout = css({
     },
   },
 });
-
-const postEditLink = css({ color: "$textSecondary" });

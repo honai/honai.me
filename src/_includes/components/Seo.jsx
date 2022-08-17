@@ -8,7 +8,7 @@ import { useEleventy } from "../EleventyContext";
  * @param {import("../../../types").TwitterCard} props.twitterCard
  */
 export const Seo = ({ title, description, thumbnailUrl, twitterCard }) => {
-  const { page, SITE_DOMAIN } = useEleventy();
+  const { page, SITE_DOMAIN, eleventy } = useEleventy();
   const canonicalUrl = `https://${SITE_DOMAIN}${page.url}`;
   const ogpImageUrl = ogpImage(thumbnailUrl, SITE_DOMAIN);
   return (
@@ -29,6 +29,7 @@ export const Seo = ({ title, description, thumbnailUrl, twitterCard }) => {
       <TwitterCard card={twitterCard} />
 
       <link rel="icon" href="/favicon.ico" />
+      <meta name="generator" content={eleventy.generator} />
     </>
   );
 };
