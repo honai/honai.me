@@ -69,12 +69,12 @@ export default ({
           <Footer />
         </VerticalGrow.Grow>
       </VerticalGrow>
-      <script defer src="/scripts/blog-post.js"></script>
       {plugins.includes("twitter") && (
         <Script type="application/json" class="external-scripts-list">{`
           ["https://platform.twitter.com/widgets.js"]
         `}</Script>
       )}
+      <script defer src="/scripts/blog-post.js"></script>
     </BaseHtml>
   );
 };

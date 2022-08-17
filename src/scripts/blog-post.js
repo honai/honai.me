@@ -68,13 +68,27 @@ const initTableOfContents = () => {
   });
 };
 
+const loadExternalScripts = () => {
+  const elms = document.getElementsByClassName("external-scripts-list");
+  const scripts = Array.from(elms)
+    .map((e) => JSON.parse(e.textContent))
+    .flat();
+  console.log(scripts);
+  scripts.map((s) => {
+    var e = document.createElement("script");
+    e.src = s;
+    document.body.appendChild(e);
+  });
+};
+
 // polyfill
 if (!window.requestIdleCallback) {
   window.requestIdleCallback = (cb) => {
-    window.setTimeout(cb, 1);
+    return window.setTimeout(cb, 1);
   };
 }
 
-window.requestIdleCallback(function () {
+window.requestIdleCallback(() => {
   initTableOfContents();
+  loadExternalScripts();
 });
