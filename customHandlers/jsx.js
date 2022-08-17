@@ -21,7 +21,7 @@ module.exports = {
       const Component = require(resolveInputPath(inputPath)).default;
       const html = renderToStaticMarkup(
         jsx(Provider, {
-          otherValue: { page: data.page },
+          otherValue: { page: data.page, eleventy: data.eleventy },
           children: jsx(Component, data),
         })
       );
