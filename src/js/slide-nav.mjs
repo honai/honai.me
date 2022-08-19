@@ -159,7 +159,9 @@ export class SlideNav extends HTMLElement {
     this._adjastScrollbarSize();
 
     this._calcSlideWidth();
-    this._slideElm.addEventListener("scroll", this._handleScroll);
+    this._slideElm.addEventListener("scroll", this._handleScroll, {
+      passive: true,
+    });
 
     this._handleScroll();
 
