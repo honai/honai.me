@@ -1,17 +1,3 @@
-// 日付をブラウザ言語に合わせる
-const dateElements = document.querySelectorAll("[data-js-locale-date]");
-for (const el of dateElements) {
-  const date = new Date(el.getAttribute("datetime"));
-  el.textContent = date.toLocaleDateString();
-}
-
-// インラインコードを読みやすく
-for (const el of document.querySelectorAll(
-  "pre:not([class]), code:not([class])"
-)) {
-  el.classList.add("language-text");
-}
-
 // TOCスクロール連動
 const initTableOfContents = () => {
   const postTocClass = "toc";
