@@ -33,7 +33,7 @@ export default ({
       thumbnailUrl={thumbnail_url || "/images/profile.png"}
       twitterCard={thumbnail_url ? { kind: "large" } : { kind: "normal" }}
       lazyStylesheets={[
-        "https://cdnjs.cloudflare.com/ajax/libs/prism/1.20.0/themes/prism-tomorrow.min.css",
+        "/styles/prism-tomorrow.min.css",
         "https://cdn.jsdelivr.net/npm/katex@0.12.0/dist/katex.min.css",
       ]}
     >

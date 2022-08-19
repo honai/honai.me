@@ -26,7 +26,6 @@
   "dependencies": {
     "@11ty/eleventy": "^1.0.1",
     "@11ty/eleventy-fetch": "^3.0.0",
-    "@11ty/eleventy-plugin-syntaxhighlight": "^4.1.0",
     "@babel/core": "^7.18.2",
     "@babel/preset-env": "^7.18.2",
     "@babel/preset-react": "^7.17.12",
@@ -44,6 +43,7 @@
     "markdown-it-anchor": "^8.6.4",
     "markdown-it-footnote": "^3.0.3",
     "markdown-it-link-attributes": "^4.0.0",
+    "markdown-it-prism": "^2.2.4",
     "preact": "^10.10.0",
     "preact-render-to-string": "^5.2.0"
   },

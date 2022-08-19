@@ -1,17 +1,13 @@
 const fs = require("fs");
 const path = require("path");
 
-const syntaxHighlight = require("@11ty/eleventy-plugin-syntaxhighlight");
 const markdownIt = require("markdown-it");
-const mdItFootnote = require("markdown-it-footnote");
-const markdownItAnchor = require("markdown-it-anchor");
-const markdownItKatex = require("@iktakahiro/markdown-it-katex");
-const markdownItLinkAttrs = require("markdown-it-link-attributes");
 const pluginTOC = require("eleventy-plugin-nesting-toc");
 const yaml = require("js-yaml");
 
 const jsx = require("./customHandlers/jsx");
 const jsBundler = require("./customHandlers/jsBundle");
+const mdLib = require("./customHandlers/mdLib");
 
 const globalVals = [["SITE_DOMAIN", "www.honai.me"]];
 
@@ -40,8 +36,6 @@ module.exports = (eleventyConfig) => {
   // client js
   eleventyConfig.addExtension("mjs", jsBundler);
 
-  eleventyConfig.addPlugin(syntaxHighlight);
-
   // inline markdown
   const mdLibInline = markdownIt({ linkify: true });
   eleventyConfig.addFilter("mdinline", (md) => {
@@ -65,29 +59,13 @@ module.exports = (eleventyConfig) => {
     wrapperClass: "toc",
   });
 
-  // markdown customize
-  const mdLib = markdownIt({ html: true, linkify: true })
-    .use(mdItFootnote)
-    .use(markdownItAnchor)
-    .use(markdownItKatex)
-    .use(markdownItLinkAttrs, {
-      // 自サイトとブログ以外のリンクを target blank
-      matcher(href, config) {
-        const hasScheme = /^(https?:)?\/\//;
-        if (!hasScheme.test(href)) {
-          // 相対パス or 絶対パス or fragment
-          return false;
-        }
-        const sameDomainUrl =
-          /^(https?:)?\/\/((www\.)|(blog\.)|())honai\.me($|[^.])/;
-        return !sameDomainUrl.test(href);
-      },
-      attrs: {
-        target: "_blank",
-        rel: "noopener",
-      },
-    });
   eleventyConfig.setLibrary("md", mdLib);
+
+  // prism css
+  eleventyConfig.addPassthroughCopy({
+    "node_modules/prismjs/themes/prism-tomorrow.min.css":
+      "styles/prism-tomorrow.min.css",
+  });
 
   eleventyConfig.on("eleventy.before", async () => {
     const runMode = process.env.npm_lifecycle_event;
