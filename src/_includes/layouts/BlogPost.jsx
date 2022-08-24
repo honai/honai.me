@@ -83,7 +83,7 @@ export default ({
           ["https://platform.twitter.com/widgets.js"]
         `}</Script>
       )}
-      <script defer src="/scripts/blog-post.js"></script>
+      <script type="module" src="/js/post-page.js"></script>
     </BaseHtml>
   );
 };

@@ -68,6 +68,7 @@ export default ({ slide, page, SITE_DOMAIN }) => {
           </article>
         </div>
       </div>
+      <script type="module" src="/js/slide-page.js"></script>
     </PortfolioLayout>
   );
 };

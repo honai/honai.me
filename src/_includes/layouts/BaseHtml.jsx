@@ -1,4 +1,3 @@
-import * as AC from "../components/AvoidCache";
 import { Seo } from "../components/Seo";
 
 const defaultAsyncStyles = ["https://use.typekit.net/bdo3rru.css"];
@@ -34,7 +33,7 @@ export const BaseHtml = ({
           <link rel="preconnect" href={domain} />
         ))}
 
-        <AC.Link rel="stylesheet" href="/index.css" />
+        <link rel="stylesheet" href="/index.css" />
         <link rel="preload" as="image" href="/images/open_in_new.svg" />
 
         {/* 遅延読み込みするStyleSheet */}
@@ -54,7 +53,7 @@ export const BaseHtml = ({
         </noscript>
 
         {/* theme-toggle */}
-        <script type="module" src="/scripts/theme-toggle.js"></script>
+        <script type="module" src="/js/common.js"></script>
       </head>
       <body>{children}</body>
     </html>

@@ -1,3 +1,4 @@
+import { requestIdleCallback } from "./requestIdleCallback";
 // TODO: WebComponentsにしたい
 function main() {
   /** @type {HTMLSelectElement} */
@@ -36,9 +37,5 @@ function main() {
       : localStorage.removeItem(STORAGE_KEY);
   });
 }
-
-// pollyfill
-const requestIdleCallback =
-  window.requestIdleCallback || ((cb) => setTimeout(cb, 1));
 
 requestIdleCallback(main);

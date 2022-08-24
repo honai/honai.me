@@ -1,3 +1,5 @@
+import { requestIdleCallback } from "./modules/requestIdleCallback";
+
 // TOCスクロール連動
 const initTableOfContents = () => {
   const postTocClass = "toc";
@@ -67,14 +69,7 @@ const loadExternalScripts = () => {
   });
 };
 
-// polyfill
-if (!window.requestIdleCallback) {
-  window.requestIdleCallback = (cb) => {
-    return window.setTimeout(cb, 1);
-  };
-}
-
-window.requestIdleCallback(() => {
+requestIdleCallback(() => {
   initTableOfContents();
   loadExternalScripts();
 });

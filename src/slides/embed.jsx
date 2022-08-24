@@ -1,6 +1,5 @@
 import { SlideCarousel } from "../_includes/components/SlideCarousel";
 import { css } from "../_includes/style.mjs";
-import * as AC from "../_includes/components/AvoidCache";
 
 export const data = {
   pagination: { data: "slides", size: 1, alias: "slide" },
@@ -22,7 +21,7 @@ export default ({ slide, SITE_DOMAIN }) => {
         <meta name="viewport" content="width=device-width" />
         <title>{title}</title>
         <link rel="canonical" href={`https://${SITE_DOMAIN}/slides/${slug}/`} />
-        <AC.Link rel="stylesheet" href="/index.css" />
+        <link rel="stylesheet" href="/index.css" />
       </head>
       <body class={css({ backgroundColor: "$primary" })()}>
         <SlideCarousel slide={slide} embed />

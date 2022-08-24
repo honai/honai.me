@@ -21,6 +21,7 @@ export const ThemeToggle = () => {
           Dark
         </option>
       </select>
+      {/* inline scripts to avoid style flush */}
       <Script>{`
         const stored = localStorage.getItem("${STORAGE_KEY}");
         if (stored === "light") {
