@@ -16,7 +16,7 @@ class Rss {
       copyright: "Honai Ueoka",
     });
     for (const post of data.collections.posts.sort((a, b) => b.date - a.date)) {
-      const canonicalUrl = domain + post.url;
+      const canonicalUrl = `https://${domain + post.url}`;
       feed.addItem({
         title: post.data.title,
         id: canonicalUrl,
