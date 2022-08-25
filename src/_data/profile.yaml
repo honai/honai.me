@@ -35,6 +35,14 @@ jobs:
     title: 株式会社サイバーエージェント（インターン, 3 weeks）
 
 publications:
+  - title: Crosstalk-Aware Backup Network Design against Probabilistic Link Failures in Multi-Core Fiber Optical Path Network
+    authors: Honai Ueoka, Takehiro Sato and Eiji Oki.
+    journal:
+      2022 27th OptoElectronics and Communications Conference (OECC)
+      and 2022 International Conference on Photonics in Switching and Computing (PSC).
+    links:
+      - text: paper
+        url: https://ieeexplore.ieee.org/document/9850212
   - title: Frustratingly Easy Edit-based Linguistic Steganography with a Masked Language Model.
     authors: Honai Ueoka, Yugo Murawaki and Sadao Kurohashi.
     journal:
