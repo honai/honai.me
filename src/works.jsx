@@ -30,6 +30,7 @@ export default ({ profile, page }) => {
                 src={w.thumb}
                 alt={w.name}
                 height="360"
+                loading="lazy"
                 className={css({ width: "100%", height: "auto" })()}
               />
             </a>
