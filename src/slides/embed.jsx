@@ -21,7 +21,7 @@ export default ({ slide, SITE_DOMAIN }) => {
         <meta name="viewport" content="width=device-width" />
         <title>{title}</title>
         <link rel="canonical" href={`https://${SITE_DOMAIN}/slides/${slug}/`} />
-        <link rel="stylesheet" href="/index.css" />
+        <link rel="stylesheet" href="/styles/index.css" />
       </head>
       <body class={css({ backgroundColor: "$primary" })()}>
         <SlideCarousel slide={slide} embed />

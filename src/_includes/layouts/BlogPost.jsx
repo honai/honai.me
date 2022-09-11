@@ -34,7 +34,7 @@ export default ({
       twitterCard={thumbnail_url ? { kind: "large" } : { kind: "normal" }}
       lazyStylesheets={[
         "/styles/prism-tomorrow.min.css",
-        "https://cdn.jsdelivr.net/npm/katex@0.12.0/dist/katex.min.css",
+        "/styles/katex.min.css",
       ]}
     >
       <VerticalGrow>

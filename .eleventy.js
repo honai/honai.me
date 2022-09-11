@@ -66,6 +66,10 @@ module.exports = (eleventyConfig) => {
     "node_modules/prismjs/themes/prism-tomorrow.min.css":
       "styles/prism-tomorrow.min.css",
   });
+  // katex css
+  eleventyConfig.addPassthroughCopy({
+    "node_modules/katex/dist/katex.min.css": "styles/katex.min.css",
+  });
 
   eleventyConfig.on("eleventy.before", async () => {
     const runMode = process.env.npm_lifecycle_event;
@@ -77,7 +81,7 @@ module.exports = (eleventyConfig) => {
   eleventyConfig.on("eleventy.after", async () => {
     // build js
     const { getCssText } = require("./src/_includes/style.mjs");
-    await fs.promises.writeFile("build/index.css", getCssText());
+    await fs.promises.writeFile("build/styles/index.css", getCssText());
   });
 
   return {
