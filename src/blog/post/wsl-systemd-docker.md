@@ -107,4 +107,4 @@ Visual Studio Codeでコンテナ内に直接接続できる機能において�
 参考 :https://github.com/microsoft/vscode-docs/blob/main/remote-release-notes/v1_61.md#execute-in-wsl-setting
 
 ## まとめ
-WSLのsystemdサポートによって、Docker Desktopを使わないWindows上でのLinuxコンテナ用Dockerが利用しやすくなりそうです。
+WSLのsystemdサポートによって、WSL2のディストリビューション上でサービスとしてDockerを利用できることを確認できました。
