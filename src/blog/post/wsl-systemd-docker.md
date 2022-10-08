@@ -33,6 +33,8 @@ systemdがサポートされることで、Dockerもsystemdのサービスとし
 ## プレビューリリースのWSLで試してみる
 ### Disclaimer
 WSLのsystemdサポートは執筆時点でプレビューリリースですので、試す場合は自己責任でお願いします。
+筆者の環境は Windows 11 Pro 22H2 (Build 10.0.22621.521) 、インストールしたプレビューリリースのWSLのバージョンは 0.68.4 です。
+
 
 ### プレビューリリースのWSLの入手
 [アナウンス](https://devblogs.microsoft.com/commandline/systemd-support-is-now-available-in-wsl/) の発表時点（2022年9月21日）では、
