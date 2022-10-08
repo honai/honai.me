@@ -19,7 +19,7 @@ WindowsでLinux用の（Windows Containerではない）Dockerを利用すると
 
 後者の、Docker DesktopなしでWSL2ディストリビューションに直接インストールして使う場合、systemdが動かない現行のWSL2では、
 
-```sh
+```bash
 sudo /etc/init.d/docker start
 ```
 
@@ -60,7 +60,7 @@ systemd=true
 
 設定を反映するため、PowerShell等で `wsl --shutdown` でWSLを終了し、再び起動します。以下のコマンドでサービスの状態を確認できたら、設定が正しく完了しているといえるでしょう。
 
-```sh
+```bash
 sudo systemctl list-unit-files --type=service
 ```
 
@@ -77,7 +77,7 @@ sudo systemctl list-unit-files --type=service
 
 インストールが終わったら、Dockerのデーモンがサービスとして動作しているか確認します。
 
-```sh
+```bash
 $ sudo systemctl status docker
 ● docker.service - Docker Application Container Engine
      Loaded: loaded (/lib/systemd/system/docker.service; enabled; vendor preset: enabled)
