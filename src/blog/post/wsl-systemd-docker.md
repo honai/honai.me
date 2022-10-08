@@ -15,36 +15,35 @@ WSL (Windows Subsystems for Linux) でsystemdのサポートがプレビュー�
 WindowsでLinux用の（Windows Containerではない）Dockerを利用するときには、
 - Docker for Desktopを利用する方法
 - WSL2のディストリビューションに直接インストールする方法
-があると思います。
 
+があると思います。
 後者の、Docker DesktopなしでWSL2ディストリビューションに直接インストールして使う場合、systemdが動かない現行のWSL2では、
 
 ```bash
 sudo /etc/init.d/docker start
 ```
 
-のようなコマンドでデーモンを起動する必要がありました（プロファイルなどを通して自動化することはできます）。
+のようなコマンドでデーモンを起動する必要がありました（プロファイルなどを使って自動化することはできます）。
 
 参考: [Docker Desktopに依存しない、WindowsでのDocker環境 - Qiita](https://qiita.com/ohtsuka1317/items/617a865b8a9d4fb67989)
 
+systemdがサポートされることで、Dockerもsystemdのサービスとして利用できるため、自動でサービスが起動され、`systemctl` 等のコマンドでデーモンを制御できるようになります。
 
-## SystemdのサポートとDocker
-systemdがサポートされることで、dockerもsystemdのサービスとして利用できるため、自動でサービスが起動され、`systemctl` 等のコマンドでデーモンを制御できるようになります。
-
-### Disclaimer
-WSLのsystemdサポートは執筆時点でプレビューリリースなので、試す場合は自己責任でお願いします。
 
 ## プレビューリリースのWSLで試してみる
+### Disclaimer
+WSLのsystemdサポートは執筆時点でプレビューリリースですので、試す場合は自己責任でお願いします。
+
 ### プレビューリリースのWSLの入手
 [アナウンス](https://devblogs.microsoft.com/commandline/systemd-support-is-now-available-in-wsl/) の発表時点（2022年9月21日）では、
 WindowsのInsiderビルドを利用している場合は、Microsoft Store経由でインストール（アップデート）できます。そうでない場合もGitHubからインストーラを入手できるということです。
 
-[Releases · microsoft/WSL](https://github.com/microsoft/WSL/releases)
+[https://github.com/microsoft/WSL/releases](https://github.com/microsoft/WSL/releases)
 
 最新バージョンのAssetsから `Microsoft.WSL_{version}_x64_ARM64.msixbundle` のようなファイルをダウンロードし、ダブルクリックしてインストールします。
 
 ### WSL2のディストリビューションのインストール
-PowerShell等から `wsl --install` コマンドを使ってディストリビューションをインストールします。筆者はDebianを使っているので以降はDebianでの動作確認になっています。
+PowerShell等から `wsl --install` コマンドを使ってディストリビューションをインストールします。筆者はDebianを使っているので以降はDebianでの例になっています。
 
 WSLのインストールが初回の場合はここでWindowsの再起動が必要になるかもしれません。
 
@@ -58,7 +57,7 @@ WSLのインストールが初回の場合はここでWindowsの再起動が必�
 systemd=true
 ```
 
-設定を反映するため、PowerShell等で `wsl --shutdown` でWSLを終了し、再び起動します。以下のコマンドでサービスの状態を確認できたら、設定が正しく完了しているといえるでしょう。
+設定を反映するため、PowerShell等で `wsl --shutdown` でWSLを終了し、再び起動します。以下のコマンドでサービスの状態を確認できたら、正しく設定できているといえるでしょう。
 
 ```bash
 sudo systemctl list-unit-files --type=service
