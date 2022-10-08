@@ -2,7 +2,7 @@
 title: WSLのsystemdサポートでDocker Engineをサービスとして利用する
 description: WSLでsystemdのサポートがプレビューで利用可能になりました。この記事ではWSL2にDocker Engineを直接インストールしてsystemdのサービスとしてデーモンを自動起動できることを確かめます。
 date: 2022-10-08
-# thumbnail_cld: sample.png
+thumbnail_cld: wsl-systemctl-docker.png
 ---
 
 ## 背景
