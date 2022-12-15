@@ -29,7 +29,7 @@
     "@babel/core": "^7.18.2",
     "@babel/preset-env": "^7.18.2",
     "@babel/preset-react": "^7.17.12",
-    "@babel/register": "^7.17.7",
+    "@babel/register": "^7.18.9",
     "@cloudinary/url-gen": "^1.8.0",
     "@iktakahiro/markdown-it-katex": "^4.0.1",
     "@stitches/core": "^1.2.8",
