@@ -27,7 +27,7 @@
     "@11ty/eleventy": "^1.0.1",
     "@11ty/eleventy-fetch": "^3.0.0",
     "@babel/core": "^7.18.2",
-    "@babel/preset-env": "^7.18.2",
+    "@babel/preset-env": "^7.20.2",
     "@babel/preset-react": "^7.17.12",
     "@babel/register": "^7.17.7",
     "@cloudinary/url-gen": "^1.8.0",
