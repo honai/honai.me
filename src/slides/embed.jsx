@@ -25,6 +25,7 @@ export default ({ slide, SITE_DOMAIN }) => {
       </head>
       <body class={css({ backgroundColor: "$primary" })()}>
         <SlideCarousel slide={slide} embed />
+        <script type="module" src="/js/slide-page.js"></script>
       </body>
     </html>
   );
