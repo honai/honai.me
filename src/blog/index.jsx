@@ -36,7 +36,12 @@ export default ({ pagination }) => {
             <div class={thumb({ display: p.thumb ? null : "hideOnSm" })}>
               {p.thumb ? (
                 <a href={p.url} class={css({ width: "100%" })()}>
-                  <img src={p.thumb.url} alt={p.thumb.alt} class={thumbImg()} />
+                  <img
+                    src={p.thumb.url}
+                    alt={p.thumb.alt}
+                    loading="lazy"
+                    class={thumbImg()}
+                  />
                 </a>
               ) : (
                 <span

@@ -11,17 +11,11 @@ export const ArticleHeader = ({ title, published, updated }) => (
     <h1 class="title">{title}</h1>
     <div>
       <div class={css({ centuryGothic: true })()}>
-        <time data-js-locale-date dateTime={published}>
-          {published}
-        </time>
+        <time dateTime={published}>{published}</time>
         {updated && (
           <>
             {" "}
-            (Updated at{" "}
-            <time data-js-locale-date dateTime={updated}>
-              {updated}
-            </time>
-            )
+            (Updated at <time dateTime={updated}>{updated}</time>)
           </>
         )}
       </div>

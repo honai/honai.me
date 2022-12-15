@@ -48,6 +48,9 @@ const {
     radii: {
       defaultRad: "4px",
     },
+    fonts: {
+      mono: "Consolas,Monaco,'Andale Mono','Ubuntu Mono',monospace",
+    },
   },
   utils: {
     centuryGothic: (_) => ({
