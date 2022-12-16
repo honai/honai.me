@@ -1,20 +1,13 @@
-/**
- * @typedef Slide
- * @prop {string} title
- * @prop {string} url
- * @prop {string} thumb
- * @prop {string} subtitle
- * @prop {string} date
- */
+import { css } from "../style.js";
+import { DateTag } from "./DateTag.js";
 
-import { css } from "../style.mjs";
-import { DateTag } from "./DateTag.jsx";
+type Slide = Record<"title" | "url" | "thumb" | "subtitle" | "date", string>;
 
 /**
  * @param {object} p
  * @param {Slide[]} p.slides
  */
-export const SlideList = ({ slides }) => {
+export const SlideList = ({ slides }: { slides: Slide[] }) => {
   return (
     <div class={listSty()}>
       {slides.map((s) => (

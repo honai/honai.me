@@ -9,6 +9,8 @@ import { wrapPage } from "./lib/page.js";
 import { getCssText } from "./src/_includes/style.js";
 import { Profile } from "./src/_data/profile.js";
 import Works from "./src/works.js";
+import SlideIndex from "./src/slides/index.js";
+import getSlides from "./src/_data/slides.js";
 
 const cwd = process.cwd();
 const distDir = path.join(cwd, "build");
@@ -21,6 +23,7 @@ async function build() {
       encoding: "utf-8",
     })
   ) as Profile;
+  const slides = await getSlides();
 
   await fs.cp(staticDir, distDir, { recursive: true });
   await Promise.all([
@@ -29,6 +32,10 @@ async function build() {
     write(
       "/works/index.html",
       wrapPage("/works/", () => Works({ profile }))
+    ),
+    write(
+      "/slides/index.html",
+      wrapPage("/slides/", () => SlideIndex({ slides }))
     ),
   ]);
   await write("/styles/index.css", getCssText());

@@ -18,6 +18,7 @@
     "format": "prettier --write --ignore-path .gitignore \"**/*.{js,mjs,jsx,json,yaml,scss,css}\""
   },
   "dependencies": {
+    "@11ty/eleventy-fetch": "^3.0.0",
     "@stitches/core": "^1.2.8",
     "cloudinary": "^1.33.0",
     "esbuild": "^0.15.18",

@@ -1,4 +1,6 @@
-import { ComponentChild, VNode } from "preact";
+import { ComponentChild, VNode, JSX } from "preact";
+
+export type HTMLAttributes<T extends EventTarget> = JSX.HTMLAttributes<T>;
 
 export type FC<P = {}> = (props: P) => VNode;
 

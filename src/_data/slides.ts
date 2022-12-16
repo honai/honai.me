@@ -1,13 +1,15 @@
-const EleventyFetch = require("@11ty/eleventy-fetch");
-const cloudinary = require("cloudinary").v2;
+import EleventyFetch from "@11ty/eleventy-fetch";
+import { v2 as cloudinary } from "cloudinary";
+import { Slide, SlideRes } from "../types.js";
 
 cloudinary.config({ cloud_name: "honai", secure: true });
 
-/** @returns {Promise<import("../../types").Slide[]>} */
-module.exports = async () => {
+export default async (): Promise<Slide[]> => {
   const url = "https://slides.honai.me/index.json";
-  /** @type {import("../../types").SlideRes[]} */
-  const res = await EleventyFetch(url, { type: "json", duration: "1d" });
+  const res = (await EleventyFetch(url, {
+    type: "json",
+    duration: "1d",
+  })) as SlideRes[];
   const t = res
     .map((s) => ({
       ...s,
