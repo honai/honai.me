@@ -1,29 +1,16 @@
-import { css, cx, darkTheme, uc } from "../../style.mjs";
-import { Nav } from "./Nav.jsx";
+import { Slide } from "../../../types.js";
+import { css, cx, darkTheme, uc } from "../../style.js";
+import { Nav, SlideCarouselNavProps } from "./Nav.jsx";
 
-/**
- * @typedef Rect
- * @prop {number} x
- * @prop {number} y
- * @prop {number} width
- * @prop {number} height
- */
+type Rect = Record<"x" | "y" | "width" | "height", number>;
 
-/**
- * @typedef SlidePage
- * @prop {(Rect & {url: string})[]} links
- * @prop {number} width
- * @prop {number} height
- * @prop {string} text
- * @prop {string} imageUrl
- */
-
-/**
- * @param {object} p
- * @param {import("../../../../types").Slide} p.slide
- * @param {boolean} [p.embed]
- */
-export const SlideCarousel = ({ slide, embed }) => {
+export const SlideCarousel = ({
+  slide,
+  embed,
+}: {
+  slide: Slide;
+  embed?: boolean;
+}) => {
   const slides = slide.pages.map((s) => {
     const links = s.links.map(({ url, ...rect }) => {
       return { position: rectToPos(rect, s.width, s.height), url };
@@ -108,6 +95,18 @@ const slideTitle = css({
   alignItems: "center",
 });
 
+interface ItemProps {
+  id: string;
+  imageUrl: string;
+  thumbUrl: string;
+  alt: string;
+  width: number;
+  height: number;
+  lazy: boolean;
+  links: { url: string; position: ReturnType<typeof rectToPos> }[];
+  nav: SlideCarouselNavProps;
+}
+
 /**
  * @param {object} p
  * @param {string} p.id
@@ -130,7 +129,7 @@ const SlideCarouselItem = ({
   links,
   lazy,
   nav,
-}) => {
+}: ItemProps) => {
   return (
     <div id={id} class={slideWrap()} tabIndex={0}>
       <div
@@ -228,12 +227,7 @@ const linkOverlay = css({
   },
 });
 
-/**
- * @param {Rect} rect
- * @param {number} width
- * @param {number} height
- */
-function rectToPos(rect, width, height) {
+function rectToPos(rect: Rect, width: number, height: number) {
   return {
     left: toPercent(rect.x / width),
     top: toPercent(rect.y / height),
@@ -243,7 +237,7 @@ function rectToPos(rect, width, height) {
 }
 
 /** @param {number} n */
-function toPercent(n, digits = 2) {
+function toPercent(n: number, digits = 2) {
   const val = Math.round(n * 100 * 10 ** digits) / 10 ** digits;
   return `${val.toString()}%`;
 }

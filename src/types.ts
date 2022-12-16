@@ -69,13 +69,3 @@ export type TwitterCard =
   | TwitterCardNormal
   | TwitterCardLarge
   | TwitterCardPlayer;
-
-export interface SlideCarouselNavProps {
-  prev?: string;
-  next?: string;
-  first: string;
-  last: string;
-  total: number;
-  /** 0-indexed */
-  current: number;
-}

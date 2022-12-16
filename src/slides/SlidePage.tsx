@@ -1,27 +1,19 @@
-import { SlideCarousel } from "../_includes/components/SlideCarousel";
-import { TitleDate } from "../_includes/components/TitleDate";
-import { PortfolioLayout } from "../_includes/layouts/PortfolioLayout";
-import { css } from "../_includes/style.mjs";
+import { Slide } from "../types.js";
+import { SlideCarousel } from "../_includes/components/SlideCarousel/index.jsx";
+import { TitleDate } from "../_includes/components/TitleDate.jsx";
+import { useEleventy } from "../_includes/EleventyContext.js";
+import { PortfolioLayout } from "../_includes/layouts/PortfolioLayout.js";
+import { css } from "../_includes/style.js";
 
-export const data = {
-  pagination: { data: "slides", size: 1, alias: "slide" },
-  permalink: (/** @type {any} */ data) => `/slides/${data.slide.slug}/`,
-};
-
-/**
- * @param {object} p
- * @param {import("../../types").Slide} p.slide
- * @param {import("../../types").EleventyPage} p.page
- * @param {string} p.SITE_DOMAIN
- */
-export default ({ slide, page, SITE_DOMAIN }) => {
+export default ({ slide }: { slide: Slide }) => {
+  const { SITE_DOMAIN } = useEleventy();
   const { title, date, pages, slug } = slide;
   const numRatio = pages[0].width / pages[0].height;
   const ratio = numRatio.toPrecision(4);
   const embedUrl = `https://${SITE_DOMAIN}/slides/embed/${slug}/`;
   const encodedTitle = title.replaceAll('"', "&quot;");
   const embedCode = `<iframe src="${embedUrl}" title="${encodedTitle}" width="100%" style="aspect-ratio:${ratio}" frameborder="0" allowfullscreen></iframe>`;
-  const scriptListItems = pages.map(({ text, slideId }, i) => {
+  const scriptListItems = pages.map(({ text, slideId }) => {
     const [alt, ...rest] = text.split("\n");
     return (
       <li>
@@ -32,7 +24,6 @@ export default ({ slide, page, SITE_DOMAIN }) => {
   const playerCardWidth = 320;
   return (
     <PortfolioLayout
-      pageUrl={page.url}
       subTitle={title}
       thumbnailUrl={slide.pages[0].imageUrl}
       twitterCard={{

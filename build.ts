@@ -11,6 +11,7 @@ import { Profile } from "./src/_data/profile.js";
 import Works from "./src/works.js";
 import SlideIndex from "./src/slides/index.js";
 import getSlides from "./src/_data/slides.js";
+import SlidePage from "./src/slides/SlidePage.js";
 
 const cwd = process.cwd();
 const distDir = path.join(cwd, "build");
@@ -37,7 +38,15 @@ async function build() {
       "/slides/index.html",
       wrapPage("/slides/", () => SlideIndex({ slides }))
     ),
+    ...slides.map((s) =>
+      write(
+        `/slides/${s.slug}/index.html`,
+        wrapPage(`/slides/${s.slug}/`, () => SlidePage({ slide: s }))
+      )
+    ),
   ]);
+
+  // css
   await write("/styles/index.css", getCssText());
 }
 

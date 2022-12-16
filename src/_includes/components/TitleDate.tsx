@@ -1,7 +1,13 @@
-import { css } from "../style.mjs";
-import { DateTag } from "./DateTag.jsx";
+import { css } from "../style.js";
+import { DateTag } from "./DateTag.js";
 
-export const TitleDate = ({ title, date }) => {
+export const TitleDate = ({
+  title,
+  date,
+}: {
+  title: string;
+  date: Date | string;
+}) => {
   return (
     <div
       class={css({

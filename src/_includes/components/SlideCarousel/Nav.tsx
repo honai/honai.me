@@ -1,10 +1,24 @@
-import { css, cx, uc } from "../../style.mjs";
+import { css, cx, uc } from "../../style.js";
 
-/**
- * @param {import("../../../../types").SlideCarouselNavProps} p
- */
-export const Nav = ({ next, prev, first, last, total, current }) => {
-  const hashHref = (s) => (s ? { href: `#${s}` } : {});
+export interface SlideCarouselNavProps {
+  prev?: string;
+  next?: string;
+  first: string;
+  last: string;
+  total: number;
+  /** 0-indexed */
+  current: number;
+}
+
+export const Nav = ({
+  next,
+  prev,
+  first,
+  last,
+  total,
+  current,
+}: SlideCarouselNavProps) => {
+  const hashHref = (s: string | undefined) => (s ? { href: `#${s}` } : {});
   return (
     <div class={cx(slideNav(), uc.emojiFont)} data-hide-nav>
       <a {...hashHref(first)} title="最初のスライド">
