@@ -32,7 +32,7 @@
   },
   "type": "module",
   "engines": {
-    "node": ">=18 <19"
+    "node": ">=16 <19"
   },
   "devDependencies": {
     "@types/js-yaml": "^4.0.5",
