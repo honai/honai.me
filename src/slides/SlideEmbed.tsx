@@ -1,19 +1,11 @@
-import { SlideCarousel } from "../_includes/components/SlideCarousel";
-import { css } from "../_includes/style.mjs";
+import { Slide } from "../types.js";
+import { SlideCarousel } from "../_includes/components/SlideCarousel/index.js";
+import { useEleventy } from "../_includes/EleventyContext.js";
+import { css } from "../_includes/style.js";
 
-export const data = {
-  pagination: { data: "slides", size: 1, alias: "slide" },
-  permalink: (/** @type {any} */ data) => `/slides/embed/${data.slide.slug}/`,
-};
-
-/**
- * @param {object} p
- * @param {import("../../types").Slide} p.slide
- * @param {import("../../types").EleventyPage} p.page
- * @param {string } p.SITE_DOMAIN
- */
-export default ({ slide, SITE_DOMAIN }) => {
+export default ({ slide }: { slide: Slide }) => {
   const { title, slug } = slide;
+  const { SITE_DOMAIN } = useEleventy();
   return (
     <html lang="ja">
       <head>
