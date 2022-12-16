@@ -1,4 +1,4 @@
-import { css, uc } from "../style.mjs";
+import { css, uc } from "../style.js";
 
 export const Footer = () => (
   <footer class={style()}>

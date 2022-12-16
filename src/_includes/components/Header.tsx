@@ -1,13 +1,9 @@
-import { useEleventy } from "../EleventyContext.jsx";
-import { css, uc } from "../style.mjs";
-import { ThemeToggle } from "./ThemeToggle";
+import { useEleventy } from "../EleventyContext.js";
+import { css, uc } from "../style.js";
+import { ThemeToggle } from "./ThemeToggle.js";
 
-export const Header = ({ maxWidth }) => {
+export const Header = ({ maxWidth }: { maxWidth: string }) => {
   const { page } = useEleventy();
-  if (!page.url) {
-    // permalinkがfalseの場合
-    return;
-  }
   const segment = page.url.split("/")[1];
   const showSegment = segment !== "" && !segment.endsWith(".html");
   const segmentMatch = page.url === `/${segment}/`;

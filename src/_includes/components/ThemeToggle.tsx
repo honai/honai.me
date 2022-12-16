@@ -1,5 +1,5 @@
-import { css, darkTheme, lightTheme } from "../style.mjs";
-import { SpanSvg } from "../svg";
+import { css, darkTheme, lightTheme } from "../style.js";
+import { SpanSvg } from "../svg/index.js";
 import { Script } from "./Script.jsx";
 
 const STORAGE_KEY = "theme-toggle-scheme";

@@ -2,6 +2,9 @@ import fs from "node:fs/promises";
 import path from "node:path";
 
 import _redirects from "./src/_redirects.js";
+import NotFound from "./src/404.js";
+import { wrapPage } from "./lib/page.js";
+import { getCssText } from "./src/_includes/style.js";
 
 const cwd = process.cwd();
 const distDir = path.join(cwd, "build");
@@ -10,7 +13,11 @@ const staticDir = path.join(cwd, "static");
 
 async function build() {
   await fs.cp(staticDir, distDir, { recursive: true });
-  Promise.all([write("/_redirects", _redirects)]);
+  await Promise.all([
+    write("/_redirects", _redirects),
+    write("/404.html", wrapPage("/404.html", NotFound)),
+  ]);
+  await write("/styles/index.css", getCssText());
 }
 
 type AbsolutePath = `/${string}`;

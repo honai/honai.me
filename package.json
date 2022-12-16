@@ -6,8 +6,10 @@
   "author": "Honai Ueoka",
   "private": true,
   "scripts": {
-    "build": "eleventy",
+    "build": "tsm build.ts --tsmconfig .tsm.js",
+    "tscheck": "tsc --noEmit",
     "clean": "rimraf build",
+    "start": "serve build",
     "dev": "eleventy --serve",
     "dev-f": "run-p dev:eleventy dev:wrangler",
     "dev:wrangler": "wrangler pages dev build",
@@ -22,6 +24,7 @@
     "gray-matter": "^4.0.3",
     "js-yaml": "^4.1.0",
     "lit-html": "^2.5.0",
+    "marked": "^4.2.4",
     "preact": "^10.11.3",
     "preact-render-to-string": "^5.2.6",
     "tsm": "^2.3.0"
@@ -31,8 +34,10 @@
     "node": ">=18 <19"
   },
   "devDependencies": {
+    "@types/marked": "^4.0.8",
     "@types/node": "^18.11.15",
     "rimraf": "^3.0.2",
+    "serve": "^14.1.2",
     "typescript": "^4.9.4"
   }
 }

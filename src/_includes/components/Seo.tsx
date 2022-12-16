@@ -1,14 +1,21 @@
-import { useEleventy } from "../EleventyContext";
+import type { FC, TwitterCard } from "../../types.js";
+import { useEleventy } from "../EleventyContext.js";
 
-/**
- * @param {object} props
- * @param {string} props.title
- * @param {string} props.description
- * @param {string} props.thumbnailUrl  // ドメインなしの絶対パス指定可
- * @param {import("../../../types").TwitterCard} props.twitterCard
- */
-export const Seo = ({ title, description, thumbnailUrl, twitterCard }) => {
-  const { page, SITE_DOMAIN, eleventy } = useEleventy();
+interface Props {
+  title: string;
+  description: string;
+  /** ドメインなしの絶対パス指定可 */
+  thumbnailUrl: string;
+  twitterCard: TwitterCard;
+}
+
+export const Seo: FC<Props> = ({
+  title,
+  description,
+  thumbnailUrl,
+  twitterCard,
+}) => {
+  const { page, SITE_DOMAIN } = useEleventy();
   const canonicalUrl = `https://${SITE_DOMAIN}${page.url}`;
   const ogpImageUrl = ogpImage(thumbnailUrl, SITE_DOMAIN);
   return (
@@ -29,16 +36,11 @@ export const Seo = ({ title, description, thumbnailUrl, twitterCard }) => {
       <TwitterCard card={twitterCard} />
 
       <link rel="icon" href="/favicon.ico" />
-      <meta name="generator" content={eleventy.generator} />
     </>
   );
 };
 
-/**
- * @param {Object} p
- * @param {import("../../../types").TwitterCard} p.card
- */
-const TwitterCard = ({ card }) => {
+const TwitterCard = ({ card }: { card: TwitterCard }) => {
   const common = <meta name="twitter:site" content="@_honai" />;
   switch (card.kind) {
     case "normal":
@@ -70,8 +72,7 @@ const TwitterCard = ({ card }) => {
   }
 };
 
-/** @param {string} url @param {string} domain */
-function ogpImage(url, domain) {
+function ogpImage(url: string, domain: string) {
   if (/^https?:\/\//.test(url)) {
     return url;
   }

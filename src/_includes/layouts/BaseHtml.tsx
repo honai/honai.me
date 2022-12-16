@@ -1,4 +1,5 @@
-import { Seo } from "../components/Seo";
+import type { Children, FC, TwitterCard } from "../../types.js";
+import { Seo } from "../components/Seo.js";
 
 const defaultAsyncStyles = ["https://use.typekit.net/bdo3rru.css"];
 const preconnectDomains = [
@@ -6,10 +7,16 @@ const preconnectDomains = [
   "https://res.cloudinary.com",
 ];
 
-/**
- * @param {import("../../../types").BaseHtmlProps} props
- */
-export const BaseHtml = ({
+interface Props {
+  title: string;
+  description: string;
+  thumbnailUrl: string;
+  twitterCard: TwitterCard;
+  lazyStylesheets?: string[];
+  children: Children;
+}
+
+export const BaseHtml: FC<Props> = ({
   title,
   description,
   thumbnailUrl,

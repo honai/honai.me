@@ -1,3 +1,11 @@
+import type { ComponentChild, FunctionComponent, VNode } from "preact";
+
+export interface FC<P = {}> extends FunctionComponent<P> {
+  (props: P, context?: any): VNode<any> | null;
+}
+
+export type Children = ComponentChild;
+
 export interface EleventyPage {
   url: string;
 }
@@ -35,7 +43,7 @@ type SlidePage = Omit<SlidePageRes, "image"> & {
   slideId: string;
 };
 
-export interface Slide extends SlideRes {
+export interface Slide extends Omit<SlideRes, "pages"> {
   pages: SlidePage[];
   thumbnail: string;
 }
@@ -68,13 +76,4 @@ export interface SlideCarouselNavProps {
   total: number;
   /** 0-indexed */
   current: number;
-}
-
-export interface BaseHtmlProps {
-  title: string;
-  description: string;
-  thumbnailUrl: string;
-  twitterCard: TwitterCard;
-  lazyStylesheets?: string[];
-  children: any;
 }

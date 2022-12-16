@@ -1,11 +1,12 @@
-import { css, uc } from "../style.mjs";
+import { css, uc } from "../style.js";
 
-/**
- * @param {object} p
- * @param {string} p.title
- * @param {boolean} [p.showNav]
- */
-export const PortfolioHero = ({ title, showNav }) => (
+export const PortfolioHero = ({
+  title,
+  showNav,
+}: {
+  title: string;
+  showNav?: boolean;
+}) => (
   <>
     <div
       class={css({

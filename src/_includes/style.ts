@@ -1,10 +1,11 @@
 import { createStitches } from "@stitches/core";
 
-const themeToObjStyle = (theme) => {
-  const res = {};
+const themeToObjStyle = (theme: typeof darkTheme) => {
+  const res: Record<string, string> = {};
   // TODO: add other than colors
   [theme.colors].forEach((tokens) => {
-    Object.keys(tokens).forEach((k) => {
+    // @ts-ignore
+    Object.keys(tokens).forEach((k: keyof typeof tokens) => {
       const token = tokens[k];
       res[token.variable] = token.value;
     });
@@ -12,7 +13,7 @@ const themeToObjStyle = (theme) => {
   return res;
 };
 
-const minWidthMedia = (px) => `screen and (min-width: ${px}px)`;
+const minWidthMedia = (px: number) => `screen and (min-width: ${px}px)`;
 
 const {
   css,
@@ -53,7 +54,7 @@ const {
     },
   },
   utils: {
-    centuryGothic: (_) => ({
+    centuryGothic: () => ({
       fontFamily: '"Century Gothic", CenturyGothic, century-gothic, sans-serif',
       fontStyle: "normal",
       fontWeight: 400,
@@ -76,8 +77,7 @@ const darkTheme = createTheme({
   },
 });
 
-/** @param {"start" | "end"} d */
-const openInNewPseudo = (d) => ({
+const openInNewPseudo = (d: "start" | "end") => ({
   [d === "start" ? `&::before` : `&::after`]: {
     $$image: "url('/images/open_in_new.svg')",
     content: "",
@@ -193,7 +193,6 @@ const getCssText = () => {
   return getCssTextInternal();
 };
 
-/** @type {(...classNames: string[]) => string} */
-const cx = (...classNames) => classNames.join(" ");
+const cx = (...classNames: string[]) => classNames.join(" ");
 
 export { css, getCssText, keyframes, cx, uc, darkTheme, lightTheme };
