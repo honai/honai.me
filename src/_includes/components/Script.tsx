@@ -1,4 +1,4 @@
-import type { JSX } from "preact";
+import { JSX } from "preact";
 
 interface Props extends JSX.HTMLAttributes<HTMLScriptElement> {
   children: string;

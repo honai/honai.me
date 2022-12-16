@@ -4,11 +4,13 @@ import { fileURLToPath } from "node:url";
 
 import { createContext } from "preact";
 import { useContext } from "preact/hooks";
+import { marked } from "marked";
 
 interface EleventyContextVal {
   page: { url: string };
   isodate: (date: string | Date) => string;
-  // mdinline: (md: string) => string;
+  /** inlineといいつつblock parseする */
+  mdinline: (md: string) => string;
   svginline: (svgBasename: string) => string;
   // toc: (content: string) => string;
   SITE_DOMAIN: string;
@@ -41,6 +43,7 @@ export const ContextInitialValue: EleventyContextVal = {
       encoding: "utf-8",
     });
   },
+  mdinline: (md: string) => marked.parse(md),
 };
 const EleventyContext = createContext<EleventyContextVal>(ContextInitialValue);
 

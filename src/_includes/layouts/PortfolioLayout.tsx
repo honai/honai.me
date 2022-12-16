@@ -1,5 +1,4 @@
-import type { ComponentChildren } from "preact";
-import type { TwitterCard } from "../../types.js";
+import { TwitterCard } from "../../types.js";
 import { Children } from "../../types.js";
 import { Footer } from "../components/Footer.js";
 import { Header } from "../components/Header.js";

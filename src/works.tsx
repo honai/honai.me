@@ -1,17 +1,14 @@
-import { PortfolioHero } from "./_includes/components/PortfolioHero";
-import SimpleCard from "./_includes/components/SimpleCard";
-import { useEleventy } from "./_includes/EleventyContext";
-import { PortfolioLayout } from "./_includes/layouts/PortfolioLayout";
-import { css } from "./_includes/style.mjs";
+import { Profile } from "./_data/profile.js";
+import { PortfolioHero } from "./_includes/components/PortfolioHero.js";
+import SimpleCard from "./_includes/components/SimpleCard.jsx";
+import { useEleventy } from "./_includes/EleventyContext.js";
+import { PortfolioLayout } from "./_includes/layouts/PortfolioLayout.js";
+import { css } from "./_includes/style.js";
 
-export default ({ profile, page }) => {
+export default ({ profile }: { profile: Profile }) => {
   const { mdinline } = useEleventy();
   return (
-    <PortfolioLayout
-      pageUrl={page.url}
-      subTitle="Works"
-      description="Works by Honai"
-    >
+    <PortfolioLayout subTitle="Works" description="Works by Honai">
       <PortfolioHero title="Works" />
       <div
         class={css({
@@ -23,7 +20,7 @@ export default ({ profile, page }) => {
         })()}
       >
         {profile.works.map((w, i) => (
-          <SimpleCard id={i} title={w.name} href={w.url}>
+          <SimpleCard id={i.toString()} title={w.name} href={w.url}>
             <a href={w.url}>
               {/* FIXME: height */}
               <img

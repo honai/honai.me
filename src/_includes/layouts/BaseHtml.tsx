@@ -1,4 +1,4 @@
-import type { Children, FC, TwitterCard } from "../../types.js";
+import { Children, FC, TwitterCard } from "../../types.js";
 import { Seo } from "../components/Seo.js";
 
 const defaultAsyncStyles = ["https://use.typekit.net/bdo3rru.css"];

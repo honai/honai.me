@@ -1,4 +1,4 @@
-import type { JSX } from "preact";
+import { JSX } from "preact";
 
 import { useEleventy } from "../EleventyContext.js";
 

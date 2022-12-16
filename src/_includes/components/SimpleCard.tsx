@@ -1,13 +1,15 @@
-import { css, uc } from "../style.mjs";
+import { Children, ChildrenOnly } from "../../types.js";
+import { css, uc } from "../style.js";
 
-/**
- * @param {object} p
- * @param {string=} p.id
- * @param {string} p.title
- * @param {string=} p.href defaults to self
- * @param {any} p.children
- */
-const SimpleCard = ({ id, title, href, children }) => (
+interface Props {
+  id?: string;
+  title: string;
+  /** defaults to self */
+  href?: string;
+  children: Children;
+}
+
+const SimpleCard = ({ id, title, href, children }: Props) => (
   <section id={id} class={wrap()}>
     <h2 class={heading()}>
       {href || id ? (
@@ -41,7 +43,9 @@ const heading = css({
   centuryGothic: true,
 });
 
-const CardContent = ({ children }) => <div class={content()}>{children}</div>;
+const CardContent: ChildrenOnly = ({ children }) => (
+  <div class={content()}>{children}</div>
+);
 
 const content = css({
   padding: "1.5rem",

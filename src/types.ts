@@ -1,10 +1,10 @@
-import type { ComponentChild, FunctionComponent, VNode } from "preact";
+import { ComponentChild, VNode } from "preact";
 
-export interface FC<P = {}> extends FunctionComponent<P> {
-  (props: P, context?: any): VNode<any> | null;
-}
+export type FC<P = {}> = (props: P) => VNode;
 
 export type Children = ComponentChild;
+
+export type ChildrenOnly<C = Children> = FC<{ children: C }>;
 
 export interface EleventyPage {
   url: string;

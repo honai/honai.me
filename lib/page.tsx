@@ -1,4 +1,4 @@
-import type { JSX } from "preact";
+import { JSX } from "preact";
 import { renderToString } from "preact-render-to-string";
 import EleventyContext, {
   ContextInitialValue,

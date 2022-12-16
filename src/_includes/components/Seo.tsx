@@ -1,4 +1,4 @@
-import type { FC, TwitterCard } from "../../types.js";
+import { FC, TwitterCard } from "../../types.js";
 import { useEleventy } from "../EleventyContext.js";
 
 interface Props {

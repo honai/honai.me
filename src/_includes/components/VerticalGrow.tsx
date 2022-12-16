@@ -1,7 +1,5 @@
-import { FC, Children } from "../../types.js";
+import { ChildrenOnly } from "../../types.js";
 import { css } from "../style.js";
-
-type ChildrenOnly = FC<{ children: Children }>;
 
 export const Grow: ChildrenOnly = ({ children }) => (
   <div class={grow()}>{children}</div>

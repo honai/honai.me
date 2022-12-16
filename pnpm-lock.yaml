@@ -2,6 +2,7 @@ lockfileVersion: 5.4
 
 specifiers:
   '@stitches/core': ^1.2.8
+  '@types/js-yaml': ^4.0.5
   '@types/marked': ^4.0.8
   '@types/node': ^18.11.15
   cloudinary: ^1.33.0
@@ -30,6 +31,7 @@ dependencies:
   tsm: 2.3.0
 
 devDependencies:
+  '@types/js-yaml': 4.0.5
   '@types/marked': 4.0.8
   '@types/node': 18.11.15
   rimraf: 3.0.2
@@ -65,6 +67,10 @@ packages:
     engines: {node: '>= 6'}
     dev: false
     optional: true
+
+  /@types/js-yaml/4.0.5:
+    resolution: {integrity: sha512-FhpRzf927MNQdRZP0J5DLIdTXhjLYzeUTmLAu69mnVksLH9CJY3IuSeEgbKUki7GQZm0WqDkGzyxju2EZGD2wA==}
+    dev: true
 
   /@types/marked/4.0.8:
     resolution: {integrity: sha512-HVNzMT5QlWCOdeuBsgXP8EZzKUf0+AXzN+sLmjvaB3ZlLqO+e4u0uXrdw9ub69wBKFs+c6/pA4r9sy6cCDvImw==}
