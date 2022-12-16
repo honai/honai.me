@@ -8,15 +8,4 @@ const redirects = [
   { from: "/post/*", to: "/blog/post/:splat" },
 ];
 
-class Redirects {
-  data() {
-    return {
-      permalink: "/_redirects",
-    };
-  }
-  render() {
-    return redirects.map(({ from, to }) => `${from} ${to} 308`).join("\n");
-  }
-}
-
-module.exports = Redirects;
+export default redirects.map(({ from, to }) => `${from} ${to} 308`).join("\n");
