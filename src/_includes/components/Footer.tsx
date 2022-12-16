@@ -1,5 +1,5 @@
 import { css, uc } from "../style.js";
-
+const year = new Date().getFullYear();
 export const Footer = () => (
   <footer class={style()}>
     <nav
@@ -31,17 +31,8 @@ export const Footer = () => (
         fontSize: "1.4rem",
       })()}
     >
-      &copy; 2021 Honai Ueoka.
+      &copy; {year} Honai Ueoka.
       <br />
-      Powered by{" "}
-      <a
-        href="https://www.11ty.dev/"
-        target="_blank"
-        rel="noopener"
-        class={uc.uncolor}
-      >
-        Eleventy
-      </a>
     </div>
   </footer>
 );
