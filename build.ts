@@ -13,6 +13,9 @@ import SlideIndex from "./src/slides/index.js";
 import getSlides from "./src/_data/slides.js";
 import SlidePage from "./src/slides/SlidePage.js";
 import SlideEmbed from "./src/slides/SlideEmbed.js";
+import { getTalks } from "./src/talks/talks.js";
+import TalkPage from "./src/_includes/layouts/TalkPage.js";
+import TalkIndex from "./src/TalkIndex.js";
 
 const cwd = process.cwd();
 const distDir = path.join(cwd, "build");
@@ -26,12 +29,14 @@ async function build() {
     })
   ) as Profile;
   const slides = await getSlides();
+  const talks = await getTalks();
 
   await fs.cp(staticDir, distDir, { recursive: true });
   await Promise.all([
     write("/_redirects", _redirects),
     write("/404.html", wrapPage("/404.html", NotFound)),
     writePage("/works/", (u) => wrapPage(u, () => Works({ profile }))),
+    // slides
     writePage("/slides/", (u) => wrapPage(u, () => SlideIndex({ slides }))),
     ...slides.map((s) =>
       writePage(`/slides/${s.slug}/`, (u) =>
@@ -41,6 +46,13 @@ async function build() {
     ...slides.map((s) =>
       writePage(`/slides/embed/${s.slug}/`, (u) =>
         wrapPage(u, () => SlideEmbed({ slide: s }))
+      )
+    ),
+    // talks
+    writePage("/talks/", (u) => wrapPage(u, () => TalkIndex({ talks }))),
+    ...talks.map((talk) =>
+      writePage(`/talks/${talk.slug}/`, (u) =>
+        wrapPage(u, () => TalkPage(talk))
       )
     ),
   ]);

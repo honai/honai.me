@@ -1,15 +1,11 @@
-import { DateTag } from "../components/DateTag.jsx";
-import { css } from "../style.mjs";
-import { PortfolioLayout } from "./PortfolioLayout";
+import { Talk } from "../../talks/talks.js";
+import { DateTag } from "../components/DateTag.js";
+import { css } from "../style.js";
+import { PortfolioLayout } from "./PortfolioLayout.js";
 
-export default ({ page, content, title, thumbnail }) => {
+export default ({ date, content, title, thumbnail }: Talk) => {
   return (
-    <PortfolioLayout
-      pageUrl={page.url}
-      subTitle={title}
-      description=""
-      thumbnailUrl={thumbnail}
-    >
+    <PortfolioLayout subTitle={title} description="" thumbnailUrl={thumbnail}>
       <div
         class={css({
           width: "min(100% - 2rem, 72rem)",
@@ -29,7 +25,7 @@ export default ({ page, content, title, thumbnail }) => {
             {title}
           </h1>
           <div class={css({ centuryGothic: true })()}>
-            <DateTag date={page.date} />
+            <DateTag date={date} />
           </div>
         </div>
         <div dangerouslySetInnerHTML={{ __html: content }} class={mdStyle()} />
