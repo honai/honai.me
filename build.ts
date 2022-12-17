@@ -21,6 +21,9 @@ import PostIndex from "./src/blog/PostIndex.js";
 import BlogPost from "./src/_includes/layouts/BlogPost.js";
 import rss from "./src/rss.js";
 
+const start = new Date();
+console.log("honai.me generator started.");
+
 const cwd = process.cwd();
 const distDir = path.join(cwd, "build");
 const srcDir = path.join(cwd, "src");
@@ -38,7 +41,6 @@ async function build() {
   const talks = await getTalks();
   const posts = await getPosts();
   const paginatedPosts = paginate(posts, 15, `/blog/`);
-  console.log(paginatedPosts);
   const prevNextPosts = posts.map((p, i) => ({
     post: p,
     newerPost: i === 0 ? undefined : posts[i - 1],
@@ -138,7 +140,6 @@ function paginate<T>(data: T[], by: number, baseUrl: TrailingSlash): Page<T>[] {
     }));
 }
 
-const start = new Date();
 build().then(() => {
   const time = new Date().valueOf() - start.valueOf();
   console.log(`Finished in ${time / 1000}s.`);
