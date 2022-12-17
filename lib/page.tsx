@@ -7,11 +7,14 @@ import EleventyContext, {
 type FC = () => JSX.Element;
 
 export const wrapPage = (canonicalPath: string, Component: FC) => {
-  return renderToString(
-    <EleventyContext
-      value={{ ...ContextInitialValue, page: { url: canonicalPath } }}
-    >
-      <Component />
-    </EleventyContext>
+  return (
+    "<!DOCTYPE html>" +
+    renderToString(
+      <EleventyContext
+        value={{ ...ContextInitialValue, page: { url: canonicalPath } }}
+      >
+        <Component />
+      </EleventyContext>
+    )
   );
 };
