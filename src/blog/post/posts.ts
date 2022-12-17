@@ -2,7 +2,7 @@ import { readdir } from "fs/promises";
 import matter from "gray-matter";
 import path from "path";
 import { dirName } from "../../lib.js";
-import { render } from "../../../lib/md.js";
+import { renderPost } from "../../../lib/md.js";
 
 const __dirname = dirName(import.meta.url);
 
@@ -35,7 +35,7 @@ export const getPosts = async (): Promise<Post[]> => {
       return {
         ...fm,
         date: new Date(fm.date),
-        content: render(md),
+        content: renderPost(md),
         slug,
       };
     })

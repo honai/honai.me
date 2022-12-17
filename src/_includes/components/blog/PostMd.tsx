@@ -40,13 +40,15 @@ const mdStyle = css({
     verticalAlign: "bottom",
     borderBottom: "2px solid #dee2e6",
   },
+  code: {
+    fontFamily: "$mono",
+  },
   ":not(pre) > code": {
     color: "$text",
     backgroundColor: "$bgGray",
     padding: ".1em",
     borderRadius: ".3em",
     whiteSpace: "normal",
-    fontFamily: "$mono",
   },
   "> blockquote": {
     margin: "0",

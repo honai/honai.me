@@ -86,6 +86,10 @@ async function build() {
 
   // css
   await write("/styles/index.css", getCssText());
+  await fs.copyFile(
+    path.join(cwd, "node_modules/highlight.js/styles/github-dark-dimmed.css"),
+    path.join(distDir, "styles/highlight.css")
+  );
 }
 
 type AbsolutePath = `/${string}`;

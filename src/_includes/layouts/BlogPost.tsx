@@ -34,7 +34,7 @@ export default ({ post, newerPost, olderPost }: Props) => {
       thumbnailUrl={thumbnail_url || "/images/profile.png"}
       twitterCard={thumbnail_url ? { kind: "large" } : { kind: "normal" }}
       lazyStylesheets={[
-        "/styles/prism-tomorrow.min.css",
+        "/styles/highlight.css",
         "https://cdn.jsdelivr.net/npm/katex@0.16.2/dist/katex.min.css",
       ]}
     >
