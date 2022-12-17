@@ -12,7 +12,7 @@ interface FM {
   date: string;
   updated?: string;
   thumbnail_url?: string;
-  plugins?: ["twitter"];
+  plugins?: ("twitter" | "math")[];
 }
 
 export interface Post extends Omit<FM, "date"> {

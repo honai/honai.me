@@ -27,16 +27,19 @@ export default ({ post, newerPost, olderPost }: Props) => {
   const fn = useEleventy();
   const { title, description, thumbnail_url, updated, date, content } = post;
   const url = `/blog/post/${post.slug}/`;
+  const styleSheets = ["/styles/highlight.css"];
+  if (post.plugins?.includes("math")) {
+    styleSheets.push(
+      "https://cdn.jsdelivr.net/npm/katex@0.16.2/dist/katex.min.css"
+    );
+  }
   return (
     <BaseHtml
       title={title}
       description={description}
       thumbnailUrl={thumbnail_url || "/images/profile.png"}
       twitterCard={thumbnail_url ? { kind: "large" } : { kind: "normal" }}
-      lazyStylesheets={[
-        "/styles/highlight.css",
-        "https://cdn.jsdelivr.net/npm/katex@0.16.2/dist/katex.min.css",
-      ]}
+      lazyStylesheets={styleSheets}
     >
       <VerticalGrow>
         <Header maxWidth="120rem" />
