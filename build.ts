@@ -20,6 +20,7 @@ import { getPosts } from "./src/blog/post/posts.js";
 import PostIndex from "./src/blog/PostIndex.js";
 import BlogPost from "./src/_includes/layouts/BlogPost.js";
 import rss from "./src/rss.js";
+import { compile } from "./lib/bundle.js";
 
 const start = new Date();
 console.log("honai.me generator started.");
@@ -30,6 +31,22 @@ const srcDir = path.join(cwd, "src");
 const staticDir = path.join(cwd, "static");
 
 const SITE_DOMAIN = "www.honai.me";
+
+async function buildClientJs() {
+  const clienJsFiles = (
+    await fs.readdir(path.join(srcDir, "js"), {
+      withFileTypes: true,
+    })
+  )
+    .filter((d) => d.isFile() && path.extname(d.name) === ".js")
+    .map((d) => ({
+      src: path.join(srcDir, "js", d.name),
+      dest: `/js/${d.name}` as AbsolutePath,
+    }));
+  await Promise.all(
+    clienJsFiles.map(async ({ src, dest }) => write(dest, await compile(src)))
+  );
+}
 
 async function build() {
   const profile = load(
@@ -92,6 +109,9 @@ async function build() {
     path.join(cwd, "node_modules/highlight.js/styles/github-dark-dimmed.css"),
     path.join(distDir, "styles/highlight.css")
   );
+
+  // JS
+  await buildClientJs();
 }
 
 type AbsolutePath = `/${string}`;
