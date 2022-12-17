@@ -34,7 +34,7 @@ async function build() {
   const slides = await getSlides();
   const talks = await getTalks();
   const posts = await getPosts();
-  const paginatedPosts = pagenate(posts, 15, `/blog/`);
+  const paginatedPosts = paginate(posts, 15, `/blog/`);
   console.log(paginatedPosts);
   const prevNextPosts = posts.map((p, i) => ({
     post: p,
@@ -111,7 +111,7 @@ type Page<T> = {
   grouped: T[];
 };
 
-function pagenate<T>(data: T[], by: number, baseUrl: TrailingSlash): Page<T>[] {
+function paginate<T>(data: T[], by: number, baseUrl: TrailingSlash): Page<T>[] {
   // 0番目はbaseurlそのまま
   const toHref = (i: number): TrailingSlash =>
     i === 0 ? baseUrl : `${baseUrl}${i.toString(10)}/`;
