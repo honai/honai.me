@@ -22,6 +22,7 @@
     "@stitches/core": "^1.2.8",
     "cloudinary": "^1.33.0",
     "esbuild": "^0.15.18",
+    "feed": "^4.2.2",
     "gray-matter": "^4.0.3",
     "js-yaml": "^4.1.0",
     "lit-html": "^2.5.0",

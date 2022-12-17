@@ -19,11 +19,14 @@ import TalkIndex from "./src/TalkIndex.js";
 import { getPosts } from "./src/blog/post/posts.js";
 import PostIndex from "./src/blog/PostIndex.js";
 import BlogPost from "./src/_includes/layouts/BlogPost.js";
+import rss from "./src/rss.js";
 
 const cwd = process.cwd();
 const distDir = path.join(cwd, "build");
 const srcDir = path.join(cwd, "src");
 const staticDir = path.join(cwd, "static");
+
+const SITE_DOMAIN = "www.honai.me";
 
 async function build() {
   const profile = load(
@@ -77,6 +80,8 @@ async function build() {
         wrapPage(u, () => BlogPost(props))
       )
     ),
+    // feed
+    write("/blog/rss.xml", rss(posts, SITE_DOMAIN)),
   ]);
 
   // css
