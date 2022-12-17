@@ -30,13 +30,14 @@
     "gray-matter": "^4.0.3",
     "js-yaml": "^4.1.0",
     "lit-html": "^2.5.0",
-    "marked": "^4.2.4",
+    "markdown-it": "^13.0.1",
     "preact": "^10.11.3",
     "preact-render-to-string": "^5.2.6",
     "tsm": "^2.3.0"
   },
   "devDependencies": {
     "@types/js-yaml": "^4.0.5",
+    "@types/markdown-it": "^12.2.3",
     "@types/marked": "^4.0.8",
     "@types/node": "^18.11.15",
     "rimraf": "^3.0.2",

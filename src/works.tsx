@@ -1,12 +1,11 @@
 import { Profile } from "./_data/profile.js";
 import { PortfolioHero } from "./_includes/components/PortfolioHero.js";
 import SimpleCard from "./_includes/components/SimpleCard.jsx";
-import { useEleventy } from "./_includes/EleventyContext.js";
 import { PortfolioLayout } from "./_includes/layouts/PortfolioLayout.js";
 import { css } from "./_includes/style.js";
+import { render } from "../lib/md.js";
 
 export default ({ profile }: { profile: Profile }) => {
-  const { mdinline } = useEleventy();
   return (
     <PortfolioLayout subTitle="Works" description="Works by Honai">
       <PortfolioHero title="Works" />
@@ -34,7 +33,7 @@ export default ({ profile }: { profile: Profile }) => {
             <SimpleCard.Content>
               <div
                 dangerouslySetInnerHTML={{
-                  __html: mdinline(w.desc),
+                  __html: render(w.desc),
                 }}
               />
             </SimpleCard.Content>

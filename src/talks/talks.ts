@@ -2,9 +2,9 @@ import fs from "node:fs/promises";
 import path from "node:path";
 
 import matter from "gray-matter";
-import { marked } from "marked";
 
 import { dirName } from "../lib.js";
+import { render } from "../../lib/md.js";
 
 type FM = {
   [key in "title" | "thumbnail"]: string;
@@ -26,8 +26,8 @@ export const getTalks = async (): Promise<Talk[]> => {
     const b = path.basename(f, ".md");
     const date = b.slice(0, 10);
     const slug = b.slice(11);
-    const { data, content: md } = matter.read(path.join(dirname, f));
-    const content = marked.parse(md);
+    const { data, content: markdown } = matter.read(path.join(dirname, f));
+    const content = render(markdown);
     const typedData = data as FM;
     return { ...typedData, date, slug, content };
   });
