@@ -5,6 +5,10 @@
   "repository": "https://github.com/honai/honai.me.git",
   "author": "Honai Ueoka",
   "private": true,
+  "type": "module",
+  "engines": {
+    "node": ">=16 <19"
+  },
   "scripts": {
     "build": "tsm build.ts --tsmconfig .tsm.js",
     "tscheck": "tsc --noEmit",
@@ -30,10 +34,6 @@
     "preact": "^10.11.3",
     "preact-render-to-string": "^5.2.6",
     "tsm": "^2.3.0"
-  },
-  "type": "module",
-  "engines": {
-    "node": ">=16 <19"
   },
   "devDependencies": {
     "@types/js-yaml": "^4.0.5",
