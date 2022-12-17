@@ -34,6 +34,8 @@ async function build() {
   const slides = await getSlides();
   const talks = await getTalks();
   const posts = await getPosts();
+  const paginatedPosts = pagenate(posts, 15, `/blog/`);
+  console.log(paginatedPosts);
   const prevNextPosts = posts.map((p, i) => ({
     post: p,
     newerPost: i === 0 ? undefined : posts[i - 1],
@@ -65,7 +67,7 @@ async function build() {
       )
     ),
     // posts
-    ...pagenate(posts, 15, `/blog/`).map((page) =>
+    ...paginatedPosts.map((page) =>
       writePage(page.currentHref, (u) =>
         wrapPage(u, () => PostIndex({ ...page, posts: page.grouped }))
       )
@@ -120,7 +122,7 @@ function pagenate<T>(data: T[], by: number, baseUrl: TrailingSlash): Page<T>[] {
     .map((_, i) => ({
       currentIdx: i,
       total: groups,
-      grouped: data.slice(i, i + by),
+      grouped: data.slice(i * by, (i + 1) * by),
       prevHref: i === 0 ? undefined : toHref(i - 1),
       currentHref: toHref(i),
       nextHref: i === groups - 1 ? undefined : toHref(i + 1),
