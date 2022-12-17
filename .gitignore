@@ -7,3 +7,4 @@ dist
 /build
 /src/_data/*.xml
 /functions/api/_index.*
+/.tscheck
