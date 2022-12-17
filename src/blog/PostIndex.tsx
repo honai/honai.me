@@ -1,28 +1,26 @@
-import { BlogPagination } from "../_includes/components/blog/BlogPagination";
-import { DateTag } from "../_includes/components/DateTag";
-import { PortfolioHero } from "../_includes/components/PortfolioHero";
-import { useEleventy } from "../_includes/EleventyContext";
-import { PortfolioLayout } from "../_includes/layouts/PortfolioLayout";
-import { css, uc } from "../_includes/style.mjs";
+import { Paginate } from "../types.js";
+import { BlogPagination } from "../_includes/components/blog/BlogPagination.js";
+import { DateTag } from "../_includes/components/DateTag.js";
+import { PortfolioHero } from "../_includes/components/PortfolioHero.js";
+import { useEleventy } from "../_includes/EleventyContext.js";
+import { PortfolioLayout } from "../_includes/layouts/PortfolioLayout.js";
+import { css, uc } from "../_includes/style.js";
+import { Post } from "./post/posts.js";
 
-export const data = {
-  pagination: {
-    data: "collections.posts",
-    size: 15,
-    reverse: true,
-  },
-};
+interface Props extends Paginate {
+  posts: Post[];
+}
 
-export default ({ pagination }) => {
+export default ({ posts, ...pagination }: Props) => {
   const { isodate } = useEleventy();
-  const posts = pagination.items.map((p) => ({
+  const postsFixed = posts.map((p) => ({
     date: isodate(p.date),
-    url: p.url,
-    title: p.data.title,
-    desc: p.data.description,
-    thumb: p.data.thumbnail_url
+    url: `/blog/post/${p.slug}/`,
+    title: p.title,
+    desc: p.description,
+    thumb: p.thumbnail_url
       ? {
-          url: p.data.thumbnail_url,
+          url: p.thumbnail_url,
           alt: p.title,
         }
       : null,
@@ -31,7 +29,7 @@ export default ({ pagination }) => {
     <PortfolioLayout subTitle="Blog">
       <PortfolioHero title="Blog" />
       <div class={postsLayout()}>
-        {posts.map((p) => (
+        {postsFixed.map((p) => (
           <article class={article()}>
             <div class={thumb({ display: p.thumb ? null : "hideOnSm" })}>
               {p.thumb ? (
@@ -78,7 +76,7 @@ export default ({ pagination }) => {
             </div>
           </article>
         ))}
-        <BlogPagination pagination={pagination} />
+        <BlogPagination {...pagination} />
       </div>
     </PortfolioLayout>
   );

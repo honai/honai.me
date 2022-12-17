@@ -69,3 +69,10 @@ export type TwitterCard =
   | TwitterCardNormal
   | TwitterCardLarge
   | TwitterCardPlayer;
+
+export interface Paginate {
+  prevHref?: string;
+  nextHref?: string;
+  currentIdx: number;
+  total: number;
+}

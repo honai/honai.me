@@ -1,9 +1,10 @@
 import fs from "node:fs/promises";
 import path from "node:path";
-import { fileURLToPath } from "node:url";
 
 import matter from "gray-matter";
 import { marked } from "marked";
+
+import { dirName } from "../lib.js";
 
 type FM = {
   [key in "title" | "thumbnail"]: string;
@@ -15,7 +16,7 @@ export type Talk = FM & {
   slug: string;
 };
 
-const dirname = path.dirname(fileURLToPath(import.meta.url));
+const dirname = dirName(import.meta.url);
 
 export const getTalks = async (): Promise<Talk[]> => {
   const mdFiles = await (

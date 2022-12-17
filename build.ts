@@ -16,6 +16,8 @@ import SlideEmbed from "./src/slides/SlideEmbed.js";
 import { getTalks } from "./src/talks/talks.js";
 import TalkPage from "./src/_includes/layouts/TalkPage.js";
 import TalkIndex from "./src/TalkIndex.js";
+import { getPosts } from "./src/blog/post/posts.js";
+import PostIndex from "./src/blog/PostIndex.js";
 
 const cwd = process.cwd();
 const distDir = path.join(cwd, "build");
@@ -30,9 +32,10 @@ async function build() {
   ) as Profile;
   const slides = await getSlides();
   const talks = await getTalks();
+  const posts = await getPosts();
 
   await fs.cp(staticDir, distDir, { recursive: true });
-  await Promise.all([
+  await Promise.all<Promise<void>[]>([
     write("/_redirects", _redirects),
     write("/404.html", wrapPage("/404.html", NotFound)),
     writePage("/works/", (u) => wrapPage(u, () => Works({ profile }))),
@@ -55,6 +58,12 @@ async function build() {
         wrapPage(u, () => TalkPage(talk))
       )
     ),
+    // posts
+    ...pagenate(posts, 15, `/blog/`).map((page) =>
+      writePage(page.currentHref, (u) =>
+        wrapPage(u, () => PostIndex({ ...page, posts: page.grouped }))
+      )
+    ),
   ]);
 
   // css
@@ -67,6 +76,7 @@ type TrailingSlash = `${AbsolutePath}/`;
 async function write(absPath: AbsolutePath, content: string) {
   const file = path.join(distDir, absPath);
   const dir = path.dirname(file);
+  console.log(`Writing ${path.relative(cwd, file)}`);
   await fs.mkdir(dir, { recursive: true });
   await fs.writeFile(file, content, { encoding: "utf-8" });
 }
@@ -77,6 +87,33 @@ async function writePage(
 ) {
   const file = path.join(canonicalPath, "index.html") as AbsolutePath;
   await write(file, Fn(canonicalPath));
+}
+
+type Page<T> = {
+  prevHref?: TrailingSlash;
+  currentHref: TrailingSlash;
+  nextHref?: TrailingSlash;
+  total: number;
+  currentIdx: number;
+  grouped: T[];
+};
+
+function pagenate<T>(data: T[], by: number, baseUrl: TrailingSlash): Page<T>[] {
+  // 0番目はbaseurlそのまま
+  const toHref = (i: number): TrailingSlash =>
+    i === 0 ? baseUrl : `${baseUrl}${i.toString(10)}/`;
+
+  const groups = Math.ceil(data.length / by);
+  return Array(groups)
+    .fill(0)
+    .map((_, i) => ({
+      currentIdx: i,
+      total: groups,
+      grouped: data.slice(i, i + by),
+      prevHref: i === 0 ? undefined : toHref(i - 1),
+      currentHref: toHref(i),
+      nextHref: i === groups - 1 ? undefined : toHref(i + 1),
+    }));
 }
 
 const start = new Date();
