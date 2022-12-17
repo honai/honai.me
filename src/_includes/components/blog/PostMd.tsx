@@ -1,7 +1,6 @@
-import { css } from "../../style.mjs";
+import { css } from "../../style.js";
 
-/** @param {{content: string}} props */
-export const PostMd = ({ content }) => (
+export const PostMd = ({ content }: { content: string }) => (
   <div dangerouslySetInnerHTML={{ __html: content }} class={mdStyle()} />
 );
 

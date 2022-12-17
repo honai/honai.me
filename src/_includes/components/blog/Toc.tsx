@@ -1,6 +1,6 @@
-import { css } from "../../style.mjs";
+import { css } from "../../style.js";
 
-export const Toc = ({ tocHtml }) => (
+export const Toc = ({ tocHtml }: { tocHtml: string }) => (
   <div>
     <div class={tocTitle()}>目次</div>
     {/* div > nav.toc > ol > li > a.-active */}

@@ -18,6 +18,7 @@ import TalkPage from "./src/_includes/layouts/TalkPage.js";
 import TalkIndex from "./src/TalkIndex.js";
 import { getPosts } from "./src/blog/post/posts.js";
 import PostIndex from "./src/blog/PostIndex.js";
+import BlogPost from "./src/_includes/layouts/BlogPost.js";
 
 const cwd = process.cwd();
 const distDir = path.join(cwd, "build");
@@ -33,6 +34,11 @@ async function build() {
   const slides = await getSlides();
   const talks = await getTalks();
   const posts = await getPosts();
+  const prevNextPosts = posts.map((p, i) => ({
+    post: p,
+    newerPost: i === 0 ? undefined : posts[i - 1],
+    olderPost: i === posts.length - 1 ? undefined : posts[i + 1],
+  }));
 
   await fs.cp(staticDir, distDir, { recursive: true });
   await Promise.all<Promise<void>[]>([
@@ -62,6 +68,11 @@ async function build() {
     ...pagenate(posts, 15, `/blog/`).map((page) =>
       writePage(page.currentHref, (u) =>
         wrapPage(u, () => PostIndex({ ...page, posts: page.grouped }))
+      )
+    ),
+    ...prevNextPosts.map((props) =>
+      writePage(`/blog/post/${props.post.slug}/`, (u) =>
+        wrapPage(u, () => BlogPost(props))
       )
     ),
   ]);

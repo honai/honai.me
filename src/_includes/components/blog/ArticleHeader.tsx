@@ -1,4 +1,4 @@
-import { css } from "../../style.mjs";
+import { css } from "../../style.js";
 
 /**
  * @param {object} p
@@ -6,7 +6,16 @@ import { css } from "../../style.mjs";
  * @param {string} p.published ISO formated
  * @param {string=} p.updated ISO formated
  */
-export const ArticleHeader = ({ title, published, updated }) => (
+
+interface Props {
+  title: string;
+  /** ISO formated */
+  published: string;
+  /** ISO formated */
+  updated?: string;
+}
+
+export const ArticleHeader = ({ title, published, updated }: Props) => (
   <header class={style()}>
     <h1 class="title">{title}</h1>
     <div>

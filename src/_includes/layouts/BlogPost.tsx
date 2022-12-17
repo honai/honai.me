@@ -1,31 +1,32 @@
-import { useEleventy } from "../EleventyContext";
-import { Footer } from "../components/Footer";
-import { Script } from "../components/Script";
-import { ArticleHeader } from "../components/blog/ArticleHeader";
-import { css, uc } from "../style.mjs";
-import { PostMd } from "../components/blog/PostMd";
-import { Toc } from "../components/blog/Toc";
-import { PostNavigate } from "../components/blog/PostNavigate";
-import { BaseHtml } from "./BaseHtml";
-import { Header } from "../components/Header";
-import VerticalGrow from "../components/VerticalGrow";
-import { TwitterShareIcon, TwitterShareLink } from "../components/TwitterShare";
+import { useEleventy } from "../EleventyContext.js";
+import { Footer } from "../components/Footer.js";
+import { Script } from "../components/Script.js";
+import { ArticleHeader } from "../components/blog/ArticleHeader.js";
+import { css, uc } from "../style.js";
+import { PostMd } from "../components/blog/PostMd.js";
+import { Toc } from "../components/blog/Toc.js";
+import { PostNavigate } from "../components/blog/PostNavigate.js";
+import { BaseHtml } from "./BaseHtml.js";
+import { Header } from "../components/Header.js";
+import VerticalGrow from "../components/VerticalGrow.js";
+import {
+  TwitterShareIcon,
+  TwitterShareLink,
+} from "../components/TwitterShare.js";
+import { Post } from "../../blog/post/posts.js";
 
 const githubLinkBase = "https://github.com/honai/honai.me/blob/main/";
 
-export default ({
-  content,
-  page,
-  collections,
-  title,
-  description,
-  thumbnail_url,
-  updated,
-  plugins,
-}) => {
+interface Props {
+  post: Post;
+  newerPost?: Post;
+  olderPost?: Post;
+}
+
+export default ({ post, newerPost, olderPost }: Props) => {
   const fn = useEleventy();
-  const newerPost = fn.getPreviousCollectionItem(collections.posts, page);
-  const olderPost = fn.getNextCollectionItem(collections.posts, page);
+  const { title, description, thumbnail_url, updated, date, content } = post;
+  const url = `/blog/post/${post.slug}/`;
   return (
     <BaseHtml
       title={title}
@@ -44,22 +45,22 @@ export default ({
             <div class="header">
               <ArticleHeader
                 title={title}
-                published={fn.isodate(page.date)}
-                updated={updated ?? fn.isodate(updated)}
+                published={fn.isodate(date)}
+                updated={updated ? fn.isodate(updated) : undefined}
               />
             </div>
             <aside class="aside">
               <div class="sticky">
-                <Toc tocHtml={fn.toc(content)} />
+                <Toc tocHtml={"TODO"} />
                 <div class={css({ color: "$textSecondary" })()}>
                   <a
-                    href={`${githubLinkBase}${page.inputPath}`}
+                    href={`${githubLinkBase}/src/blog/post/${post.slug}.md`}
                     class={uc.uncolor}
                   >
                     この記事の編集をリクエスト (GitHub)
                   </a>
                   <br />
-                  <TwitterShareLink path={page.url} title={title}>
+                  <TwitterShareLink path={url} title={title}>
                     ツイート
                   </TwitterShareLink>
                 </div>
@@ -73,12 +74,12 @@ export default ({
             </div>
           </article>
           <div class={css({ textAlign: "center", marginBlockStart: "0rem" })()}>
-            <TwitterShareIcon path={page.url} title={title} />
+            <TwitterShareIcon path={url} title={title} />
           </div>
           <Footer />
         </VerticalGrow.Grow>
       </VerticalGrow>
-      {plugins.includes("twitter") && (
+      {post.plugins && post.plugins.includes("twitter") && (
         <Script type="application/json" class="external-scripts-list">{`
           ["https://platform.twitter.com/widgets.js"]
         `}</Script>
