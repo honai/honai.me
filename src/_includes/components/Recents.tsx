@@ -1,19 +1,17 @@
-/**
- * @typedef Article
- * @prop {string} type
- * @prop {string} title
- * @prop {string} url
- * @prop {Date | string} date
- * @prop {{url: string; alt: string}} [thumb]
- */
+import { useEleventy } from "../EleventyContext.js";
+import { css } from "../style.js";
+import { Link } from "./Link.js";
+import SimpleCard from "./SimpleCard.js";
 
-import { useEleventy } from "../EleventyContext";
-import { css } from "../style.mjs";
-import { Link } from "./Link";
-import SimpleCard from "./SimpleCard";
+export interface Feed {
+  type: string;
+  title: string;
+  date: Date | string;
+  url: string;
+  thumb?: { url: string; alt: string };
+}
 
-/** @param {{articles: Article[]}} p */
-export const Recents = ({ articles }) => {
+export const Recents = ({ articles }: { articles: Feed[] }) => {
   const { isodate } = useEleventy();
   return (
     <SimpleCard id="feed" title="Recent Articles &amp; Talks">

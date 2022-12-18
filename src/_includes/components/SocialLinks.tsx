@@ -1,11 +1,10 @@
-import { css, cx, uc } from "../style.mjs";
-import { SpanSvg } from "../svg";
+import { css, cx, uc } from "../style.js";
+import { SpanSvg } from "../svg/index.js";
 
-/**
- * @param {object} p
- * @param {{url: string; text: string; icon: string}[]} p.links
- */
-export const SocialLinks = ({ links }) => (
+interface Props {
+  links: { url: string; text: string; icon: string }[];
+}
+export const SocialLinks = ({ links }: Props) => (
   <ul class={cx(uc.resetUl, list())}>
     {links.map(({ url, icon, text }) => (
       <li class={iconTextFlex()}>

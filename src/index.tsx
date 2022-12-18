@@ -1,21 +1,30 @@
-import { Recents } from "./_includes/components/Recents";
-import { PortfolioHero } from "./_includes/components/PortfolioHero";
-import SimpleCard from "./_includes/components/SimpleCard";
-import { SocialLinks } from "./_includes/components/SocialLinks";
-import { PortfolioLayout } from "./_includes/layouts/PortfolioLayout";
-import { css, cx, uc } from "./_includes/style.mjs";
-import { SpanSvg } from "./_includes/svg";
+import { Feed, Recents } from "./_includes/components/Recents.js";
+import { PortfolioHero } from "./_includes/components/PortfolioHero.js";
+import SimpleCard from "./_includes/components/SimpleCard.js";
+import { SocialLinks } from "./_includes/components/SocialLinks.js";
+import { PortfolioLayout } from "./_includes/layouts/PortfolioLayout.js";
+import { css, cx, uc } from "./_includes/style.js";
+import { SpanSvg } from "./_includes/svg/index.js";
+import { Talk } from "./talks/talks.js";
+import { Post } from "./blog/post/posts.js";
+import { Profile } from "./_data/profile.js";
 
-export default ({ profile, page, collections }) => {
+interface Props {
+  profile: Profile;
+  posts: Post[];
+  talks: Talk[];
+}
+
+export default ({ profile, posts, talks }: Props) => {
   const latestArticles = [
-    ...collections.posts.map(postToFeed),
-    ...collections.talks.map(talkToFeed),
+    ...posts.map(postToFeed),
+    ...talks.map(talkToFeed),
     ...profile.articles.map(articleToFeed),
   ]
-    .sort((a, b) => b.date.getTime() - a.date.getTime())
+    .sort((a, b) => new Date(b.date).valueOf() - new Date(a.date).valueOf())
     .slice(0, 5);
   return (
-    <PortfolioLayout pageUrl={page.url}>
+    <PortfolioLayout>
       <PortfolioHero title="Hi👋 I'm Honai." showNav />
 
       <div
@@ -131,25 +140,25 @@ export default ({ profile, page, collections }) => {
   );
 };
 
-const articleToFeed = (a) => ({
+const articleToFeed = (a: Omit<Feed, "type">): Feed => ({
   type: "Article",
   date: new Date(a.date),
   title: a.title,
   url: a.url,
 });
 
-const postToFeed = (p) => ({
+const postToFeed = (p: Post): Feed => ({
   type: "Article",
-  title: p.data.title,
-  url: p.url,
+  title: p.title,
+  url: `/blog/post/${p.slug}/`,
   date: p.date,
-  thumb: { url: p.data.thumbnail_url, alt: p.data.title },
+  thumb: p.thumbnail_url ? { url: p.thumbnail_url, alt: p.title } : undefined,
 });
 
-const talkToFeed = (t) => ({
+const talkToFeed = (t: Talk): Feed => ({
   type: "Talk",
-  title: t.data.title,
-  url: t.url,
+  title: t.title,
+  url: `/talks/${t.slug}/`,
   date: t.date,
-  thumb: { url: t.data.thumbnail, alt: t.data.title },
+  thumb: { url: t.thumbnail, alt: t.title },
 });

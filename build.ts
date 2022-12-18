@@ -21,6 +21,7 @@ import PostIndex from "./src/blog/PostIndex.js";
 import BlogPost from "./src/_includes/layouts/BlogPost.js";
 import rss from "./src/rss.js";
 import { compile } from "./lib/bundle.js";
+import Index from "./src/index.js";
 
 const start = new Date();
 console.log("honai.me generator started.");
@@ -101,6 +102,8 @@ async function build() {
     ),
     // feed
     write("/blog/rss.xml", rss(posts, SITE_DOMAIN)),
+    // index
+    writePage("/", (u) => wrapPage(u, () => Index({ profile, posts, talks }))),
   ]);
 
   // css
@@ -126,7 +129,7 @@ async function write(absPath: AbsolutePath, content: string) {
 }
 
 async function writePage(
-  canonicalPath: TrailingSlash,
+  canonicalPath: TrailingSlash | `/`,
   Fn: (url: string) => string
 ) {
   const file = path.join(canonicalPath, "index.html") as AbsolutePath;

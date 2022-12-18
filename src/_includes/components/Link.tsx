@@ -1,4 +1,6 @@
-const isExternalLink = (href) => {
+import { HTMLAttributes } from "../../types.js";
+
+const isExternalLink = (href: string) => {
   // スキーマがあるか
   if (!/^(https?:)?\/\//.test(href)) {
     // 相対パス or 絶対パス or fragment
@@ -8,10 +10,11 @@ const isExternalLink = (href) => {
   return !/^(https?:)?\/\/[^\/]*honai\.me($|[^.])/.test(href);
 };
 
-/**
- * @param {import("preact/src/jsx").JSXInternal.HTMLAttributes<HTMLAnchorElement>} p
- */
-export const Link = ({ href, children, ...attrs }) => {
+interface Props extends HTMLAttributes<HTMLAnchorElement> {
+  href: string;
+}
+
+export const Link = ({ href, children, ...attrs }: Props) => {
   if (isExternalLink(href)) {
     return (
       <a href={href} target="_blank" rel="noopener" {...attrs}>
