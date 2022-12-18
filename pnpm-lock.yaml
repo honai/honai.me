@@ -7,7 +7,7 @@ specifiers:
   '@types/js-yaml': ^4.0.5
   '@types/markdown-it': ^12.2.3
   '@types/markdown-it-link-attributes': ^3.0.1
-  '@types/node': ^18.11.15
+  '@types/node': ^18.11.17
   cloudinary: ^1.33.0
   esbuild: ^0.15.18
   feed: ^4.2.2
@@ -49,7 +49,7 @@ devDependencies:
   '@types/js-yaml': 4.0.5
   '@types/markdown-it': 12.2.3
   '@types/markdown-it-link-attributes': 3.0.1
-  '@types/node': 18.11.15
+  '@types/node': 18.11.17
   rimraf: 3.0.2
   serve: 14.1.2
   typescript: 4.9.4
@@ -125,8 +125,8 @@ packages:
   /@types/mdurl/1.0.2:
     resolution: {integrity: sha512-eC4U9MlIcu2q0KQmXszyn5Akca/0jrQmwDRgpAMJai7qBWq4amIQhZyNau4VYGtCeALvW1/NtjzJJ567aZxfKA==}
 
-  /@types/node/18.11.15:
-    resolution: {integrity: sha512-VkhBbVo2+2oozlkdHXLrb3zjsRkpdnaU2bXmX8Wgle3PUi569eLRaHGlgETQHR7lLL1w7GiG3h9SnePhxNDecw==}
+  /@types/node/18.11.17:
+    resolution: {integrity: sha512-HJSUJmni4BeDHhfzn6nF0sVmd1SMezP7/4F0Lq+aXzmp2xm9O7WXrUtHW/CHlYVtZUbByEvWidHqRtcJXGF2Ng==}
     dev: true
 
   /@types/trusted-types/2.0.2:
