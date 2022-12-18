@@ -15,7 +15,7 @@ import {
 } from "../components/TwitterShare.js";
 import { Post } from "../../blog/post/posts.js";
 
-const githubLinkBase = "https://github.com/honai/honai.me/blob/main/";
+const githubLinkBase = "https://github.com/honai/honai.me/blob/main";
 
 interface Props {
   post: Post;

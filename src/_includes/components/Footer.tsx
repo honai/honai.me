@@ -32,7 +32,6 @@ export const Footer = () => (
       })()}
     >
       &copy; {year} Honai Ueoka.
-      <br />
     </div>
   </footer>
 );
