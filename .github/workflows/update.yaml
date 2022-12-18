@@ -42,7 +42,6 @@ jobs:
         # fail if author is not the bot
         run: |
           test `git show HEAD --quiet --format=%ae` = $GA_EMAIL
-          git reset --hard $BASE_BRANCH
 
       - uses: actions/setup-node@v3
         with:
@@ -63,7 +62,7 @@ jobs:
         run: |
           git add .
           git commit -m 'pnpm update'
-          git push --set-upstream --force origin $PR_BRANCH
+          git push --set-upstream origin $PR_BRANCH
 
       - name: PR
         if: steps.diff.outcome == 'failure'
@@ -71,3 +70,8 @@ jobs:
           gh pr view --json=number || gh pr create --fill --reviewer honai
         env:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+
+      - name: Trigger staging deploy
+        if: steps.diff.outcome == 'failure'
+        run: |
+          gh workflow run deploy.yaml --ref $PR_BRANCH
