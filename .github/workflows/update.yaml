@@ -66,7 +66,7 @@ jobs:
       - name: PR
         if: steps.diff.outcome == 'failure'
         run: |
-          gh pr view --json=number || gh pr create --fill --reviewer honai
+          gh pr view --json=number || gh pr create --fill --reviewer honai --label "dependencies,javascript"
         env:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
 
