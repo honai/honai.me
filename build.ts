@@ -27,7 +27,7 @@ const start = new Date();
 console.log("honai.me generator started.");
 
 const cwd = process.cwd();
-const distDir = path.join(cwd, "build");
+const distDir = path.join(cwd, "public");
 const srcDir = path.join(cwd, "src");
 const staticDir = path.join(cwd, "static");
 
