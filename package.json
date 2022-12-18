@@ -6,8 +6,9 @@
   "author": "Honai Ueoka",
   "private": true,
   "type": "module",
+  "packageManager": "pnpm@7.18.2",
   "engines": {
-    "node": ">=16 <19"
+    "node": ">=18 <19"
   },
   "scripts": {
     "build": "tsm build.ts --tsmconfig .tsm.js",
