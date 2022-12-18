@@ -13,13 +13,7 @@
     "build": "tsm build.ts --tsmconfig .tsm.js",
     "tscheck": "tsc --noEmit",
     "clean": "rimraf build",
-    "start": "serve build",
-    "dev": "eleventy --serve",
-    "dev-f": "run-p dev:eleventy dev:wrangler",
-    "dev:wrangler": "wrangler pages dev build",
-    "dev:eleventy": "eleventy --watch",
-    "format:check": "prettier --check --ignore-path .gitignore \"**/*.{js,mjs,jsx,json,yaml,scss,css}\"",
-    "format": "prettier --write --ignore-path .gitignore \"**/*.{js,mjs,jsx,json,yaml,scss,css}\""
+    "start": "serve build"
   },
   "dependencies": {
     "@11ty/eleventy-fetch": "^3.0.0",
