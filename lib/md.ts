@@ -11,7 +11,6 @@ const simpleInstance = mdIt({ html: true });
 
 export const render = (md: string) => simpleInstance.render(md);
 
-// TODO: footnote, anchor, link attr
 const postInstanceInit = mdIt({
   html: true,
   linkify: true,
@@ -51,4 +50,41 @@ const postInstance = postInstanceInit
     },
   });
 
-export const renderPost = (content: string) => postInstance.render(content);
+type HeadingLv = 1 | 2 | 3 | 4 | 5 | 6;
+const headingToLevel: Record<string, HeadingLv> = {
+  h1: 1,
+  h2: 2,
+  h3: 3,
+  h4: 4,
+  h5: 5,
+  h6: 6,
+};
+
+export type Toc = { level: HeadingLv; text: string; id: string };
+let globalToc: Toc[] = [];
+
+postInstance.core.ruler.push("toc", (state) => {
+  for (let i = 0; i < state.tokens.length; i++) {
+    const token = state.tokens[i];
+    if (token.type !== "heading_open") {
+      continue;
+    }
+    const id = token.attrGet("id");
+    const level = headingToLevel[token.tag];
+    if (!id || !level) {
+      throw `invalid id or level. id: ${id} type: ${token.type}`;
+    }
+    const text =
+      state.tokens[i + 1].children
+        ?.filter((t) => ["text", "code_inline"].includes(t.type))
+        .map((t) => t.content)
+        .join("") || "";
+    globalToc.push({ level, text, id });
+  }
+});
+
+export const renderPost = (content: string) => {
+  globalToc = [];
+  const html = postInstance.render(content);
+  return { html, toc: globalToc };
+};

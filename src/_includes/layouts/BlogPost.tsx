@@ -54,7 +54,7 @@ export default ({ post, newerPost, olderPost }: Props) => {
             </div>
             <aside class="aside">
               <div class="sticky">
-                <Toc tocHtml={"TODO"} />
+                <Toc toc={post.toc} />
                 <div class={css({ color: "$textSecondary" })()}>
                   <a
                     href={`${githubLinkBase}/src/blog/post/${post.slug}.md`}

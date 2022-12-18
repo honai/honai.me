@@ -2,7 +2,7 @@ import { readdir } from "fs/promises";
 import matter from "gray-matter";
 import path from "path";
 import { dirName } from "../../lib.js";
-import { renderPost } from "../../../lib/md.js";
+import { renderPost, Toc } from "../../../lib/md.js";
 
 const __dirname = dirName(import.meta.url);
 
@@ -19,6 +19,7 @@ export interface Post extends Omit<FM, "date"> {
   content: string;
   slug: string;
   date: Date;
+  toc: Toc[];
 }
 
 export const getPosts = async (): Promise<Post[]> => {
@@ -31,11 +32,12 @@ export const getPosts = async (): Promise<Post[]> => {
       const { content: md, data } = matter.read(path.join(__dirname, f));
       const fm = data as FM;
       checkFm(fm);
-      // TODO: mdlib
+      const { html, toc } = renderPost(md);
       return {
         ...fm,
         date: new Date(fm.date),
-        content: renderPost(md),
+        content: html,
+        toc,
         slug,
       };
     })
