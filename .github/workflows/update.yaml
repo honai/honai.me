@@ -1,8 +1,9 @@
 name: pnpm update
 
 on:
-  # schedule:
-  #   - cron: '0 0 * * 6'
+  schedule:
+    # saturday 9:00 JST
+    - cron: '0 0 * * 6'
   workflow_dispatch:
 
 jobs:
@@ -38,8 +39,6 @@ jobs:
           git switch -c $PR_BRANCH
 
       - if: steps.fetch.outcome == 'success'
-        # switched to existing branch
-        # fail if author is not the bot
         run: |
           test `git show HEAD --quiet --format=%ae` = $GA_EMAIL
 
