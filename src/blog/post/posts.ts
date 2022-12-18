@@ -19,7 +19,7 @@ export interface Post extends Omit<FM, "date"> {
   content: string;
   slug: string;
   date: Date;
-  toc: Toc[];
+  toc: Toc;
 }
 
 export const getPosts = async (): Promise<Post[]> => {

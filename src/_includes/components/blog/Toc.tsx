@@ -1,47 +1,13 @@
 import { Toc as TocType } from "../../../../lib/md.js";
 import { css } from "../../style.js";
 
-type NestedToc = {
-  text: string;
-  id: string;
-  level: number;
-  children: { text: string; id: string }[];
-}[];
-
-/** Only handle h2 and h3 */
-const tocToNest = (toc: TocType[]): NestedToc => {
-  const result: NestedToc = [];
-  for (const tocElm of toc) {
-    const { level } = tocElm;
-    if (level === 1) {
-      throw `Toc: do not use level 1: ${tocElm.text}`;
-    }
-    if (![2, 3].includes(level)) {
-      continue;
-    }
-    // levelに関わらず最初の要素はトップレベル要素
-    if (result.length === 0) {
-      result.push({ ...tocElm, children: [] });
-      continue;
-    }
-    const prevLv = result.slice(-1)[0].level;
-    if (level <= prevLv) {
-      result.push({ ...tocElm, children: [] });
-    } else if (level - prevLv === 1) {
-      result.slice(-1)[0].children.push({ ...tocElm });
-    }
-  }
-  return result;
-};
-
-export const Toc = ({ toc }: { toc: TocType[] }) => {
-  const nested = tocToNest(toc);
+export const Toc = ({ toc }: { toc: TocType }) => {
   return (
     <div>
       <div class={tocTitle()}>目次</div>
       <nav class={tocStyle()}>
         <ol class="toc">
-          {nested.map((t1) => (
+          {toc.map((t1) => (
             <li>
               <a href={`#${t1.id}`}>{t1.text}</a>
               <ol>

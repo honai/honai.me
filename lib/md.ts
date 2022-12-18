@@ -60,8 +60,8 @@ const headingToLevel: Record<string, HeadingLv> = {
   h6: 6,
 };
 
-export type Toc = { level: HeadingLv; text: string; id: string };
-let globalToc: Toc[] = [];
+type SingleToc = { level: HeadingLv; text: string; id: string };
+let globalToc: SingleToc[] = [];
 
 postInstance.core.ruler.push("toc", (state) => {
   for (let i = 0; i < state.tokens.length; i++) {
@@ -83,8 +83,41 @@ postInstance.core.ruler.push("toc", (state) => {
   }
 });
 
+export type Toc = {
+  text: string;
+  id: string;
+  level: number;
+  children: { text: string; id: string }[];
+}[];
+
+/** Only handle h2 and h3 */
+const tocToNest = (toc: SingleToc[]): Toc => {
+  const result: Toc = [];
+  for (const tocElm of toc) {
+    const { level } = tocElm;
+    if (level === 1) {
+      throw `Toc: do not use level 1: ${tocElm.text}`;
+    }
+    if (![2, 3].includes(level)) {
+      continue;
+    }
+    // levelに関わらず最初の要素はトップレベル要素
+    if (result.length === 0) {
+      result.push({ ...tocElm, children: [] });
+      continue;
+    }
+    const prevLv = result.slice(-1)[0].level;
+    if (level <= prevLv) {
+      result.push({ ...tocElm, children: [] });
+    } else if (level - prevLv === 1) {
+      result.slice(-1)[0].children.push({ ...tocElm });
+    }
+  }
+  return result;
+};
+
 export const renderPost = (content: string) => {
   globalToc = [];
   const html = postInstance.render(content);
-  return { html, toc: globalToc };
+  return { html, toc: tocToNest(globalToc) };
 };
