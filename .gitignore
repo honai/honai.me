@@ -1,9 +1,4 @@
-node_modules/
-/public/
-.cache
-dist
-.firebase
-/_site
-/build
-/src/_data/*.xml
-/functions/api/_index.*
+node_modules
+/public
+/.cache
+/.tscheck
