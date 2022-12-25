@@ -74,3 +74,5 @@ jobs:
         if: steps.diff.outcome == 'failure'
         run: |
           gh workflow run deploy.yaml --ref $PR_BRANCH
+        env:
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
