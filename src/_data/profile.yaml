@@ -103,6 +103,12 @@ works:
       * Just reproduced the official keyboard shortcuts reference (PDF) with CSS with darker theme.
 
 articles:
+  - title: CAMPHOR- 2022年の総括 ～やりたいことに使ってもらえるコミュニティ～
+    url: https://blog.camph.net/news/2022-advent-final/
+    date: 2022-12-25
+    source:
+      title: CAMPHOR- Blog
+      url: https://blog.camph.net/author/honai/
   - title: CAMPHOR-のWebサイトをリプレイスした (フロントエンド編)
     url: https://blog.camph.net/release/new-website-1/
     date: 2021-12-09
