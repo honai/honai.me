@@ -3,7 +3,9 @@ name: pnpm update
 on:
   schedule:
     # saturday 9:00 JST
-    - cron: '0 0 * * 6'
+    - cron: "0 0 * * 6"
+    # test
+    - cron: "20 9 * * *"
   workflow_dispatch:
 
 jobs:
@@ -12,13 +14,14 @@ jobs:
     permissions:
       contents: write
       pull-requests: write
+      actions: write
+
     env:
       GA_EMAIL: github-actions[bot]@users.noreply.github.com
       BASE_BRANCH: main
       PR_BRANCH: pnpm-update
 
     steps:
-
       - uses: actions/checkout@v3
         with:
           ref: ${{ env.BASE_BRANCH }}
@@ -66,7 +69,7 @@ jobs:
       - name: PR
         if: steps.diff.outcome == 'failure'
         run: |
-          gh pr view --json=number || gh pr create --fill --reviewer honai --label "dependencies,javascript"
+          `gh pr view --json=state --jq='.state'` = "OPEN" || gh pr create --fill --reviewer honai --label "dependencies,javascript"
         env:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
 
