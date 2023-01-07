@@ -21,7 +21,7 @@
     "@iktakahiro/markdown-it-katex": "^4.0.1",
     "@stitches/core": "^1.2.8",
     "cloudinary": "^1.33.0",
-    "esbuild": "^0.16.12",
+    "esbuild": "^0.16.14",
     "feed": "^4.2.2",
     "gray-matter": "^4.0.3",
     "highlight.js": "^11.7.0",
