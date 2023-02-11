@@ -1,5 +1,4 @@
 import { Children, FC, TwitterCard } from "../../types.js";
-import { AdScript, AdSrc } from "../components/Adsense.js";
 import { Seo } from "../components/Seo.js";
 
 const defaultAsyncStyles = ["https://use.typekit.net/bdo3rru.css"];
@@ -64,12 +63,9 @@ export const BaseHtml: FC<Props> = ({
 
         {/* theme-toggle */}
         <script type="module" src="/js/common.js"></script>
-        {adsense && <AdSrc />}
+        {adsense && <script type="module" src="/js/adsense.js"></script>}
       </head>
-      <body>
-        <>{children}</>
-        {adsense && <AdScript />}
-      </body>
+      <body>{children}</body>
     </html>
   );
 };
