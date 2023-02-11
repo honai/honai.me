@@ -13,15 +13,15 @@
   "scripts": {
     "build": "tsm build.ts --tsmconfig .tsm.js",
     "tscheck": "tsc --noEmit",
-    "clean": "rimraf build",
-    "start": "serve build"
+    "clean": "rimraf public",
+    "start": "serve public"
   },
   "dependencies": {
     "@11ty/eleventy-fetch": "^3.0.0",
     "@iktakahiro/markdown-it-katex": "^4.0.1",
     "@stitches/core": "^1.2.8",
     "cloudinary": "^1.33.0",
-    "esbuild": "^0.16.17",
+    "esbuild": "^0.17.7",
     "feed": "^4.2.2",
     "gray-matter": "^4.0.3",
     "highlight.js": "^11.7.0",
@@ -40,7 +40,7 @@
     "@types/markdown-it": "^12.2.3",
     "@types/markdown-it-link-attributes": "^3.0.1",
     "@types/node": "^18.13.0",
-    "rimraf": "^3.0.2",
+    "rimraf": "^4.1.2",
     "serve": "^14.2.0",
     "typescript": "^4.9.5"
   }
