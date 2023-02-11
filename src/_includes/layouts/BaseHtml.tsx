@@ -13,6 +13,7 @@ interface Props {
   thumbnailUrl: string;
   twitterCard: TwitterCard;
   lazyStylesheets?: string[];
+  adsense?: boolean;
   children: Children;
 }
 
@@ -22,6 +23,7 @@ export const BaseHtml: FC<Props> = ({
   thumbnailUrl,
   twitterCard,
   lazyStylesheets,
+  adsense,
   children,
 }) => {
   const asyncStylesheets = defaultAsyncStyles.concat(lazyStylesheets || []);
@@ -61,6 +63,7 @@ export const BaseHtml: FC<Props> = ({
 
         {/* theme-toggle */}
         <script type="module" src="/js/common.js"></script>
+        {adsense && <script type="module" src="/js/adsense.js"></script>}
       </head>
       <body>{children}</body>
     </html>
