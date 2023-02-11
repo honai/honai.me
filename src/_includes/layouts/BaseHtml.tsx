@@ -1,4 +1,5 @@
 import { Children, FC, TwitterCard } from "../../types.js";
+import { AdScript, AdSrc } from "../components/Adsense.js";
 import { Seo } from "../components/Seo.js";
 
 const defaultAsyncStyles = ["https://use.typekit.net/bdo3rru.css"];
@@ -13,6 +14,7 @@ interface Props {
   thumbnailUrl: string;
   twitterCard: TwitterCard;
   lazyStylesheets?: string[];
+  adsense?: boolean;
   children: Children;
 }
 
@@ -22,6 +24,7 @@ export const BaseHtml: FC<Props> = ({
   thumbnailUrl,
   twitterCard,
   lazyStylesheets,
+  adsense,
   children,
 }) => {
   const asyncStylesheets = defaultAsyncStyles.concat(lazyStylesheets || []);
@@ -61,8 +64,12 @@ export const BaseHtml: FC<Props> = ({
 
         {/* theme-toggle */}
         <script type="module" src="/js/common.js"></script>
+        {adsense && <AdSrc />}
       </head>
-      <body>{children}</body>
+      <body>
+        <>{children}</>
+        {adsense && <AdScript />}
+      </body>
     </html>
   );
 };

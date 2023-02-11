@@ -1,4 +1,5 @@
 import { Paginate } from "../types.js";
+import { AdUnitBlogIndex } from "../_includes/components/Adsense.js";
 import { BlogPagination } from "../_includes/components/blog/BlogPagination.js";
 import { DateTag } from "../_includes/components/DateTag.js";
 import { PortfolioHero } from "../_includes/components/PortfolioHero.js";
@@ -26,7 +27,7 @@ export default ({ posts, ...pagination }: Props) => {
       : null,
   }));
   return (
-    <PortfolioLayout subTitle="Blog">
+    <PortfolioLayout subTitle="Blog" adsense>
       <PortfolioHero title="Blog" />
       <div class={postsLayout()}>
         {postsFixed.map((p) => (
@@ -77,6 +78,9 @@ export default ({ posts, ...pagination }: Props) => {
           </article>
         ))}
         <BlogPagination {...pagination} />
+        <div class={adWrap()}>
+          <AdUnitBlogIndex />
+        </div>
       </div>
     </PortfolioLayout>
   );
@@ -169,4 +173,9 @@ const postsLayout = css({
   display: "flex",
   flexFlow: "column nowrap",
   gap: "3.6rem",
+});
+
+const adWrap = css({
+  backgroundColor: "$bgGray",
+  margin: "0 1rem",
 });
