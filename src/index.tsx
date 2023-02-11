@@ -24,7 +24,7 @@ export default ({ profile, posts, talks }: Props) => {
     .sort((a, b) => new Date(b.date).valueOf() - new Date(a.date).valueOf())
     .slice(0, 5);
   return (
-    <PortfolioLayout>
+    <PortfolioLayout adsense>
       <PortfolioHero title="Hi👋 I'm Honai." showNav />
 
       <div
