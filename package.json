@@ -31,7 +31,7 @@
     "markdown-it-anchor": "^8.6.6",
     "markdown-it-footnote": "^3.0.3",
     "markdown-it-link-attributes": "^4.0.1",
-    "preact": "^10.11.3",
+    "preact": "^10.12.1",
     "preact-render-to-string": "^5.2.6",
     "tsm": "^2.3.0"
   },
@@ -39,7 +39,7 @@
     "@types/js-yaml": "^4.0.5",
     "@types/markdown-it": "^12.2.3",
     "@types/markdown-it-link-attributes": "^3.0.1",
-    "@types/node": "^18.11.18",
+    "@types/node": "^18.13.0",
     "rimraf": "^3.0.2",
     "serve": "^14.2.0",
     "typescript": "^4.9.5"
