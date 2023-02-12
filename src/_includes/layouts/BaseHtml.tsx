@@ -66,9 +66,7 @@ export const BaseHtml: FC<Props> = ({
         <script type="module" src="/js/common.js"></script>
         {adsense && <AdSrc />}
       </head>
-      <body>
-        <>{children}</>
-      </body>
+      <body>{children}</body>
     </html>
   );
 };
