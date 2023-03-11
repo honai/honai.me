@@ -7,7 +7,7 @@ specifiers:
   '@types/js-yaml': ^4.0.5
   '@types/markdown-it': ^12.2.3
   '@types/markdown-it-link-attributes': ^3.0.1
-  '@types/node': ^18.14.6
+  '@types/node': ^18.15.0
   cloudinary: ^1.35.0
   esbuild: ^0.17.11
   feed: ^4.2.2
@@ -19,9 +19,9 @@ specifiers:
   markdown-it-anchor: ^8.6.7
   markdown-it-footnote: ^3.0.3
   markdown-it-link-attributes: ^4.0.1
-  preact: ^10.13.0
+  preact: ^10.13.1
   preact-render-to-string: ^5.2.6
-  rimraf: ^4.2.0
+  rimraf: ^4.4.0
   serve: ^14.2.0
   tsm: ^2.3.0
   typescript: ^4.9.5
@@ -41,16 +41,16 @@ dependencies:
   markdown-it-anchor: 8.6.7_ea7kj7wzjkld5jo2noyjqxi764
   markdown-it-footnote: 3.0.3
   markdown-it-link-attributes: 4.0.1
-  preact: 10.13.0
-  preact-render-to-string: 5.2.6_preact@10.13.0
+  preact: 10.13.1
+  preact-render-to-string: 5.2.6_preact@10.13.1
   tsm: 2.3.0
 
 devDependencies:
   '@types/js-yaml': 4.0.5
   '@types/markdown-it': 12.2.3
   '@types/markdown-it-link-attributes': 3.0.1
-  '@types/node': 18.14.6
-  rimraf: 4.2.0
+  '@types/node': 18.15.0
+  rimraf: 4.4.0
   serve: 14.2.0
   typescript: 4.9.5
 
@@ -323,8 +323,8 @@ packages:
   /@types/mdurl/1.0.2:
     resolution: {integrity: sha512-eC4U9MlIcu2q0KQmXszyn5Akca/0jrQmwDRgpAMJai7qBWq4amIQhZyNau4VYGtCeALvW1/NtjzJJ567aZxfKA==}
 
-  /@types/node/18.14.6:
-    resolution: {integrity: sha512-93+VvleD3mXwlLI/xASjw0FzKcwzl3OdTCzm1LaRfqgS21gfFtK3zDXM5Op9TeeMsJVOaJ2VRDpT9q4Y3d0AvA==}
+  /@types/node/18.15.0:
+    resolution: {integrity: sha512-z6nr0TTEOBGkzLGmbypWOGnpSpSIBorEhC4L+4HeQ2iezKCi4f77kyslRwvHeNitymGQ+oFyIWGP96l/DPSV9w==}
     dev: true
 
   /@types/trusted-types/2.0.3:
@@ -1278,8 +1278,8 @@ packages:
     dev: false
     optional: true
 
-  /lru-cache/7.18.1:
-    resolution: {integrity: sha512-8/HcIENyQnfUTCDizRu9rrDyG6XG/21M4X7/YEGZeD76ZJilFPAUVb/2zysFf7VVO1LEjCDFyHp8pMMvozIrvg==}
+  /lru-cache/7.18.3:
+    resolution: {integrity: sha512-jumlc0BIUrS3qJGgIkWZsyfAM7NCWiBcCDhnd+3NNM5KbBmLTgHVfWBcg6W+rLUsIpzpERPsvwUP7CckAQSOoA==}
     engines: {node: '>=12'}
     dev: true
 
@@ -1505,7 +1505,7 @@ packages:
     resolution: {integrity: sha512-OW+5s+7cw6253Q4E+8qQ/u1fVvcJQCJo/VFD8pje+dbJCF1n5ZRMV2AEHbGp+5Q7jxQIYJxkHopnj6nzdGeZLA==}
     engines: {node: '>=14'}
     dependencies:
-      lru-cache: 7.18.1
+      lru-cache: 7.18.3
       minipass: 4.2.4
     dev: true
 
@@ -1513,17 +1513,17 @@ packages:
     resolution: {integrity: sha512-gu9bD6Ta5bwGrrU8muHzVOBFFREpp2iRkVfhBJahwJ6p6Xw20SjT0MxLnwkjOibQmGSYhiUnf2FLe7k+jcFmGQ==}
     dev: true
 
-  /preact-render-to-string/5.2.6_preact@10.13.0:
+  /preact-render-to-string/5.2.6_preact@10.13.1:
     resolution: {integrity: sha512-JyhErpYOvBV1hEPwIxc/fHWXPfnEGdRKxc8gFdAZ7XV4tlzyzG847XAyEZqoDnynP88akM4eaHcSOzNcLWFguw==}
     peerDependencies:
       preact: '>=10'
     dependencies:
-      preact: 10.13.0
+      preact: 10.13.1
       pretty-format: 3.8.0
     dev: false
 
-  /preact/10.13.0:
-    resolution: {integrity: sha512-ERdIdUpR6doqdaSIh80hvzebHB7O6JxycOhyzAeLEchqOq/4yueslQbfnPwXaNhAYacFTyCclhwkEbOumT0tHw==}
+  /preact/10.13.1:
+    resolution: {integrity: sha512-KyoXVDU5OqTpG9LXlB3+y639JAGzl8JSBXLn1J9HTSB3gbKcuInga7bZnXLlxmK94ntTs1EFeZp0lrja2AuBYQ==}
     dev: false
 
   /prelude-ls/1.1.2:
@@ -1635,8 +1635,8 @@ packages:
       glob: 7.2.3
     dev: false
 
-  /rimraf/4.2.0:
-    resolution: {integrity: sha512-tPt+gLORNVqRCk0NwuJ5SlMEcOGvt4CCU8sUPqgCFtCbnoNCTd9Q6vq7JlBbxQlACiH14OR28y7piA2Bak9Sxw==}
+  /rimraf/4.4.0:
+    resolution: {integrity: sha512-X36S+qpCUR0HjXlkDe4NAOhS//aHH0Z+h8Ckf2auGJk3PTnx5rLmrHkwNdbVQuCSUhOyFrlRvFEllZOYE+yZGQ==}
     engines: {node: '>=14'}
     hasBin: true
     dependencies:
