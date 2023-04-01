@@ -21,7 +21,7 @@
     "@iktakahiro/markdown-it-katex": "^4.0.1",
     "@stitches/core": "^1.2.8",
     "cloudinary": "^1.35.0",
-    "esbuild": "^0.17.13",
+    "esbuild": "^0.17.14",
     "feed": "^4.2.2",
     "gray-matter": "^4.0.3",
     "highlight.js": "^11.7.0",
@@ -31,7 +31,7 @@
     "markdown-it-anchor": "^8.6.7",
     "markdown-it-footnote": "^3.0.3",
     "markdown-it-link-attributes": "^4.0.1",
-    "preact": "^10.13.1",
+    "preact": "^10.13.2",
     "preact-render-to-string": "^5.2.6",
     "tsm": "^2.3.0"
   },
@@ -39,7 +39,7 @@
     "@types/js-yaml": "^4.0.5",
     "@types/markdown-it": "^12.2.3",
     "@types/markdown-it-link-attributes": "^3.0.1",
-    "@types/node": "^18.15.8",
+    "@types/node": "^18.15.11",
     "rimraf": "^4.4.1",
     "serve": "^14.2.0",
     "typescript": "^4.9.5"
