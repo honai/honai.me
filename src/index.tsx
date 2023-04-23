@@ -55,16 +55,6 @@ export default ({ profile, posts, talks }: Props) => {
             </div>
           </SimpleCard.Content>
           <SimpleCard.Content>
-            <p>
-              京都大学大学院 情報学研究科 通信情報システム専攻 /
-              修士課程（2023年3月修了予定） /{" "}
-              <a href="https://camph.net/" target="_blank" rel="noopener">
-                CAMPHOR-
-              </a>{" "}
-              運営メンバー
-            </p>
-          </SimpleCard.Content>
-          <SimpleCard.Content>
             <SocialLinks links={profile.links} />
           </SimpleCard.Content>
         </SimpleCard>
