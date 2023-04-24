@@ -3,5 +3,5 @@
   "extends": [
     "config:base"
   ],
-  "asignees": ["honai"]
+  "assignees": ["honai"]
 }
