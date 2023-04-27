@@ -15,6 +15,7 @@ interface Props {
   twitterCard: TwitterCard;
   lazyStylesheets?: string[];
   adsense?: boolean;
+  noSeo?: boolean;
   children: Children;
 }
 
@@ -25,6 +26,7 @@ export const BaseHtml: FC<Props> = ({
   twitterCard,
   lazyStylesheets,
   adsense,
+  noSeo,
   children,
 }) => {
   const asyncStylesheets = defaultAsyncStyles.concat(lazyStylesheets || []);
@@ -33,12 +35,14 @@ export const BaseHtml: FC<Props> = ({
       <head>
         <meta charSet="UTF-8" />
         <meta name="viewport" content="width=device-width" />
-        <Seo
-          title={title}
-          description={description}
-          thumbnailUrl={thumbnailUrl}
-          twitterCard={twitterCard}
-        />
+        {noSeo || (
+          <Seo
+            title={title}
+            description={description}
+            thumbnailUrl={thumbnailUrl}
+            twitterCard={twitterCard}
+          />
+        )}
         {preconnectDomains.map((domain) => (
           <link rel="preconnect" href={domain} />
         ))}

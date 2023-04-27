@@ -13,6 +13,7 @@ interface Props {
   twitterCard?: TwitterCard;
   headerMaxWidth?: string;
   adsense?: boolean;
+  noSeo?: boolean;
   children: Children;
 }
 
@@ -27,6 +28,7 @@ export const PortfolioLayout = ({ headerMaxWidth, children, ...o }: Props) => {
         (o.thumbnailUrl ? { kind: "large" } : { kind: "normal" })
       }
       adsense={o.adsense}
+      noSeo={o.noSeo}
     >
       <VerticalGrow>
         <Header maxWidth={headerMaxWidth || "72rem"} />
