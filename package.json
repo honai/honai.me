@@ -6,7 +6,7 @@
   "author": "Honai Ueoka",
   "private": true,
   "type": "module",
-  "packageManager": "pnpm@7.18.2",
+  "packageManager": "pnpm@7.33.3",
   "engines": {
     "node": ">=18 <19"
   },
