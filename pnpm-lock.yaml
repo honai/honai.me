@@ -33,8 +33,8 @@ dependencies:
     specifier: ^4.1.0
     version: 4.1.0
   lit-html:
-    specifier: ^2.7.2
-    version: 2.7.2
+    specifier: ^3.0.0
+    version: 3.0.0
   markdown-it:
     specifier: ^13.0.1
     version: 13.0.1
@@ -1322,8 +1322,8 @@ packages:
       uc.micro: 1.0.6
     dev: false
 
-  /lit-html@2.7.2:
-    resolution: {integrity: sha512-ZJCfKlA2XELu5tn7XuzOziGFGvf1SeQm+ngLWoJ8bXtSkRrrR3ms6SWy+gsdxeYwySLij5xAhdd2C3EX0ftxdQ==}
+  /lit-html@3.0.0:
+    resolution: {integrity: sha512-DNJIE8dNY0dQF2Gs0sdMNUppMQT2/CvV4OVnSdg7BXAsGqkVwsE5bqQ04POfkYH5dBIuGnJYdFz5fYYyNnOxiA==}
     dependencies:
       '@types/trusted-types': 2.0.3
     dev: false
