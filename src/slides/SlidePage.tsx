@@ -1,6 +1,6 @@
 import { Slide } from "../types.js";
-import { SlideCarousel } from "../_includes/components/SlideCarousel/index.jsx";
-import { TitleDate } from "../_includes/components/TitleDate.jsx";
+import { SlideCarousel } from "../_includes/components/SlideCarousel/index.js";
+import { TitleDate } from "../_includes/components/TitleDate.js";
 import { useEleventy } from "../_includes/EleventyContext.js";
 import { PortfolioLayout } from "../_includes/layouts/PortfolioLayout.js";
 import { css } from "../_includes/style.js";

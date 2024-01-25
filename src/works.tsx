@@ -1,6 +1,6 @@
 import { Profile } from "./_data/profile.js";
 import { PortfolioHero } from "./_includes/components/PortfolioHero.js";
-import SimpleCard from "./_includes/components/SimpleCard.jsx";
+import SimpleCard from "./_includes/components/SimpleCard.js";
 import { PortfolioLayout } from "./_includes/layouts/PortfolioLayout.js";
 import { css } from "./_includes/style.js";
 import { render } from "../lib/md.js";
