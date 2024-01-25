@@ -35,6 +35,15 @@ jobs:
     title: 株式会社サイバーエージェント（インターン, 3 weeks）
 
 publications:
+  - title: Inter-Core Crosstalk-Aware Backup Network Design Model against Probabilistic Link Failures in Multi-Core Fiber Optical Path Network
+    authors: Honai Ueoka, Takehiro Sato and Eiji Oki.
+    journal: IEICE Transactions on Communications, 2023, Volume E106.B, Issue 11, Pages 1109-1121.
+    links:
+      - text: paper (IEICE)
+        url: https://search.ieice.org/bin/summary.php?id=e106-b_11_1109
+      - text: paper (J-STAGE)
+        url: https://www.jstage.jst.go.jp/article/transcom/E106.B/11/E106.B_2022EBP3189/_article/-char/ja
+
   - title: Crosstalk-Aware Backup Network Design against Probabilistic Link Failures in Multi-Core Fiber Optical Path Network
     authors: Honai Ueoka, Takehiro Sato and Eiji Oki.
     journal:
@@ -43,7 +52,7 @@ publications:
     links:
       - text: paper
         url: https://ieeexplore.ieee.org/document/9850212
-  - title: Frustratingly Easy Edit-based Linguistic Steganography with a Masked Language Model.
+  - title: Frustratingly Easy Edit-based Linguistic Steganography with a Masked Language Model
     authors: Honai Ueoka, Yugo Murawaki and Sadao Kurohashi.
     journal:
       "In Proceedings of the 2021 Conference of the North American Chapter of
@@ -54,7 +63,7 @@ publications:
         url: https://www.aclweb.org/anthology/2021.naacl-main.433/
       - text: code
         url: https://github.com/ku-nlp/steganography-with-masked-lm
-  - title: A System for Worldwide COVID-19 Information Aggregation.
+  - title: A System for Worldwide COVID-19 Information Aggregation
     authors:
       Akiko Aizawa, Frederic Bergeron, Junjie Chen, Fei Cheng, Katsuhiko Hayashi,
       Kentaro Inui, Hiroyoshi Ito, Daisuke Kawahara, Masaru Kitsuregawa, Hirokazu Kiyomaru,
