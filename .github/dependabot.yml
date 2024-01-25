@@ -1,6 +1,17 @@
 version: 2
 updates:
-- package-ecosystem: github-actions
-  directory: "/"
-  schedule:
-    interval: daily
+  - package-ecosystem: github-actions
+    directory: "/"
+    schedule:
+      interval: weekly
+      day: saturday
+      timezone: "Asia/Tokyo"
+    reviewers: [honai]
+
+  - package-ecosystem: pnpm
+    directory: "/"
+    schedule:
+      interval: weekly
+      day: saturday
+      timezone: "Asia/Tokyo"
+    reviewers: [honai]
