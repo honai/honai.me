@@ -8,10 +8,10 @@
   "type": "module",
   "packageManager": "pnpm@8.6.8",
   "engines": {
-    "node": ">=18 <21"
+    "node": ">=20 <21"
   },
   "scripts": {
-    "build": "tsm build.ts --tsmconfig .tsm.js",
+    "build": "tsx build.ts",
     "tscheck": "tsc --noEmit",
     "clean": "rimraf public",
     "start": "serve public"
@@ -20,28 +20,28 @@
     "@11ty/eleventy-fetch": "^4.0.0",
     "@iktakahiro/markdown-it-katex": "^4.0.1",
     "@stitches/core": "^1.2.8",
-    "cloudinary": "^1.36.2",
-    "esbuild": "^0.18.0",
+    "cloudinary": "^1.41.3",
+    "esbuild": "^0.19.12",
     "feed": "^4.2.2",
     "gray-matter": "^4.0.3",
-    "highlight.js": "^11.7.0",
+    "highlight.js": "^11.9.0",
     "js-yaml": "^4.1.0",
-    "lit-html": "^3.0.0",
-    "markdown-it": "^13.0.1",
+    "lit-html": "^3.1.1",
+    "markdown-it": "^13.0.2",
     "markdown-it-anchor": "^8.6.7",
     "markdown-it-footnote": "^3.0.3",
     "markdown-it-link-attributes": "^4.0.1",
-    "preact": "^10.13.2",
-    "preact-render-to-string": "^6.0.2",
-    "tsm": "^2.3.0"
+    "preact": "^10.19.3",
+    "preact-render-to-string": "^6.3.1",
+    "tsx": "^4.7.0"
   },
   "devDependencies": {
-    "@types/js-yaml": "^4.0.5",
-    "@types/markdown-it": "^13.0.0",
-    "@types/markdown-it-link-attributes": "^3.0.1",
     "@types/node": "^20.0.0",
-    "rimraf": "^5.0.0",
-    "serve": "^14.2.0",
+    "@types/js-yaml": "^4.0.9",
+    "@types/markdown-it": "^13.0.7",
+    "@types/markdown-it-link-attributes": "^3.0.4",
+    "rimraf": "^5.0.5",
+    "serve": "^14.2.1",
     "typescript": "^4.9.5"
   }
 }

@@ -1,6 +1,6 @@
 import { Slide } from "../../../types.js";
 import { css, cx, darkTheme, uc } from "../../style.js";
-import { Nav, SlideCarouselNavProps } from "./Nav.jsx";
+import { Nav, SlideCarouselNavProps } from "./Nav.js";
 
 type Rect = Record<"x" | "y" | "width" | "height", number>;
 

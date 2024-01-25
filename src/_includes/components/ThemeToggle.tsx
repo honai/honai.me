@@ -1,6 +1,6 @@
 import { css, darkTheme, lightTheme } from "../style.js";
 import { SpanSvg } from "../svg/index.js";
-import { Script } from "./Script.jsx";
+import { Script } from "./Script.js";
 
 const STORAGE_KEY = "theme-toggle-scheme";
 
