@@ -8,7 +8,7 @@ updates:
       timezone: "Asia/Tokyo"
     reviewers: [honai]
 
-  - package-ecosystem: pnpm
+  - package-ecosystem: npm
     directory: "/"
     schedule:
       interval: weekly
