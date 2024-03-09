@@ -6,8 +6,8 @@ settings:
 
 dependencies:
   '@11ty/eleventy-fetch':
-    specifier: ^4.0.0
-    version: 4.0.0
+    specifier: ^4.0.1
+    version: 4.0.1
   '@iktakahiro/markdown-it-katex':
     specifier: ^4.0.1
     version: 4.0.1
@@ -82,8 +82,8 @@ devDependencies:
 
 packages:
 
-  /@11ty/eleventy-fetch@4.0.0:
-    resolution: {integrity: sha512-wGAd0r+8DUWr22fK5r07dOKuNY6ltA7hX+sJzngGZL1yJmuUVdM/xPQZ+iq0BFgf/ZeRdpVEzf2D0cpVZUuiTg==}
+  /@11ty/eleventy-fetch@4.0.1:
+    resolution: {integrity: sha512-yIiLM5ziBmg86i4TlXpBdcIygJHvh/GgPJyAiFOckO9H4y9cQDM8eIcJCUQ4Mum0NEVui/OjhEut2R08xw0vlQ==}
     engines: {node: '>=14'}
     dependencies:
       debug: 4.3.4
