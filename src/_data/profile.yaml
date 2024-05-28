@@ -97,7 +97,7 @@ works:
     thumb: /images/excelm.png
     desc: |
       * Code: [honai / excelm](https://github.com/honai/excelm)
-      * [ElmでミニExcelを作ろう - Qiita](https://qiita.com/honai/items/061b024839f1d174436e)
+      * Post: [ElmでミニExcelをつくろう](https://www.honai.me/blog/post/elm-advent-2019-excel/)
   - name: 質問箱
     url: https://qa.honai.me/
     thumb: /images/neing.png
