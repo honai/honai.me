@@ -51,8 +51,8 @@ dependencies:
     specifier: ^10.19.3
     version: 10.19.3
   preact-render-to-string:
-    specifier: ^6.3.1
-    version: 6.3.1(preact@10.19.3)
+    specifier: ^6.5.3
+    version: 6.5.3(preact@10.19.3)
   tsx:
     specifier: ^4.7.0
     version: 4.7.0
@@ -1092,21 +1092,16 @@ packages:
     resolution: {integrity: sha512-gu9bD6Ta5bwGrrU8muHzVOBFFREpp2iRkVfhBJahwJ6p6Xw20SjT0MxLnwkjOibQmGSYhiUnf2FLe7k+jcFmGQ==}
     dev: true
 
-  /preact-render-to-string@6.3.1(preact@10.19.3):
-    resolution: {integrity: sha512-NQ28WrjLtWY6lKDlTxnFpKHZdpjfF+oE6V4tZ0rTrunHrtZp6Dm0oFrcJalt/5PNeqJz4j1DuZDS0Y6rCBoqDA==}
+  /preact-render-to-string@6.5.3(preact@10.19.3):
+    resolution: {integrity: sha512-TWRSivNYMB3DMcFvrhwdGFkfSvPhUkd5r1q5q+1oQA21wnfEaxJe2X5U1BqLsuOA/v79sFRkg+qSeDkMHOqdvQ==}
     peerDependencies:
       preact: '>=10'
     dependencies:
       preact: 10.19.3
-      pretty-format: 3.8.0
     dev: false
 
   /preact@10.19.3:
     resolution: {integrity: sha512-nHHTeFVBTHRGxJXKkKu5hT8C/YWBkPso4/Gad6xuj5dbptt9iF9NZr9pHbPhBrnT2klheu7mHTxTZ/LjwJiEiQ==}
-    dev: false
-
-  /pretty-format@3.8.0:
-    resolution: {integrity: sha512-WuxUnVtlWL1OfZFQFuqvnvs6MiAGk9UNsBostyBOB0Is9wb5uRESevA6rnl/rkksXaGX3GzZhPup5d6Vp1nFew==}
     dev: false
 
   /punycode@1.4.1:
