@@ -9,7 +9,7 @@ jobs:
     runs-on: ubuntu-22.04
     permissions:
       contents: read
-      # deployments: write
+      deployments: write
 
     env:
       NODE_ENV: production
@@ -33,4 +33,4 @@ jobs:
           apiToken: ${{ secrets.CF_API_TOKEN }}
           accountId: ${{ secrets.CF_ACCOUNT_ID }}
           command: pages deploy public --project-name=honai-me
-          # gitHubToken: ${{ secrets.GITHUB_TOKEN }}
+          gitHubToken: ${{ secrets.GITHUB_TOKEN }}
