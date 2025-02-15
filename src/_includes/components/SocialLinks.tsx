@@ -38,6 +38,9 @@ const list = css({
 const link = css({
   centuryGothic: true,
   color: "$textSecondary",
+  "&:visited": {
+    color: "unset",
+  },
 });
 
 const iconTextFlex = css({
