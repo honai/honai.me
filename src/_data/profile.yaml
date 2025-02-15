@@ -2,6 +2,15 @@ links:
   - url: https://github.com/honai
     text: github.com/honai
     icon: github
+  - url: https://social.camph.net/@honai
+    text: social.camph.net/@honai
+    icon: misskey
+  - url: https://bsky.app/profile/honai.me
+    text: bsky.app/profile/honai.me
+    icon: bluesky
+  - url: https://mixi.social/@honai
+    text: mixi.social/@honai
+    icon: mixi2
   - url: https://twitter.com/_honai
     text: twitter.com/_honai
     icon: twitter
@@ -46,8 +55,7 @@ publications:
 
   - title: Crosstalk-Aware Backup Network Design against Probabilistic Link Failures in Multi-Core Fiber Optical Path Network
     authors: Honai Ueoka, Takehiro Sato and Eiji Oki.
-    journal:
-      2022 27th OptoElectronics and Communications Conference (OECC)
+    journal: 2022 27th OptoElectronics and Communications Conference (OECC)
       and 2022 International Conference on Photonics in Switching and Computing (PSC).
     links:
       - text: paper
