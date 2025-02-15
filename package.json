@@ -24,24 +24,24 @@
     "esbuild": "^0.19.12",
     "feed": "^4.2.2",
     "gray-matter": "^4.0.3",
-    "highlight.js": "^11.10.0",
+    "highlight.js": "^11.11.1",
     "js-yaml": "^4.1.0",
     "lit-html": "^3.2.1",
     "markdown-it": "^13.0.2",
     "markdown-it-anchor": "^8.6.7",
     "markdown-it-footnote": "^3.0.3",
     "markdown-it-link-attributes": "^4.0.1",
-    "preact": "^10.25.1",
-    "preact-render-to-string": "^6.5.11",
+    "preact": "^10.25.4",
+    "preact-render-to-string": "^6.5.13",
     "tsx": "^4.19.2"
   },
   "devDependencies": {
     "@types/js-yaml": "^4.0.9",
     "@types/markdown-it": "^13.0.9",
     "@types/markdown-it-link-attributes": "^3.0.5",
-    "@types/node": "^20.17.9",
-    "rimraf": "^5.0.10",
+    "@types/node": "^22.13.4",
+    "rimraf": "^6.0.1",
     "serve": "^14.2.4",
-    "typescript": "^5.7.2"
+    "typescript": "^5.7.3"
   }
 }
