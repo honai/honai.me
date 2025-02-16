@@ -20,7 +20,7 @@
     "@11ty/eleventy-fetch": "^5.0.2",
     "@iktakahiro/markdown-it-katex": "^4.0.1",
     "@stitches/core": "^1.2.8",
-    "cloudinary": "^1.41.3",
+    "cloudinary": "^2.5.1",
     "esbuild": "^0.25.0",
     "feed": "^4.2.2",
     "gray-matter": "^4.0.3",
