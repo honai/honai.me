@@ -44,5 +44,8 @@ const Nav = () => (
     <a href="/slides/" class={uc.uncolor}>
       Slides
     </a>
+    <a href="https://tools.honai.me/" class={uc.uncolor}>
+      Tools
+    </a>
   </nav>
 );
