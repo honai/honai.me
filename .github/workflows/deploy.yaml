@@ -30,6 +30,17 @@ jobs:
 
       - run: pnpm install --frozen-lockfile
 
+      - run: pwd
+
+      - uses: actions/checkout@v4
+        with:
+          repository: honai/blog-contents
+          path: blog-contents
+      
+      - run: |
+          pwd
+          ls
+
       - run: pnpm run build
 
       - name: Deploy
