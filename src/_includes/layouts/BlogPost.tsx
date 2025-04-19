@@ -15,8 +15,6 @@ import {
 } from "../components/TwitterShare.js";
 import { Post } from "../../blog/posts.js";
 
-const githubLinkBase = "https://github.com/honai/honai.me/blob/main";
-
 interface Props {
   post: Post;
   newerPost?: Post;
@@ -56,13 +54,6 @@ export default ({ post, newerPost, olderPost }: Props) => {
               <div class="sticky">
                 <Toc toc={post.toc} />
                 <div class={css({ color: "$textSecondary" })()}>
-                  <a
-                    href={`${githubLinkBase}/src/blog/post/${post.slug}.md`}
-                    class={uc.uncolor}
-                  >
-                    この記事の編集をリクエスト (GitHub)
-                  </a>
-                  <br />
                   <TwitterShareLink path={url} title={title}>
                     ツイート
                   </TwitterShareLink>
