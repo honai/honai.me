@@ -16,7 +16,7 @@ import SlideEmbed from "./src/slides/SlideEmbed.js";
 import { getTalks } from "./src/talks/talks.js";
 import TalkPage from "./src/_includes/layouts/TalkPage.js";
 import TalkIndex from "./src/TalkIndex.js";
-import { getPosts } from "./src/blog/post/posts.js";
+import { getPosts } from "./src/blog/posts.js";
 import PostIndex from "./src/blog/PostIndex.js";
 import BlogPost from "./src/_includes/layouts/BlogPost.js";
 import rss from "./src/rss.js";

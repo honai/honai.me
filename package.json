@@ -20,28 +20,28 @@
     "@11ty/eleventy-fetch": "^5.0.2",
     "@iktakahiro/markdown-it-katex": "^4.0.1",
     "@stitches/core": "^1.2.8",
-    "cloudinary": "^2.5.1",
-    "esbuild": "^0.25.0",
+    "cloudinary": "^2.6.0",
+    "esbuild": "^0.25.2",
     "feed": "^4.2.2",
     "gray-matter": "^4.0.3",
     "highlight.js": "^11.11.1",
     "js-yaml": "^4.1.0",
-    "lit-html": "^3.2.1",
+    "lit-html": "^3.3.0",
     "markdown-it": "^13.0.2",
     "markdown-it-anchor": "^8.6.7",
     "markdown-it-footnote": "^3.0.3",
     "markdown-it-link-attributes": "^4.0.1",
-    "preact": "^10.25.4",
+    "preact": "^10.26.5",
     "preact-render-to-string": "^6.5.13",
-    "tsx": "^4.19.2"
+    "tsx": "^4.19.3"
   },
   "devDependencies": {
     "@types/js-yaml": "^4.0.9",
     "@types/markdown-it": "^13.0.9",
     "@types/markdown-it-link-attributes": "^3.0.5",
-    "@types/node": "^22.13.4",
+    "@types/node": "^22.14.1",
     "rimraf": "^6.0.1",
     "serve": "^14.2.4",
-    "typescript": "^5.7.3"
+    "typescript": "^5.8.3"
   }
 }

@@ -6,7 +6,7 @@ import { PortfolioHero } from "../_includes/components/PortfolioHero.js";
 import { useEleventy } from "../_includes/EleventyContext.js";
 import { PortfolioLayout } from "../_includes/layouts/PortfolioLayout.js";
 import { css, uc } from "../_includes/style.js";
-import { Post } from "./post/posts.js";
+import { Post } from "./posts.js";
 
 interface Props extends Paginate {
   posts: Post[];

@@ -30,6 +30,14 @@ jobs:
 
       - run: pnpm install --frozen-lockfile
 
+      - uses: actions/checkout@v4
+        with:
+          token: ${{ secrets.GH_PAT_BLOG_CONTENTS }}
+          repository: honai/blog-contents
+          path: blog-contents
+
+      - run: ln -s $(pwd)/blog-contents/post src/blog/post
+
       - run: pnpm run build
 
       - name: Deploy

@@ -13,7 +13,7 @@ import {
   TwitterShareIcon,
   TwitterShareLink,
 } from "../components/TwitterShare.js";
-import { Post } from "../../blog/post/posts.js";
+import { Post } from "../../blog/posts.js";
 
 const githubLinkBase = "https://github.com/honai/honai.me/blob/main";
 

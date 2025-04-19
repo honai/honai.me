@@ -1,4 +1,4 @@
-import { Post } from "../../../blog/post/posts.js";
+import { Post } from "../../../blog/posts.js";
 
 interface Props {
   newerPost?: Post;

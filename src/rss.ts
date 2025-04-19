@@ -1,5 +1,5 @@
 import { Feed } from "feed";
-import { Post } from "./blog/post/posts.js";
+import { Post } from "./blog/posts.js";
 
 export default (posts: Post[], domain: string) => {
   const feed = new Feed({
