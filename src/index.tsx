@@ -6,7 +6,7 @@ import { PortfolioLayout } from "./_includes/layouts/PortfolioLayout.js";
 import { css, cx, uc } from "./_includes/style.js";
 import { SpanSvg } from "./_includes/svg/index.js";
 import { Talk } from "./talks/talks.js";
-import { Post } from "./blog/post/posts.js";
+import { Post } from "./blog/posts.js";
 import { Profile } from "./_data/profile.js";
 
 interface Props {

@@ -1,10 +1,10 @@
 import { readdir } from "fs/promises";
 import matter from "gray-matter";
 import path from "path";
-import { dirName } from "../../lib.js";
-import { renderPost, Toc } from "../../../lib/md.js";
+import { dirName } from "../lib.js";
+import { renderPost, Toc } from "../../lib/md.js";
 
-const __dirname = dirName(import.meta.url);
+const postDir = path.join(dirName(import.meta.url), "post");
 
 interface FM {
   title: string;
@@ -24,12 +24,12 @@ export interface Post extends Omit<FM, "date"> {
 
 export const getPosts = async (): Promise<Post[]> => {
   const mdFiles = await (
-    await readdir(__dirname)
+    await readdir(postDir)
   ).filter((f) => path.extname(f) === ".md" && !f.startsWith("!"));
   return mdFiles
     .map((f) => {
       const slug = path.basename(f, ".md");
-      const { content: md, data } = matter.read(path.join(__dirname, f));
+      const { content: md, data } = matter.read(path.join(postDir, f));
       const fm = data as FM;
       checkFm(fm);
       const { html, toc } = renderPost(md);
