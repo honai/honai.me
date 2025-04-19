@@ -34,9 +34,10 @@ jobs:
 
       - uses: actions/checkout@v4
         with:
+          token: ${{ secrets.GH_PAT_BLOG_CONTENTS }}
           repository: honai/blog-contents
           path: blog-contents
-      
+
       - run: |
           pwd
           ls
