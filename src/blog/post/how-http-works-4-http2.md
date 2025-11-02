@@ -1,12 +1,10 @@
----json
-{
-  "title": "連載「入門HTTP」 (4) HTTP/2",
-  "date": "2020-07-02T03:13:10.138Z",
-  "description": "CAMPHOR- Day 2020で発表した「入門 HTTP」を連載としてブログに投稿しています。研究やら院試勉強やらに追われて前回からかなり間が空いてしまい、CAMPHOR- Dayから3か月が過ぎてしまいました 😇 第4回の記事となります。  連載について  HTTP/1.xとKeep Alive",
-  "updated": "2020-08-05T18:34:57.477Z",
-  "thumbnail_url": "https://res.cloudinary.com/honai/image/upload/ctf/ogp-http2.png",
-  "large_card": true
-}
+---
+title: 連載「入門HTTP」 (4) HTTP/2
+date: "2020-07-02T03:13:10.138Z"
+description: "CAMPHOR- Day 2020で発表した「入門 HTTP」を連載としてブログに投稿しています。研究やら院試勉強やらに追われて前回からかなり間が空いてしまい、CAMPHOR- Dayから3か月が過ぎてしまいました \U0001F607 第4回の記事となります。  連載について  HTTP/1.xとKeep Alive"
+updated: "2020-08-05T18:34:57.477Z"
+thumbnail_url: https://res.cloudinary.com/honai/image/upload/ctf/ogp-http2.png
+large_card: true
 ---
 
 CAMPHOR- Day 2020で発表した「入門 HTTP」を連載としてブログに投稿しています。研究やら院試勉強やらに追われて前回からかなり間が空いてしまい、CAMPHOR- Dayから3か月が過ぎてしまいました 😇

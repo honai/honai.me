@@ -1,12 +1,10 @@
----json
-{
-  "title": "連載「入門 HTTP」(3) TLSとHTTP - HTTP over TLS",
-  "date": "2020-05-05",
-  "description": "こんにちは。ほないです。 CAMPHOR- Day 2020で発表した「入門 HTTP」を連載としてブログに投稿しています。 こちらは第3回の記事となります。  連載について  HTTP/1.xとKeep Alive TLSとHTTP - TLSの概要 TLSとHTTP - HTTP over TLS（本記事）",
-  "updated": "2020-05-16T14:22:53.370Z",
-  "thumbnail_url": "https://res.cloudinary.com/honai/image/upload/ctf/tls-1.3-0-rtt.png",
-  "large_card": true
-}
+---
+title: 連載「入門 HTTP」(3) TLSとHTTP - HTTP over TLS
+date: "2020-05-05"
+description: こんにちは。ほないです。 CAMPHOR- Day 2020で発表した「入門 HTTP」を連載としてブログに投稿しています。 こちらは第3回の記事となります。  連載について  HTTP/1.xとKeep Alive TLSとHTTP - TLSの概要 TLSとHTTP - HTTP over TLS（本記事）
+updated: "2020-05-16T14:22:53.370Z"
+thumbnail_url: https://res.cloudinary.com/honai/image/upload/ctf/tls-1.3-0-rtt.png
+large_card: true
 ---
 
 こんにちは。ほないです。

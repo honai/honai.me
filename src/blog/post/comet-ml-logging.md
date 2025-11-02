@@ -1,11 +1,9 @@
----json
-{
-  "title": "Comet.ml で機械学習のログをクラウドに保存する",
-  "date": "2020-12-05T17:38:34.620Z",
-  "description": "この記事は CAMPHOR-アドベントカレンダー2020 6日目の記事です。  みなさんこんにちは、ほないです。  私は今年度から大学で自然言語処理の研究に取り組んでいて、データセットを作ってニューラル言語モデルをトレーニングして評価する機会がたくさんありました。  最近はPyTorch, TensorFlow, scikit-learnなど様々な機械学習フレームワークによって、ニューラルネットワークモデルの実装が簡単に行えるようになっています。",
-  "thumbnail_url": "https://res.cloudinary.com/honai/image/upload/ctf/comet-ogp.png",
-  "large_card": true
-}
+---
+title: Comet.ml で機械学習のログをクラウドに保存する
+date: "2020-12-05T17:38:34.620Z"
+description: この記事は CAMPHOR-アドベントカレンダー2020 6日目の記事です。  みなさんこんにちは、ほないです。  私は今年度から大学で自然言語処理の研究に取り組んでいて、データセットを作ってニューラル言語モデルをトレーニングして評価する機会がたくさんありました。  最近はPyTorch, TensorFlow, scikit-learnなど様々な機械学習フレームワークによって、ニューラルネットワークモデルの実装が簡単に行えるようになっています。
+thumbnail_url: https://res.cloudinary.com/honai/image/upload/ctf/comet-ogp.png
+large_card: true
 ---
 
 この記事は [CAMPHOR-アドベントカレンダー2020](https://advent.camph.net/) 6日目の記事です。

@@ -1,10 +1,8 @@
----json
-{
-  "title": "Surface Pro 4にUbuntuを入れたときの初期設定",
-  "date": "2019-04-11",
-  "description": "Surface Pro 4にUbuntuを入れたときの初期設定  前提  Microsoft Surface Pro 4 にWindowsとは別にUbuntuをインストール完了した状態 (Ubuntuのインストールについては解説していません) 完全に自分のためのメモです 記事上のコマンドでは本来必要な `sudo` を省略している箇所があります",
-  "updated": "2019-06-14T18:30:07.117Z"
-}
+---
+title: Surface Pro 4にUbuntuを入れたときの初期設定
+date: "2019-04-11"
+description: Surface Pro 4にUbuntuを入れたときの初期設定  前提  Microsoft Surface Pro 4 にWindowsとは別にUbuntuをインストール完了した状態 (Ubuntuのインストールについては解説していません) 完全に自分のためのメモです 記事上のコマンドでは本来必要な `sudo` を省略している箇所があります
+updated: "2019-06-14T18:30:07.117Z"
 ---
 
 ## 前提
