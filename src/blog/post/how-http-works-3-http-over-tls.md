@@ -2,7 +2,7 @@
 title: 連載「入門 HTTP」(3) TLSとHTTP - HTTP over TLS
 date: "2020-05-05"
 description: こんにちは。ほないです。 CAMPHOR- Day 2020で発表した「入門 HTTP」を連載としてブログに投稿しています。 こちらは第3回の記事となります。  連載について  HTTP/1.xとKeep Alive TLSとHTTP - TLSの概要 TLSとHTTP - HTTP over TLS（本記事）
-updated: "2020-05-16T14:22:53.370Z"
+updated: "2025-05-17"
 thumbnail_url: https://res.cloudinary.com/honai/image/upload/ctf/tls-1.3-0-rtt.png
 large_card: true
 ---
@@ -10,6 +10,10 @@ large_card: true
 こんにちは。ほないです。
 CAMPHOR- Day 2020で発表した「入門 HTTP」を連載としてブログに投稿しています。
 こちらは第3回の記事となります。
+
+#### 更新履歴
+
+- 2025-05-17 誤字を修正しました
 
 ## 連載について
 
@@ -92,8 +96,8 @@ $ curl --tls-max 1.2 --http1.1 -I -v https://example.com/
   これには前回説明した証明書チェーンが含まれており、クライアントがサーバーを認証するために使われます。
 - **Server/Client Key Exchange**<br>
   鍵交換を行います。TLSプロトコルでも最もクリティカルなメッセージの1つですが、連載の本題ではないので詳細は省きます。
-- **Change Chiper Spec**<br>
-  Change Chiper Specは正確にはハンドシェイクプロトコルではなく、別のサブプロトコルとして定義されています。
+- **Change Cipher Spec**<br>
+  Change Cipher Specは正確にはハンドシェイクプロトコルではなく、別のサブプロトコルとして定義されています。
   暗号化のためのパラメータの同意や交換が終了し、暗号化方式が変わることを示します。
 - **Finished**<br>
   続くFinishedでは、ハンドシェイクの一連のメッセージのハッシュ値やマスターシークレットの値から計算した
