@@ -51,11 +51,11 @@ importers:
         specifier: ^4.0.1
         version: 4.0.1
       preact:
-        specifier: ^10.26.5
-        version: 10.26.5
+        specifier: ^10.27.2
+        version: 10.27.2
       preact-render-to-string:
         specifier: ^6.5.13
-        version: 6.5.13(preact@10.26.5)
+        version: 6.5.13(preact@10.27.2)
       tsx:
         specifier: ^4.19.3
         version: 4.19.3
@@ -696,8 +696,8 @@ packages:
     peerDependencies:
       preact: '>=10'
 
-  preact@10.26.5:
-    resolution: {integrity: sha512-fmpDkgfGU6JYux9teDWLhj9mKN55tyepwYbxHgQuIxbWQzgFg5vk7Mrrtfx7xRxq798ynkY4DDDxZr235Kk+4w==}
+  preact@10.27.2:
+    resolution: {integrity: sha512-5SYSgFKSyhCbk6SrXyMpqjb5+MQBgfvEKE/OC+PujcY34sOpqtr+0AZQtPYx5IA6VxynQ7rUPCtKzyovpj9Bpg==}
 
   punycode@2.3.1:
     resolution: {integrity: sha512-vYt7UD1U9Wg6138shLtLOvdAu+8DsC/ilFtEVHcH+wydcSpNE20AfSOduf6MkRFahL5FY7X1oU7nKVZFtfq8Fg==}
@@ -1387,11 +1387,11 @@ snapshots:
 
   path-to-regexp@3.3.0: {}
 
-  preact-render-to-string@6.5.13(preact@10.26.5):
+  preact-render-to-string@6.5.13(preact@10.27.2):
     dependencies:
-      preact: 10.26.5
+      preact: 10.27.2
 
-  preact@10.26.5: {}
+  preact@10.27.2: {}
 
   punycode@2.3.1: {}
 
