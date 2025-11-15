@@ -45,8 +45,8 @@ importers:
         specifier: ^8.6.7
         version: 8.6.7(@types/markdown-it@13.0.9)(markdown-it@13.0.2)
       markdown-it-footnote:
-        specifier: ^3.0.3
-        version: 3.0.3
+        specifier: ^4.0.0
+        version: 4.0.0
       markdown-it-link-attributes:
         specifier: ^4.0.1
         version: 4.0.1
@@ -590,8 +590,8 @@ packages:
       '@types/markdown-it': '*'
       markdown-it: '*'
 
-  markdown-it-footnote@3.0.3:
-    resolution: {integrity: sha512-YZMSuCGVZAjzKMn+xqIco9d1cLGxbELHZ9do/TSYVzraooV8ypsppKNmUJ0fVH5ljkCInQAtFpm8Rb3eXSrt5w==}
+  markdown-it-footnote@4.0.0:
+    resolution: {integrity: sha512-WYJ7urf+khJYl3DqofQpYfEYkZKbmXmwxQV8c8mO/hGIhgZ1wOe7R4HLFNwqx7TjILbnC98fuyeSsin19JdFcQ==}
 
   markdown-it-link-attributes@4.0.1:
     resolution: {integrity: sha512-pg5OK0jPLg62H4k7M9mRJLT61gUp9nvG0XveKYHMOOluASo9OEF13WlXrpAp2aj35LbedAy3QOCgQCw0tkLKAQ==}
@@ -1305,7 +1305,7 @@ snapshots:
       '@types/markdown-it': 13.0.9
       markdown-it: 13.0.2
 
-  markdown-it-footnote@3.0.3: {}
+  markdown-it-footnote@4.0.0: {}
 
   markdown-it-link-attributes@4.0.1: {}
 
