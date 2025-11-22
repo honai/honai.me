@@ -20,7 +20,7 @@ jobs:
       NODE_ENV: production
 
     steps:
-      - uses: actions/checkout@v4
+      - uses: actions/checkout@v6
 
       - uses: actions/setup-node@v4
         with:
@@ -30,7 +30,7 @@ jobs:
 
       - run: pnpm install --frozen-lockfile
 
-      - uses: actions/checkout@v4
+      - uses: actions/checkout@v6
         with:
           token: ${{ secrets.GH_PAT_BLOG_CONTENTS }}
           repository: honai/blog-contents
